@@ -1,5 +1,5 @@
 ---
-title: 'Educational resources to accelerate remote sensing science with Xarray in Python'
+title: 'Educational resources to accelerate analysis of remote sensing data using cloud resources with Xarray'
 tags: 
 - Python
 - remote sensing 
