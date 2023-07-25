@@ -34,6 +34,9 @@ affiliation:
 	- name: Jessica Scheick
 	  orcid: 0000-0002-3421-4459
 	  affiliation: University of New Hampshire
+<<<<<<< HEAD
+>>>>>>> 357f5bd29fc448ec38f2dac5850e173a5768da4a
+=======
 >>>>>>> 357f5bd29fc448ec38f2dac5850e173a5768da4a
 date: 05 March 2023
 bibliography: paper.bib 
