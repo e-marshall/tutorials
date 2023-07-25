@@ -8,8 +8,6 @@ tags:
 - Xarray
 - cloud-hosted data
 authors:
-
-=======
 - name: Emma Marshall
 orcid: 0000-0001-6348-977X
 affiliation: University of Utah
