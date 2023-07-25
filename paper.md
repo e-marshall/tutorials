@@ -8,18 +8,18 @@ tags:
 - Xarray
 - cloud-hosted data
 authors:
-	- name: Emma Marshall
-	orcid:
-	affiliation:
-	- name: Deepak Cherian
-	orcid:
-	affiliation:
-	- name: Scott Henderson
-	orcid:
-	affiliation:
-	- name: Jessica Scheick
-	orcid:
-	affiliation:
+- name: Emma Marshall
+orcid:
+affiliation:
+- name: Deepak Cherian
+orcid:
+affiliation:
+- name: Scott Henderson
+orcid:
+affiliation:
+- name: Jessica Scheick
+orcid:
+affiliation:
 date: 05 March 2023
 biblliography: paper.bib 
 
