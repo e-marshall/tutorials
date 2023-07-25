@@ -28,7 +28,7 @@ bibliography: paper.bib
 
 # Statement of need
 
-Earth system science is in the midst of a 'tool-driven revolution' facilitated by both the increasing availability of complex, large datasets and computational resources to ingest these datasets [cite science storms the cloud, earth big data?]. These changes impact both the way scientific questions are formulated (data-driven discovery) and investigated (data-intensive processing and analytical methods). Recent projects highlight the need for community infrastructure and capacity building that accompanies technological advances in order to realize the full benefit of these transformations (cite Science storms the cloud, from open data to open science).
+Earth system science is in the midst of a 'tool-driven revolution' facilitated by both the increasing availability of complex, large datasets and computational resources to ingest these datasets [*cite science storms the cloud, earth big data?*]. These changes impact both the way scientific questions are formulated (data-driven discovery) and investigated (data-intensive processing and analytical methods). Recent projects highlight the need for community infrastructure and capacity building that accompanies technological advances in order to realize the full benefit of these transformations (*cite Science storms the cloud, from open data to open science*).
 
 This submission contributes educational resources that will help scientists and students engage in the scientific process making use of large, complex, cloud-based datasets and open-source computational tools. The goal of this work is to demonstrate access and use patterns for various types of gridded, remote sensing datasets and discuss various approaches to these steps of a scientific workflow. We demonstrate this tooling in the Python computing language, focusing on the use of the Python module Xarray, which is designed for working with n-dimensional array objects with labeled indices.
 
@@ -72,9 +72,9 @@ ASF-processed Sentinel-1 RTC imagery used in tutorial: https://zenodo.org/record
 
 ## References
 
-- [from open data to open science, Earth and Space Science (2020)](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2020EA001562)
-- [science storms the cloud, AGU Advances (2021)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020AV000354)
-- [a user perspective on future cloud-based services for Big Earth data, International Journal of Digital Earth (2021)](https://www.tandfonline.com/doi/full/10.1080/17538947.2021.1982031)
+- [From open data to open science, Earth and Space Science (2020)](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2020EA001562)
+- [Science storms the cloud, AGU Advances (2021)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020AV000354)
+- [A user perspective on future cloud-based services for Big Earth data, International Journal of Digital Earth (2021)](https://www.tandfonline.com/doi/full/10.1080/17538947.2021.1982031)
 - *insert software refs*
 
 
