@@ -10,18 +10,18 @@ tags:
 authors:
 
 =======
-	- name: Emma Marshall
-	  orcid:
-	  affiliation:
-	- name: Deepak Cherian
-	  orcid:
-	  affiliation:
-	- name: Scott Henderson
-	  orcid: 0000-0003-0624-4965
-	  affiliation:
-	- name: Jessica Scheick
-	  orcid: 0000-0002-3421-4459
-	  affiliation: University of New Hampshire
+- name: Emma Marshall
+orcid: 0000-0001-6348-977X
+affiliation: University of Utah
+- name: Deepak Cherian
+orcid:  0000-0002-6861-8734 
+affiliation: National Center for Atmospheric Research
+- name: Scott Henderson
+orcid: 0000-0003-0624-4965
+affiliation: University of Washington
+- name: Jessica Scheick
+orcid: 0000-0002-3421-4459
+affiliation: University of New Hampshire
 date: 05 March 2023
 bibliography: paper.bib 
 
