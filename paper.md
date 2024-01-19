@@ -1,8 +1,8 @@
 ---
 title: 'Educational resources to accelerate analysis of remote sensing data using cloud resources with Xarray'
-tags: 
+tags:
   - Python
-  - remote sensing 
+  - remote sensing
   - earth science
   - cryosphere
   - Xarray
