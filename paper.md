@@ -1,12 +1,12 @@
 ---
 title: 'Educational resources to accelerate analysis of remote sensing data using cloud resources with Xarray'
 tags: 
-- Python
-- remote sensing 
-- earth science
-- cryosphere
-- Xarray
-- cloud-hosted data
+  - Python
+  - remote sensing 
+  - earth science
+  - cryosphere
+  - Xarray
+  - cloud-hosted data
 authors:
 - name: Emma Marshall
 orcid: 0000-0001-6348-977X
@@ -24,7 +24,6 @@ date: 05 March 2023
 bibliography: paper.bib 
 
 ---
-
 
 # Statement of need
 
