@@ -13,7 +13,7 @@ orcid: 0000-0001-6348-977X
 affiliation: University of Utah
 - name: Deepak Cherian
 orcid:  0000-0002-6861-8734 
-affiliation: National Center for Atmospheric Research
+affiliation: [Earthmover](https://earthmover.io/)
 - name: Scott Henderson
 orcid: 0000-0003-0624-4965
 affiliation: University of Washington
