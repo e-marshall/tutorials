@@ -1,4 +1,4 @@
---- 
+---
 title: "Educational resources to accelerate analysis of remote sensing data using cloud resources with Xarray"
 tags:
   - Python
@@ -8,21 +8,20 @@ tags:
   - Xarray
   - cloud-hosted data
 authors:
-- name: Emma Marshall
-orcid: 0000-0001-6348-977X
-affiliation: University of Utah
-- name: Deepak Cherian
-orcid:  0000-0002-6861-8734 
-affiliation: [Earthmover PBC](https://earthmover.io/)
-- name: Scott Henderson
-orcid: 0000-0003-0624-4965
-affiliation: University of Washington
-- name: Jessica Scheick
-orcid: 0000-0002-3421-4459
-affiliation: University of New Hampshire
-date: 05 March 2023
-bibliography: paper.bib 
-
+  - name: Emma Marshall
+    orcid: "0000-0001-6348-977X"
+    affiliation: "University of Utah"
+  - name: Deepak Cherian
+    orcid: "0000-0002-6861-8734"
+    affiliation: "[Earthmover PBC](https://earthmover.io/)"
+  - name: Scott Henderson
+    orcid: "0000-0003-0624-4965"
+    affiliation: "University of Washington"
+  - name: Jessica Scheick
+    orcid: "0000-0002-3421-4459"
+    affiliation: "University of New Hampshire"
+date: "05 March 2023"
+bibliography: "paper.bib"
 ---
 
 # Educational resources to accelerate the analysis of remote sensing data using cloud resources with Xarray
