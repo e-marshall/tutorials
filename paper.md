@@ -36,7 +36,8 @@ Research on the transition to data-intensive, cloud-based science highlights the
 - Discussion of the underlying remote sensing principles that shape remote sensing data and their interpretation (ie. resolution, accuracy, and signal noise),  
 - Practical content about the steps required  to access and use remote sensing data stored in common data formats,  
 - Demonstration of basic approaches to remote sensing data analysis such as time series analysis and,  
-- Resources that are flexible, participatory, and personalized [ @Mathieu et al:2017; @Palumbo et al:2017].  
+- Resources that are flexible, participatory, and personalized [ @Mathieu et al:2017; @Palumbo et al:2017].
+
 The educational modules presented in this submission address the above-identified challenges and incorporate these guidelines and principles identified in Diataxis [@Procida] in order to help analysts engage in data-driven scientific discovery using cloud-based data and open-source tools.
 
 ## Content
