@@ -32,11 +32,11 @@ Advancements in cloud computing, remote sensing, and engineering are transformin
 ## Statement of Need
 The ‘data-driven revolution’ underway in earth system sciences impacts how scientific questions are formed and investigated [@Gentemann et al:2021, @Mathieu et al:2021, @Ramachandran et al:2020, @Wagemann et al: 2021]. Such disruptive changes engender both exciting opportunities and substantial challenges in the transition to open, cloud-based science: they alter “the realm of possible questions and our ability to answer them” [@Gentemann et al:2020) and lead “to a paradigm shift of how and where data is stored as well as how users access, process and use the data [@Gil et al: 2016; @Wagemann et al:2021]. At a practical level, these changes imply a need to educate new and existing users on topics including data storage repositories, cloud computing platforms, data formats, and novel software. 
 
-Research on the transition to data-intensive, cloud-based science highlights the need for knowledge development to accompany technological advances in order to realize the benefit of these transformations [@Gentemann et al:2021; @Guo et al:2017; @Mathieu et al:2017; @Palumbo et al:2017; @Radoˇcaj et al:2020; @Ramachandran et al:2020 & @Wagemann et al:2021]. Mathieu et al. and Palumbo et al.,  identify characteristics of effective educational resources surrounding these new technologies:
-Discussion of the underlying remote sensing principles that shape remote sensing data and their interpretation (ie. resolution, accuracy, and signal noise),
-Practical content about the steps required  to access and use remote sensing data stored in common data formats,
-Demonstration of basic approaches to remote sensing data analysis such as time series analysis and,
-Resources that are flexible, participatory, and personalized [ @Mathieu et al:2017; @Palumbo et al:2017].
+Research on the transition to data-intensive, cloud-based science highlights the need for knowledge development to accompany technological advances in order to realize the benefit of these transformations [@Gentemann et al:2021; @Guo et al:2017; @Mathieu et al:2017; @Palumbo et al:2017; @Radoˇcaj et al:2020; @Ramachandran et al:2020 & @Wagemann et al:2021]. Mathieu et al. and Palumbo et al.,  identify characteristics of effective educational resources surrounding these new technologies:  
+- Discussion of the underlying remote sensing principles that shape remote sensing data and their interpretation (ie. resolution, accuracy, and signal noise),  
+- Practical content about the steps required  to access and use remote sensing data stored in common data formats,  
+- Demonstration of basic approaches to remote sensing data analysis such as time series analysis and,  
+- Resources that are flexible, participatory, and personalized [ @Mathieu et al:2017; @Palumbo et al:2017].  
 The educational modules presented in this submission address the above-identified challenges and incorporate these guidelines and principles identified in Diataxis [@Procida] in order to help analysts engage in data-driven scientific discovery using cloud-based data and open-source tools.
 
 ## Content
