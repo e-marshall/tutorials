@@ -38,7 +38,7 @@ Research on the transition to data-intensive, cloud-based science highlights the
 - Demonstration of basic approaches to remote sensing data analysis such as time series analysis and,  
 - Resources that are flexible, participatory, and personalized [ @Mathieu et al:2017; @Palumbo et al:2017].
 
-The educational modules presented in this submission address the above-identified challenges and incorporate these guidelines and principles identified in Diataxis [@Procida] in order to help analysts engage in data-driven scientific discovery using cloud-based data and open-source tools.
+The educational modules presented in this submission address the above-identified challenges and guidelines as well as principles identified in Diataxis [@Procida] in order to help analysts engage in data-driven scientific discovery using cloud-based data and open-source tools.
 
 ## Content
 We present two tutorials focusing on different publicly available satellite imagery datasets that cover a range of data providers, imaging sensor types, and processing levels. Both types of satellite imagery featured in these tutorials are 1) large in volume, 2) accessed as cloud-optimized data types and making use of cloud computing resources, and 3) have associated metadata that is crucial to data management and interpretation but can be complicated to work with. 
