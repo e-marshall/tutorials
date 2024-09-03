@@ -1,5 +1,4 @@
-HTML: <a href="https://jose.theoj.org/papers/35519017bbfdfeafc070263cbeee4f26"><img src="https://jose.theoj.org/papers/35519017bbfdfeafc070263cbeee4f26/status.svg"></a>
-Markdown: [![status](https://jose.theoj.org/papers/35519017bbfdfeafc070263cbeee4f26/status.svg)](https://jose.theoj.org/papers/35519017bbfdfeafc070263cbeee4f26)
+[![status](https://jose.theoj.org/papers/35519017bbfdfeafc070263cbeee4f26/status.svg)](https://jose.theoj.org/papers/35519017bbfdfeafc070263cbeee4f26)
 
 # About
 
