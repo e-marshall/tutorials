@@ -23,7 +23,7 @@ authors:
 affiliations:
   - name: Department of Geography, University of Utah, Salt Lake City, UT, U.S.A.
     index: 1
-  - name: Earthmover Public Benefit Corporation
+  - name: Earthmover PBC
     index: 2
   - name: eScience Institute & Department of Earth and Space Sciences, University of Washington, Seattle, WA, U.S.A.
     index: 3
