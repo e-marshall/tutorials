@@ -10,16 +10,26 @@ tags:
 authors:
   - name: Emma Marshall
     orcid: "0000-0001-6348-977X"
-    affiliation: "University of Utah"
+    affiliation: "1"
   - name: Deepak Cherian
     orcid: "0000-0002-6861-8734"
-    affiliation: "Earthmover PBC"
+    affiliation: "2"
   - name: Scott Henderson
     orcid: "0000-0003-0624-4965"
-    affiliation: "University of Washington"
+    affiliation: "3"
   - name: Jessica Scheick
     orcid: "0000-0002-3421-4459"
-    affiliation: "University of New Hampshire"
+    affiliation: "4"
+affiliations:
+  - name: Department of Geography, University of Utah, Salt Lake City, UT, U.S.A.
+    index: 1
+  - name: Earthmover Public Benefit Corporation
+    index: 2
+  - name: eScience Institute & Department of Earth and Space Sciences, University of Washington, Seattle, WA, U.S.A.
+    index: 3
+  - name: Earth Systems Research Center, University of New Hampshire, Durham, NH, U.S.A.
+    index:4
+    
 date: "05 March 2023"
 bibliography: "paper.bib"
 ---
