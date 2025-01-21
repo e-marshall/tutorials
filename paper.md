@@ -13,7 +13,7 @@ authors:
     affiliation: "University of Utah"
   - name: Deepak Cherian
     orcid: "0000-0002-6861-8734"
-    affiliation: "[Earthmover PBC](https://earthmover.io/)"
+    affiliation: "Earthmover PBC"
   - name: Scott Henderson
     orcid: "0000-0003-0624-4965"
     affiliation: "University of Washington"
