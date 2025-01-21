@@ -28,7 +28,7 @@ affiliations:
   - name: eScience Institute & Department of Earth and Space Sciences, University of Washington, Seattle, WA, U.S.A.
     index: 3
   - name: Earth Systems Research Center, University of New Hampshire, Durham, NH, U.S.A.
-    index:4
+    index: 4
     
 date: "05 March 2023"
 bibliography: "paper.bib"
