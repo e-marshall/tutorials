@@ -80,3 +80,20 @@ def plot_timestep(input_arr: np.array, time_step: int):
     axs[0].set_title(f"{date} layover-shadow map")
     axs[1].set_title(f"{date} VV backscatter")
     axs[2].set_title(f"{date} VH backscatter")
+
+def asf_pc_sidebyside(asf_input, pc_input, timestep):
+    fig, axs = plt.subplots(ncols=2, figsize=(15, 10))
+
+    power_to_db(asf_input.vv.isel(acq_date=timestep)).plot(
+        ax=axs[0], cmap=plt.cm.Greys_r, label="ASF"
+    )
+    power_to_db(pc_input.vv.isel(time=timestep)).plot(
+        ax=axs[1], cmap=plt.cm.Greys_r, label="PC"
+    )
+
+def single_time_mean_compare(asf_input, pc_input, time):
+    fig, ax = plt.subplots(figsize=(8, 8))
+    power_to_db(asf_input["vv"].isel(acq_date=time).mean(dim=["x", "y"])).plot(ax=ax)
+    power_to_db(pc_input["vv"].isel(time=time).mean(dim=["x", "y"])).plot(
+        ax=ax, color="red"
+    )

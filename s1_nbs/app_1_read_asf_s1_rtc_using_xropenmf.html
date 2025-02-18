@@ -524,17 +524,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/emmamarshall/miniforge3/envs/itslive_tutorial_env/lib/python3.11/site-packages/distributed/node.py:187: UserWarning: Port 8787 is already in use.
-Perhaps you already have a cluster running?
-Hosting the HTTP server on port 40229 instead
-  warnings.warn(
-</pre></div>
-</div>
 <div class="output text_html"><div>
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-5793ceaf-edce-11ef-9f13-c858b3e3e5bd</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-2ac080f7-ee31-11ef-94e6-c858b3e3e5bd</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -547,7 +541,7 @@ Hosting the HTTP server on port 40229 instead
         
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard: </strong> <a href="http://192.168.86.116:40229/status" target="_blank">http://192.168.86.116:40229/status</a>
+                    <strong>Dashboard: </strong> <a href="http://192.168.86.116:8787/status" target="_blank">http://192.168.86.116:8787/status</a>
                 </td>
                 <td style="text-align: left;"></td>
             </tr>
@@ -565,11 +559,11 @@ Hosting the HTTP server on port 40229 instead
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">c5b1178b</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">fdf279b4</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard:</strong> <a href="http://192.168.86.116:40229/status" target="_blank">http://192.168.86.116:40229/status</a>
+                    <strong>Dashboard:</strong> <a href="http://192.168.86.116:8787/status" target="_blank">http://192.168.86.116:8787/status</a>
                 </td>
                 <td style="text-align: left;">
                     <strong>Workers:</strong> 1
@@ -602,11 +596,11 @@ Hosting the HTTP server on port 40229 instead
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-cf5bbf60-12d8-432b-8d99-a54f11d58653</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-f762fa58-b65c-498f-b3d8-f3cb14f8e73c</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> inproc://192.168.86.116/24339/1
+                        <strong>Comm:</strong> inproc://192.168.86.116/21734/1
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 1
@@ -614,7 +608,7 @@ Hosting the HTTP server on port 40229 instead
                 </tr>
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Dashboard:</strong> <a href="http://192.168.86.116:40229/status" target="_blank">http://192.168.86.116:40229/status</a>
+                        <strong>Dashboard:</strong> <a href="http://192.168.86.116:8787/status" target="_blank">http://192.168.86.116:8787/status</a>
                     </td>
                     <td style="text-align: left;">
                         <strong>Total threads:</strong> 14
@@ -648,7 +642,7 @@ Hosting the HTTP server on port 40229 instead
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> inproc://192.168.86.116/24339/4
+                            <strong>Comm: </strong> inproc://192.168.86.116/21734/4
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 14
@@ -656,7 +650,7 @@ Hosting the HTTP server on port 40229 instead
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://192.168.86.116:43669/status" target="_blank">http://192.168.86.116:43669/status</a>
+                            <strong>Dashboard: </strong> <a href="http://192.168.86.116:39515/status" target="_blank">http://192.168.86.116:39515/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 38.76 GiB
@@ -670,7 +664,7 @@ Hosting the HTTP server on port 40229 instead
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /tmp/dask-scratch-space/worker-1fv7l0e7
+                            <strong>Local directory: </strong> /tmp/dask-scratch-space/worker-o_x9ryoz
                         </td>
                     </tr>
 
@@ -1088,7 +1082,7 @@ Hosting the HTTP server on port 40229 instead
 <span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="p">)</span>
 
-<span class="nn">File ~/miniforge3/envs/itslive_tutorial_env/lib/python3.11/site-packages/xarray/backends/api.py:1543,</span> in <span class="ni">open_mfdataset</span><span class="nt">(paths, chunks, concat_dim, compat, preprocess, engine, data_vars, coords, combine, parallel, join, attrs_file, combine_attrs, **kwargs)</span>
+<span class="nn">File ~/miniforge3/envs/geospatial_datacube_book_env/lib/python3.11/site-packages/xarray/backends/api.py:1543,</span> in <span class="ni">open_mfdataset</span><span class="nt">(paths, chunks, concat_dim, compat, preprocess, engine, data_vars, coords, combine, parallel, join, attrs_file, combine_attrs, **kwargs)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1540</span> <span class="n">paths</span> <span class="o">=</span> <span class="n">_find_absolute_paths</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1542</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">paths</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">1543</span>     <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="s2">&quot;no files to open&quot;</span><span class="p">)</span>
@@ -1151,7 +1145,7 @@ Hosting the HTTP server on port 40229 instead
 <span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="p">)</span>
 
-<span class="nn">File ~/miniforge3/envs/itslive_tutorial_env/lib/python3.11/site-packages/xarray/backends/api.py:1543,</span> in <span class="ni">open_mfdataset</span><span class="nt">(paths, chunks, concat_dim, compat, preprocess, engine, data_vars, coords, combine, parallel, join, attrs_file, combine_attrs, **kwargs)</span>
+<span class="nn">File ~/miniforge3/envs/geospatial_datacube_book_env/lib/python3.11/site-packages/xarray/backends/api.py:1543,</span> in <span class="ni">open_mfdataset</span><span class="nt">(paths, chunks, concat_dim, compat, preprocess, engine, data_vars, coords, combine, parallel, join, attrs_file, combine_attrs, **kwargs)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1540</span> <span class="n">paths</span> <span class="o">=</span> <span class="n">_find_absolute_paths</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1542</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">paths</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">1543</span>     <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="s2">&quot;no files to open&quot;</span><span class="p">)</span>
@@ -1212,7 +1206,7 @@ Hosting the HTTP server on port 40229 instead
 <span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="p">)</span>
 
-<span class="nn">File ~/miniforge3/envs/itslive_tutorial_env/lib/python3.11/site-packages/xarray/backends/api.py:1543,</span> in <span class="ni">open_mfdataset</span><span class="nt">(paths, chunks, concat_dim, compat, preprocess, engine, data_vars, coords, combine, parallel, join, attrs_file, combine_attrs, **kwargs)</span>
+<span class="nn">File ~/miniforge3/envs/geospatial_datacube_book_env/lib/python3.11/site-packages/xarray/backends/api.py:1543,</span> in <span class="ni">open_mfdataset</span><span class="nt">(paths, chunks, concat_dim, compat, preprocess, engine, data_vars, coords, combine, parallel, join, attrs_file, combine_attrs, **kwargs)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1540</span> <span class="n">paths</span> <span class="o">=</span> <span class="n">_find_absolute_paths</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1542</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">paths</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">1543</span>     <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="s2">&quot;no files to open&quot;</span><span class="p">)</span>
@@ -1256,7 +1250,7 @@ Hosting the HTTP server on port 40229 instead
 <span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="p">)</span>
 
-<span class="nn">File ~/miniforge3/envs/itslive_tutorial_env/lib/python3.11/site-packages/xarray/backends/api.py:1543,</span> in <span class="ni">open_mfdataset</span><span class="nt">(paths, chunks, concat_dim, compat, preprocess, engine, data_vars, coords, combine, parallel, join, attrs_file, combine_attrs, **kwargs)</span>
+<span class="nn">File ~/miniforge3/envs/geospatial_datacube_book_env/lib/python3.11/site-packages/xarray/backends/api.py:1543,</span> in <span class="ni">open_mfdataset</span><span class="nt">(paths, chunks, concat_dim, compat, preprocess, engine, data_vars, coords, combine, parallel, join, attrs_file, combine_attrs, **kwargs)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1540</span> <span class="n">paths</span> <span class="o">=</span> <span class="n">_find_absolute_paths</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1542</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">paths</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">1543</span>     <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="s2">&quot;no files to open&quot;</span><span class="p">)</span>

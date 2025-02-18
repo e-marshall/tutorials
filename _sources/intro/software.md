@@ -36,47 +36,37 @@ Alternatively, the code repository for this tutorial (https://github.com/e-marsh
 The `geospatial_datacube_tutorial_env.yml` file referenced above will install all of the required packages in a conda virtual environment. Below is a list of all packages imported throughout the notebooks:
 
 ```python
+import adlfs #check this may not be needed
 import cf_xarray
 import contextily as cx
 import geopandas as gpd
 import hvplot.pandas
 import matplotlib.pyplot as plt
 import numpy as np
+import os
+import pandas as pd
+import pathlib
+import planetary_computer
+import pystac
+import pystac_client
+from pystac_client import Client
+import requests
 import rioxarray as rio
 import s3fs
 import scipy.stats
+import stackstac
 from shapely.geometry import Point, Polygon
 from typing import Union
 import warnings
 import xarray as xr
 
-import os
-import tempfile
-import requests
-import markdown
-import pathlib
 
 
-import xarray as xr
-import rioxarray as rio
-import geopandas as gpd
-from shapely.geometry import Polygon
 
-import planetary_computer
-import adlfs
-import pystac_client
-from pystac_client import Client
-import stackstac
-import pystac
-
-
-import matplotlib.pyplot as plt
-from datetime import datetime
-import numpy as np
-import pandas as pd
-import rich.table
-import time
-import glob
+from datetime import datetime #only used in appendix, maybe have those separate
+import rich.table #only used once, necessary to make users import?
+import time #dont think this is necessary but double check
+import glob #don't think this is necessary but double check
 
 from IPython.display import Image
 ```

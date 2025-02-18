@@ -212,9 +212,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../pt4/summary.html">Tutorials summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pt4/tidy_principles.html">Principles of tidy array data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pt4/glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pt4/appendix.html">Appendix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../itslive_nbs/appendix1_handle_mult_geom_types.html">Handling different geometry types in a <code class="docutils literal notranslate"><span class="pre">GeoPandas.GeoDataFrame</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../s1_nbs/app_1_read_asf_s1_rtc_using_xropenmf.html">1. Read Sentinel-1 RTC data processed by ASF using <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> approach</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix/appendix.html">Appendix</a></li>
 </ul>
 
     </div>
@@ -456,47 +457,37 @@ create the <code class="docutils literal notranslate"><span class="pre">itslivet
 <section id="required-software-packages">
 <h2>Required software packages<a class="headerlink" href="#required-software-packages" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">geospatial_datacube_tutorial_env.yml</span></code> file referenced above will install all of the required packages in a conda virtual environment. Below is a list of all packages imported throughout the notebooks:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf_xarray</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">adlfs</span> <span class="c1">#check this may not be needed</span>
+<span class="kn">import</span> <span class="nn">cf_xarray</span>
 <span class="kn">import</span> <span class="nn">contextily</span> <span class="k">as</span> <span class="nn">cx</span>
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">import</span> <span class="nn">hvplot.pandas</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">planetary_computer</span>
+<span class="kn">import</span> <span class="nn">pystac</span>
+<span class="kn">import</span> <span class="nn">pystac_client</span>
+<span class="kn">from</span> <span class="nn">pystac_client</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">rioxarray</span> <span class="k">as</span> <span class="nn">rio</span>
 <span class="kn">import</span> <span class="nn">s3fs</span>
 <span class="kn">import</span> <span class="nn">scipy.stats</span>
+<span class="kn">import</span> <span class="nn">stackstac</span>
 <span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polygon</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">tempfile</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">markdown</span>
-<span class="kn">import</span> <span class="nn">pathlib</span>
 
 
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">import</span> <span class="nn">rioxarray</span> <span class="k">as</span> <span class="nn">rio</span>
-<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
-<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Polygon</span>
 
-<span class="kn">import</span> <span class="nn">planetary_computer</span>
-<span class="kn">import</span> <span class="nn">adlfs</span>
-<span class="kn">import</span> <span class="nn">pystac_client</span>
-<span class="kn">from</span> <span class="nn">pystac_client</span> <span class="kn">import</span> <span class="n">Client</span>
-<span class="kn">import</span> <span class="nn">stackstac</span>
-<span class="kn">import</span> <span class="nn">pystac</span>
-
-
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">rich.table</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span> <span class="c1">#only used in appendix, maybe have those separate</span>
+<span class="kn">import</span> <span class="nn">rich.table</span> <span class="c1">#only used once, necessary to make users import?</span>
+<span class="kn">import</span> <span class="nn">time</span> <span class="c1">#dont think this is necessary but double check</span>
+<span class="kn">import</span> <span class="nn">glob</span> <span class="c1">#don&#39;t think this is necessary but double check</span>
 
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 </pre></div>
