@@ -19,7 +19,7 @@ Most of the examples in this book use data accessed programmatically from cloud-
 Background on data cubes for an introduction to array-based geoscience data and how it is represented in Xarray and Python. This section provides an overview and explanations of topics that will be referenced in the applied tutorials.
 
 ### Part 1: {{part2_title}}
-A [tutorial]((itslive_intro.md)) focusing on [ITS_LIVE](https://its-live.jpl.nasa.gov/), a NASA MEASURES project and publicly accessible dataset stored in an AWS S3 repo as Zarr data cubes. 
+A tutorial focusing on [ITS_LIVE](https://its-live.jpl.nasa.gov/), a NASA MEASURES project and publicly accessible dataset stored in an AWS S3 repo as Zarr data cubes. 
 
 ### Part 2: {{part3_title}}
 This [tutorial](sentinel1_intro.md) focuses on another satellite dataset: Sentinel-1 Radiometric Terrain Corrected imagery. Sentinel-1 is a synthetic aperture radar sensor; SAR data undergoes different types of processing for different scientific applications. Part 3 demonstrates how to access this data from two publicly available, online respositories: Alaska Satellite Facility and Microsoft Planetary Computer. These notebooks demonstrate the different ways to read this data and prepare it for analysis, as well as an initial comparison of the two datasets. 

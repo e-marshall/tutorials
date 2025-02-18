@@ -7,27 +7,33 @@ On this page you'll find information about the computing environment and dataset
 To run the notebooks contained in this tutorial on your local machine, follow these steps:
 
 1. Clone this book's GitHub repository:  
-```git clone https://github.com/e-marshall/geospatial_datacube_analysis.git```
+```git clone https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows.git```
 
 2. Navigate into the `book` sub-directory:  
-```cd geospatial_datacube_analysis/book```
+```cd cloud-oopen-source-geospatial-datacube-workflows/book```
 
-3. Create and activate a conda environment from the `environment.yml` file located in the repo:  
-```conda env create -f environment.yml```
-```conda activate geosptial_datacube_analysis_env```
+3. Create and activate a conda environment from the `geospatial_datacube_tutorial_env.yml` file located in the repo:  
+```conda env create -f geospatial_datacube_tutorial_env.yml```
+```conda activate geospatial_datacube_tutorial_env```
 
 4. Start Jupyterlab and navigate to the directories containing the jupyter notebooks (`itslive_nbs` and `s1_nbs`):  
 ```jupyterlab```
 
+## todo
+- shorten name of repo and env/env file probably
+- This file has versions pinned but not builds, may need to make more generic? Also maybe should provide lock files.
+- update required packages below, some not necessary.
 
 
+
+(from old version):
 create the `itslivetools_env` conda environment (`conda env create -f environment-unpinned.yml`) based on the `environment.yml` file [here](https://github.com/e-marshall/mynewbook/blob/master/environment.yml). This should work on any platform (linux, osx, windows) and will install the latest versions of all dependencies.
 
 Alternatively, the code repository for this tutorial (https://github.com/e-marshall/itslive) also contains "lock" files for Linux (conda-linux-64.lock.yml) and MacOS (conda-osx-64.lock.yml) that pin exact versions of all required python packages for a [reproducible computing environment](https://mybinder.readthedocs.io/en/latest/tutorials/reproducibility.html).
 
 ## Required software packages
 
-The `environment.yml` file referenced above will install all of the required packages in a conda virtual environment. Below is a list of all packages imported throughout the notebooks:
+The `geospatial_datacube_tutorial_env.yml` file referenced above will install all of the required packages in a conda virtual environment. Below is a list of all packages imported throughout the notebooks:
 
 ```python
 import cf_xarray

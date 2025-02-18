@@ -1,8 +1,8 @@
 # Tutorials overview
 
-This book contains two distinct tutorials, each of which focuses on a different cloud-optimized geospatial dataset and different cloud-computing resources. 
+This book contains two distinct tutorials, each of which focuses on a different cloud-optimized geospatial dataset and different cloud-computing resources. Read more about the datasets used [here](tutorial_data.md).
 
-## Part 1: "Using xarray to examine cloud-based glacier surface velocity data"
+## Part 1: {{part2_title}}
 
 This tutorial focuses on a dataset of ice velocity observations derived from satellite image pairs, using a number of different satellite sensors. This dataset is accessed as Zarr data cubes from AWS S3 cloud object storage. The notebooks in this tutorial focus on:  
 
@@ -13,7 +13,7 @@ This tutorial focuses on a dataset of ice velocity observations derived from sat
 5) Exploratory data analysis and visulization at the scale of a single glacier
 6) Exploratory data analysis and visualization looking at multiple glaciers
 
-## Part 2: "Sentinel-1 RTC data workflows with xarray"
+## Part 2: {{part3_title}}
 
 This tutorial focuses on data from Sentinel-1, a synthetic aperture radar (SAR) dataset containing imagery collected at C-band. Specifically, we are looking at Sentinel-1 Radiometric Terrain Corrected (RTC) imagery (for more detail on this, see [tutorial data](tutorial_data.md)). We demonstrate how to access and work with two Sentinel-1 RTC datasets as well as how to set up and perform an initial comparison between the two and time series analysis of Sentinel-1 backscatter variability. These notebooks cover:  
 
