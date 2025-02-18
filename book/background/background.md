@@ -1,0 +1,11 @@
+# Context and motivation
+
+In recent years, the volume of available earth observation data has balooned, transforming both the types of scientific questions that can be asked and the fundamental ways in which analysts approach investigating these questions. These developments mean that analysts must gain new skills across a range of domains in order to work with these types of scientif data. 
+
+In recognition of the challenges that these opportunities can pose, we present tutorials that demonstrate scientific workflows using publicly accessible, cloud-native geospatial datasets and open-source scientific software tools. 
+
+This tutorial focuses on the complexities inherent to working with n-dimensional, gridded ({term}`raster`) datasets and uses the core stack of software packages built on and around the Xarray data model to demonstrate these workflows.
+
+Scientific workflows involve asking complex questions of diverse types of data. Earth observation and related datasets often contain two types of information: measurements of a physical observable (eg. temperature) and metadata that provides auxiliary information that required in order to interpret the physical observable (time and location of measurement, information about the sensor, etc.). With increasingly complex and large volumes of earth observation data that is currently available, storing, managing and organizing these types of data can very quickly become a complex and challenging task, especially for students and early-career analysts. 
+
+We aim to provide detailed examples of scientific workflows that ingest complex, multi-dimensional datastets, introduce users to the landscape of popular, actively-maintained opens-source software packages for working with geospatial data in Python, and include strategies for working with larger-than memory data stored in publicly available cloud-hosted repositories. Importantly, these demonstrations are accompanied by detailed discussion of concepts involved with analyzing earth observation data such as dataset inspection, ... . Overall, we emphasize the importance of understanding the structure of multi-dimensional earth observation datasets within the context of a given data model and demonstrate how such an understanding can enable more efficient and intuitive scientific workflows. 
