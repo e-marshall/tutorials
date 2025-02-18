@@ -1,5 +1,5 @@
 # Context and motivation
-
+(*in progress*)
 In recent years, the volume of available earth observation data has balooned, transforming both the types of scientific questions that can be asked and the fundamental ways in which analysts approach investigating these questions. These developments mean that analysts must gain new skills across a range of domains in order to work with these types of scientif data. 
 
 In recognition of the challenges that these opportunities can pose, we present tutorials that demonstrate scientific workflows using publicly accessible, cloud-native geospatial datasets and open-source scientific software tools. 

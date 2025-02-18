@@ -1,30 +1,30 @@
-# {{intro}}
+# Introduction
 
 ## Overview
 
 This tutorial contains jupyter notebooks demonstrating various steps of a typical scientific workflow including accessing, processing and visualizing remote sensing data. The structure is as follows:
 
 **1) Data access**  
-    - Access ITS_LIVE data stored as Zarr data cubes in an AWS S3 bucket.
+     - Access ITS_LIVE data stored as Zarr data cubes in an AWS S3 bucket.  
 **2) Reading and working with a larger-than-memory dataset**  
-    - Illustrate different strategies for manipulating and organizing a large dataset using [Xarray](https://docs.xarray.dev/en/stable/), [Zarr](https://zarr.dev/), and [Dask](https://www.dask.org/).  
+     - Illustrate different strategies for manipulating and organizing a large dataset using [Xarray](https://docs.xarray.dev/en/stable/), [Zarr](https://zarr.dev/), and [Dask](https://www.dask.org/).  
 **3) Working with raster and vector data**  
-    - Parse geographic metadata with [cf_xarray]().  
-    - Handle projections and coordinate reference system information with [GeoPandas](), [Rioxarray]() and [PyProj]().  
-    - Spatial subset of vector data with [GeoPandas]().    
-    - Spatial subset of raster data using vector data with [Rioxarray]().  
+      - Parse geographic metadata with [cf_xarray]().  
+      - Handle projections and coordinate reference system information with [GeoPandas](), [Rioxarray]() and [PyProj]().  
+     - Spatial subset of vector data with [GeoPandas]().    
+     - Spatial subset of raster data using vector data with [Rioxarray]().  
 **4) Initial inspection and analysis of velocity data for a single glacier**
-    - Visualize raster and vector with background maps data using [Xarray](), [GeoPandas](), and [Contextily]().  
-    - Calculate and examine data coverage along a given dimension using Xarray label-based indexing and selection.  
-    - Use available metadata to interpret and organize dataset,  
+     - Visualize raster and vector with background maps data using [Xarray](), [GeoPandas](), and [Contextily]().  
+     - Calculate and examine data coverage along a given dimension using Xarray label-based indexing and selection.  
+     - Use available metadata to interpret and organize dataset,  
         - Use [`xr.DataTree`]() or [`groupby()`]() to separate dataset using metadata,  
-    - Use Xarray and `scipy.stats` to calculate and visualize summary statistics along a given dimension.  
-    - Perform dimensional computations, reductions and visualizations using Xarray `resample()`, `groupby()` and `FacetGrid`.  
+     - Use Xarray and `scipy.stats` to calculate and visualize summary statistics along a given dimension.  
+     - Perform dimensional computations, reductions and visualizations using Xarray `resample()`, `groupby()` and `FacetGrid`.  
 **5) Exploratory analysis and visualization of multiple glaciers**
-    - Combine raster and vector data into a multi-dimensional vector data cube (add glossary ref) using [Xvec]().  
-    - Read and write vector data cubes to disk using Xvec methods that rely on [cf_xarray]() to encode and decode metadata.  
-    - Interactive  visualization of vector data cube using Xvec and GeoPandas.  
-    - Use Xarray plotting tools to visualize data from a vector data cube.  
+     - Combine raster and vector data into a multi-dimensional vector data cube (add glossary ref) using [Xvec]().  
+     - Read and write vector data cubes to disk using Xvec methods that rely on [cf_xarray]() to encode and decode metadata.  
+     - Interactive  visualization of vector data cube using Xvec and GeoPandas.  
+     - Use Xarray plotting tools to visualize data from a vector data cube.  
 
 ## Relevant concepts
 
@@ -34,7 +34,7 @@ TODO - notes on this section
 - maybe add a figure illustrating chunks ? 
 - should this go elsewhere - maybe an 'important concepts' in the intro section for book as a whole
 
-### 'larger than memory data'
+### Larger than memory data
 Notebooks in this tutorial spend a considerable amount of time focusing on 'larger-than-memory' datasets and strategies for working with them 'in memory'. What does this mean? When we say memory, we're referring to the available CPU space, or RAM (wc: internal memory?) on whatever machine you're working on. When we're working with smaller datasets, the data and intermediate copies that are created during many operations don't exceed the internal memory available on our machine. However, as datasets increase in size, the memory required for many workflows can quickly scale and exceed the availability of most personal machines. This is what we mean when we refer to 'larger than memory' data. In the case of this tutorial, the dataset we'll be using is very large (several hundred gigabytes when uncompressed). With datasets this large, we need to employ different approaches that can be a bit more complicated than a straightforward operation that ingests and produces smaller amounts of data. 
 
 ### Dask

@@ -28,15 +28,15 @@ parts:
     - file: itslive_nbs/5_exploratory_data_analysis_group
   - caption: Part 2
     chapters:
-    - file: intro/sentinel1_intro
+    - file: intro/new_s1_intro
 #    - file: software
-    - file: s1_nbs/ch1_root
-    - file: s1_nbs/1_1_read_asf_data
-    - file: s1_nbs/1_2_inspect_organize_asf_data
-    - file: s1_nbs/1_3_read_pc_data
-    - file: s1_nbs/ch2_root
-    - file: s1_nbs/2_1_comparing_s1_rtc_datasets
-    - file: s1_nbs/2_1_example_s1_rtc_time_series_analysis
+#    - file: s1_nbs/ch1_root
+    - file: s1_nbs/1_read_asf_data
+    - file: s1_nbs/2_inspect_organize_asf_data
+    - file: s1_nbs/3_read_pc_data
+#    - file: s1_nbs/ch2_root
+    - file: s1_nbs/4_comparing_s1_rtc_datasets
+    - file: s1_nbs/5_example_s1_rtc_time_series_analysis
   - caption: Summary + Conclusion
     chapters:
     - file: pt4/summary

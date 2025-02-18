@@ -70,12 +70,21 @@ sphinx:
       part3_title:  “Sentinel-1 RTC data workflows with xarray”
       part4_title: "Summary + Conclusion"
 
+      #tutorial 1 nb titles
       title_its_nb1: "# 1. Accessing cloud-hosted ITS_LIVE data"
       title_its_nb2: "# 2. Working with larger than memory data"
       title_its_nb3: "# 3. Handling raster and vector data"
       title_its_nb4: "# 4. Exploratory data analysis of a single glacier"
       title_its_nb5: "# 5. Exploratory data analysis of multiple glaciers"
 
+      #tutorial 2 nb titles
+      title_s1_1_1: "# 1. Read Sentinel-1 data processed by ASF"
+      title_s1_1_2: "# 2. Inspect and organize S1 data processed by ASF"
+      title_s1_1_3: "# 3. Read and inspect Sentinel-1 data processed by Microsoft Planetary Computer"
+      title_s1_2_1: "# 1. Comparing Sentinel-1 datasets"
+      title_s1_2_2: "# 2. Example of Sentinel-1 RTC time series analysis"
+
+      #global nb sections
       intro: "## Introduction"
       overview: "### Overview"
       outline: "### Outline"
@@ -146,6 +155,12 @@ sphinx:
       c3_its_nb4: "3) Visualize associations between velocity and attribute data"
 
 
+      #1_1 section headings
+      a_s1_nb1: "A. Setup"
+      a1_s1_nb1: "1) Helper functions"
+      a2_s1_nb1: "2) Vector data"
+      
+      b_1_1: "B. Organize data on disk to create VRT objects"
 
 
 
