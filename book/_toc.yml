@@ -7,7 +7,7 @@ parts:
     - file: intro/getting_started
     - file: intro/other_resources
     - file: intro/about_this_book
-    - file: TODO
+#    - file: TODO
   - caption: Background
     chapters:
     - file: background/background
@@ -35,8 +35,8 @@ parts:
     - file: s1_nbs/2_inspect_organize_asf_data
     - file: s1_nbs/3_read_pc_data
 #    - file: s1_nbs/ch2_root
-    - file: s1_nbs/4_comparing_s1_rtc_datasets
-    - file: s1_nbs/5_example_s1_rtc_time_series_analysis
+#    - file: s1_nbs/4_comparing_s1_rtc_datasets
+#    - file: s1_nbs/5_example_s1_rtc_time_series_analysis
   - caption: Summary + Conclusion
     chapters:
     - file: pt4/summary
@@ -46,5 +46,8 @@ parts:
     - file: pt4/appendix
     - file: itslive_nbs/appendix1_handle_mult_geom_types
     - file: s1_nbs/app_1_read_asf_s1_rtc_using_xropenmf
-   
-  
+  - caption: Appendix
+    chapters:
+    - file: appendix/appendix
+    - file: appendix/appendix1_1_handle_mult_goem_types
+    - file: appendix/appendix1_2_read_w_xropen_mfdataset

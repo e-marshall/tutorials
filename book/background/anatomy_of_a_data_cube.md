@@ -27,10 +27,10 @@ Fundamentally, many of these complexities can be reduced to one distinction: is 
 
 ### *Open-source setting*
 
-Luckily, there are great open-source tools out there that handle much of the complexity described above. These tools streamline the parsing and handling of metadata and often have built-in integrations with one another so that to the user, they often 'just work.' But, it takes some familiarity with these tools (and knowing they exist!) in order to take advantage of them and use them appropriately in your workflows. 
+Luckily, there are great open-source tools out there that handle much of the complexity described above. These tools streamline the parsing and handling of metadata and many have built-in integrations with one another so that to the user, they often 'just work.' But, it takes some familiarity with these tools (and knowing they exist!) in order to take advantage of them and use them appropriately in your workflows. 
 
 These tutorials illustrate real-world datasets and some of challenges that can be involved with working in them. Throughout the notebooks, we highlight open-source tools that facilitate and accelerate steps at all stages of a workflow, from reading data into memory; subsetting, manipulating and processing different arrays, handling complicated geographic metadata, viisualizing results and writing data to disk.
 
 
-## Recommended resources
+## *Recommended resources*
 Link to other data cube resources...

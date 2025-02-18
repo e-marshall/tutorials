@@ -1,8 +1,0 @@
-{
-    "_ARRAY_DIMENSIONS": [
-        "time",
-        "y",
-        "x"
-    ],
-    "coordinates": "constellation end_datetime epsg granule_id id platform proj:code s1:datatake_id s1:instrument_configuration_ID s1:orbit_source s1:processing_level s1:product_timeliness s1:resolution s1:slice_number s1:total_slices sar:center_frequency sar:frequency_band sar:instrument_mode sar:looks_azimuth sar:looks_equivalent_number sar:looks_range sar:observation_direction sar:pixel_spacing_azimuth sar:pixel_spacing_range sar:product_type sar:resolution_azimuth sar:resolution_range sat:absolute_orbit sat:orbit_state sat:platform_international_designator sat:relative_orbit start_datetime"
-}
