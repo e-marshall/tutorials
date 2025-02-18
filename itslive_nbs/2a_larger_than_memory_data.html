@@ -1,0 +1,1066 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Data organization and manipulation &#8212; Cloud-native geospatial datacube workflows with open-source tools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'itslive_nbs/2a_larger_than_memory_data';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="B. Incorporate glacier outline (vector) data" href="2b_combining_raster_vector_data.html" />
+    <link rel="prev" title="2. Data organization and manipulation" href="2_data_organization_manipulation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">🚧 Feb 2025 - This book is under construction! 🚧
+</div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../introduction.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Cloud-native geospatial datacube workflows with open-source tools</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction.html">
+                    Cloud-native geospatial datacube workflows with open-source tools
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/other_resources.html">Other resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TODO.html">to do</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../background/background.html">Context and motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/anatomy_of_a_data_cube.html">Anatomy of a data cube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/tutorials_overview.html">Tutorials overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/tutorial_data.html">Data used in tutorials</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/itslive_intro.html">ITS_LIVE ice velocity data tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_and_data.html">Software and Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_accessing_itslive_s3_data.html">1. Accessing cloud-hosted ITS_LIVE data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_data_organization_manipulation.html">2. Data organization and manipulation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Data organization and manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2b_combining_raster_vector_data.html">B. Incorporate glacier outline (vector) data</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="3_exploratory_data_analysis_single.html">3. Exploratory data analysis of a single glacier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_exploratory_data_analysis_group.html">4. Exploratory data analysis of multiple glaciers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/sentinel1_intro.html">Sentinel-1 RTC imagery tutorial</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../s1_nbs/ch1_root.html">Data cleaning and organization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../s1_nbs/1_1_read_asf_s1_rtc_data_using_gdal_vrt.html">Introduction</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../s1_nbs/1_2_inspect_organize_asf_data.html">2. Inspect and organize S1-RTC data processed by ASF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../s1_nbs/1_3_read_planetary_computer_s1_data.html">3. Read and inspect Sentinel-1 RTC imagery processed by Microsoft Planetary Computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../s1_nbs/ch2_root.html">Dataset comparison and preliminary analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../s1_nbs/2_1_comparing_s1_rtc_datasets.html">1. Comparing Sentinel-1 RTC datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../s1_nbs/2_1_example_s1_rtc_time_series_analysis.html">2: Example of Sentinel-1 RTC time series analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pt4/summary.html">Tutorials summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt4/tidy_principles.html">Principles of tidy array data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt4/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt4/appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix1_handle_mult_geom_types.html">Handling different geometry types in a <code class="docutils literal notranslate"><span class="pre">GeoPandas.GeoDataFrame</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../s1_nbs/app_1_read_asf_s1_rtc_using_xropenmf.html">1. Read Sentinel-1 RTC data processed by ASF using <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> approach</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/e-marshall/itslive/master?urlpath=lab/tree/itslive_nbs/2a_larger_than_memory_data.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/e-marshall/itslive" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/e-marshall/itslive/issues/new?title=Issue%20on%20page%20%2Fitslive_nbs/2a_larger_than_memory_data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/itslive_nbs/2a_larger_than_memory_data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2. Data organization and manipulation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#concepts">Concepts</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#techniques">Techniques</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-read-and-organize-gridded-ice-velocity-raster-data">A. Read and organize gridded ice velocity (raster) data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-approaches-for-reading-larger-than-memory-data">1) Compare approaches for reading larger-than-memory data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chunks-auto"><code class="docutils literal notranslate"><span class="pre">Chunks</span> <span class="pre">=</span> <span class="pre">'auto'</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chunks"><code class="docutils literal notranslate"><span class="pre">Chunks</span> <span class="pre">=</span> <span class="pre">{}</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#an-out-of-order-time-dimension">An out-of-order time dimension</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-dataset-without-dask">Read the dataset without Dask</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrange-dataset-in-chronological-order">2) Arrange dataset in chronological order</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-a-dask-backed-xarray-dataset">Convert to a dask-backed Xarray dataset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-organization-and-manipulation">
+<h1>2. Data organization and manipulation<a class="headerlink" href="#data-organization-and-manipulation" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>This notebook illustrates initial steps involved in working with a large raster dataset (the ITS_LIVE granule that we read in the previous notebook) and subsetting it to the spatial domain of a smaller area of interest. To clip ITS_LIVE data to the extent of a single glacier, we use a vector dataset of glacier outlines, the <a class="reference external" href="https://nsidc.org/data/nsidc-0770">Randolph Glacier Inventory</a>.</p>
+<p>We work through challenges that come with working with larger-than-memory datasets and complex geometries. The tools we will use include <strong>xarray</strong>, <strong>dask</strong>, <strong>rioxarray</strong>, <strong>geopandas</strong>, and <strong>flox</strong>.</p>
+<section id="outline">
+<h3>Outline<a class="headerlink" href="#outline" title="Link to this heading">#</a></h3>
+<p id="content-section-a"><strong><a class="reference internal" href="#a-read-and-organize-gridded-ice-velocity-raster-data">A. Read and organize gridded ice velocity (raster) data</a></strong></p>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>Compare approaches for reading larger-than-memory data</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>Arrange dataset in chronological order</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="learning-goals">
+<h3>Learning goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h3>
+<section id="concepts">
+<h4>Concepts<a class="headerlink" href="#concepts" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Characteristics of larger than memory gridded data</p></li>
+<li><p>‘Lazy’ v. ‘non-lazy’ operations</p></li>
+</ul>
+</section>
+<section id="techniques">
+<h4>Techniques<a class="headerlink" href="#techniques" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Read + write large data with <a class="reference internal" href="#"><span class="xref myst">Xarray</span></a>, <a class="reference internal" href="#"><span class="xref myst">Zarr</span></a>, and <a class="reference internal" href="#"><span class="xref myst">Dask</span></a></p></li>
+<li><p>Label-based indexing and selection</p></li>
+</ul>
+<p>Expand the next cell to see specific packages used in this notebook and relevant system and version information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">xmode</span> minimal
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">rx</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dask.distributed</span><span class="w"> </span><span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">LocalCluster</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception reporting mode: Minimal
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="a-read-and-organize-gridded-ice-velocity-raster-data">
+<h2>A. Read and organize gridded ice velocity (raster) data<a class="headerlink" href="#a-read-and-organize-gridded-ice-velocity-raster-data" title="Link to this heading">#</a></h2>
+<p>This section uses functions we defined in the data access notebook, all of which are stored in the <code class="docutils literal notranslate"><span class="pre">itslivetools.py</span></code> file. If you cloned this tutorial from its github <a class="reference external" href="https://github.com/e-marshall/itslive">repository</a> you’ll see that <code class="docutils literal notranslate"><span class="pre">itslivetools.py</span></code> is in the same directory as our current notebook, so we can import it with the following line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">itslivetools</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Read in the catalog again, and use the <code class="docutils literal notranslate"><span class="pre">find_granule_by_point()</span></code> to find the URL that points to the ITS_LIVE granule covering your area of interest.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">itslive_catalog</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;https://its-live-data.s3.amazonaws.com/datacubes/catalog_v02.json&#39;</span><span class="p">)</span>
+<span class="c1">#Find urls for granule covering point of interest</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">itslivetools</span><span class="o">.</span><span class="n">find_granule_by_point</span><span class="p">([</span><span class="mf">95.180191</span><span class="p">,</span> <span class="mf">30.645973</span><span class="p">])</span>
+<span class="n">url</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;gpd&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<section id="compare-approaches-for-reading-larger-than-memory-data">
+<h3>1) Compare approaches for reading larger-than-memory data<a class="headerlink" href="#compare-approaches-for-reading-larger-than-memory-data" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Compare approaches for reading larger-than-memory data</p></li>
+</ol>
+<p>The function that we defined in the previous notebook, <code class="docutils literal notranslate"><span class="pre">read_in_s3()</span></code>, supports different options for reading large, chunked raster datasets. Before we use that again in this notebook, we will explore these options and the ways that they can impact how we work with the data. You can learn more about reading Zarr data with Xarray <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/io.html#zarr">here</a>, and see the different chunking options that are supported and which we will demonstrate below <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.open_dataset.html">here</a>.</p>
+<section id="chunks-auto">
+<h4><code class="docutils literal notranslate"><span class="pre">Chunks</span> <span class="pre">=</span> <span class="pre">'auto'</span></code><a class="headerlink" href="#chunks-auto" title="Link to this heading">#</a></h4>
+<p>This is the default option in <code class="docutils literal notranslate"><span class="pre">read_in_s3()</span></code>. The Xarray documentation states that <code class="docutils literal notranslate"><span class="pre">chunks='auto'</span></code> uses “dask <code class="docutils literal notranslate"><span class="pre">auto</span></code> chunking, taking into account the engine preferred chunks”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_auto</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;zarr&#39;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<span class="n">dc_auto</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;url&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this instance, the chunks of the object created with <code class="docutils literal notranslate"><span class="pre">xr.open_dataset(...,</span> <span class="pre">chunks='auto')</span></code> are a multiple of the on-disk chunk sizes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_auto</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_auto&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <a class="reference internal" href="#"><span class="xref myst">data model</span></a> section/notebook discussed scalar information that is stored as attributes attached to Xarray objects. Similarly, Xarray objects read from Zarr datacubes have associated <code class="docutils literal notranslate"><span class="pre">encodings</span></code> that tell Xarray how to read and write the object to disk. We can use the encoding to learn about preferred chunking schemes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_auto</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">encoding</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_auto&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_auto</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_auto&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the encoding of the <code class="docutils literal notranslate"><span class="pre">v</span></code> variable, it looks like the chunking scheme is expected to be <code class="docutils literal notranslate"><span class="pre">{'mid_date':</span> <span class="pre">2000,</span> <span class="pre">'y':10,</span> <span class="pre">'x':10}</span></code>. However, the chunks for this variable created with <code class="docutils literal notranslate"><span class="pre">chunks='auto'</span></code> are <code class="docutils literal notranslate"><span class="pre">{'mid_date':</span> <span class="pre">47892,</span> <span class="pre">'y':</span> <span class="pre">20,</span> <span class="pre">'x':</span> <span class="pre">20}</span></code>.</p>
+<p>Let’s take a look at the encoding for a 1-dimensional variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_auto</span><span class="p">[</span><span class="s1">&#39;vx_error&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_auto&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_auto</span><span class="p">[</span><span class="s1">&#39;vx_error&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">encoding</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_auto&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Interesting. We see that:</p>
+<ul class="simple">
+<li><p>The chunk size specified in the encoding doesn’t match the total length of the <code class="docutils literal notranslate"><span class="pre">mid_date</span></code> dimension. It may be an artifact from an earlier step in the data processing chain before some observations were eliminated.</p></li>
+<li><p>The encoding specifies a single chunk along the <code class="docutils literal notranslate"><span class="pre">mid_date</span></code> dimension for this variable, which matches the object we read into memory, the size of this chunk is just different.</p></li>
+</ul>
+<p>Another thing to note is that it looks like some of the variables within this <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> have different chunk sizes on the <code class="docutils literal notranslate"><span class="pre">y</span></code> dimension (Shown by  the error produced below). We will need to address this later before rechunking the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_auto</span><span class="o">.</span><span class="n">chunksizes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_auto&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_auto</span> <span class="o">=</span> <span class="n">dc_auto</span><span class="o">.</span><span class="n">unify_chunks</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_auto&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_auto</span><span class="o">.</span><span class="n">chunksizes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_auto&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="chunks">
+<h4><code class="docutils literal notranslate"><span class="pre">Chunks</span> <span class="pre">=</span> <span class="pre">{}</span></code><a class="headerlink" href="#chunks" title="Link to this heading">#</a></h4>
+<p>For this argument, the documentation says: “loads the data with dask using the engine’s preferred chunk size, generally identical to the format’s chunk size. If not available, a single chunk for all arrays.”</p>
+<p>Note that with this dataset, <code class="docutils literal notranslate"><span class="pre">'auto'</span></code> and <code class="docutils literal notranslate"><span class="pre">{}</span></code> don’t return the same chunking scheme.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_set</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;zarr&#39;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="p">{})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;url&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_set</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">encoding</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_set&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_set</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_set&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>With this approach, we see that the chunking on the 3-dimensional variable we looked at above (‘v’) <em>does</em> match the chunking specified in the object’s encoding: <code class="docutils literal notranslate"><span class="pre">{'mid_date':</span> <span class="pre">20000,</span> <span class="pre">'y':</span> <span class="pre">10,</span> <span class="pre">'x':</span> <span class="pre">10}</span></code>.</p>
+<p>Looking at a one-dimensional variable, we see the same occurrence as with <code class="docutils literal notranslate"><span class="pre">dc_auto</span></code>: the number of chunks matches what is specified in the encoding, but the size of the chunk is different.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_set</span><span class="p">[</span><span class="s1">&#39;vx_error&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">encoding</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_set&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_set</span><span class="p">[</span><span class="s1">&#39;vx_error&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_set&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">v</span></code> and <code class="docutils literal notranslate"><span class="pre">vx_error</span></code> variables shown above have different chunk sizes along the <code class="docutils literal notranslate"><span class="pre">mid_date</span></code> dimension, so we can expect the same chunk sizes error as above, but this time for <code class="docutils literal notranslate"><span class="pre">mid_date</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_set</span><span class="o">.</span><span class="n">chunksizes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_set&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>However this time, if try to resolve the above error like we did for <code class="docutils literal notranslate"><span class="pre">dc_auto</span></code>, We get a performance warning about the number of chunks increasing by a factor of 186.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dc_set</span> <span class="o">=</span> <span class="n">dc_set</span><span class="o">.</span><span class="n">unify_chunks</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">PerformanceWarning</span><span class="p">:</span> <span class="n">Increasing</span> <span class="n">number</span> <span class="n">of</span> <span class="n">chunks</span> <span class="n">by</span> <span class="n">factor</span> <span class="n">of</span> <span class="mi">186</span><span class="n">_</span><span class="p">,</span> <span class="n">chunked_data</span> <span class="o">=</span> <span class="n">chunkmanager</span><span class="o">.</span><span class="n">unify_chunks</span><span class="p">(</span><span class="o">*</span><span class="n">unify_chunks_args</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="an-out-of-order-time-dimension">
+<h4>An out-of-order time dimension<a class="headerlink" href="#an-out-of-order-time-dimension" title="Link to this heading">#</a></h4>
+<p>When we read this dataset from the S3 bucket, we get an object where the time dimension is not in chronological order. Because the dataset is so large, fixing this is not entirely straightforward.</p>
+<p>Tip: It’s always a good idea to look at the data!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_set</span><span class="o">.</span><span class="n">mid_date</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_set&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The standard approach would be calling Xarray’s <a class="reference internal" href="#(https://docs.xarray.dev/en/stable/generated/xarray.Dataset.sortby.html)"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">.sortby()</span></code></span></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dc_set</span> <span class="o">=</span> <span class="n">dc_set</span><span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="s1">&#39;mid_date&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Performing an operation like sorting or slicing requires the entire array to be loaded into memory; for a larage dimension like <code class="docutils literal notranslate"><span class="pre">mid_date</span></code> (~48,000 elements), would be very slow and/or would max out available computationall resoures.</p>
+<p>There may be a chunking strategy that successfully allows one to sort this dataset along the <code class="docutils literal notranslate"><span class="pre">mid_date</span></code> dimension, but when I tried a few different re-chunking approaches, they did not work. Instead, the sucessful approach I found was a bit counterintuitive: Re-read the dataset into memory <em>without</em> dask. This let’s us use Xarray’s ‘lazy indexing’ functionality; we can sort the dataset without loading it into memory. The object will still be quite large so we will chunk the data, incorporating dask, after we sort by the time dimension.</p>
+</section>
+<section id="read-the-dataset-without-dask">
+<h4>Read the dataset without Dask<a class="headerlink" href="#read-the-dataset-without-dask" title="Link to this heading">#</a></h4>
+<p>We’ll again use the <code class="docutils literal notranslate"><span class="pre">read_in_s3()</span></code> function, but this time passing <code class="docutils literal notranslate"><span class="pre">chunks_arg</span> <span class="pre">=</span> <span class="pre">None</span></code>. This is the same as running: <code class="docutils literal notranslate"><span class="pre">dc</span> <span class="pre">=</span> <span class="pre">xr.open_dataset(url,</span> <span class="pre">engine='Zarr')</span></code>. The <code class="docutils literal notranslate"><span class="pre">read_in_s3()</span></code> signature is shown below as a reminder:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signature</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">itslivetools</span><span class="o">.</span><span class="n">read_in_s3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">signature</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(http_url: str, chunks: Union[NoneType, str, dict] = &#39;auto&#39;) -&gt; xarray.core.dataset.Dataset
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc</span> <span class="o">=</span> <span class="n">itslivetools</span><span class="o">.</span><span class="n">read_in_s3</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">dc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;url&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we saw above, the <code class="docutils literal notranslate"><span class="pre">mid_date</span></code> dimension is still out of order:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc</span><span class="o">.</span><span class="n">mid_date</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="arrange-dataset-in-chronological-order">
+<h3>2) Arrange dataset in chronological order<a class="headerlink" href="#arrange-dataset-in-chronological-order" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="2">
+<li><p>Arrange dataset in chronological order</p></li>
+</ol>
+<p>But now, we can lazily perform the <code class="docutils literal notranslate"><span class="pre">.sortby()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="s1">&#39;mid_date&#39;</span><span class="p">)</span>
+<span class="n">dc</span><span class="o">.</span><span class="n">mid_date</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Great! After some experimentation with different approaches, we have our dataset sorted in chronological order.</p>
+<section id="convert-to-a-dask-backed-xarray-dataset">
+<h4>Convert to a dask-backed Xarray dataset<a class="headerlink" href="#convert-to-a-dask-backed-xarray-dataset" title="Link to this heading">#</a></h4>
+<p>Not passing a <code class="docutils literal notranslate"><span class="pre">'chunks'</span></code> argument to <code class="docutils literal notranslate"><span class="pre">xr.open_dataset()</span></code> means that the Xarray object is a collection of Numpy arrays rather than Dask arrays. However, the dataset is still very large. We will need to use Dask even though we didn’t read it in with Dask. We’ll use the preferred chunking from <code class="docutils literal notranslate"><span class="pre">.encoding['chunks']</span></code> to specify a chunking scheme to the object and convert the underlying arrays from Numpy to Dask.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>if end up adding data overview notebook, this should be moved there. in text above this note is text to keep from the passage below if it moves.</p>
+</div>
+<p>However, the dataset is still very large: there are 60 variables that exist along 1,2 or, 3 dimensions (with the exception of the <code class="docutils literal notranslate"><span class="pre">mapping</span></code> variable which we will discuss later), and a single 3-d variable is 123 GB. We will still need to use Dask even though we didn’t read it in as a collection of Dask arrays straight away. We will use the preferred chunk sizes we saw in the earlier objects in order to add a chunking scheme to this object and convert the numpy arrays to Dask arrays.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chunking_dict</span> <span class="o">=</span> <span class="n">dc_auto</span><span class="o">.</span><span class="n">chunksizes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_auto&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_rechunk</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">chunking_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_rechunk</span><span class="o">.</span><span class="n">chunks</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;dc_rechunk&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Great, now we have our ITS_LIVE dataset organized by time, and with appropriate chunking. Let’s move on and read in vector data describing some physical features we’d like to examine with the ITS_LIVE dataset.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./itslive_nbs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2_data_organization_manipulation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2. Data organization and manipulation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2b_combining_raster_vector_data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">B. Incorporate glacier outline (vector) data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#concepts">Concepts</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#techniques">Techniques</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-read-and-organize-gridded-ice-velocity-raster-data">A. Read and organize gridded ice velocity (raster) data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-approaches-for-reading-larger-than-memory-data">1) Compare approaches for reading larger-than-memory data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chunks-auto"><code class="docutils literal notranslate"><span class="pre">Chunks</span> <span class="pre">=</span> <span class="pre">'auto'</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chunks"><code class="docutils literal notranslate"><span class="pre">Chunks</span> <span class="pre">=</span> <span class="pre">{}</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#an-out-of-order-time-dimension">An out-of-order time dimension</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-dataset-without-dask">Read the dataset without Dask</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrange-dataset-in-chronological-order">2) Arrange dataset in chronological order</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-a-dask-backed-xarray-dataset">Convert to a dask-backed Xarray dataset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Emma Marshall
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
