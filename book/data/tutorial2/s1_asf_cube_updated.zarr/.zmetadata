@@ -1,0 +1,664 @@
+{
+    "metadata": {
+        ".zattrs": {},
+        ".zgroup": {
+            "zarr_format": 2
+        },
+        "acq_date/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<i8",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "acq_date/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ],
+            "calendar": "proleptic_gregorian",
+            "units": "seconds since 2021-05-02T12:14:14"
+        },
+        "area_or_clipped/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U1",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "area_or_clipped/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "beam_mode/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U2",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "beam_mode/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "data_take_id/.zarray": {
+            "chunks": [
+                96
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U6",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "data_take_id/.zattrs": {
+            "ID of data take from SAR acquisition": "ID data take",
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "deadreckoning_or_demmatch/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U1",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "deadreckoning_or_demmatch/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "granule_id/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U67",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "granule_id/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "ls/.zarray": {
+            "chunks": [
+                24,
+                99,
+                73
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96,
+                396,
+                290
+            ],
+            "zarr_format": 2
+        },
+        "ls/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date",
+                "y",
+                "x"
+            ],
+            "coordinates": "area_or_clipped beam_mode data_take_id deadreckoning_or_demmatch granule_id notfiltered_or_filtered orbit_type orbital_dir output_type output_unit polarization_type primary_polarization processing_software prod_type product_id sensor spatial_ref terrain_correction_pixel_spacing unmasked_or_watermasked"
+        },
+        "notfiltered_or_filtered/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U1",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "notfiltered_or_filtered/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "orbit_type/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U1",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "orbit_type/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "orbital_dir/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U4",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "orbital_dir/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "output_type/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U1",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "output_type/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "output_unit/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U1",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "output_unit/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "polarization_type/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U1",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "polarization_type/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "primary_polarization/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U1",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "primary_polarization/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "processing_software/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U1",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "processing_software/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "prod_type/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U2",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "prod_type/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "product_id/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U4",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "product_id/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "sensor/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U3",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "sensor/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "spatial_ref/.zarray": {
+            "chunks": [],
+            "compressor": null,
+            "dtype": "<i8",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [],
+            "zarr_format": 2
+        },
+        "spatial_ref/.zattrs": {
+            "GeoTransform": "619410.0 30.0 0.0 3101670.0 0.0 -30.0",
+            "_ARRAY_DIMENSIONS": [],
+            "crs_wkt": "PROJCS[\"WGS 84 / UTM zone 45N\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",87],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"32645\"]]",
+            "false_easting": 500000.0,
+            "false_northing": 0.0,
+            "geographic_crs_name": "WGS 84",
+            "grid_mapping_name": "transverse_mercator",
+            "horizontal_datum_name": "World Geodetic System 1984",
+            "inverse_flattening": 298.257223563,
+            "latitude_of_projection_origin": 0.0,
+            "longitude_of_central_meridian": 87.0,
+            "longitude_of_prime_meridian": 0.0,
+            "prime_meridian_name": "Greenwich",
+            "projected_crs_name": "WGS 84 / UTM zone 45N",
+            "reference_ellipsoid_name": "WGS 84",
+            "scale_factor_at_central_meridian": 0.9996,
+            "semi_major_axis": 6378137.0,
+            "semi_minor_axis": 6356752.314245179,
+            "spatial_ref": "PROJCS[\"WGS 84 / UTM zone 45N\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",87],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"32645\"]]"
+        },
+        "terrain_correction_pixel_spacing/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U5",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "terrain_correction_pixel_spacing/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "unmasked_or_watermasked/.zarray": {
+            "chunks": [
+                103
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U1",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96
+            ],
+            "zarr_format": 2
+        },
+        "unmasked_or_watermasked/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "vh/.zarray": {
+            "chunks": [
+                24,
+                99,
+                73
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96,
+                396,
+                290
+            ],
+            "zarr_format": 2
+        },
+        "vh/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date",
+                "y",
+                "x"
+            ],
+            "coordinates": "area_or_clipped beam_mode data_take_id deadreckoning_or_demmatch granule_id notfiltered_or_filtered orbit_type orbital_dir output_type output_unit polarization_type primary_polarization processing_software prod_type product_id sensor spatial_ref terrain_correction_pixel_spacing unmasked_or_watermasked"
+        },
+        "vv/.zarray": {
+            "chunks": [
+                24,
+                99,
+                73
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                96,
+                396,
+                290
+            ],
+            "zarr_format": 2
+        },
+        "vv/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date",
+                "y",
+                "x"
+            ],
+            "coordinates": "area_or_clipped beam_mode data_take_id deadreckoning_or_demmatch granule_id notfiltered_or_filtered orbit_type orbital_dir output_type output_unit polarization_type primary_polarization processing_software prod_type product_id sensor spatial_ref terrain_correction_pixel_spacing unmasked_or_watermasked"
+        },
+        "x/.zarray": {
+            "chunks": [
+                290
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                290
+            ],
+            "zarr_format": 2
+        },
+        "x/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "x"
+            ]
+        },
+        "y/.zarray": {
+            "chunks": [
+                396
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                396
+            ],
+            "zarr_format": 2
+        },
+        "y/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "y"
+            ]
+        }
+    },
+    "zarr_consolidated_format": 1
+}

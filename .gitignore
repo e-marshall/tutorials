@@ -3,7 +3,7 @@ _build
 _static 
 
 #Data 
-data/
+data/tutorial2/s1_pc_cube.zarr
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

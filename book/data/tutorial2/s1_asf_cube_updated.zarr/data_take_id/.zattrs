@@ -1,0 +1,6 @@
+{
+    "ID of data take from SAR acquisition": "ID data take",
+    "_ARRAY_DIMENSIONS": [
+        "acq_date"
+    ]
+}
