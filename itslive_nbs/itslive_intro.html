@@ -442,30 +442,36 @@ document.write(`
 <p>This tutorial contains jupyter notebooks demonstrating various steps of a typical scientific workflow including accessing, processing and visualizing remote sensing data. The structure is as follows:</p>
 <p><strong>1) Data access</strong></p>
 <ul class="simple">
-<li><p>Access ITS_LIVE data stored as Zarr data cubes in an AWS S3 bucket.<br />
-<strong>2) Reading and working with a larger-than-memory dataset</strong></p></li>
-<li><p>Illustrate different strategies for manipulating and organizing a large dataset using <a class="reference external" href="https://docs.xarray.dev/en/stable/">Xarray</a>, <a class="reference external" href="https://zarr.dev/">Zarr</a>, and <a class="reference external" href="https://www.dask.org/">Dask</a>.<br />
-<strong>3) Working with raster and vector data</strong></p>
-<ul>
-<li><p>Parse geographic metadata with <a class="reference internal" href="#"><span class="xref myst">cf_xarray</span></a>.</p></li>
-<li><p>Handle projections and coordinate reference system information with <a class="reference internal" href="#"><span class="xref myst">GeoPandas</span></a>, <a class="reference internal" href="#"><span class="xref myst">Rioxarray</span></a> and <a class="reference internal" href="#"><span class="xref myst">PyProj</span></a>.</p></li>
+<li><p>Access ITS_LIVE data stored as Zarr data cubes in an AWS S3 bucket.</p></li>
 </ul>
-</li>
-<li><p>Spatial subset of vector data with <a class="reference internal" href="#"><span class="xref myst">GeoPandas</span></a>.</p></li>
-<li><p>Spatial subset of raster data using vector data with <a class="reference internal" href="#"><span class="xref myst">Rioxarray</span></a>.<br />
-<strong>4) Initial inspection and analysis of velocity data for a single glacier</strong></p></li>
-<li><p>Visualize raster and vector with background maps data using <a class="reference internal" href="#"><span class="xref myst">Xarray</span></a>, <a class="reference internal" href="#"><span class="xref myst">GeoPandas</span></a>, and <a class="reference internal" href="#"><span class="xref myst">Contextily</span></a>.</p></li>
+<p><strong>2) Reading and working with a larger-than-memory dataset</strong></p>
+<ul class="simple">
+<li><p>Illustrate different strategies for manipulating and organizing a large dataset using <a class="reference external" href="https://docs.xarray.dev/en/stable/">Xarray</a>, <a class="reference external" href="https://zarr.dev/">Zarr</a>, and <a class="reference external" href="https://www.dask.org/">Dask</a>.</p></li>
+</ul>
+<p><strong>3) Working with raster and vector data</strong></p>
+<ul class="simple">
+<li><p>Parse geographic metadata with <a class="reference external" href="https://cf-xarray.readthedocs.io/en/latest/">cf_xarray</a>.</p></li>
+<li><p>Handle projections and coordinate reference system information with <a class="reference external" href="https://geopandas.org/en/stable/">GeoPandas</a>, <a class="reference external" href="https://corteva.github.io/rioxarray/stable/index.html">Rioxarray</a> and <a class="reference external" href="https://pyproj4.github.io/pyproj/stable/">PyProj</a>.</p></li>
+<li><p>Spatial subset of vector data with <a class="reference external" href="https://geopandas.org/en/stable/">GeoPandas</a>.</p></li>
+<li><p>Spatial subset of raster data using vector data with <a class="reference external" href="https://corteva.github.io/rioxarray/stable/index.html">Rioxarray</a>.</p></li>
+</ul>
+<p><strong>4) Initial inspection and analysis of velocity data for a single glacier</strong></p>
+<ul class="simple">
+<li><p>Handle projections and coordinate reference system information with <a class="reference external" href="https://geopandas.org/en/stable/">GeoPandas</a>, <a class="reference external" href="https://corteva.github.io/rioxarray/stable/index.html">Rioxarray</a> and <a class="reference external" href="https://pyproj4.github.io/pyproj/stable/">PyProj</a>.</p></li>
+<li><p>Visualize raster and vector with background maps data using <a class="reference external" href="https://docs.xarray.dev/en/stable/">Xarray</a>, <a class="reference external" href="https://geopandas.org/en/stable/">GeoPandas</a>, and <a class="reference external" href="https://contextily.readthedocs.io/en/latest/">Contextily</a>.</p></li>
 <li><p>Calculate and examine data coverage along a given dimension using Xarray label-based indexing and selection.</p></li>
 <li><p>Use available metadata to interpret and organize dataset,</p>
 <ul>
-<li><p>Use <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">xr.DataTree</span></code></span></a> or <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">groupby()</span></code></span></a> to separate dataset using metadata,</p></li>
+<li><p>Use <a class="reference external" href="https://xarray-datatree.readthedocs.io/en/latest/data-structures.html"><code class="docutils literal notranslate"><span class="pre">xr.DataTree</span></code></a> or <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/groupby.html"><code class="docutils literal notranslate"><span class="pre">groupby()</span></code></a> to separate dataset using metadata,</p></li>
 </ul>
 </li>
-<li><p>Use Xarray and <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> to calculate and visualize summary statistics along a given dimension.</p></li>
-<li><p>Perform dimensional computations, reductions and visualizations using Xarray <code class="docutils literal notranslate"><span class="pre">resample()</span></code>, <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> and <code class="docutils literal notranslate"><span class="pre">FacetGrid</span></code>.<br />
-<strong>5) Exploratory analysis and visualization of multiple glaciers</strong></p></li>
-<li><p>Combine raster and vector data into a multi-dimensional vector data cube (add glossary ref) using <a class="reference internal" href="#"><span class="xref myst">Xvec</span></a>.</p></li>
-<li><p>Read and write vector data cubes to disk using Xvec methods that rely on <a class="reference internal" href="#"><span class="xref myst">cf_xarray</span></a> to encode and decode metadata.</p></li>
+<li><p>Use Xarray and <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/stats.html"><code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code></a> to calculate and visualize summary statistics along a given dimension.</p></li>
+<li><p>Perform dimensional computations, reductions and visualizations using Xarray <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.resample.html"><code class="docutils literal notranslate"><span class="pre">resample()</span></code></a>, <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/groupby.html"><code class="docutils literal notranslate"><span class="pre">groupby()</span></code></a> and <a class="reference external" href="https://docs.xarray.dev/en/latest/generated/xarray.plot.FacetGrid.html"><code class="docutils literal notranslate"><span class="pre">FacetGrid</span></code></a>.</p></li>
+</ul>
+<p><strong>5) Exploratory analysis and visualization of multiple glaciers</strong></p>
+<ul class="simple">
+<li><p>Combine raster and vector data into a multi-dimensional vector data cube using <a class="reference external" href="https://xvec.readthedocs.io/">Xvec</a>.</p></li>
+<li><p>Read and write vector data cubes to disk using Xvec methods that rely on <a class="reference external" href="https://cf-xarray.readthedocs.io/en/latest/">cf_xarray</a> to encode and decode metadata.</p></li>
 <li><p>Interactive  visualization of vector data cube using Xvec and GeoPandas.</p></li>
 <li><p>Use Xarray plotting tools to visualize data from a vector data cube.</p></li>
 </ul>
@@ -486,7 +492,7 @@ document.write(`
 <section id="dask">
 <h3>Dask<a class="headerlink" href="#dask" title="Permalink to this heading">#</a></h3>
 <p>There are different ways to approach a dataset that is too large to load into memory. In this tutorial, we rely on the Python library, <a class="reference external" href="https://www.dask.org/">Dask</a>. Dask allows you to parallelize your workflows, breaking up a large job into many smaller jobs that can be executed in parallel rather than in sequence with one another. Parallelized jobs can be distributed across cores on an individual compputer, or across large, distributed compute nodes in cloud-computing environments. In this tutorial, we’ll use Dask to parallelize and distribute jobs across one machine. Conveniently, Dask also has built-in integrations with many open-souce Python libraries, including Xarray; this means that we can specify and create Dask-backed Xarray objects within Xarray commands such as <code class="docutils literal notranslate"><span class="pre">xr.open_dataset()</span></code>, rather than needing to create them separately.</p>
-<p>An important aspect of Dask is that it’s operations are by default ‘lazy’. This means that if I have an array (<code class="docutils literal notranslate"><span class="pre">arr</span></code>) and I want to perform an operation on it (let’s imagine something very simple, like multiplying the array by 5), when I execute that operation in Python (<code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">*</span> <span class="pre">5</span></code>), as long as it is a Dask Array (or an Xarray object backed by Dask Arrays), the computation is not actually executed <em>yet</em>. Dask uses <em>task scheduliing</em> to track, orchestrate, and synchronize operations. When I call <code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">*</span> <span class="pre">5</span></code>, rather than calculating the resulting product, Dask adds it to a <strong>Task Graph</strong> (add link?). A Task Graph consist of python functions and the inputs and outputs of those functions; they are used by the program to direct how jobs should be distributed and executed across available resources in order to correctly complete the desired operation.</p>
+<p>An important aspect of Dask is that it’s operations are by default ‘lazy’. This means that if I have an array (<code class="docutils literal notranslate"><span class="pre">arr</span></code>) and I want to perform an operation on it (let’s imagine something very simple, like multiplying the array by 5), when I execute that operation in Python (<code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">*</span> <span class="pre">5</span></code>), as long as it is a Dask Array (or an Xarray object backed by Dask Arrays), the computation is not actually executed <em>yet</em>. Dask uses <em>task scheduling</em> to track, orchestrate, and synchronize operations. When I call <code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">*</span> <span class="pre">5</span></code>, rather than calculating the resulting product, Dask adds it to a <strong>Task Graph</strong> (add link?). A Task Graph consist of python functions and the inputs and outputs of those functions; they are used by the program to direct how jobs should be distributed and executed across available resources in order to correctly complete the desired operation.</p>
 <p>So what can happen lazily and what can’t? Dask will wait to evaluate a set of operations until it is explicitly instructed to do so. This can be through calling a direct method (like <a class="reference external" href="https://docs.dask.org/en/stable/generated/dask.dataframe.DataFrame.compute.html"><code class="docutils literal notranslate"><span class="pre">.compute()</span></code></a> or <a class="reference external" href="https://docs.dask.org/en/latest/generated/dask.dataframe.DataFrame.persist.html"><code class="docutils literal notranslate"><span class="pre">.persist()</span></code></a>), or an operation that cannot be accomplished lazily (like plotting an array). For more detail, check out <a class="reference external" href="https://distributed.dask.org/en/stable/manage-computation.html">Dask’s Managing Computation documentation</a>.</p>
 </section>
 <section id="chunking">
