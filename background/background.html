@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Anatomy of a data cube" href="anatomy_of_a_data_cube.html" />
-    <link rel="prev" title="Other resources" href="../intro/other_resources.html" />
+    <link rel="prev" title="Getting started" href="../intro/getting_started.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,7 +182,6 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../intro/getting_started.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../intro/other_resources.html">Other resources</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
 <ul class="current nav bd-sidenav">
@@ -194,7 +193,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../itslive_nbs/new_itslive_intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../itslive_nbs/1_accessing_itslive_s3_data.html">1. Accessing cloud-hosted ITS_LIVE data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../itslive_nbs/2_larger_than_memory_data.html">2. Working with larger than memory data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../itslive_nbs/3_combining_raster_vector_data.html">3. Handling raster and vector data</a></li>
@@ -211,13 +209,13 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../pt4/summary.html">Tutorials summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pt4/tidy_principles.html">Principles of tidy array data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pt4/glossary.html">Glossary</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../appendix/appendix.html">Appendix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../appendix/appendix_1_1_handle_mult_geom_types.html">Handling different geometry types in a <code class="docutils literal notranslate"><span class="pre">GeoPandas.GeoDataFrame</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../appendix/appendix_1_2_read_w_xropen_mfdataset.html">1. Read Sentinel-1 RTC data processed by ASF using <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/appendix_1_1_handle_mult_geom_types.html">Handling different geometry types in a <code class="docutils literal notranslate"><span class="pre">GeoPandas.GeoDataFrame</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/appendix_1_2_read_w_xropen_mfdataset.html">Read Sentinel-1 RTC data processed by ASF using <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/other_resources.html">Other resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/about_this_book.html">Aboout this book</a></li>
 </ul>
 
     </div>
@@ -420,7 +418,7 @@ document.write(`
 <p>(<em>in progress</em>)<br />
 In recent years, the volume of available earth observation data has balooned, transforming both the types of scientific questions that can be asked and the fundamental ways in which analysts approach investigating these questions. These developments mean that analysts must gain new skills across a range of domains in order to work with these types of scientif data.</p>
 <p>In recognition of the challenges that these opportunities can pose, we present tutorials that demonstrate scientific workflows using publicly accessible, cloud-native geospatial datasets and open-source scientific software tools.</p>
-<p>This tutorial focuses on the complexities inherent to working with n-dimensional, gridded (<a class="reference internal" href="../pt4/glossary.html#term-Raster"><span class="xref std std-term">raster</span></a>) datasets and uses the core stack of software packages built on and around the Xarray data model to demonstrate these workflows.</p>
+<p>This tutorial focuses on the complexities inherent to working with n-dimensional, gridded (<span class="xref std std-term">raster</span>) datasets and uses the core stack of software packages built on and around the Xarray data model to demonstrate these workflows.</p>
 <p>Scientific workflows involve asking complex questions of diverse types of data. Earth observation and related datasets often contain two types of information: measurements of a physical observable (eg. temperature) and metadata that provides auxiliary information that required in order to interpret the physical observable (time and location of measurement, information about the sensor, etc.). With increasingly complex and large volumes of earth observation data that is currently available, storing, managing and organizing these types of data can very quickly become a complex and challenging task, especially for students and early-career analysts.</p>
 <p>We aim to provide detailed examples of scientific workflows that ingest complex, multi-dimensional datastets, introduce users to the landscape of popular, actively-maintained opens-source software packages for working with geospatial data in Python, and include strategies for working with larger-than memory data stored in publicly available cloud-hosted repositories. Importantly, these demonstrations are accompanied by detailed discussion of concepts involved with analyzing earth observation data such as dataset inspection, … . Overall, we emphasize the importance of understanding the structure of multi-dimensional earth observation datasets within the context of a given data model and demonstrate how such an understanding can enable more efficient and intuitive scientific workflows.</p>
 </section>
@@ -456,12 +454,12 @@ In recent years, the volume of available earth observation data has balooned, tr
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../intro/other_resources.html"
+       href="../intro/getting_started.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Other resources</p>
+        <p class="prev-next-title">Getting started</p>
       </div>
     </a>
     <a class="right-next"
