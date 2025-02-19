@@ -2,7 +2,7 @@
 
 ## How to use this book
 
-Our goal is for this book to be useful to users across a range of backgrounds and with different needs and interests. It is designed to be a comprehensive walk-through of scientific workflows using earth observation in Python. At the same time, we recognize some users may be interested in following individual segments and a more modular structure. Read from start to finish or check out the individual sections that interest you. To see which topics are covered in different notebooks, see the overview pages of each tutorial linked below, the [glossary](../pt4/glossary.md) or enter a specific term in the search bar to see the pages where it is used.
+Our goal is for this book to be useful to users across a range of backgrounds and with different needs and interests. It is designed to be a comprehensive walk-through of scientific workflows using earth observation data in Python. At the same time, we recognize some users may be interested in following individual segments and a more modular structure. Read from start to finish or check out the individual sections that interest you. To see which topics are covered in different notebooks, see the overview pages of each tutorial linked below, the [glossary](../pt4/glossary.md) or enter a specific term in the search bar to see the pages where it is used. todo decide about having glossary or not.
 
 :::{admonition} Running tutorial notebooks on your own
 Head to the [software](software.md) page for detailed instructions on how to get started running the tutorial notebooks on your own.
@@ -10,13 +10,13 @@ Head to the [software](software.md) page for detailed instructions on how to get
 
 ## Data
 
-Most of the examples in this book use data accessed programmatically from cloud-object storage. We make subset of the data available in this book's Github repository to remove the need for computationally-intensive operations in the tutorials. In one example, working with Sentinel-1 data processed by Alaska Satelllite Facility, we start with data downloaded locally. Users who would like to complete this processing step on their own may do so (and access the data [here]()), but a smaller subset of this data is stored in the repository. For more detail on data used in this book see [Tutorial Data](../background/tutorial_data.md).
+Most of the examples in this book use data accessed programmatically from cloud-object storage. We make subsets of the data available in this book's Github repository to remove the need for computationally-intensive operations in the tutorials. In one example, working with Sentinel-1 data processed by Alaska Satelllite Facility, we start with data downloaded locally. Users who would like to complete this processing step on their own may do so (and access the data [here]()), but a smaller subset of this data is stored in the repository. For more detail on data used in this book see [Tutorial Data](../background/tutorial_data.md).
 
 
 ## Overview
 
 ### {{part1_title}}
-Background on data cubes for an introduction to array-based geoscience data and how it is represented in Xarray and Python. This section provides an overview and explanations of topics that will be referenced in the applied tutorials.
+Background on data cubes and an introduction to array-based geoscience data and how it is represented in Xarray and Python. This section provides an overview and explanations of topics that will be referenced in the applied tutorials.
 
 ### Part 1: {{part2_title}}
 A tutorial focusing on [ITS_LIVE](https://its-live.jpl.nasa.gov/), a NASA MEASURES project and publicly accessible dataset stored in an AWS S3 repo as Zarr data cubes. 
@@ -34,7 +34,7 @@ A summary of the lessons learned throughout the tutorials and synthesis of these
 
 This book is for anyone who is interested in working with earth observation data in Python! Follow along from start to finish for a more comprehensive explanation on what we're doing and why, or drop in to the sections that interest you. We try to provide relevant domain and background information where necessary, and we direct the reader to helpful resources that provide more robust discussions of important concepts when appropriate.
 
-We provide all of the resources necessary to work through the jupyter notebooks contained in these tutorials on your own machine. Some experience working with Python will be helpful, however if you are new to Python, you should be able to follow along with these examples just fine. 
+We provide all of the resources necessary to work through the Jupyter Notebooks contained in these tutorials on your own machine. Some experience working with Python will be helpful, however the tutorials are designed to be beginner-friendly.
 
 ```{admonition} If you'd like a more thorough background on working with geospatial data in Python 
 Check out [An Introduction to Earth and Environmental Data Science](https://earth-env-data-science.github.io/intro.html), which is based on a semester-long Columbia University course titled *Research Computing in Earth Science*.
@@ -44,7 +44,7 @@ The tutorials in this book include discussion of different types of geospatial d
 
 - [**Intro to raster data**](https://datacarpentry.github.io/organization-geospatial/01-intro-raster-data.html#data-structures-raster-and-vector) - *Data Carpentry*
 - [**Intro to vector data**](https://datacarpentry.github.io/organization-geospatial/02-intro-vector-data.html#about-vector-data) - *Data Carpentry*
-- [**Data cubes**](https://openeo.org/documentation/1.0/datacubes.html#what-are-datacubes) - * openEO*
+- [**Data cubes**](https://openeo.org/documentation/1.0/datacubes.html#what-are-datacubes) - *openEO*
 
 ## Learning objectives
 
@@ -70,7 +70,7 @@ The tutorials in this book include discussion of different types of geospatial d
 
 ## Xarray and the Pangeo software stack
 
-
+todo figure out why image not rendering, add other logos 
 <div style="display: flex; align-items: center;">
   <div style="flex: 1;">
     <p><strong><a href="https://xarray.dev/">Xarray</a></strong> is an open-source project and Python package that provides a set of tools for working with n-dimensional array-like datasets. Xarray provides labeled dimensions, coordinate arrays and metadata that make computational workflows with multi-dimensional arrays more intuitive, efficient and scalable.</p>
