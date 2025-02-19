@@ -6,6 +6,7 @@ While developing this book, we encountered different examples that didn't always
 
 - [Appendix 1.1 notebook](appendix_1_1_handle_mult_geom_types.ipynb)
 
+
 In the first tutorial, while making an [interactive visualization of vector dataframes](../itslive_nbs/3_combining_raster_vector_data.ipynb), we encountered a warning. The notebook below includes a step-by-step demonstration of troubleshooting this warning, identifying its source and resolving it. 
 
 

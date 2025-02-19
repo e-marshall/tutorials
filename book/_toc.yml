@@ -49,5 +49,5 @@ parts:
   - caption: Appendix
     chapters:
     - file: appendix/appendix
-    - file: appendix/appendix1_1_handle_mult_goem_types
-    - file: appendix/appendix1_2_read_w_xropen_mfdataset
+    - file: appendix/appendix_1_1_handle_mult_geom_types
+    - file: appendix/appendix_1_2_read_w_xropen_mfdataset

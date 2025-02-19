@@ -98,16 +98,17 @@ sphinx:
       #can't get subs + links to headings to work
       # so not using lettered headings for now
       # but still using numbered subsections (a1_...)
-      a_its_nb1: "A. Read ITS_LIVE data from AWS S3 using Xarray"
-      a1_its_nb1: "1) Overview of ITS_LIVE data storage and catalog"
-      a2_its_nb1: "2) Read ITS_LIVE data from S3 storage into memory"
-      a3_its_nb1: "3) Check spatial footprint of data"
+      a_its_nb1: "A. Overview of ITS_LIVE data"
 
-      b_its_nb1: "B. Query ITS_LIVE catalog"
-      b1_its_nb1: "1) Find ITS_LIVE granule for a point of interest"
-      b2_its_nb1: "2) Read + visualize spatial footprint of ITS_LIVE data"
+      b_its_nb1: "B. Read ITS_LIVE data from AWS S3 using Xarray"
+      b1_its_nb1: "1) Overview of ITS_LIVE data storage and catalog"
+      b2_its_nb1: "2) Read ITS_LIVE data from S3 storage into memory"
+      b3_its_nb1: "3) Check spatial footprint of data"
 
-      c_its_nb1: "C. Overview of ITS_LIVE data"
+      c_its_nb1: "C. Query ITS_LIVE catalog"
+      c1_its_nb1: "1) Find ITS_LIVE granule for a point of interest"
+      c2_its_nb1: "2) Read + visualize spatial footprint of ITS_LIVE data"
+
 
       #nb2
       a_its_nb2: "A. Compare approaches for reading larger than memory data"
