@@ -6,23 +6,28 @@ This tutorial contains jupyter notebooks demonstrating various steps of a typica
 
 **1) Data access**  
 - Access ITS_LIVE data stored as Zarr data cubes in an AWS S3 bucket.  
+
 **2) Reading and working with a larger-than-memory dataset**  
-- Illustrate different strategies for manipulating and organizing a large dataset using [Xarray](https://docs.xarray.dev/en/stable/), [Zarr](https://zarr.dev/), and [Dask](https://www.dask.org/).  
+- Illustrate different strategies for manipulating and organizing a large dataset using [Xarray](https://docs.xarray.dev/en/stable/), [Zarr](https://zarr.dev/), and [Dask](https://www.dask.org/). 
+
 **3) Working with raster and vector data**  
-     - Parse geographic metadata with [cf_xarray]().  
-     - Handle projections and coordinate reference system information with [GeoPandas](), [Rioxarray]() and [PyProj]().  
-- Spatial subset of vector data with [GeoPandas]().    
-- Spatial subset of raster data using vector data with [Rioxarray]().  
+- Parse geographic metadata with [cf_xarray](https://cf-xarray.readthedocs.io/en/latest/).  
+- Handle projections and coordinate reference system information with [GeoPandas](https://geopandas.org/en/stable/), [Rioxarray](https://corteva.github.io/rioxarray/stable/index.html) and [PyProj](https://pyproj4.github.io/pyproj/stable/).  
+- Spatial subset of vector data with [GeoPandas](https://geopandas.org/en/stable/).    
+- Spatial subset of raster data using vector data with [Rioxarray](https://corteva.github.io/rioxarray/stable/index.html).  
+
 **4) Initial inspection and analysis of velocity data for a single glacier**
-- Visualize raster and vector with background maps data using [Xarray](), [GeoPandas](), and [Contextily]().  
+- Handle projections and coordinate reference system information with [GeoPandas](https://geopandas.org/en/stable/), [Rioxarray](https://corteva.github.io/rioxarray/stable/index.html) and [PyProj](https://pyproj4.github.io/pyproj/stable/).  
+- Visualize raster and vector with background maps data using [Xarray](https://docs.xarray.dev/en/stable/), [GeoPandas](https://geopandas.org/en/stable/), and [Contextily](https://contextily.readthedocs.io/en/latest/).  
 - Calculate and examine data coverage along a given dimension using Xarray label-based indexing and selection.  
 - Use available metadata to interpret and organize dataset,  
-     - Use [`xr.DataTree`]() or [`groupby()`]() to separate dataset using metadata,  
-- Use Xarray and `scipy.stats` to calculate and visualize summary statistics along a given dimension.  
-- Perform dimensional computations, reductions and visualizations using Xarray `resample()`, `groupby()` and `FacetGrid`.  
+     - Use [`xr.DataTree`](https://xarray-datatree.readthedocs.io/en/latest/data-structures.html) or [`groupby()`](https://docs.xarray.dev/en/stable/user-guide/groupby.html) to separate dataset using metadata,  
+- Use Xarray and [`scipy.stats`](https://docs.scipy.org/doc/scipy/reference/stats.html) to calculate and visualize summary statistics along a given dimension.  
+- Perform dimensional computations, reductions and visualizations using Xarray [`resample()`](https://docs.xarray.dev/en/stable/generated/xarray.Dataset.resample.html), [`groupby()`](https://docs.xarray.dev/en/stable/user-guide/groupby.html) and [`FacetGrid`](https://docs.xarray.dev/en/latest/generated/xarray.plot.FacetGrid.html).  
+
 **5) Exploratory analysis and visualization of multiple glaciers**
-- Combine raster and vector data into a multi-dimensional vector data cube (add glossary ref) using [Xvec]().  
-- Read and write vector data cubes to disk using Xvec methods that rely on [cf_xarray]() to encode and decode metadata.  
+- Combine raster and vector data into a multi-dimensional vector data cube using [Xvec](https://xvec.readthedocs.io/).  
+- Read and write vector data cubes to disk using Xvec methods that rely on [cf_xarray](https://cf-xarray.readthedocs.io/en/latest/) to encode and decode metadata.  
 - Interactive  visualization of vector data cube using Xvec and GeoPandas.  
 - Use Xarray plotting tools to visualize data from a vector data cube.  
 
@@ -40,7 +45,7 @@ Notebooks in this tutorial spend a considerable amount of time focusing on 'larg
 ### Dask
 There are different ways to approach a dataset that is too large to load into memory. In this tutorial, we rely on the Python library, [Dask](https://www.dask.org/). Dask allows you to parallelize your workflows, breaking up a large job into many smaller jobs that can be executed in parallel rather than in sequence with one another. Parallelized jobs can be distributed across cores on an individual compputer, or across large, distributed compute nodes in cloud-computing environments. In this tutorial, we'll use Dask to parallelize and distribute jobs across one machine. Conveniently, Dask also has built-in integrations with many open-souce Python libraries, including Xarray; this means that we can specify and create Dask-backed Xarray objects within Xarray commands such as `xr.open_dataset()`, rather than needing to create them separately. 
 
-An important aspect of Dask is that it's operations are by default 'lazy'. This means that if I have an array (`arr`) and I want to perform an operation on it (let's imagine something very simple, like multiplying the array by 5), when I execute that operation in Python (`arr * 5`), as long as it is a Dask Array (or an Xarray object backed by Dask Arrays), the computation is not actually executed *yet*. Dask uses *task scheduliing* to track, orchestrate, and synchronize operations. When I call `arr * 5`, rather than calculating the resulting product, Dask adds it to a **Task Graph** (add link?). A Task Graph consist of python functions and the inputs and outputs of those functions; they are used by the program to direct how jobs should be distributed and executed across available resources in order to correctly complete the desired operation. 
+An important aspect of Dask is that it's operations are by default 'lazy'. This means that if I have an array (`arr`) and I want to perform an operation on it (let's imagine something very simple, like multiplying the array by 5), when I execute that operation in Python (`arr * 5`), as long as it is a Dask Array (or an Xarray object backed by Dask Arrays), the computation is not actually executed *yet*. Dask uses *task scheduling* to track, orchestrate, and synchronize operations. When I call `arr * 5`, rather than calculating the resulting product, Dask adds it to a **Task Graph** (add link?). A Task Graph consist of python functions and the inputs and outputs of those functions; they are used by the program to direct how jobs should be distributed and executed across available resources in order to correctly complete the desired operation. 
 
 So what can happen lazily and what can't? Dask will wait to evaluate a set of operations until it is explicitly instructed to do so. This can be through calling a direct method (like [`.compute()`](https://docs.dask.org/en/stable/generated/dask.dataframe.DataFrame.compute.html) or [`.persist()`](https://docs.dask.org/en/latest/generated/dask.dataframe.DataFrame.persist.html)), or an operation that cannot be accomplished lazily (like plotting an array). For more detail, check out [Dask's Managing Computation documentation](https://distributed.dask.org/en/stable/manage-computation.html).
 
@@ -52,7 +57,7 @@ When we introduce Dask to an Xarray workflow, we convert the underlying `.data` 
 Choosing chunks can be complicated and have a significant impact on how fast your code runs. Typically, you want enough chunks that each individual chunk is relatively small and many chunks can fit into into memory. However, if you have too many chunks, Dask now needs to keep track of many individual tasks, meaning that more time will be spent managing the task graph compared to executing tasks. In addition, tasks should reflect the shape of yoour data and how you want to use it. If you're working with a space-time dataset but you're most interested in spatial analysis, having smaller chunks along the `x` and `y` dimensions will make spatial operations easier to parallelize. 
 
 Dask and Xarray have a number of resources focused on this topic. We recommend:
--  [Dask Array - Best Practices](https://docs.dask.org/en/latest/array-best-practices.html),   
+- [Dask Array - Best Practices](https://docs.dask.org/en/latest/array-best-practices.html),   
 - [Dask Array Chunks](https://docs.dask.org/en/stable/array-chunks.html),  
 - [Choosing good chunk sizes](https://blog.dask.org/2021/11/02/choosing-dask-chunk-sizes) blog post,  
 - [Xarray - Parallel Computing with Dask](https://docs.xarray.dev/en/stable/user-guide/dask.html)
