@@ -1,6 +1,75 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
+import planetary_computer
+import pystac
+import stackstac
+import xarray as xr
+from pystac_client import Client
+from dask.distributed import Client as daskClient
 
+def extract_source_granule_pc(rtc_id):
+    base_url = "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-rtc/items/"
+    full_url = base_url + str(rtc_id)
+    stac_item = pystac.read_file(full_url)
+    source_granule = stac_item.links[5].target[-62:]
+    return source_granule
+
+def make_granule_coord_pc(granule_ls):
+    """this fn takes a list of granule IDs, extracts acq date for each granule, organizes this as an array that can be assigned as a coord to an xr obj"""
+
+    acq_date = [pd.to_datetime(granule[17:25]) for granule in granule_ls]
+
+    granule_da = xr.DataArray(
+        data=granule_ls,
+        dims=["time"],
+        coords={"time": acq_date},
+        attrs={
+            "description": "source granule ID S1 GRD files used to process PC RTC images, extracted from STAC metadata"
+        },
+        name="granule_id",
+    )
+
+    return granule_da
+
+class S1PC_DataCube:
+    def __init__(self, time_range:str, bbox:list, epsg:int, collection:str='sentinel-1-rtc'):
+        
+        self.time_range = time_range
+        self.bbox = bbox
+        self.bbox_coords = points2coords(self.bbox)
+        self.collection = collection
+        self.epsg = epsg
+        self.items = self.search_for_items()
+        self.da = self.stack_assets()
+        self.ds_pc = self.format_metadata()
+
+
+    def search_for_items(self):
+
+        catalog = Client.open("https://planetarycomputer.microsoft.com/api/stac/v1")
+        search = catalog.search(collections=[self.collection], bbox=self.bbox, datetime=self.time_range)
+        items = search.item_collection()
+        return items
+
+    def stack_assets(self):
+
+        client = daskClient(processes=False)
+        da = stackstac.stack(planetary_computer.sign(self.items), 
+                             bounds_latlon=self.bbox, epsg = self.epsg)
+        return da
+
+    def format_metadata(self):
+
+        da = self.da
+        granule_ls = [
+            extract_source_granule_pc(da.isel(time=t).id.values) for t in range(len(da.time))
+                      ]
+        granule_coord = make_granule_coord_pc(granule_ls)
+        da.coords['granule_id'] = ('time', granule_coord.data)
+
+        ds_ps = da.to_dataset(dim='band')
+        return ds_pc
 
 def points2coords(pt_ls: list) -> list:  # should be [xmin, ymin, xmax, ymax]
     """
