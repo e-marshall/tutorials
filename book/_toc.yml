@@ -7,7 +7,6 @@ parts:
     - file: intro/getting_started
     - file: intro/other_resources
     - file: intro/about_this_book
-#    - file: TODO
   - caption: Background
     chapters:
     - file: background/background
@@ -17,9 +16,7 @@ parts:
     - file: intro/software
   - caption: Part 1
     chapters:
-#   - file: intro/itslive_intro
-    - file: itslive_nbs/new_itslive_intro
-#    - file: itslive_nbs/software_and_data
+    - file: itslive_nbs/itslive_intro
     - file: itslive_nbs/1_accessing_itslive_s3_data
     - file: itslive_nbs/2_larger_than_memory_data
     - file: itslive_nbs/3_combining_raster_vector_data
@@ -29,12 +26,9 @@ parts:
   - caption: Part 2
     chapters:
     - file: intro/new_s1_intro
-#    - file: software
-#    - file: s1_nbs/ch1_root
     - file: s1_nbs/1_read_asf_data
     - file: s1_nbs/2_inspect_organize_asf_data
     - file: s1_nbs/3_read_pc_data
-#    - file: s1_nbs/ch2_root
 #    - file: s1_nbs/4_comparing_s1_rtc_datasets
 #    - file: s1_nbs/5_example_s1_rtc_time_series_analysis
   - caption: Summary + Conclusion
@@ -42,12 +36,11 @@ parts:
     - file: pt4/summary
     - file: pt4/tidy_principles
     - file: pt4/Conclusion
-    - file: pt4/glossary
-    - file: pt4/appendix
-    - file: itslive_nbs/appendix1_handle_mult_geom_types
-    - file: s1_nbs/app_1_read_asf_s1_rtc_using_xropenmf
-  - caption: Appendix
+  - caption: 
     chapters:
-    - file: appendix/appendix
-    - file: appendix/appendix_1_1_handle_mult_geom_types
-    - file: appendix/appendix_1_2_read_w_xropen_mfdataset
+    - file: endmatter/appendix
+    - file: endmatter/appendix_1_1_handle_mult_geom_types
+    - file: endmatter/appendix_1_2_read_w_xropen_mfdataset
+    - file: endmatter/other_resources
+    - file: endmatter/about_this_book
+    - file: endmatter/glossary
