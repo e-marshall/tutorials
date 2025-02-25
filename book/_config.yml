@@ -99,6 +99,8 @@ sphinx:
       # so not using lettered headings for now
       # but still using numbered subsections (a1_...)
       a_its_nb1: "A. Overview of ITS_LIVE data"
+      a1_its_nb1: "1) Data structure overview"
+      a2_its_nb1: "2) Climate Forecast (CF) Metadata Conventions"
 
       b_its_nb1: "B. Read ITS_LIVE data from AWS S3 using Xarray"
       b1_its_nb1: "1) Overview of ITS_LIVE data storage and catalog"

@@ -83,4 +83,3 @@ For instructions on setting up a computing environment needed for this tutorial,
 
 For more background on the data used in this tutorial, head to [Tutorial Data](../background/tutorial_data.md).
 
-Head to [1. Accessing cloud-hosted ITS_LIVE data](1_accessing_itslive_s3_data.ipynb) to get started! 
