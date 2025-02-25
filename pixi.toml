@@ -32,8 +32,12 @@ xarray = ">=2025.1.2,<2026"
 zarr = "<3"
 
 [feature.book.dependencies]
-jupyter-book = "*"
+jupyter-book = ">=1,<2"
+codespell = ">=2.4.1,<3"
 
 [feature.book.tasks]
 build = "jupyter-book build book"
+# Unfortunately not an easy way to check .ipynb files currently
+# https://github.com/codespell-project/codespell/issues/2138
+spellcheck = "codespell --skip='pixi.lock,paper.bib,_build,*.ipynb'"
 export-conda-env="pixi project export conda-environment -p linux-64 .binder/environment.yml"
