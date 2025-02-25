@@ -13,11 +13,13 @@ itslive = "jupyter lab --LabApp.default_url='/lab/tree/book/itslive_nbs/1_access
 sentinel1 = "jupyter lab --LabApp.default_url='/lab/tree/book/s1_nbs/1_read_asf_data.ipynb'"
 
 [dependencies]
+aiohttp = ">=3.11.13,<4"
 cf_xarray = ">=0.10.0,<0.11"
 contextily = ">=1.6.2,<2"
 geopandas = ">=1.0.1,<2"
 hvplot = ">=0.11.2,<0.12"
 jupyterlab = ">=4.3.5,<5"
+jupyterlab-myst = ">=2.4.2,<3"
 matplotlib-base = ">=3.10.0,<4"
 numpy = ">=2.2.3,<3"
 pandas = ">=2.2.3,<3"
@@ -30,7 +32,6 @@ scipy = ">=1.15.2,<2"
 stackstac = ">=0.5.1,<0.6"
 xarray = ">=2025.1.2,<2026"
 zarr = "<3"
-jupyterlab-myst = ">=2.4.2,<3"
 
 [feature.book.dependencies]
 jupyter-book = ">=1,<2"
