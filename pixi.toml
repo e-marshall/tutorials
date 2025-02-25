@@ -41,4 +41,5 @@ build = "jupyter-book build book"
 # Unfortunately not an easy way to check .ipynb files currently
 # https://github.com/codespell-project/codespell/issues/2138
 spellcheck = "codespell --skip='pixi.lock,paper.bib,_build,*.ipynb'"
-export-conda-env="pixi project export conda-environment -p linux-64 .binder/environment.yml"
+spellcheck-nb = "jupyter nbconvert book/endmatter/*.ipynb book/s1_nbs/*.ipynb book/itslive_nbs/*.ipynb  --NbConvertApp.use_output_suffix=False --NbConvertApp.export_format=notebook --FilesWriter.build_directory=/tmp/book --ClearOutputPreprocessor.enabled=True ; codespell /tmp/book"
+export-conda-env = "pixi project export conda-environment -p linux-64 .binder/environment.yml"
