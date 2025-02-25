@@ -14,6 +14,7 @@ sentinel1 = "jupyter lab --LabApp.default_url='/lab/tree/book/s1_nbs/1_read_asf_
 
 [dependencies]
 aiohttp = ">=3.11.13,<4"
+distributed = ">=2025.2.0,<2026"
 cf_xarray = ">=0.10.0,<0.11"
 contextily = ">=1.6.2,<2"
 geopandas = ">=1.0.1,<2"
@@ -29,12 +30,13 @@ pyarrow = ">=19.0.1,<20"
 pystac = ">=1.12.1,<2"
 pystac-client = ">=0.8.6,<0.9"
 requests = ">=2.32.3,<3"
+rich = ">=13.9.4,<14"
 rioxarray = ">=0.18.2,<0.19"
 scipy = ">=1.15.2,<2"
 stackstac = ">=0.5.1,<0.6"
 xarray = ">=2025.1.2,<2026"
-zarr = "<3"
 xvec = ">=0.3.1,<0.4"
+zarr = "<3"
 
 [feature.book.dependencies]
 jupyter-book = ">=1,<2"
