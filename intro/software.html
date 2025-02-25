@@ -431,16 +431,21 @@ document.write(`
 <p>On this page you’ll find information about the computing environment and datasets that will be used in both of the tutorials in this book.</p>
 <section id="running-tutorial-materials-locally">
 <h2>Running tutorial materials locally<a class="headerlink" href="#running-tutorial-materials-locally" title="Permalink to this heading">#</a></h2>
-<p>To run the notebooks contained in this tutorial on your local machine, follow these steps:</p>
+<p>There are two options for creating a software environment, we recommend using <a class="reference external" href="https://pixi.sh/latest/">pixi</a> to create a consistent environment on different operating systems. If you have pixi installed, simply run the following commands to open either the itslive or sentinel-1 Jupyter notebooks:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">cloud</span><span class="o">-</span><span class="nb">open</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">geospatial</span><span class="o">-</span><span class="n">datacube</span><span class="o">-</span><span class="n">workflows</span>
+<span class="n">pixi</span> <span class="n">run</span> <span class="n">itslive</span>
+<span class="n">pixi</span> <span class="n">run</span> <span class="n">sentinel1</span>
+</pre></div>
+</div>
+<p><strong>To use conda/mamba follow these steps:</strong></p>
 <ol class="arabic simple">
-<li><p>Clone this book’s GitHub repository:<br />
+<li><p>Clone this book’s GitHub repository:
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows.git</span></code></p></li>
-<li><p>Navigate into the <code class="docutils literal notranslate"><span class="pre">book</span></code> sub-directory:<br />
-<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">cloud-oopen-source-geospatial-datacube-workflows/book</span></code></p></li>
-<li><p>Create and activate a conda environment from the <code class="docutils literal notranslate"><span class="pre">geospatial_datacube_tutorial_env.yml</span></code> file located in the repo:<br />
-<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">geospatial_datacube_tutorial_env.yml</span></code>
-<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">geospatial_datacube_tutorial_env</span></code></p></li>
-<li><p>Start Jupyterlab and navigate to the directories containing the jupyter notebooks (<code class="docutils literal notranslate"><span class="pre">itslive_nbs</span></code> and <code class="docutils literal notranslate"><span class="pre">s1_nbs</span></code>):<br />
+<li><p>Navigate into the <code class="docutils literal notranslate"><span class="pre">book</span></code> sub-directory:
+<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">cloud-open-source-geospatial-datacube-workflows/book</span></code></p></li>
+<li><p>Create and activate a conda environment from the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file located in the repo:
+<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">.binder/environment.yaml</span></code></p></li>
+<li><p>Start Jupyterlab and navigate to the directories containing the jupyter notebooks (<code class="docutils literal notranslate"><span class="pre">itslive_nbs</span></code> and <code class="docutils literal notranslate"><span class="pre">s1_nbs</span></code>):
 <code class="docutils literal notranslate"><span class="pre">jupyterlab</span></code></p></li>
 </ol>
 </section>
@@ -451,13 +456,10 @@ document.write(`
 <li><p>This file has versions pinned but not builds, may need to make more generic? Also maybe should provide lock files.</p></li>
 <li><p>update required packages below, some not necessary.</p></li>
 </ul>
-<p>(from old version):
-create the <code class="docutils literal notranslate"><span class="pre">itslivetools_env</span></code> conda environment (<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">environment-unpinned.yml</span></code>) based on the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file <a class="reference external" href="https://github.com/e-marshall/mynewbook/blob/master/environment.yml">here</a>. This should work on any platform (linux, osx, windows) and will install the latest versions of all dependencies.</p>
-<p>Alternatively, the code repository for this tutorial (<a class="github reference external" href="https://github.com/e-marshall/itslive">e-marshall/itslive</a>) also contains “lock” files for Linux (conda-linux-64.lock.yml) and MacOS (conda-osx-64.lock.yml) that pin exact versions of all required python packages for a <a class="reference external" href="https://mybinder.readthedocs.io/en/latest/tutorials/reproducibility.html">reproducible computing environment</a>.</p>
 </section>
 <section id="required-software-packages">
 <h2>Required software packages<a class="headerlink" href="#required-software-packages" title="Permalink to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">geospatial_datacube_tutorial_env.yml</span></code> file referenced above will install all of the required packages in a conda virtual environment. Below is a list of all packages imported throughout the notebooks:</p>
+<p>Below is a list of all packages imported throughout the notebooks:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">adlfs</span> <span class="c1">#check this may not be needed</span>
 <span class="kn">import</span> <span class="nn">cf_xarray</span>
 <span class="kn">import</span> <span class="nn">contextily</span> <span class="k">as</span> <span class="nn">cx</span>
