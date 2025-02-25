@@ -1,0 +1,39 @@
+[project]
+authors = ["Emma Marshall <em.marshall.108@gmail.com>"]
+channels = ["conda-forge"]
+name = "book"
+platforms = ["osx-arm64", "linux-64", "win-64"]
+version = "0.1.0"
+
+[environments]
+book = { features = ["book"], solve-group = "default" }
+
+[tasks]
+itslive = "jupyter lab --LabApp.default_url='/lab/tree/book/itslive_nbs/1_accessing_itslive_s3_data.ipynb'"
+sentinel1 = "jupyter lab --LabApp.default_url='/lab/tree/book/s1_nbs/1_read_asf_data.ipynb'"
+
+[dependencies]
+cf_xarray = ">=0.10.0,<0.11"
+contextily = ">=1.6.2,<2"
+geopandas = ">=1.0.1,<2"
+hvplot = ">=0.11.2,<0.12"
+jupyterlab = ">=4.3.5,<5"
+matplotlib-base = ">=3.10.0,<4"
+numpy = ">=2.2.3,<3"
+pandas = ">=2.2.3,<3"
+planetary-computer = ">=1.0.0,<2"
+pystac = ">=1.12.1,<2"
+pystac-client = ">=0.8.6,<0.9"
+requests = ">=2.32.3,<3"
+rioxarray = ">=0.18.2,<0.19"
+scipy = ">=1.15.2,<2"
+stackstac = ">=0.5.1,<0.6"
+xarray = ">=2025.1.2,<2026"
+zarr = "<3"
+
+[feature.book.dependencies]
+jupyter-book = "*"
+
+[feature.book.tasks]
+build = "jupyter-book build book"
+export-conda-env="pixi project export conda-environment -p linux-64 .binder/environment.yml"
