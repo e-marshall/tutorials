@@ -16,21 +16,21 @@ parts:
     - file: intro/software
   - caption: Part 1
     chapters:
-    - file: itslive_nbs/itslive_intro
-    - file: itslive_nbs/1_accessing_itslive_s3_data
-    - file: itslive_nbs/2_larger_than_memory_data
-    - file: itslive_nbs/3_combining_raster_vector_data
-   # - file: itslive_nbs/2_data_organization_manipulation
-    - file: itslive_nbs/4_exploratory_data_analysis_single
-    - file: itslive_nbs/5_exploratory_data_analysis_group
+    - file: tutorial1/itslive_intro
+    - file: tutorial1/nbs/1_accessing_itslive_s3_data
+    - file: tutorial1/nbs/2_larger_than_memory_data
+    - file: tutorial1/nbs/3_combining_raster_vector_data
+    - file: tutorial1/nbs/4_exploratory_data_analysis_single
+    - file: tutorial1/nbs/5_exploratory_data_analysis_group
   - caption: Part 2
     chapters:
-    - file: intro/new_s1_intro
-    - file: s1_nbs/1_read_asf_data
-    - file: s1_nbs/2_inspect_organize_asf_data
-    - file: s1_nbs/3_read_pc_data
-#    - file: s1_nbs/4_comparing_s1_rtc_datasets
-#    - file: s1_nbs/5_example_s1_rtc_time_series_analysis
+    - file: tutorial2/new_s1_intro
+    - file: tutorial2/nbs/1_read_asf_data
+    - file: tutorial2/nbs/2_wrangle_metadata
+    - file: tutorial2/nbs/2_inspect_organize_asf_data
+    - file: tutorial2/nbs/3_read_pc_data
+    - file: tutorial2/nbs/4_comparing_s1_rtc_datasets
+    - file: tutorial2/nbs/5_example_s1_rtc_time_series_analysis
   - caption: Summary + Conclusion
     chapters:
     - file: pt4/summary
