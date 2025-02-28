@@ -12,12 +12,13 @@ import xarray as xr
 from pystac_client import Client
 from dask.distributed import Client as daskClient
 
-#--------------------------------------------------------------------
-#--------------------- Read ASF VRT Functions -----------------
-#Function to extract path for target files from each scene
-def extract_fnames(data_path:str, scene_name:str) -> list:
+
+# --------------------------------------------------------------------
+# --------------------- Read ASF VRT Functions -----------------
+# Function to extract path for target files from each scene
+def extract_fnames(data_path: str, scene_name: str) -> list:
     """return a list of files associated with a single S1 scene"""
-    #Make list of files within each scene directory in data directory
+    # Make list of files within each scene directory in data directory
     scene_files_ls = os.listdir(os.path.join(data_path, scene_name))
 
     # Make a list to hold README files
@@ -26,52 +27,66 @@ def extract_fnames(data_path:str, scene_name:str) -> list:
     # Make a list to hold tif file names for each variable
     scene_files_vv = [fname for fname in scene_files_ls if fname.endswith("_VV.tif")]
     scene_files_vh = [fname for fname in scene_files_ls if fname.endswith("_VH.tif")]
-    scene_files_ls = [fname for fname in scene_files_ls if fname.endswith("_ls_map.tif")]
+    scene_files_ls = [
+        fname for fname in scene_files_ls if fname.endswith("_ls_map.tif")
+    ]
 
     return scene_files_vv, scene_files_vh, scene_files_ls, rm
 
-def make_filename_lists(asf_s1_data_path:str):
 
-    #Make list of all scenes in dir
+def make_filename_lists(asf_s1_data_path: str):
+    # Make list of all scenes in dir
     scenes_ls = os.listdir(asf_s1_data_path)
 
     # Make empty lists to hold file paths for different variables
     fpaths_vv, fpaths_vh, fpaths_ls, fpaths_rm = [], [], [], []
 
     for element in range(len(scenes_ls)):
-        #Extract filenames of each file of interest
+        # Extract filenames of each file of interest
         files_of_interest = extract_fnames(asf_s1_data_path, scenes_ls[element])
 
         # Make full path with filename for each variable
-        path_vv = os.path.join(asf_s1_data_path, scenes_ls[element], files_of_interest[0][0])
-        path_vh = os.path.join(asf_s1_data_path, scenes_ls[element], files_of_interest[1][0])
-        path_ls = os.path.join(asf_s1_data_path, scenes_ls[element], files_of_interest[2][0])
-        path_readme = os.path.join(asf_s1_data_path, scenes_ls[element], files_of_interest[3][0])
+        path_vv = os.path.join(
+            asf_s1_data_path, scenes_ls[element], files_of_interest[0][0]
+        )
+        path_vh = os.path.join(
+            asf_s1_data_path, scenes_ls[element], files_of_interest[1][0]
+        )
+        path_ls = os.path.join(
+            asf_s1_data_path, scenes_ls[element], files_of_interest[2][0]
+        )
+        path_readme = os.path.join(
+            asf_s1_data_path, scenes_ls[element], files_of_interest[3][0]
+        )
 
-        #add a check to ensure that the files are aligned correctly
-        date_vv = pathlib.Path(path_vv).stem.split('_')[2]
-        date_vh = pathlib.Path(path_vh).stem.split('_')[2]
-        date_ls = pathlib.Path(path_ls).stem.split('_')[2]
-        date_rm = pathlib.Path(path_readme).stem.split('_')[2]
-        assert date_vh == date_vv == date_ls == date_rm, 'AssertionError: File dates do not match across variables.'
+        # add a check to ensure that the files are aligned correctly
+        date_vv = pathlib.Path(path_vv).stem.split("_")[2]
+        date_vh = pathlib.Path(path_vh).stem.split("_")[2]
+        date_ls = pathlib.Path(path_ls).stem.split("_")[2]
+        date_rm = pathlib.Path(path_readme).stem.split("_")[2]
+        assert date_vh == date_vv == date_ls == date_rm, (
+            "AssertionError: File dates do not match across variables."
+        )
 
         fpaths_vv.append(path_vv)
         fpaths_vh.append(path_vh)
         fpaths_ls.append(path_ls)
         fpaths_rm.append(path_readme)
 
-    #Check that all lists are the same length
+    # Check that all lists are the same length
     assert len(fpaths_vv) == len(fpaths_vh) == len(fpaths_ls) == len(fpaths_rm), (
         f"Files weren't extracted correctly. Expected all lists to be the same length, received \n"
-        "{len(fpaths_vv)}, {len(fpaths_vh)}, {len(fpaths_ls)}, {len(fpaths_rm)}")
-    #Check that all lists are the same length
+        "{len(fpaths_vv)}, {len(fpaths_vh)}, {len(fpaths_ls)}, {len(fpaths_rm)}"
+    )
+    # Check that all lists are the same length
     assert len(fpaths_vv) == len(fpaths_vh) == len(fpaths_ls) == len(fpaths_rm), (
         "Files weren't extracted correctly or fname lists weren't made correctly"
-            )
+    )
     return (fpaths_vv, fpaths_vh, fpaths_ls, fpaths_rm)
 
-#---------------------------------------------------------------------
-#----------------------- Metadata Wrangling Functions-----------------
+
+# ---------------------------------------------------------------------
+# ----------------------- Metadata Wrangling Functions-----------------
 def parse_fname_metadata(input_fname: str) -> dict:
     """Function to extract information from filename and separate into expected variables based on a defined schema."""
     # Define schema
@@ -165,60 +180,62 @@ def parse_fname_metadata(input_fname: str) -> dict:
         else:
             parsed_data[name] = part
 
-    #Because we have already addressed product type in the variable names
-    prod_type = parsed_data.pop('prod_type')
+    # Because we have already addressed product type in the variable names
+    prod_type = parsed_data.pop("prod_type")
     return parsed_data
 
-def transpose_metadata_dict_list(input_ls:list)->dict:
 
+def transpose_metadata_dict_list(input_ls: list) -> dict:
     df_ls = []
-    #Iterate through list
+    # Iterate through list
     for element in range(len(input_ls)):
-        #Create a dataframe of each dict in the list
+        # Create a dataframe of each dict in the list
         item_df = pd.DataFrame(input_ls[element], index=[0])
         df_ls.append(item_df)
-    #Combine dfs row-wise into one df
+    # Combine dfs row-wise into one df
     attr_df = pd.concat(df_ls)
-    #Separate out each column in df to its own dict
+    # Separate out each column in df to its own dict
     attrs_dict = {col: attr_df[col].tolist() for col in attr_df.columns}
-    #Acq_dates are handled separately since we will use it as an index
-    acq_date_ls = attrs_dict.pop('acq_date')
-    return (attrs_dict, acq_date_ls)     
+    # Acq_dates are handled separately since we will use it as an index
+    acq_date_ls = attrs_dict.pop("acq_date")
+    return (attrs_dict, acq_date_ls)
 
-def create_da(value_name:str, values_ls:list, dim_name:str,
-              dim_values:list, desc:str=None)-> xr.DataArray:
-    """Given a list of metadata values, create a 1-d xr.DataArray with values 
-    as data that exists along a specified dimension (here, hardcoded to be 
+
+def create_da(
+    value_name: str, values_ls: list, dim_name: str, dim_values: list, desc: str = None
+) -> xr.DataArray:
+    """Given a list of metadata values, create a 1-d xr.DataArray with values
+    as data that exists along a specified dimension (here, hardcoded to be
     acq_date). Optionally, add description of metadata as attr.
     Returns a xr.DataArray"""
     da = xr.DataArray(
-        data = values_ls,
+        data=values_ls,
         dims=[dim_name],
-        coords = {dim_name: dim_values},
-        name = value_name,
+        coords={dim_name: dim_values},
+        name=value_name,
     )
     if desc != None:
-            da.attrs= {"description": desc}
+        da.attrs = {"description": desc}
     return da
 
-def create_metadata_ds(dict_of_attrs:dict, 
-                       list_of_acq_dates:list)-> xr.Dataset:
+
+def create_metadata_ds(dict_of_attrs: dict, list_of_acq_dates: list) -> xr.Dataset:
     da_ls = []
     for key in dict_of_attrs.keys():
-
-        da = create_da(key, dict_of_attrs[key], 'acq_date', list_of_acq_dates)
+        da = create_da(key, dict_of_attrs[key], "acq_date", list_of_acq_dates)
         da_ls.append(da)
 
     coord_ds = xr.combine_by_coords(da_ls)
-    coord_ds = coord_ds.sortby('acq_date')
+    coord_ds = coord_ds.sortby("acq_date")
     return coord_ds
+
 
 def make_coord_data(readme_fpaths_ls):
     """takes a list of the filepaths to every read me, extracts the granule ID.
     From granule ID, extracts acquisition date and data take ID.
     Returns a tuple of lists of acquisition dates and data take IDs."""
 
-    #Make a list of all granules in time series
+    # Make a list of all granules in time series
     granule_ls = [
         extract_granule_id(readme_fpaths_ls[element])
         for element in range(len(readme_fpaths_ls))
@@ -228,162 +245,176 @@ def make_coord_data(readme_fpaths_ls):
         "mission_identifier": (3, r"S1[A-B]"),  # schema for sensor
         "mode_beam_identifier": (2, r"[A-Z]{2}"),  # schema for beam mode
         "esa_product_type": (3, r"[A-Z]{3}"),  # schema for ESA product type
-        "proc_lvl_class_pol": (4, f"[A-Z0-9]{{4}}"),  
+        "proc_lvl_class_pol": (4, f"[A-Z0-9]{{4}}"),
         "acq_start": (15, r"[0-9]{8}T[0-9]{6}"),  # schema for acquisition dat
-        "acq_stop" : (15, r"[0-9]{8}T[0-9]{6}"),  # schema for acquisition dat
-        "orbit_no" : (6, r"[0-9]{6}"),  # schema for orbit number
+        "acq_stop": (15, r"[0-9]{8}T[0-9]{6}"),  # schema for acquisition dat
+        "orbit_no": (6, r"[0-9]{6}"),  # schema for orbit number
         "data_take_id": (6, "A-Z0-9{6}"),  # schema for data take id
-
     }
-    
-    #Extract relevant metadata from granule ID
+
+    # Extract relevant metadata from granule ID
     all_granules_parsed_data = []
     for granule in granule_ls:
-        #need to account for double under score
-        parts = [s for s in granule.split('_') if len(s) > 0]
-        #parts = granule.split("_")
+        # need to account for double under score
+        parts = [s for s in granule.split("_") if len(s) > 0]
+        # parts = granule.split("_")
         single_granule_parsed_data = {}
         for part, (name, (length, pattern)) in zip(parts, schema.items()):
-            if name == 'acq_start': 
-                single_granule_parsed_data['acq_start'] = pd.to_datetime(part, format="%Y%m%dT%H%M%S")
-            elif name == 'data_take_id':
+            if name == "acq_start":
+                single_granule_parsed_data["acq_start"] = pd.to_datetime(
+                    part, format="%Y%m%dT%H%M%S"
+                )
+            elif name == "data_take_id":
                 single_granule_parsed_data[name] = part
         all_granules_parsed_data.append(single_granule_parsed_data)
 
     acq_dates = [granule["acq_start"] for granule in all_granules_parsed_data]
     data_take_ids = [granule["data_take_id"] for granule in all_granules_parsed_data]
-   
+
     return (acq_dates, data_take_ids)
 
+
 def extract_granule_id(filepath):
-    ''' takes a filepath to the readme associated with an S1 scene and returns the source granule id used to generate the RTC imagery''' 
+    """takes a filepath to the readme associated with an S1 scene and returns the source granule id used to generate the RTC imagery"""
 
     # Use markdown package to read text from README
-    md = markdown.Markdown(extensions=['meta'])
+    md = markdown.Markdown(extensions=["meta"])
     # Extract text from file
     data = pathlib.Path(filepath).read_text()
-    #this text precedes granule ID in readme
-    pre_gran_str = 'The source granule used to generate the products contained in this folder is:\n'
+    # this text precedes granule ID in readme
+    pre_gran_str = "The source granule used to generate the products contained in this folder is:\n"
     split = data.split(pre_gran_str)
-    #isolate the granule id
+    # isolate the granule id
     gran_id = split[1][:67]
-    
+
     return gran_id
 
 
 # metadata wrangling processor
-def metadata_processor(vv_path:str, vh_path:str, ls_path:str):
-
+def metadata_processor(vv_path: str, vh_path: str, ls_path: str):
     cwd = pathlib.Path.cwd()
     tutorial2_dir = pathlib.Path(cwd).parent
 
-    #Read VRTs
-    ds_vv = xr.open_dataset(vv_path, chunks='auto').squeeze()
-    ds_vh = xr.open_dataset(vh_path, chunks='auto').squeeze()
-    ds_ls = xr.open_dataset(ls_path, chunks='auto').squeeze()
-    #Rename vars
-    ds_vv = ds_vv.rename({'band_data':'vv'})
-    ds_vh = ds_vh.rename({'band_data':'vh'})
-    ds_ls = ds_ls.rename({'band_data':'ls'})
-    #make file paths lists for each variable
-    s1_asf_data = pathlib.Path(cwd.parents[3], 'sentinel1_rtc/data/asf_rtcs')
+    # Read VRTs
+    ds_vv = xr.open_dataset(vv_path, chunks="auto").squeeze()
+    ds_vh = xr.open_dataset(vh_path, chunks="auto").squeeze()
+    ds_ls = xr.open_dataset(ls_path, chunks="auto").squeeze()
+    # Rename vars
+    ds_vv = ds_vv.rename({"band_data": "vv"})
+    ds_vh = ds_vh.rename({"band_data": "vh"})
+    ds_ls = ds_ls.rename({"band_data": "ls"})
+    # make file paths lists for each variable
+    s1_asf_data = pathlib.Path(cwd.parents[3], "sentinel1_rtc/data/asf_rtcs")
     # Make file path lists for vv, vh, ls
-    filepaths_vv, filepaths_vh, filepaths_ls, filepaths_rm = make_filename_lists(s1_asf_data)
+    filepaths_vv, filepaths_vh, filepaths_ls, filepaths_rm = make_filename_lists(
+        s1_asf_data
+    )
     acq_dates_vh = [
-    parse_fname_metadata(filepaths_vh[file])["acq_date"].strftime("%m/%d/%YT%H%M%S")
-    for file in range(len(filepaths_vh))
-                    ]
+        parse_fname_metadata(filepaths_vh[file])["acq_date"].strftime("%m/%d/%YT%H%M%S")
+        for file in range(len(filepaths_vh))
+    ]
     acq_dates_vv = [
         parse_fname_metadata(filepaths_vv[file])["acq_date"].strftime("%m/%d/%YT%H%M%S")
         for file in range(len(filepaths_vv))
-                    ]
+    ]
     acq_dates_ls = [
         parse_fname_metadata(filepaths_ls[file])["acq_date"].strftime("%m/%d/%YT%H%M%S")
         for file in range(len(filepaths_ls))
-                    ]
-    #Make sure they are identical
+    ]
+    # Make sure they are identical
     assert acq_dates_vh == acq_dates_vv == acq_dates_ls, (
         "Acquisition dates lists for VH, VV and L-S Map do not match"
-                       )
-    #Assign acquisition dates to band dimension and format as datetime
+    )
+    # Assign acquisition dates to band dimension and format as datetime
     ds_vv = ds_vv.assign_coords(
-            {"band": pd.to_datetime(acq_dates_vv, format="%m/%d/%YT%H%M%S")}
-        ).rename({'band':'acq_date'})
+        {"band": pd.to_datetime(acq_dates_vv, format="%m/%d/%YT%H%M%S")}
+    ).rename({"band": "acq_date"})
     ds_vh = ds_vh.assign_coords(
-            {"band": pd.to_datetime(acq_dates_vh, format="%m/%d/%YT%H%M%S")}
-        ).rename({'band':'acq_date'})
+        {"band": pd.to_datetime(acq_dates_vh, format="%m/%d/%YT%H%M%S")}
+    ).rename({"band": "acq_date"})
     ds_ls = ds_ls.assign_coords(
-            {"band": pd.to_datetime(acq_dates_ls, format="%m/%d/%YT%H%M%S")}
-        ).rename({'band':'acq_date'})
-    #combine variables into one cube
+        {"band": pd.to_datetime(acq_dates_ls, format="%m/%d/%YT%H%M%S")}
+    ).rename({"band": "acq_date"})
+    # combine variables into one cube
     ds = xr.combine_by_coords([ds_vv, ds_vh, ds_ls])
-    #Sort in chronological order
-    ds = ds.sortby('acq_date')
+    # Sort in chronological order
+    ds = ds.sortby("acq_date")
 
-    #make lists of filename metadata for each geotiff file type (vv,vh,ls)
+    # make lists of filename metadata for each geotiff file type (vv,vh,ls)
     meta_attrs_list_vv = [
-    parse_fname_metadata(filepaths_vv[file]) for file in range(len(filepaths_vv))
-                        ]
+        parse_fname_metadata(filepaths_vv[file]) for file in range(len(filepaths_vv))
+    ]
 
     meta_attrs_list_vh = [
         parse_fname_metadata(filepaths_vh[file]) for file in range(len(filepaths_vh))
-                        ]
+    ]
 
     meta_attrs_list_ls = [
         parse_fname_metadata(filepaths_ls[file]) for file in range(len(filepaths_ls))
-                        ]
-    #make sure all identical
-    assert meta_attrs_list_ls == meta_attrs_list_vh == meta_attrs_list_vv, 'Lists of metadata dicts should be identical for all variables'
+    ]
+    # make sure all identical
+    assert meta_attrs_list_ls == meta_attrs_list_vh == meta_attrs_list_vv, (
+        "Lists of metadata dicts should be identical for all variables"
+    )
 
-    #Transpose attr dict lists
+    # Transpose attr dict lists
     attr_dict, acq_dt_list = transpose_metadata_dict_list(meta_attrs_list_vv)
     # Create xr.DAs of metadata
     coord_ds = create_metadata_ds(attr_dict, acq_dt_list)
     # Assign coordinate variables
-    coord_ds = coord_ds.assign_coords({k:v for k, v in dict(coord_ds.data_vars).items()}
-                                    )
-    #Combine data  cube and metadata cube
+    coord_ds = coord_ds.assign_coords(
+        {k: v for k, v in dict(coord_ds.data_vars).items()}
+    )
+    # Combine data  cube and metadata cube
     ds_w_metadata = xr.merge([ds, coord_ds])
-    #Move some coordinate variables to be attrs
-    #Make list of coords that are along time dimension
-    coords_along_time_dim = [coord for coord in ds_w_metadata._coord_names if 'acq_date' in ds_w_metadata[coord].dims]
+    # Move some coordinate variables to be attrs
+    # Make list of coords that are along time dimension
+    coords_along_time_dim = [
+        coord
+        for coord in ds_w_metadata._coord_names
+        if "acq_date" in ds_w_metadata[coord].dims
+    ]
     dynamic_attrs = []
     static_attr_dict = {}
     for i in coords_along_time_dim:
-        if i != 'acq_date':
+        if i != "acq_date":
             # find coordinate array variables that have more than
             # one unique element along time dimension
             if len(set(ds_w_metadata.coords[i].data.tolist())) > 1:
                 dynamic_attrs.append(i)
             else:
                 static_attr_dict[i] = ds_w_metadata.coords[i].data[0]
-    #Drop static coords
+    # Drop static coords
     ds_w_metadata = ds_w_metadata.drop_vars(list(static_attr_dict.keys()))
-    #Assign them as attrs
+    # Assign them as attrs
     ds_w_metadata.attrs = static_attr_dict
-    #Adding metadata from readme
+    # Adding metadata from readme
     acquisition_dates, data_take_ids_ls = make_coord_data(filepaths_rm)
     # Create xr.DA of data take IDs
-    data_take_id_da = create_da(value_name = 'data_take_id',
-                            values_ls = data_take_ids_ls,
-                            dim_name = 'acq_date',
-                            dim_values = acquisition_dates, 
-                            desc = 'ESA Mission data take ID')
-    #Sort 
-    data_take_id_da = data_take_id_da.sortby('acq_date')
+    data_take_id_da = create_da(
+        value_name="data_take_id",
+        values_ls=data_take_ids_ls,
+        dim_name="acq_date",
+        dim_values=acquisition_dates,
+        desc="ESA Mission data take ID",
+    )
+    # Sort
+    data_take_id_da = data_take_id_da.sortby("acq_date")
     # add data take DA as coordinate variable of data cube
-    ds_w_metadata.coords['data_take_ID'] = data_take_id_da
+    ds_w_metadata.coords["data_take_ID"] = data_take_id_da
 
     return ds_w_metadata
 
-#--------------------------------------------------------------------
-#---------------------------read planetary computer data ------------
+
+# --------------------------------------------------------------------
+# ---------------------------read planetary computer data ------------
 def extract_source_granule_pc(rtc_id):
     base_url = "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-rtc/items/"
     full_url = base_url + str(rtc_id)
     stac_item = pystac.read_file(full_url)
     source_granule = stac_item.links[5].target[-62:]
     return source_granule
+
 
 def make_granule_coord_pc(granule_ls):
     """this fn takes a list of granule IDs, extracts acq date for each granule, organizes this as an array that can be assigned as a coord to an xr obj"""
@@ -402,9 +433,11 @@ def make_granule_coord_pc(granule_ls):
 
     return granule_da
 
+
 class S1PC_DataCube:
-    def __init__(self, time_range:str, bbox:list, epsg:int, collection:str='sentinel-1-rtc'):
-        
+    def __init__(
+        self, time_range: str, bbox: list, epsg: int, collection: str = "sentinel-1-rtc"
+    ):
         self.time_range = time_range
         self.bbox = bbox
         self.bbox_coords = points2coords(self.bbox)
@@ -414,32 +447,33 @@ class S1PC_DataCube:
         self.da = self.stack_assets()
         self.ds_pc = self.format_metadata()
 
-
     def search_for_items(self):
-
         catalog = Client.open("https://planetarycomputer.microsoft.com/api/stac/v1")
-        search = catalog.search(collections=[self.collection], bbox=self.bbox, datetime=self.time_range)
+        search = catalog.search(
+            collections=[self.collection], bbox=self.bbox, datetime=self.time_range
+        )
         items = search.item_collection()
         return items
 
     def stack_assets(self):
-
         client = daskClient(processes=False)
-        da = stackstac.stack(planetary_computer.sign(self.items), 
-                             bounds_latlon=self.bbox, epsg = self.epsg)
+        da = stackstac.stack(
+            planetary_computer.sign(self.items), bounds_latlon=self.bbox, epsg=self.epsg
+        )
         return da
 
     def format_metadata(self):
-
         da = self.da
         granule_ls = [
-            extract_source_granule_pc(da.isel(time=t).id.values) for t in range(len(da.time))
-                      ]
+            extract_source_granule_pc(da.isel(time=t).id.values)
+            for t in range(len(da.time))
+        ]
         granule_coord = make_granule_coord_pc(granule_ls)
-        da.coords['granule_id'] = ('time', granule_coord.data)
+        da.coords["granule_id"] = ("time", granule_coord.data)
 
-        ds_ps = da.to_dataset(dim='band')
+        ds_ps = da.to_dataset(dim="band")
         return ds_pc
+
 
 def points2coords(pt_ls: list) -> list:  # should be [xmin, ymin, xmax, ymax]
     """
@@ -520,6 +554,7 @@ def plot_timestep(input_arr: np.array, time_step: int):
     axs[1].set_title(f"{date} VV backscatter")
     axs[2].set_title(f"{date} VH backscatter")
 
+
 def asf_pc_sidebyside(asf_input, pc_input, timestep):
     fig, axs = plt.subplots(ncols=2, figsize=(15, 10))
 
@@ -529,6 +564,7 @@ def asf_pc_sidebyside(asf_input, pc_input, timestep):
     power_to_db(pc_input.vv.isel(time=timestep)).plot(
         ax=axs[1], cmap=plt.cm.Greys_r, label="PC"
     )
+
 
 def single_time_mean_compare(asf_input, pc_input, time):
     fig, ax = plt.subplots(figsize=(8, 8))

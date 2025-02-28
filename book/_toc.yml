@@ -31,7 +31,7 @@ parts:
     - file: tutorial2/nbs/3_asf_exploratory_analysis
     - file: tutorial2/nbs/4_read_pc_data
     - file: tutorial2/nbs/5_comparing_s1_rtc_datasets
-    - file: tutorial2/nbs/6_example_s1_rtc_time_series_analysis
+   # - file: tutorial2/nbs/6_example_s1_rtc_time_series_analysis
   - caption: Summary + Conclusion
     chapters:
     - file: pt4/summary
@@ -40,8 +40,8 @@ parts:
   - caption: Additional material
     chapters:
     - file: endmatter/appendix
-    - file: endmatter/appendix_1_1_handle_mult_geom_types
-    - file: endmatter/appendix_1_2_read_w_xropen_mfdataset
+    #- file: endmatter/appendix_1_1_handle_mult_geom_types
+    #- file: endmatter/appendix_1_2_read_w_xropen_mfdataset
     - file: endmatter/other_resources
     - file: endmatter/about_this_book
     - file: endmatter/glossary

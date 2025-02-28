@@ -12,7 +12,7 @@ only_build_toc_files: true
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: 'auto'
+  execute_notebooks: auto #cache
   allow_errors: true
   timeout: 1500
 
@@ -81,8 +81,8 @@ sphinx:
       title_s1_1: "# 1. Read Sentinel-1 data processed by ASF"
       title_s1_2: "# 2. Metadata wrangling"
       title_s1_3: "# 3. Exploratory analysis of ASF S1 imagery"
-      title_s1_4: "# 4. Read and inspect Sentinel-1 data processed by Microsoft Planetary Computer"
-      title_s1_5: "# 5. Comparing Sentinel-1 datasets"
+      title_s1_4: "# 4. Read Sentinel-1 RTC data from Microsoft Planetary Computer"
+      title_s1_5: "# 5. Comparing Sentinel-1 RTC datasets"
       title_s1_6: "# 6. Example of Sentinel-1 RTC time series analysis"
 
       #global nb sections
@@ -190,8 +190,38 @@ sphinx:
       d1_s1_nb2: "1) Extract granule ID"
       d2_s1_nb2: "2) Build coordinate `xr.DataArray`"
       
+      #sentinel nb3
+      a_s1_nb3: "A. Read and prepare data"
+      a1_s1_nb3: "1) Clip by spatial area of interest"
 
+      b_s1_nb3: "B. Initial visualization"
+      b1_s1_nb3: "1) Layover-shadow mask"
 
+      c_s1_nb3: "C. Orbital direction"
+      c1_s1_nb3: "1) Is a pass ascending or descending?"
+      c2_s1_nb3: "2) Assign orbital direction as a coordinate variable"
+
+      d_s1_nb3: "D. Examine backscatter variability"
+      d1_s1_nb3: "1) Seasonal backscatter variability"
+
+      e_s1_nb3: "E. Handling duplicate time steps"
+      e1_s1_nb3: "1) Identify duplicate time steps"
+      e2_s1_nb3: "2) Visualize duplicates"
+      e3_s1_nb3: "3) Drop duplicates"
+
+      #s1 nb4
+      a_s1_nb4: "A. Connect to Microsoft Planetary Computer"
+      a1_s1_nb4: "1) Explore STAC metadata"
+
+      b_s1_nb4: "B. Read data with Xarray"
+      b1_s1_nb4: "1) Create a Dask distributed cluster"
+      b2_s1_nb4: "2) Use `stackstac` to pull queried data from Planetary Computer"
+      b3_s1_nb4: "3) Inspect dataset"
+      b4_s1_nb4: "4) Convert a 4-d `xr.DataArray` to a 3-d `xr.Dataset`"
+
+      c_s1_nb4: "C. Visualize data"
+      c1_s1_nb4: "1) Ascending and descending pass acquisitions"
+      c2_s1_nb4: "2) Variability over time"
 
 #  extra_extensions:
 #  - sphinxext.opengraph
