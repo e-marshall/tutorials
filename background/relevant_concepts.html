@@ -1,0 +1,570 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Relevant concepts &#8212; Cloud-native geospatial datacube workflows with open-source tools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'background/relevant_concepts';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction" href="../tutorial1/itslive_intro.html" />
+    <link rel="prev" title="Software and computing environment" href="../intro/software.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">🚧 Feb 2025 - This book is under construction! 🚧
+</div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../introduction.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Cloud-native geospatial datacube workflows with open-source tools</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction.html">
+                    Cloud-native geospatial datacube workflows with open-source tools
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/getting_started.html">Getting started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="background.html">Context and motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anatomy_of_a_data_cube.html">Anatomy of a data cube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials_overview.html">Tutorials overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_data.html">Data used in tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/software.html">Software and computing environment</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Relevant concepts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial1/itslive_intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial1/nbs/1_accessing_itslive_s3_data.html">1. Accessing cloud-hosted ITS_LIVE data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial1/nbs/2_larger_than_memory_data.html">2. Working with larger than memory data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial1/nbs/3_combining_raster_vector_data.html">3. Handling raster and vector data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial1/nbs/4_exploratory_data_analysis_single.html">4. Exploratory data analysis of a single glacier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial1/nbs/5_exploratory_data_analysis_group.html">5. Exploratory data analysis of multiple glaciers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial2/new_s1_intro.html">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/1_read_asf_data.html">1. Read Sentinel-1 data processed by ASF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/2_wrangle_metadata.html">2. Metadata wrangling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/3_asf_exploratory_analysis.html">2. Inspect and organize S1-RTC data processed by ASF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/4_read_pc_data.html">3. Read and inspect Sentinel-1 RTC imagery processed by Microsoft Planetary Computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/5_comparing_s1_rtc_datasets.html">1. Comparing Sentinel-1 RTC datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/6_example_s1_rtc_time_series_analysis.html">2: Example of Sentinel-1 RTC time series analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pt4/summary.html">Tutorials summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt4/tidy_principles.html">Principles of tidy array data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/appendix_1_1_handle_mult_geom_types.html">Handling different geometry types in a <code class="docutils literal notranslate"><span class="pre">GeoPandas.GeoDataFrame</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/appendix_1_2_read_w_xropen_mfdataset.html">Read Sentinel-1 RTC data processed by ASF using <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/other_resources.html">Other resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/about_this_book.html">Aboout this book</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://e-marshall.github.io/cloud-open-source-geospatial-datacube-workflows/introduction.html" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://e-marshall.github.io/cloud-open-source-geospatial-datacube-workflows/introduction.html/issues/new?title=Issue%20on%20page%20%2Fbackground/relevant_concepts.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/background/relevant_concepts.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Relevant concepts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="relevant-concepts">
+<h1>Relevant concepts<a class="headerlink" href="#relevant-concepts" title="Permalink to this heading">#</a></h1>
+<dl class="glossary">
+<dt id="term-1.-Larger-than-memory-data-parallelization-and-Dask">## <em>1. Larger than memory data, parallelization and Dask</em><a class="headerlink" href="#term-1.-Larger-than-memory-data-parallelization-and-Dask" title="Permalink to this term">#</a></dt><dt id="term-Larger-than-memory-data">Larger than memory data<a class="headerlink" href="#term-Larger-than-memory-data" title="Permalink to this term">#</a></dt><dd><p>Notebooks in this tutorial spend a considerable amount of time focusing on ‘larger-than-memory’ datasets and strategies for working with them ‘in memory’. What does this mean? When we say memory, we’re referring to the available CPU space, or RAM (wc: internal memory?) on whatever machine you’re working on. When we’re working with smaller datasets, the data and intermediate copies that are created during many operations don’t exceed the internal memory available on our machine. However, as datasets increase in size, the memory required for many workflows can quickly scale and exceed the availability of most personal machines. This is what we mean when we refer to ‘larger than memory’ data. In the case of this tutorial, the dataset we’ll be using is very large (several hundred gigabytes when uncompressed). With datasets this large, we need to employ different approaches that can be a bit more complicated than a straightforward operation that ingests and produces smaller amounts of data.</p>
+</dd>
+<dt id="term-Dask">Dask<a class="headerlink" href="#term-Dask" title="Permalink to this term">#</a></dt><dd><p>There are different ways to approach a dataset that is too large to load into memory. In this tutorial, we rely on the Python library, <a class="reference external" href="https://www.dask.org/">Dask</a>. Dask allows you to parallelize your workflows, breaking up a large job into many smaller jobs that can be executed in parallel rather than in sequence with one another. Parallelized jobs can be distributed across cores on an individual compputer, or across large, distributed compute nodes in cloud-computing environments. In this tutorial, we’ll use Dask to parallelize and distribute jobs across one machine. Conveniently, Dask also has built-in integrations with many open-souce Python libraries, including Xarray; this means that we can specify and create Dask-backed Xarray objects within Xarray commands such as <code class="docutils literal notranslate"><span class="pre">xr.open_dataset()</span></code>, rather than needing to create them separately.</p>
+<p>An important aspect of Dask is that it’s operations are by default ‘lazy’. This means that if I have an array (<code class="docutils literal notranslate"><span class="pre">arr</span></code>) and I want to perform an operation on it (let’s imagine something very simple, like multiplying the array by 5), when I execute that operation in Python (<code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">*</span> <span class="pre">5</span></code>), as long as it is a Dask Array (or an Xarray object backed by Dask Arrays), the computation is not actually executed <em>yet</em>. Dask uses <em>task scheduling</em> to track, orchestrate, and synchronize operations. When I call <code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">*</span> <span class="pre">5</span></code>, rather than calculating the resulting product, Dask adds it to a <strong>Task Graph</strong> (add link?). A Task Graph consist of python functions and the inputs and outputs of those functions; they are used by the program to direct how jobs should be distributed and executed across available resources in order to correctly complete the desired operation.</p>
+<p>So what can happen lazily and what can’t? Dask will wait to evaluate a set of operations until it is explicitly instructed to do so. This can be through calling a direct method (like <a class="reference external" href="https://docs.dask.org/en/stable/generated/dask.dataframe.DataFrame.compute.html"><code class="docutils literal notranslate"><span class="pre">.compute()</span></code></a> or <a class="reference external" href="https://docs.dask.org/en/latest/generated/dask.dataframe.DataFrame.persist.html"><code class="docutils literal notranslate"><span class="pre">.persist()</span></code></a>), or an operation that cannot be accomplished lazily (like plotting an array). For more detail, check out <a class="reference external" href="https://distributed.dask.org/en/stable/manage-computation.html">Dask’s Managing Computation documentation</a>.</p>
+</dd>
+<dt id="term-Chunking">Chunking<a class="headerlink" href="#term-Chunking" title="Permalink to this term">#</a></dt><dd><p>Dask operates by breaking up large tasks into smaller ones. In our context, the main way this is accomplished is through <a class="reference external" href="https://docs.dask.org/en/latest/array.html">Dask Arrays</a>. If you’re familiar with the Xarray data model, you’ll know that the fundamental building block of a standard Xarray DataArray is a NumPy array: an <code class="docutils literal notranslate"><span class="pre">Xr.DataArray</span></code> is just a NumPy array with named dimensions and coordinates, and separate NumPy arrays describing those coordinates.</p>
+<p>When we introduce Dask to an Xarray workflow, we convert the underlying <code class="docutils literal notranslate"><span class="pre">.data</span></code> objects of an Xarray object from NumPy arrays to Dask Arrays. Luckily, Dask arrays aren’t too unfamiliar; a Dask Array is composed of NumPy-like arrays but with an additional specification: <code class="docutils literal notranslate"><span class="pre">chunks</span></code>. Chunks tell Dask how to break up the array into smaller parts. For example, if you have a 3-dimensional Xarray DataArray, you will specify how the object should be chunked along each dimension.</p>
+<p>Choosing chunks can be complicated and have a significant impact on how fast your code runs. Typically, you want enough chunks that each individual chunk is relatively small and many chunks can fit into into memory. However, if you have too many chunks, Dask now needs to keep track of many individual tasks, meaning that more time will be spent managing the task graph compared to executing tasks. In addition, tasks should reflect the shape of yoour data and how you want to use it. If you’re working with a space-time dataset but you’re most interested in spatial analysis, having smaller chunks along the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> dimensions will make spatial operations easier to parallelize.</p>
+<p>Dask and Xarray have a number of resources focused on this topic. We recommend:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.dask.org/en/latest/array-best-practices.html">Dask Array - Best Practices</a>,</p></li>
+<li><p><a class="reference external" href="https://docs.dask.org/en/stable/array-chunks.html">Dask Array Chunks</a>,</p></li>
+<li><p><a class="reference external" href="https://blog.dask.org/2021/11/02/choosing-dask-chunk-sizes">Choosing good chunk sizes</a> blog post,</p></li>
+<li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/dask.html">Xarray - Parallel Computing with Dask</a></p>
+<ul>
+<li><p>Specifically the <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/dask.html#chunking-and-performance">Chunking and Performance</a> section.</p></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="term-2.-Importance-of-metadata-naming-and-metadata-naming-conventions">## <em>2. Importance of metadata naming and metadata naming conventions</em><a class="headerlink" href="#term-2.-Importance-of-metadata-naming-and-metadata-naming-conventions" title="Permalink to this term">#</a></dt><dt id="term-Metadata-naming">Metadata naming<a class="headerlink" href="#term-Metadata-naming" title="Permalink to this term">#</a></dt><dd><p>Metadata is vital to understanding your dataset, however, because of the range of types of metadata and ways it is often stored, it can become very complicated to work with and keep track of. There are a few priorities to keep in mind when working with metadata and/or writing your own.</p>
+<ol class="arabic simple">
+<li><p>Metadata should be added to the <code class="docutils literal notranslate"><span class="pre">attrs</span></code> of an Xarray object so that the dataset is <strong>self-describing</strong> (You or a future user don’t need external information to be able to interpret the data).</p></li>
+<li><p>Wherever possible, metadata should follow Climate Forecast (CF) naming conventions.</p></li>
+</ol>
+</dd>
+<dt id="term-Climate-Forecase-CF-Metadata-Conventions">Climate Forecase (CF) Metadata Conventions<a class="headerlink" href="#term-Climate-Forecase-CF-Metadata-Conventions" title="Permalink to this term">#</a></dt><dd><p>CF conventions address many of the challenges of inconsistent and non-descriptive metadata found in climate and earth observation datasets. By establishing common naming schemes for physical quantities and other attributes, these conventions facilitate collaboration, data fusion, and the development of tools for working with a range of data types.</p>
+<p>From the <a class="reference external" href="https://cfconventions.org/">CF documentation</a>:</p>
+<blockquote>
+<div><p>The CF metadata conventions are designed to promote the processing and sharing of files created with the NetCDF API. The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities. The CF convention includes a standard name table, which defines strings that identify physical quantities.</p>
+</div></blockquote>
+<p>CF metadata conventions set common expectations for metadata names and locations across datasets.  In this tutorial, we will use tools such as <a class="reference internal" href="#"><span class="xref myst">cf_xarray</span></a> that leverage CF conventions to add programmatic handling of CF metadata to Xarray objects, meaning that users can spend less time wrangling metadata. 🤩</p>
+</dd>
+</dl>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./background"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro/software.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Software and computing environment</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../tutorial1/itslive_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Emma Marshall
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
