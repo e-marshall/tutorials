@@ -28,8 +28,8 @@ latex:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/e-marshall/itslive  # Online location of your book
-  branch: master  # Which branch of the repository should be used when creating links (optional)
+  url: https://e-marshall.github.io/cloud-open-source-geospatial-datacube-workflows/introduction.html  # Online location of your book
+  branch: main  # Which branch of the repository should be used when creating links (optional)
 
 launch_buttons:
   binderhub_url: "https://mybinder.org"
@@ -165,16 +165,31 @@ sphinx:
       c3_its_nb5: "3) Visualize associations between velocity and attribute data"
 
 
-      #1_1 section headings
-      a_s1_nb1: "A. Read data into memory"
-      a1_s1_nb1: "1) Organize data on disk to create VRTs"
+      #sentinel nb1
+      a_s1_nb1: "A. Prepare to read data into memory"
+      a1_s1_nb1: "1) Build lists of file names and paths needed for VRT objects"
       a2_s1_nb1: "2) Create VRT objects"
-      b_s1_nb1: "B. Read and organize data in memory"
-      b1_s1_nb1: "1) Extract metadata from file name"
-      b2_s1_nb1: "2) Format and organize time dimension"
-      b3_s1_nb1: "3) Examine chunking"
-      c_s1_nb1: "C. Clip to spatial area of interest"
+      b_s1_nb1: "B. Read data"
+      b1_s1_nb1: "1) Take a look at chunking"
+      # sentinel nb2
+      a_s1_nb2: "A. Read and inspect initial metadata"
+      a1_s1_nb2: "1) Add appropriate names to variables"
+      a2_s1_nb2: "2) What metadata currently exists?"
 
+      b_s1_nb2: "B. Add metadata from file name"
+      b1_s1_nb2: "1) Parse file name"
+      b2_s1_nb2: "2) Extract and format acquisition dates"
+      b3_s1_nb2: "3) Combine data cubes"
+
+      c_s1_nb2: "C. Time-varying metadata"
+      c1_s1_nb2: "1) Extract attributes as list of dictionaries"
+      c2_s1_nb2: "2) Create tuple of metadata for each type of information"
+      c3_s1_nb2: "3) Assign metadata tuple to Xarray dataset as a coordinate variable"
+
+      d_s1_nb2: "D. Add metadata from a markdown file"
+      d1_s1_nb2: "1) Extract granule ID"
+      d2_s1_nb2: "2) Build coordinate `xr.DataArray`"
+      
 
 
 
