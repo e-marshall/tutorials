@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2. Metadata wrangling" href="2_wrangle_metadata.html" />
-    <link rel="prev" title="Introduction" href="../new_s1_intro.html" />
+    <link rel="prev" title="Introduction" href="../s1_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -203,19 +203,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../new_s1_intro.html">Introduction</a></li>
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="../s1_intro.html">Introduction</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Read Sentinel-1 data processed by ASF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_wrangle_metadata.html">2. Metadata wrangling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_asf_exploratory_analysis.html">3. Exploratory analysis of ASF S1 imagery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_read_pc_data.html">4. Read Sentinel-1 RTC data from Microsoft Planetary Computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_comparing_s1_rtc_datasets.html">5. Comparing Sentinel-1 RTC datasets</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../pt4/summary.html">Tutorials summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pt4/tidy_principles.html">Principles of tidy array data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pt4/conclusion.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="nav bd-sidenav">
@@ -508,7 +507,7 @@ Learning goals</label><div class="sd-tab-content docutils">
 <ul class="simple">
 <li><p>Understand local file storage and create virtual datasets from locally stored files</p></li>
 <li><p>Read larger-than-memory data into memory</p></li>
-<li><p>Use VRT objects to create xarray objects from large data stacks</p></li>
+<li><p>Use VRT files to create 3-d Xarray data cubes from stack of 2-d image files</p></li>
 </ul>
 </div>
 </div>
@@ -523,8 +522,8 @@ Learning goals</label><div class="sd-tab-content docutils">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
-<div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">xmode</span> minimal
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%xmode minimal</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pathlib</span>
 <span class="kn">import</span> <span class="nn">re</span>
@@ -540,17 +539,6 @@ Learning goals</label><div class="sd-tab-content docutils">
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
-</pre></div>
-</div>
-</div>
-</details>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception reporting mode: Minimal
 </pre></div>
 </div>
 </div>
@@ -601,16 +589,24 @@ Learning goals</label><div class="sd-tab-content docutils">
 <p>To build GDAL VRT files, we need to pass a list of the input datasets. This means that we need to extract the file path to every file associated with each variable (VV, VH and L-S).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you are following along on your own computer, be sure to replace the <code class="docutils literal notranslate"><span class="pre">s1_asf_data</span></code> file path below with the path to the location of the downloaded files on your own computer.</p>
+<p>If you are following along on your own computer, be sure to set <code class="docutils literal notranslate"><span class="pre">path_to_rtcs</span></code> to the location of the downloaded files on your own computer.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to directory holding downloaded data</span>
-<span class="n">s1_asf_data</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">cwd</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;sentinel1_rtc/data/asf_rtcs&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_to_rtcs</span> <span class="o">=</span> <span class="s2">&quot;data/asf_rtcs&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to directory holding downloaded data</span>
+<span class="n">s1_asf_data</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">cwd</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">path_to_rtcs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make a list of all scenes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scenes_ls</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">)</span>
@@ -618,40 +614,42 @@ Learning goals</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
+<p>The below function makes a list of all file names across the individual scene directory for VV, VH, ls_map and README files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to extract path for target files from each scene</span>
-<span class="k">def</span> <span class="nf">extract_fnames</span><span class="p">(</span><span class="n">data_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">scene_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;return a list of files associated with a single S1 scene&quot;&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_fnames</span><span class="p">(</span><span class="n">data_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">scene_name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
     <span class="c1"># Make list of files within each scene directory in data directory</span>
     <span class="n">scene_files_ls</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">scene_name</span><span class="p">))</span>
 
-    <span class="c1"># Make a list to hold README files</span>
-    <span class="n">rm</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;README.md.txt&quot;</span><span class="p">)]</span>
-
-    <span class="c1"># Make a list to hold tif file names for each variable</span>
-    <span class="n">scene_files_vv</span> <span class="o">=</span> <span class="p">[</span><span class="n">fname</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">fname</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;_VV.tif&quot;</span><span class="p">)]</span>
-    <span class="n">scene_files_vh</span> <span class="o">=</span> <span class="p">[</span><span class="n">fname</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">fname</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;_VH.tif&quot;</span><span class="p">)]</span>
-    <span class="n">scene_files_ls</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">fname</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">fname</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;_ls_map.tif&quot;</span><span class="p">)</span>
-    <span class="p">]</span>
-
-    <span class="k">return</span> <span class="n">scene_files_vv</span><span class="p">,</span> <span class="n">scene_files_vh</span><span class="p">,</span> <span class="n">scene_files_ls</span><span class="p">,</span> <span class="n">rm</span>
+    <span class="k">if</span> <span class="n">variable</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;vv&#39;</span><span class="p">,</span><span class="s1">&#39;vh&#39;</span><span class="p">]:</span>
+        <span class="n">scene_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">fname</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">fname</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">variable</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">.tif&quot;</span><span class="p">)]</span>
+    
+    <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="s1">&#39;ls_map&#39;</span><span class="p">:</span>
+        <span class="n">scene_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">fname</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">fname</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;_ls_map.tif&quot;</span><span class="p">)]</span>
+    
+    <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="s1">&#39;readme&#39;</span><span class="p">:</span>
+        <span class="n">scene_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;README.md.txt&quot;</span><span class="p">)]</span>
+   
+    <span class="k">return</span> <span class="n">scene_files</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Below is the output of <code class="docutils literal notranslate"><span class="pre">extract_fnames()</span></code> for two sub-directories in the data directory. Note that <code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code> <strong>does not</strong> preserve the order of the subdirectories as listed on disk. This is okay because we will ensure that the files are sorted in chronological order later.</p>
+<p>Below is the output of <code class="docutils literal notranslate"><span class="pre">extract_fnames()</span></code> for two one scene directory. Note that <code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code> <strong>does not</strong> preserve the order of the subdirectories as listed on disk. This is okay because we will ensure that the files are sorted in chronological order later.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;vv&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;vh&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;ls_map&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;readme&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&#39;S1A_IW_20220214T121353_DVP_RTC30_G_gpuned_51E7_VV.tif&#39;], [&#39;S1A_IW_20220214T121353_DVP_RTC30_G_gpuned_51E7_VH.tif&#39;], [&#39;S1A_IW_20220214T121353_DVP_RTC30_G_gpuned_51E7_ls_map.tif&#39;], [&#39;S1A_IW_20220214T121353_DVP_RTC30_G_gpuned_51E7.README.md.txt&#39;])
-([&#39;S1A_IW_20210911T121356_DVP_RTC30_G_gpuned_3A2A_VV.tif&#39;], [&#39;S1A_IW_20210911T121356_DVP_RTC30_G_gpuned_3A2A_VH.tif&#39;], [&#39;S1A_IW_20210911T121356_DVP_RTC30_G_gpuned_3A2A_ls_map.tif&#39;], [&#39;S1A_IW_20210911T121356_DVP_RTC30_G_gpuned_3A2A.README.md.txt&#39;])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;S1A_IW_20220214T121353_DVP_RTC30_G_gpuned_51E7_VV.tif&#39;]
+[&#39;S1A_IW_20220214T121353_DVP_RTC30_G_gpuned_51E7_VH.tif&#39;]
+[&#39;S1A_IW_20220214T121353_DVP_RTC30_G_gpuned_51E7_ls_map.tif&#39;]
+[&#39;S1A_IW_20220214T121353_DVP_RTC30_G_gpuned_51E7.README.md.txt&#39;]
 </pre></div>
 </div>
 </div>
@@ -659,81 +657,88 @@ Learning goals</label><div class="sd-tab-content docutils">
 <p>We need to attach the filenames to the path of each file so that we end up with a list of the full paths to the VV and VH band imagery, layover-shadow maps and README files. Within this step, we will also add checks to ensure that the process is doing what we want, which is to create lists of filepaths for each character <strong>with the same order across lists</strong> so that we can combine the lists into a multivariate time series. As noted above, it is okay that the lists are not in chronological order, as long as they are in <strong>the same</strong> order across variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_filename_lists</span><span class="p">(</span><span class="n">asf_s1_data_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="c1"># Make list of all scenes in dir</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_filepath_lists</span><span class="p">(</span><span class="n">asf_s1_data_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; For a single variable (vv, vh, ls_map or readme), make list of </span>
+<span class="sd">    full filepath for each file in time series. Also return dates to ensure</span>
+<span class="sd">    extraction happens in correct order for each variable</span>
+<span class="sd">    Return tuple with form (filepaths list, dates list)&quot;&quot;&quot;</span>
     <span class="n">scenes_ls</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">asf_s1_data_path</span><span class="p">)</span>
 
-    <span class="c1"># Make empty lists to hold file paths for different variables</span>
-    <span class="n">fpaths_vv</span><span class="p">,</span> <span class="n">fpaths_vh</span><span class="p">,</span> <span class="n">fpaths_ls</span><span class="p">,</span> <span class="n">fpaths_rm</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="n">fpaths</span><span class="p">,</span> <span class="n">dates_ls</span> <span class="o">=</span> <span class="p">[],[]</span>
 
     <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scenes_ls</span><span class="p">)):</span>
+
         <span class="c1"># Extract filenames of each file of interest</span>
-        <span class="n">files_of_interest</span> <span class="o">=</span> <span class="n">extract_fnames</span><span class="p">(</span><span class="n">asf_s1_data_path</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="n">element</span><span class="p">])</span>
-
+        <span class="n">files_of_interest</span> <span class="o">=</span> <span class="n">extract_fnames</span><span class="p">(</span><span class="n">asf_s1_data_path</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="n">element</span><span class="p">],</span> <span class="n">variable</span><span class="p">)</span>
         <span class="c1"># Make full path with filename for each variable</span>
-        <span class="n">path_vv</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="n">asf_s1_data_path</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="n">element</span><span class="p">],</span> <span class="n">files_of_interest</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">asf_s1_data_path</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="n">element</span><span class="p">],</span> <span class="n">files_of_interest</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="p">)</span>
-        <span class="n">path_vh</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="n">asf_s1_data_path</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="n">element</span><span class="p">],</span> <span class="n">files_of_interest</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="p">)</span>
-        <span class="n">path_ls</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="n">asf_s1_data_path</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="n">element</span><span class="p">],</span> <span class="n">files_of_interest</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="p">)</span>
-        <span class="n">path_readme</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="n">asf_s1_data_path</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="n">element</span><span class="p">],</span> <span class="n">files_of_interest</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="p">)</span>
+        <span class="c1">#extract dates to make sure dates are identical across variable lists</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+        
+        <span class="n">dates_ls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+        <span class="n">fpaths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="p">(</span><span class="n">fpaths</span><span class="p">,</span> <span class="n">dates_ls</span><span class="p">)</span>
 
-        <span class="c1"># add a check to ensure that the files are aligned correctly</span>
-        <span class="n">date_vv</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path_vv</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
-        <span class="n">date_vh</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path_vh</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
-        <span class="n">date_ls</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path_ls</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
-        <span class="n">date_rm</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path_readme</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
-        <span class="k">assert</span> <span class="n">date_vh</span> <span class="o">==</span> <span class="n">date_vv</span> <span class="o">==</span> <span class="n">date_ls</span> <span class="o">==</span> <span class="n">date_rm</span><span class="p">,</span> <span class="p">(</span>
-            <span class="s2">&quot;AssertionError: File dates do not match across variables.&quot;</span>
-        <span class="p">)</span>
+    
 
-        <span class="n">fpaths_vv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path_vv</span><span class="p">)</span>
-        <span class="n">fpaths_vh</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path_vh</span><span class="p">)</span>
-        <span class="n">fpaths_ls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path_ls</span><span class="p">)</span>
-        <span class="n">fpaths_rm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path_readme</span><span class="p">)</span>
-
-    <span class="c1"># Check that all lists are the same length</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">fpaths_vv</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">fpaths_vh</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">fpaths_ls</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">fpaths_rm</span><span class="p">),</span> <span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Files weren&#39;t extracted correctly. Expected all lists to be the same length, received </span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="s2">&quot;{len(fpaths_vv)}, {len(fpaths_vh)}, {len(fpaths_ls)}, {len(fpaths_rm)}&quot;</span>
-    <span class="p">)</span>
-    <span class="c1"># Check that all lists are the same length</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">fpaths_vv</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">fpaths_vh</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">fpaths_ls</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">fpaths_rm</span><span class="p">),</span> <span class="p">(</span>
-        <span class="s2">&quot;Files weren&#39;t extracted correctly or fname lists weren&#39;t made correctly&quot;</span>
-    <span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">fpaths_vv</span><span class="p">,</span> <span class="n">fpaths_vh</span><span class="p">,</span> <span class="n">fpaths_ls</span><span class="p">,</span> <span class="n">fpaths_rm</span><span class="p">)</span>
+    
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepaths_vv</span><span class="p">,</span> <span class="n">filepaths_vh</span><span class="p">,</span> <span class="n">filepaths_ls</span><span class="p">,</span> <span class="n">filepaths_rm</span> <span class="o">=</span> <span class="n">make_filename_lists</span><span class="p">(</span>
-    <span class="n">s1_asf_data</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_filenames_dict</span><span class="p">(</span><span class="n">rtc_path</span><span class="p">,</span> <span class="n">variables_ls</span><span class="p">):</span>
+
+    <span class="n">keys</span><span class="p">,</span> <span class="n">filepaths</span><span class="p">,</span> <span class="n">dates</span> <span class="o">=</span> <span class="p">[],[],[]</span>
+    <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">variables_ls</span><span class="p">:</span>
+        <span class="n">keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
+
+        <span class="n">filespaths_list</span><span class="p">,</span> <span class="n">dates_list</span> <span class="o">=</span> <span class="n">make_filepath_lists</span><span class="p">(</span><span class="n">rtc_path</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span>
+        <span class="n">filepaths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filespaths_list</span><span class="p">)</span>
+        <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dates_list</span><span class="p">)</span>
+    
+    <span class="c1">#make dict of variable names (keys) and associated filepaths</span>
+    <span class="n">filepaths_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">filepaths</span><span class="p">))</span>
+
+    <span class="c1">#make sure that dates are identical across all lists</span>
+    <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">lst</span> <span class="o">==</span> <span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">lst</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span>
+    <span class="c1">#make sure length of each variable list is the same </span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">filepaths_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()])))</span> <span class="o">==</span> <span class="mi">1</span>
+    
+
+
+    <span class="c1">#make dict of variable names (keys) and associated filepaths</span>
+    <span class="n">filepaths_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">filepaths</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">filepaths_dict</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Create a dictionary to hold the file paths for each variable so that we can use them more easily later:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_paths_dict</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;vv&quot;</span><span class="p">:</span> <span class="n">filepaths_vv</span><span class="p">,</span>
-    <span class="s2">&quot;vh&quot;</span><span class="p">:</span> <span class="n">filepaths_vh</span><span class="p">,</span>
-    <span class="s2">&quot;ls&quot;</span><span class="p">:</span> <span class="n">filepaths_ls</span><span class="p">,</span>
-    <span class="s2">&quot;readme&quot;</span><span class="p">:</span> <span class="n">filepaths_rm</span><span class="p">,</span>
-<span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepaths_dict</span> <span class="o">=</span> <span class="n">create_filenames_dict</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;vv&#39;</span><span class="p">,</span><span class="s1">&#39;vh&#39;</span><span class="p">,</span><span class="s1">&#39;ls_map&#39;</span><span class="p">,</span><span class="s1">&#39;readme&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">filepaths_dict</span></code> has a key for each file type:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepaths_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;vv&#39;, &#39;vh&#39;, &#39;ls_map&#39;, &#39;readme&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The values are the paths to each file.</p>
 </section>
 <section id="create-vrt-objects">
 <h3>2) Create VRT objects<a class="headerlink" href="#create-vrt-objects" title="Permalink to this heading">#</a></h3>
@@ -744,18 +749,22 @@ Learning goals</label><div class="sd-tab-content docutils">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_vrt_object</span><span class="p">(</span><span class="n">fpaths_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to create VRT files for each variable given a</span>
 <span class="sd">    list of file paths fo that variable.&quot;&quot;&quot;</span>
+    
+    <span class="c1">#switch &#39;ls&#39; to match variable name in dict</span>
+    <span class="k">if</span> <span class="n">variable</span> <span class="o">==</span> <span class="s2">&quot;ls&quot;</span><span class="p">:</span>
+        <span class="n">variable</span> <span class="o">=</span> <span class="s2">&quot;ls_map&quot;</span>
 
     <span class="c1"># Write file paths to txt file</span>
-    <span class="n">fpath_input_txt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;s1_</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s2">_fpaths.txt&quot;</span>
+    <span class="n">fpath_input_txt</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../data/s1_</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s2">_fpaths.txt&quot;</span><span class="p">)</span>
 
     <span class="c1"># Specify location of vrt file- note that we use</span>
     <span class="c1"># tutorial2_dir path defined at top of notebook</span>
-    <span class="c1"># output_vrt_path = os.path.join(tutorial2_dir,</span>
     <span class="n">output_vrt_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;../data/vrt_files/s1_stack_</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s2">.vrt&quot;</span>
 
     <span class="c1"># Write file paths to txt file</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath_input_txt</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">fpaths_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]:</span>
+            <span class="c1">#print(item)</span>
             <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="o">!</span>gdalbuildvrt<span class="w"> </span>-separate<span class="w"> </span>-input_file_list<span class="w"> </span><span class="o">{</span>fpath_input_txt<span class="o">}</span><span class="w"> </span><span class="o">{</span>output_vrt_path<span class="o">}</span>
@@ -765,47 +774,47 @@ Learning goals</label><div class="sd-tab-content docutils">
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_vrt_object</span><span class="p">(</span><span class="n">file_paths_dict</span><span class="p">,</span> <span class="s2">&quot;vv&quot;</span><span class="p">)</span>
-<span class="n">create_vrt_object</span><span class="p">(</span><span class="n">file_paths_dict</span><span class="p">,</span> <span class="s2">&quot;vh&quot;</span><span class="p">)</span>
-<span class="n">create_vrt_object</span><span class="p">(</span><span class="n">file_paths_dict</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_vrt_object</span><span class="p">(</span><span class="n">filepaths_dict</span><span class="p">,</span> <span class="s2">&quot;vv&quot;</span><span class="p">)</span>
+<span class="n">create_vrt_object</span><span class="p">(</span><span class="n">filepaths_dict</span><span class="p">,</span> <span class="s2">&quot;vh&quot;</span><span class="p">)</span>
+<span class="n">create_vrt_object</span><span class="p">(</span><span class="n">filepaths_dict</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...10...20...30...40
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...50...60...70...80.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..90...100 - done.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...10...20...30...40...50
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...60...70...80...90..
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.100 - done.
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..10...20...30...40.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..50...60...70...80..
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..50...60...70...80...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.90...100 - done.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90...100 - done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..10...20...30...40
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...50...60...70...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80...90...100 - done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...10...20...30..
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.40...50...60...70...80...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90...100 - done.
 </pre></div>
 </div>
 </div>
@@ -816,9 +825,9 @@ Learning goals</label><div class="sd-tab-content docutils">
 <h2>B. Read data<a class="headerlink" href="#b-read-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_vv</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;../data/vrt_files/s1_stackVV.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
-<span class="n">ds_vh</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;../data/vrt_files/s1_stackVH.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
-<span class="n">ds_ls</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;../data/vrt_files/s1_stackLS.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_vv</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;../data/vrt_files/s1_stack_vv.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">ds_vh</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;../data/vrt_files/s1_stack_vh.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">ds_ls</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;../data/vrt_files/s1_stack_ls_map.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1207,14 +1216,14 @@ Coordinates:
   * y            (y) float64 107kB 3.309e+06 3.309e+06 ... 2.907e+06 2.907e+06
     spatial_ref  int64 8B ...
 Data variables:
-    band_data    (band, y, x) float32 96GB dask.array&lt;chunksize=(12, 1536, 1536), meta=np.ndarray&gt;</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-68d9a771-5232-48c0-be3e-79e48b92697a' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-68d9a771-5232-48c0-be3e-79e48b92697a' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>band</span>: 103</li><li><span class='xr-has-index'>x</span>: 17452</li><li><span class='xr-has-index'>y</span>: 13379</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-c72a37bd-b55a-4d6f-846c-284451d3ca83' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c72a37bd-b55a-4d6f-846c-284451d3ca83' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>band</span></div><div class='xr-var-dims'>(band)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 ... 99 100 101 102 103</div><input id='attrs-4ddece73-6d2f-41ea-bf6b-70f07b455209' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-4ddece73-6d2f-41ea-bf6b-70f07b455209' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c654fc6c-21be-4a45-8810-0b91a5d917f1' class='xr-var-data-in' type='checkbox'><label for='data-c654fc6c-21be-4a45-8810-0b91a5d917f1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,  14,
+    band_data    (band, y, x) float32 96GB dask.array&lt;chunksize=(12, 1536, 1536), meta=np.ndarray&gt;</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-b43c46ce-2b97-4d93-8a24-7c86effe3af5' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-b43c46ce-2b97-4d93-8a24-7c86effe3af5' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>band</span>: 103</li><li><span class='xr-has-index'>x</span>: 17452</li><li><span class='xr-has-index'>y</span>: 13379</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-e3105345-4009-41a3-902b-eabc6e1a42ff' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e3105345-4009-41a3-902b-eabc6e1a42ff' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>band</span></div><div class='xr-var-dims'>(band)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 ... 99 100 101 102 103</div><input id='attrs-5d90d8ca-fed8-471c-a12b-4bec191c25e1' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-5d90d8ca-fed8-471c-a12b-4bec191c25e1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cbb2b3c8-d8f3-4902-a504-d98cfc40bcdb' class='xr-var-data-in' type='checkbox'><label for='data-cbb2b3c8-d8f3-4902-a504-d98cfc40bcdb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,  14,
         15,  16,  17,  18,  19,  20,  21,  22,  23,  24,  25,  26,  27,  28,
         29,  30,  31,  32,  33,  34,  35,  36,  37,  38,  39,  40,  41,  42,
         43,  44,  45,  46,  47,  48,  49,  50,  51,  52,  53,  54,  55,  56,
         57,  58,  59,  60,  61,  62,  63,  64,  65,  66,  67,  68,  69,  70,
         71,  72,  73,  74,  75,  76,  77,  78,  79,  80,  81,  82,  83,  84,
         85,  86,  87,  88,  89,  90,  91,  92,  93,  94,  95,  96,  97,  98,
-        99, 100, 101, 102, 103])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>3.833e+05 3.833e+05 ... 9.068e+05</div><input id='attrs-e3cf1426-7703-48f3-8d79-ee6301c4ff73' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e3cf1426-7703-48f3-8d79-ee6301c4ff73' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fd6541a8-1597-4681-8112-75b783002682' class='xr-var-data-in' type='checkbox'><label for='data-fd6541a8-1597-4681-8112-75b783002682' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([383265., 383295., 383325., ..., 906735., 906765., 906795.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>3.309e+06 3.309e+06 ... 2.907e+06</div><input id='attrs-372fa9d2-26a0-478f-bb56-b6d30ed3c742' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-372fa9d2-26a0-478f-bb56-b6d30ed3c742' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ef833f07-9e34-4478-9a50-099b50f1e904' class='xr-var-data-in' type='checkbox'><label for='data-ef833f07-9e34-4478-9a50-099b50f1e904' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([3308715., 3308685., 3308655., ..., 2907435., 2907405., 2907375.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-093d5f40-f8ca-4c0e-97fe-496797c05bbc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-093d5f40-f8ca-4c0e-97fe-496797c05bbc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-54489c12-3c51-4c26-8587-10e38f0fbd19' class='xr-var-data-in' type='checkbox'><label for='data-54489c12-3c51-4c26-8587-10e38f0fbd19' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 45N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,87],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32645&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 45N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>87.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 45N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,87],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32645&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>383250.0 30.0 0.0 3308730.0 0.0 -30.0</dd></dl></div><div class='xr-var-data'><pre>[1 values with dtype=int64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-580ca91a-1c70-4026-905e-bdaed964e577' class='xr-section-summary-in' type='checkbox'  checked><label for='section-580ca91a-1c70-4026-905e-bdaed964e577' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>band_data</span></div><div class='xr-var-dims'>(band, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(12, 1536, 1536), meta=np.ndarray&gt;</div><input id='attrs-e4106f48-9fcc-473b-8342-11a46479a8ec' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e4106f48-9fcc-473b-8342-11a46479a8ec' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-746a28d1-cfc4-42d8-9ed8-7c813423d5e9' class='xr-var-data-in' type='checkbox'><label for='data-746a28d1-cfc4-42d8-9ed8-7c813423d5e9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
+        99, 100, 101, 102, 103])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>3.833e+05 3.833e+05 ... 9.068e+05</div><input id='attrs-502ecba7-2ff5-4cbc-b9bf-85ff33036bee' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-502ecba7-2ff5-4cbc-b9bf-85ff33036bee' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8048cb76-22e5-4d28-a270-d42ba6474990' class='xr-var-data-in' type='checkbox'><label for='data-8048cb76-22e5-4d28-a270-d42ba6474990' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([383265., 383295., 383325., ..., 906735., 906765., 906795.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>3.309e+06 3.309e+06 ... 2.907e+06</div><input id='attrs-1f2c1210-02f6-499c-94b9-b3084709dd08' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-1f2c1210-02f6-499c-94b9-b3084709dd08' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9a6332ca-8655-43c6-a60f-7b2417a021fc' class='xr-var-data-in' type='checkbox'><label for='data-9a6332ca-8655-43c6-a60f-7b2417a021fc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([3308715., 3308685., 3308655., ..., 2907435., 2907405., 2907375.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-755d347b-ee07-4656-83ed-0fe027515020' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-755d347b-ee07-4656-83ed-0fe027515020' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-71e9e1b9-d288-4c24-b7f7-1d269d673a32' class='xr-var-data-in' type='checkbox'><label for='data-71e9e1b9-d288-4c24-b7f7-1d269d673a32' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 45N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,87],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32645&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 45N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>87.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 45N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,87],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32645&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>383250.0 30.0 0.0 3308730.0 0.0 -30.0</dd></dl></div><div class='xr-var-data'><pre>[1 values with dtype=int64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3f6f54df-6f25-4dfe-9837-f1ed9c1e8155' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3f6f54df-6f25-4dfe-9837-f1ed9c1e8155' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>band_data</span></div><div class='xr-var-dims'>(band, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(12, 1536, 1536), meta=np.ndarray&gt;</div><input id='attrs-98e8814c-f518-4886-a467-a641a25941c8' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-98e8814c-f518-4886-a467-a641a25941c8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-43a6c289-4ab0-4175-bcac-9f0df280d8d8' class='xr-var-data-in' type='checkbox'><label for='data-43a6c289-4ab0-4175-bcac-9f0df280d8d8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1346,20 +1355,20 @@ Data variables:
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-6c790422-9bb4-4e7f-bef5-4bddff0fe395' class='xr-section-summary-in' type='checkbox'  ><label for='section-6c790422-9bb4-4e7f-bef5-4bddff0fe395' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>band</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-5a89a765-1656-476f-8ec6-78fb329b67bb' class='xr-index-data-in' type='checkbox'/><label for='index-5a89a765-1656-476f-8ec6-78fb329b67bb' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-1faf2c96-0d8f-4bc3-a1f8-bd2f1ef1a91f' class='xr-section-summary-in' type='checkbox'  ><label for='section-1faf2c96-0d8f-4bc3-a1f8-bd2f1ef1a91f' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>band</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-a36338fb-2ba6-45a0-aca4-46da508ae31c' class='xr-index-data-in' type='checkbox'/><label for='index-a36338fb-2ba6-45a0-aca4-46da508ae31c' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,
        ...
         94,  95,  96,  97,  98,  99, 100, 101, 102, 103],
-      dtype=&#x27;int64&#x27;, name=&#x27;band&#x27;, length=103))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-35c5574c-dd67-4a55-8cba-2cf1a773719e' class='xr-index-data-in' type='checkbox'/><label for='index-35c5574c-dd67-4a55-8cba-2cf1a773719e' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([383265.0, 383295.0, 383325.0, 383355.0, 383385.0, 383415.0, 383445.0,
+      dtype=&#x27;int64&#x27;, name=&#x27;band&#x27;, length=103))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-24612d43-89b5-442a-9139-87b45d364280' class='xr-index-data-in' type='checkbox'/><label for='index-24612d43-89b5-442a-9139-87b45d364280' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([383265.0, 383295.0, 383325.0, 383355.0, 383385.0, 383415.0, 383445.0,
        383475.0, 383505.0, 383535.0,
        ...
        906525.0, 906555.0, 906585.0, 906615.0, 906645.0, 906675.0, 906705.0,
        906735.0, 906765.0, 906795.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;x&#x27;, length=17452))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-993085e2-e5b5-42e0-b81d-b0710a1f4646' class='xr-index-data-in' type='checkbox'/><label for='index-993085e2-e5b5-42e0-b81d-b0710a1f4646' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([3308715.0, 3308685.0, 3308655.0, 3308625.0, 3308595.0, 3308565.0,
+      dtype=&#x27;float64&#x27;, name=&#x27;x&#x27;, length=17452))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-73b6aebb-b5ef-4199-833e-4b18f259ae04' class='xr-index-data-in' type='checkbox'/><label for='index-73b6aebb-b5ef-4199-833e-4b18f259ae04' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([3308715.0, 3308685.0, 3308655.0, 3308625.0, 3308595.0, 3308565.0,
        3308535.0, 3308505.0, 3308475.0, 3308445.0,
        ...
        2907645.0, 2907615.0, 2907585.0, 2907555.0, 2907525.0, 2907495.0,
        2907465.0, 2907435.0, 2907405.0, 2907375.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;y&#x27;, length=13379))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-77b47488-ebed-41e0-8d1d-43c63178f8e5' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-77b47488-ebed-41e0-8d1d-43c63178f8e5' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;float64&#x27;, name=&#x27;y&#x27;, length=13379))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-db7a50c1-ee63-4733-aad3-6b82346eb429' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-db7a50c1-ee63-4733-aad3-6b82346eb429' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Building the <code class="docutils literal notranslate"><span class="pre">VRT</span></code> object assigns every object in the .txt file to a different band. In doing this, we lose the metadata that is associated with the files. The next notebook walks through the steps of reconstructing necessary metadata stored in file names and auxiliary files and attaching it to the Xarray objects read from VRTs.</p>
 <section id="take-a-look-at-chunking">
@@ -1407,7 +1416,7 @@ Data variables:
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../new_s1_intro.html"
+       href="../s1_intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">

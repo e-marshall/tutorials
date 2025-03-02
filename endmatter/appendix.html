@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Other resources" href="other_resources.html" />
-    <link rel="prev" title="Principles of tidy array data" href="../pt4/tidy_principles.html" />
+    <link rel="prev" title="Conclusion" href="../pt4/conclusion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -203,19 +203,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../tutorial2/new_s1_intro.html">Introduction</a></li>
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="../tutorial2/s1_intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/1_read_asf_data.html">1. Read Sentinel-1 data processed by ASF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/2_wrangle_metadata.html">2. Metadata wrangling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/3_asf_exploratory_analysis.html">3. Exploratory analysis of ASF S1 imagery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/4_read_pc_data.html">4. Read Sentinel-1 RTC data from Microsoft Planetary Computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/5_comparing_s1_rtc_datasets.html">5. Comparing Sentinel-1 RTC datasets</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../pt4/summary.html">Tutorials summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pt4/tidy_principles.html">Principles of tidy array data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt4/conclusion.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="current nav bd-sidenav">
@@ -417,8 +416,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-geometry-types-its-live-tutorial">1.1. Troubleshooting geometry types (ITS_LIVE tutorial)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial">1.2 Reading a stack of files with <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> (Sentinel-1 tutorial)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-geometry-types-its-live-tutorial"><span class="xref myst">1. Troubleshooting geometry types (ITS_LIVE tutorial)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial"><span class="xref myst">2 Reading a stack of files with <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> (Sentinel-1 tutorial)</span></a></li>
 </ul>
             </nav>
         </div>
@@ -434,24 +433,15 @@ document.write(`
 <h1>Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading">#</a></h1>
 <p>While developing this book, we encountered different examples that didn’t always fit into the overall scope of the tutorials, but still may be useful to others.</p>
 <section id="troubleshooting-geometry-types-its-live-tutorial">
-<h2>1.1. Troubleshooting geometry types (ITS_LIVE tutorial)<a class="headerlink" href="#troubleshooting-geometry-types-its-live-tutorial" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><span class="xref myst">Appendix 1.1 notebook</span></p></li>
-</ul>
-<p>In the first tutorial, while making an <a class="reference internal" href="#../itslive_nbs/3_combining_raster_vector_data.ipynb"><span class="xref myst">interactive visualization of vector dataframes</span></a>, we encountered a warning. The notebook below includes a step-by-step demonstration of troubleshooting this warning, identifying its source and resolving it.</p>
+<h2><span class="xref myst">1. Troubleshooting geometry types (ITS_LIVE tutorial)</span><a class="headerlink" href="#troubleshooting-geometry-types-its-live-tutorial" title="Permalink to this heading">#</a></h2>
+<p>In the first tutorial, while making an <a class="reference internal" href="#../itslive_nbs/3_combining_raster_vector_data.ipynb"><span class="xref myst">interactive visualization of vector dataframes</span></a>, we encountered a warning. This notebook includes a step-by-step demonstration of troubleshooting this warning, identifying its source and resolving it.</p>
 </section>
 <section id="reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial">
-<h2>1.2 Reading a stack of files with <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> (Sentinel-1 tutorial)<a class="headerlink" href="#reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><span class="xref myst">Appendix 1.2 noteobok</span></p></li>
-</ul>
-<p>Xarray’s <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.open_mfdataset.html">function</a> allows the user to read in and combine multiple files at once to produce a single <code class="docutils literal notranslate"><span class="pre">xr.DataArray</span></code> object. I first used this to read in the geotiff files for each ASF-processed scene of Sentinel-1 RTC imagery. The <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> function takes a preprocess argument which allows you to write a function that specifies how each raster file is read in so that the structure and metadata of the returned object is correct. This gives you a lot of flexibility and makes reading in a large stack of files very smooth.</p>
-<p>However, for this dataset, I found that the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> function wasn’t a great fit. The raster stack all covered a common area of interest, but each file did not have the exact same spatial footprint. This created problems when specifying a chunking strategy, because the chunking was defined off of the first file in the stack, but would not be appropriate for files further down in the stack with different borders. The processing would work fine for all lazy steps, but a memory ‘blow-up’ would occur when I tried to perform a step that required computation. I initially thought I had bypassed this issue by clipping the returned dataset to the spatial extent of my area of interest (much smaller), but soon realized that this process encountered memory issues as well.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The stack I used contains multiple scenes that cover the same area of interest (multiple viewing geometries). If you wanted to select only scenes from a single viewing geometry at the expense of a denser time series, <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> might work a bit better (I didn’t try this, so I cannot say for sure)</p>
-</div>
-<p>Ultimately, I decided to use the approach of creating GDAL VRT objects, and reading those in with <code class="docutils literal notranslate"><span class="pre">rioxarray.open_rasterio()</span></code> to organize the data as xarray objects. This worked much better from a memory perspective but created much more work with organizing metadata and structuring the dataset in an analysis-ready format. The <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> function seems like a much more efficient approach if your dataset is well-aligned with its parameters (ie. a spatially uniform stack). While it did not end up being the best tool for this task, I decided to include the notebook with the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> approach anyway, in case it is useful to see a demonstration of this function. I learned a lot about how to structure a <code class="docutils literal notranslate"><span class="pre">preprocess</span></code> function and many other steps working on this example.</p>
+<h2><span class="xref myst">2 Reading a stack of files with <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> (Sentinel-1 tutorial)</span><a class="headerlink" href="#reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial" title="Permalink to this heading">#</a></h2>
+<p>Xarray’s <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.open_mfdataset.html">function</a> allows the user to read in and combine multiple files at once to produce a single <code class="docutils literal notranslate"><span class="pre">xr.DataArray</span></code> object. This approach was explore when developing the <a class="reference internal" href="../tutorial2/nbs/1_read_asf_data.html"><span class="std std-doc">Read ASF-processed Sentinel-1 RTC data notebook</span></a>. However, `xr.open_mfdataset() didn’t work well for this purpose because, while the stack of raster files used in this example covers a common area of interest, it includes several different spatial footprints. This creates problems when specifying a chunking strategy.</p>
+<p><code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> takes a ‘preprocess’ argument that allows the user to write a function to specify how each raster file should be read so that the structure and metadata of the returned object matches the desired format. However, because it applies the same preprocessing steps to each file, the chunking strategyy is defined off of the first file in the stack. With files that cover different spatial footprints, different chunking strategies will be required. The processing works fine for lazy steps, but a memory ‘blow-up’ occurs at computation time.</p>
+<p>For this reason, <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> was not an appropriate tool for this workflow. We kept this example in the book as an appendix item in case it is useful for users who would like to see an example of how to write a <code class="docutils literal notranslate"><span class="pre">preprocess</span></code> argument and how to call <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code>.</p>
+<p>We found that creating and reading GDAL VRT objects worked better from a memory perspective, but it created much more work to organize metadata and prepare an analysis-ready data cube. The <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> function seems much more efficient approach if your dataset is well-aligned with its parameters (ie. a spatially uniform stack).</p>
 <p>In addition to the documentation linked above, some other useful resources for <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> are:</p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://stackoverflow.com/questions/51709266/using-xarray-to-open-a-multi-file-dataset-when-both-the-files-and-dataset-have-a">Stack overflow discussion</a> on passing <code class="docutils literal notranslate"><span class="pre">preprocess</span></code> arguments to <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code><br />
@@ -461,7 +451,11 @@ document.write(`
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Check that i’m interpreting the solution on this thread correctly?</p>
+<p>TODO that i’m interpreting the solution on this thread correctly?</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you wanted to select scenes from a single viewing geometry at the expense of a denser time series, <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> might work a bit better (this approach has not been tested).</p>
 </div>
 </section>
 </section>
@@ -497,12 +491,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../pt4/tidy_principles.html"
+       href="../pt4/conclusion.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Principles of tidy array data</p>
+        <p class="prev-next-title">Conclusion</p>
       </div>
     </a>
     <a class="right-next"
@@ -530,8 +524,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-geometry-types-its-live-tutorial">1.1. Troubleshooting geometry types (ITS_LIVE tutorial)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial">1.2 Reading a stack of files with <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> (Sentinel-1 tutorial)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-geometry-types-its-live-tutorial"><span class="xref myst">1. Troubleshooting geometry types (ITS_LIVE tutorial)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial"><span class="xref myst">2 Reading a stack of files with <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> (Sentinel-1 tutorial)</span></a></li>
 </ul>
   </nav></div>
 
