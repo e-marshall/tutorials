@@ -472,10 +472,10 @@ document.write(`
 <h1>1. Read Sentinel-1 data processed by ASF<a class="headerlink" href="#read-sentinel-1-data-processed-by-asf" title="Permalink to this heading">#</a></h1>
 <p>This notebook demonstrates working with Sentinel-1 RTC imagery that has been processed on the <a class="reference external" href="https://docs.asf.alaska.edu/vertex/manual/">ASF On-Demand server</a> and downloaded locally.</p>
 <p>The downloaded time series of Sentinel-1 imagery is very large. We demonstrate strategies for reading data of this nature into memory by creating a <em>virtual copy</em> of the data.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>As mentioned, the steps shown in this notebook involve downloading and extracting large volumes of data. <strong>It is not necessary to do this to follow the rest of the content in the tutorial</strong>. We include the demonstration for the purposes of completeness and to help users who may be in this situation.</p>
-<p><em><strong>To skip downloading the data and proceed with the tutorial, use the VRT files located in the <code class="docutils literal notranslate"><span class="pre">../tutorial2/data/</span></code> directory of the tutorial repository.</strong></em></p>
+<div class="admonition-asf-data-access-options admonition">
+<p class="admonition-title">ASF data access options</p>
+<p>The steps shown in this notebook involve downloading and extracting large volumes of data. <strong>It is not necessary to do this to follow the rest of the content in the tutorial</strong>. We include the demonstration for the purposes of completeness and to help users who may be in this situation.</p>
+<p>For more information on different options for downloading data locally, see the <a class="reference internal" href="../s1_intro.html#different-ways-to-use-this-tutorial"><span class="std std-ref">Introduction</span></a>.</p>
 </div>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -510,10 +510,6 @@ Learning goals</label><div class="sd-tab-content docutils">
 <li><p>Use VRT files to create 3-d Xarray data cubes from stack of 2-d image files</p></li>
 </ul>
 </div>
-</div>
-<div class="admonition-asf-data-access admonition">
-<p class="admonition-title">ASF Data Access</p>
-<p>You can download the RTC-processed backscatter time series <a class="reference external" href="https://zenodo.org/record/7236413#.Y1rNi37MJ-0">here</a>. This tutorial starts from the point of having the data downloaded and unzipped in a directory. See the path to the directory location and the structure of the directory holding the unzipped files below.</p>
 </div>
 <p>Expand the next cell to see specific packages used in this notebook and relevant system and version information.</p>
 <div class="cell tag_hide-input tag_hide-output docutils container">
@@ -552,7 +548,7 @@ Learning goals</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-<p>TODO Add section explaining how to download and unzip data</p>
+<hr class="docutils" />
 <section id="a-prepare-to-read-data-into-memory">
 <h2>A. Prepare to read data into memory<a class="headerlink" href="#a-prepare-to-read-data-into-memory" title="Permalink to this heading">#</a></h2>
 <section id="build-lists-of-file-names-and-paths-needed-for-vrt-objects">
@@ -587,13 +583,18 @@ Learning goals</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 <p>To build GDAL VRT files, we need to pass a list of the input datasets. This means that we need to extract the file path to every file associated with each variable (VV, VH and L-S).</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you are following along on your own computer, be sure to set <code class="docutils literal notranslate"><span class="pre">path_to_rtcs</span></code> to the location of the downloaded files on your own computer.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If you are following along on your own computer, be sure to specify two things:</p>
+<ol class="arabic simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">path_to_rtcs</span></code> to the location of the downloaded files on your own computer.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">timeseries_type</span></code> to <code class="docutils literal notranslate"><span class="pre">'full'</span></code> or <code class="docutils literal notranslate"><span class="pre">'subset'</span></code> depending on if you are using the full time series (103 files) or the subset time series (5 files).</p></li>
+</ol>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_to_rtcs</span> <span class="o">=</span> <span class="s2">&quot;data/asf_rtcs&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">timeseries_type</span> <span class="o">=</span> <span class="s2">&quot;full&quot;</span>
+<span class="n">path_to_rtcs</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;data/</span><span class="si">{</span><span class="n">timeseries_type</span><span class="si">}</span><span class="s2">_timeseries/asf_rtcs&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -746,25 +747,34 @@ Learning goals</label><div class="sd-tab-content docutils">
 <p>Here is where we use the list of file paths we created above. For each variable, write the list of file paths to a <code class="docutils literal notranslate"><span class="pre">.txt</span></code> file which is then passed to <code class="docutils literal notranslate"><span class="pre">gdalbuildvrt</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_vrt_object</span><span class="p">(</span><span class="n">fpaths_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_vrt_object</span><span class="p">(</span><span class="n">fpaths_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeseries_type</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to create VRT files for each variable given a</span>
 <span class="sd">    list of file paths fo that variable.&quot;&quot;&quot;</span>
+
+    <span class="n">full_timeseries_data</span> <span class="o">=</span> <span class="s1">&#39;../data/full_timeseries&#39;</span>
+    <span class="n">subset_timeseries_data</span> <span class="o">=</span> <span class="s1">&#39;../data/subset_timeseries&#39;</span>
+
+    <span class="k">if</span> <span class="n">timeseries_type</span> <span class="o">==</span> <span class="s1">&#39;full&#39;</span><span class="p">:</span>
+        <span class="n">data_path</span> <span class="o">=</span> <span class="n">full_timeseries_data</span>
+    <span class="k">elif</span> <span class="n">timeseries_type</span> <span class="o">==</span> <span class="s1">&#39;subset&#39;</span><span class="p">:</span>
+        <span class="n">data_path</span> <span class="o">=</span> <span class="n">subset_timeseries_data</span>
     
     <span class="c1">#switch &#39;ls&#39; to match variable name in dict</span>
     <span class="k">if</span> <span class="n">variable</span> <span class="o">==</span> <span class="s2">&quot;ls&quot;</span><span class="p">:</span>
         <span class="n">variable</span> <span class="o">=</span> <span class="s2">&quot;ls_map&quot;</span>
+    
+
 
     <span class="c1"># Write file paths to txt file</span>
-    <span class="n">fpath_input_txt</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../data/s1_</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s2">_fpaths.txt&quot;</span><span class="p">)</span>
+    <span class="n">fpath_input_txt</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;txt_files/s1_</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s2">_fpaths.txt&quot;</span><span class="p">)</span>
 
     <span class="c1"># Specify location of vrt file- note that we use</span>
     <span class="c1"># tutorial2_dir path defined at top of notebook</span>
-    <span class="n">output_vrt_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;../data/vrt_files/s1_stack_</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s2">.vrt&quot;</span>
+    <span class="n">output_vrt_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;vrt_files/s1_stack_</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s2">.vrt&quot;</span><span class="p">)</span>
 
     <span class="c1"># Write file paths to txt file</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath_input_txt</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">fpaths_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]:</span>
-            <span class="c1">#print(item)</span>
             <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="o">!</span>gdalbuildvrt<span class="w"> </span>-separate<span class="w"> </span>-input_file_list<span class="w"> </span><span class="o">{</span>fpath_input_txt<span class="o">}</span><span class="w"> </span><span class="o">{</span>output_vrt_path<span class="o">}</span>
@@ -774,47 +784,38 @@ Learning goals</label><div class="sd-tab-content docutils">
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_vrt_object</span><span class="p">(</span><span class="n">filepaths_dict</span><span class="p">,</span> <span class="s2">&quot;vv&quot;</span><span class="p">)</span>
-<span class="n">create_vrt_object</span><span class="p">(</span><span class="n">filepaths_dict</span><span class="p">,</span> <span class="s2">&quot;vh&quot;</span><span class="p">)</span>
-<span class="n">create_vrt_object</span><span class="p">(</span><span class="n">filepaths_dict</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_vrt_object</span><span class="p">(</span><span class="n">filepaths_dict</span><span class="p">,</span> <span class="s2">&quot;vv&quot;</span><span class="p">,</span> <span class="n">timeseries_type</span><span class="p">)</span>
+<span class="n">create_vrt_object</span><span class="p">(</span><span class="n">filepaths_dict</span><span class="p">,</span> <span class="s2">&quot;vh&quot;</span><span class="p">,</span> <span class="n">timeseries_type</span><span class="p">)</span>
+<span class="n">create_vrt_object</span><span class="p">(</span><span class="n">filepaths_dict</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">,</span> <span class="n">timeseries_type</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0...10
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..10...20...30...40.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...20...30...40...50..
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..50...60...70...80...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.60...70...80...90...100 - done.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90...100 - done.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0...10...20...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30...40...50...60...70..
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..10...20...30...40
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.80...90...100 - done.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...50...60...70...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0...10...20.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80...90...100 - done.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..30...40...50...60..
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...10...20...30..
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.40...50...60...70...80...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90...100 - done.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.70...80...90...100 - done.
 </pre></div>
 </div>
 </div>
@@ -825,9 +826,21 @@ Learning goals</label><div class="sd-tab-content docutils">
 <h2>B. Read data<a class="headerlink" href="#b-read-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_vv</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;../data/vrt_files/s1_stack_vv.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
-<span class="n">ds_vh</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;../data/vrt_files/s1_stack_vh.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
-<span class="n">ds_ls</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;../data/vrt_files/s1_stack_ls_map.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">timeseries_type</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;full&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_vv</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../data/</span><span class="si">{</span><span class="n">timeseries_type</span><span class="si">}</span><span class="s2">_timeseries/vrt_files/s1_stack_vv.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">ds_vh</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../data/</span><span class="si">{</span><span class="n">timeseries_type</span><span class="si">}</span><span class="s2">_timeseries/vrt_files/s1_stack_vh.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">ds_ls</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../data/</span><span class="si">{</span><span class="n">timeseries_type</span><span class="si">}</span><span class="s2">_timeseries/vrt_files/s1_stack_ls_map.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1216,14 +1229,14 @@ Coordinates:
   * y            (y) float64 107kB 3.309e+06 3.309e+06 ... 2.907e+06 2.907e+06
     spatial_ref  int64 8B ...
 Data variables:
-    band_data    (band, y, x) float32 96GB dask.array&lt;chunksize=(12, 1536, 1536), meta=np.ndarray&gt;</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-b43c46ce-2b97-4d93-8a24-7c86effe3af5' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-b43c46ce-2b97-4d93-8a24-7c86effe3af5' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>band</span>: 103</li><li><span class='xr-has-index'>x</span>: 17452</li><li><span class='xr-has-index'>y</span>: 13379</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-e3105345-4009-41a3-902b-eabc6e1a42ff' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e3105345-4009-41a3-902b-eabc6e1a42ff' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>band</span></div><div class='xr-var-dims'>(band)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 ... 99 100 101 102 103</div><input id='attrs-5d90d8ca-fed8-471c-a12b-4bec191c25e1' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-5d90d8ca-fed8-471c-a12b-4bec191c25e1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cbb2b3c8-d8f3-4902-a504-d98cfc40bcdb' class='xr-var-data-in' type='checkbox'><label for='data-cbb2b3c8-d8f3-4902-a504-d98cfc40bcdb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,  14,
+    band_data    (band, y, x) float32 96GB dask.array&lt;chunksize=(12, 1536, 1536), meta=np.ndarray&gt;</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-4b9e764b-995c-4415-9a10-5bd6fc2c8bb6' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-4b9e764b-995c-4415-9a10-5bd6fc2c8bb6' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>band</span>: 103</li><li><span class='xr-has-index'>x</span>: 17452</li><li><span class='xr-has-index'>y</span>: 13379</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-a74039c2-72f6-4bfd-b239-2e5fe4c56a6f' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a74039c2-72f6-4bfd-b239-2e5fe4c56a6f' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>band</span></div><div class='xr-var-dims'>(band)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 ... 99 100 101 102 103</div><input id='attrs-05200212-9f1e-4ae1-88f9-f050b5082a1e' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-05200212-9f1e-4ae1-88f9-f050b5082a1e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d73bdd62-4671-464d-8fce-009343e43080' class='xr-var-data-in' type='checkbox'><label for='data-d73bdd62-4671-464d-8fce-009343e43080' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,  14,
         15,  16,  17,  18,  19,  20,  21,  22,  23,  24,  25,  26,  27,  28,
         29,  30,  31,  32,  33,  34,  35,  36,  37,  38,  39,  40,  41,  42,
         43,  44,  45,  46,  47,  48,  49,  50,  51,  52,  53,  54,  55,  56,
         57,  58,  59,  60,  61,  62,  63,  64,  65,  66,  67,  68,  69,  70,
         71,  72,  73,  74,  75,  76,  77,  78,  79,  80,  81,  82,  83,  84,
         85,  86,  87,  88,  89,  90,  91,  92,  93,  94,  95,  96,  97,  98,
-        99, 100, 101, 102, 103])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>3.833e+05 3.833e+05 ... 9.068e+05</div><input id='attrs-502ecba7-2ff5-4cbc-b9bf-85ff33036bee' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-502ecba7-2ff5-4cbc-b9bf-85ff33036bee' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8048cb76-22e5-4d28-a270-d42ba6474990' class='xr-var-data-in' type='checkbox'><label for='data-8048cb76-22e5-4d28-a270-d42ba6474990' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([383265., 383295., 383325., ..., 906735., 906765., 906795.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>3.309e+06 3.309e+06 ... 2.907e+06</div><input id='attrs-1f2c1210-02f6-499c-94b9-b3084709dd08' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-1f2c1210-02f6-499c-94b9-b3084709dd08' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9a6332ca-8655-43c6-a60f-7b2417a021fc' class='xr-var-data-in' type='checkbox'><label for='data-9a6332ca-8655-43c6-a60f-7b2417a021fc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([3308715., 3308685., 3308655., ..., 2907435., 2907405., 2907375.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-755d347b-ee07-4656-83ed-0fe027515020' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-755d347b-ee07-4656-83ed-0fe027515020' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-71e9e1b9-d288-4c24-b7f7-1d269d673a32' class='xr-var-data-in' type='checkbox'><label for='data-71e9e1b9-d288-4c24-b7f7-1d269d673a32' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 45N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,87],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32645&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 45N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>87.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 45N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,87],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32645&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>383250.0 30.0 0.0 3308730.0 0.0 -30.0</dd></dl></div><div class='xr-var-data'><pre>[1 values with dtype=int64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3f6f54df-6f25-4dfe-9837-f1ed9c1e8155' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3f6f54df-6f25-4dfe-9837-f1ed9c1e8155' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>band_data</span></div><div class='xr-var-dims'>(band, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(12, 1536, 1536), meta=np.ndarray&gt;</div><input id='attrs-98e8814c-f518-4886-a467-a641a25941c8' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-98e8814c-f518-4886-a467-a641a25941c8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-43a6c289-4ab0-4175-bcac-9f0df280d8d8' class='xr-var-data-in' type='checkbox'><label for='data-43a6c289-4ab0-4175-bcac-9f0df280d8d8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
+        99, 100, 101, 102, 103])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>3.833e+05 3.833e+05 ... 9.068e+05</div><input id='attrs-f5a05d90-40b5-4766-8393-9e9a8b728eb9' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-f5a05d90-40b5-4766-8393-9e9a8b728eb9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-342aea14-e3f4-43bd-9df6-09eda183ed10' class='xr-var-data-in' type='checkbox'><label for='data-342aea14-e3f4-43bd-9df6-09eda183ed10' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([383265., 383295., 383325., ..., 906735., 906765., 906795.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>3.309e+06 3.309e+06 ... 2.907e+06</div><input id='attrs-df0c5ac0-7de8-452f-95f3-433bbda890a2' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-df0c5ac0-7de8-452f-95f3-433bbda890a2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d547914f-e437-493e-a0e2-ece2ef7726a7' class='xr-var-data-in' type='checkbox'><label for='data-d547914f-e437-493e-a0e2-ece2ef7726a7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([3308715., 3308685., 3308655., ..., 2907435., 2907405., 2907375.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-35ea6b2b-be8c-4ed6-ae12-b91f593db281' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-35ea6b2b-be8c-4ed6-ae12-b91f593db281' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-50df82c8-8bcd-4fef-9b22-0907715d676d' class='xr-var-data-in' type='checkbox'><label for='data-50df82c8-8bcd-4fef-9b22-0907715d676d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 45N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,87],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32645&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 45N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>87.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 45N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,87],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32645&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>383250.0 30.0 0.0 3308730.0 0.0 -30.0</dd></dl></div><div class='xr-var-data'><pre>[1 values with dtype=int64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-986d585c-5cb0-4c86-8667-235eb49a070c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-986d585c-5cb0-4c86-8667-235eb49a070c' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>band_data</span></div><div class='xr-var-dims'>(band, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(12, 1536, 1536), meta=np.ndarray&gt;</div><input id='attrs-a3a644ab-f2b9-4a09-bafe-e36a14102bdc' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-a3a644ab-f2b9-4a09-bafe-e36a14102bdc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-edefeb95-bf85-431e-9ef7-3698e1f44ed4' class='xr-var-data-in' type='checkbox'><label for='data-edefeb95-bf85-431e-9ef7-3698e1f44ed4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1355,20 +1368,20 @@ Data variables:
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-1faf2c96-0d8f-4bc3-a1f8-bd2f1ef1a91f' class='xr-section-summary-in' type='checkbox'  ><label for='section-1faf2c96-0d8f-4bc3-a1f8-bd2f1ef1a91f' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>band</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-a36338fb-2ba6-45a0-aca4-46da508ae31c' class='xr-index-data-in' type='checkbox'/><label for='index-a36338fb-2ba6-45a0-aca4-46da508ae31c' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-6947fab6-ed31-4035-b2f7-bca13604cd91' class='xr-section-summary-in' type='checkbox'  ><label for='section-6947fab6-ed31-4035-b2f7-bca13604cd91' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>band</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-480eae60-91d2-4b27-b3d7-c2bd130ac2e9' class='xr-index-data-in' type='checkbox'/><label for='index-480eae60-91d2-4b27-b3d7-c2bd130ac2e9' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,
        ...
         94,  95,  96,  97,  98,  99, 100, 101, 102, 103],
-      dtype=&#x27;int64&#x27;, name=&#x27;band&#x27;, length=103))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-24612d43-89b5-442a-9139-87b45d364280' class='xr-index-data-in' type='checkbox'/><label for='index-24612d43-89b5-442a-9139-87b45d364280' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([383265.0, 383295.0, 383325.0, 383355.0, 383385.0, 383415.0, 383445.0,
+      dtype=&#x27;int64&#x27;, name=&#x27;band&#x27;, length=103))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-c42b7e85-83d9-4fd9-9eff-af9104396a86' class='xr-index-data-in' type='checkbox'/><label for='index-c42b7e85-83d9-4fd9-9eff-af9104396a86' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([383265.0, 383295.0, 383325.0, 383355.0, 383385.0, 383415.0, 383445.0,
        383475.0, 383505.0, 383535.0,
        ...
        906525.0, 906555.0, 906585.0, 906615.0, 906645.0, 906675.0, 906705.0,
        906735.0, 906765.0, 906795.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;x&#x27;, length=17452))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-73b6aebb-b5ef-4199-833e-4b18f259ae04' class='xr-index-data-in' type='checkbox'/><label for='index-73b6aebb-b5ef-4199-833e-4b18f259ae04' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([3308715.0, 3308685.0, 3308655.0, 3308625.0, 3308595.0, 3308565.0,
+      dtype=&#x27;float64&#x27;, name=&#x27;x&#x27;, length=17452))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-fd621d6f-3019-4321-a679-cfca7d3ab811' class='xr-index-data-in' type='checkbox'/><label for='index-fd621d6f-3019-4321-a679-cfca7d3ab811' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([3308715.0, 3308685.0, 3308655.0, 3308625.0, 3308595.0, 3308565.0,
        3308535.0, 3308505.0, 3308475.0, 3308445.0,
        ...
        2907645.0, 2907615.0, 2907585.0, 2907555.0, 2907525.0, 2907495.0,
        2907465.0, 2907435.0, 2907405.0, 2907375.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;y&#x27;, length=13379))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-db7a50c1-ee63-4733-aad3-6b82346eb429' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-db7a50c1-ee63-4733-aad3-6b82346eb429' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;float64&#x27;, name=&#x27;y&#x27;, length=13379))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f46f7e46-8f9e-4cf2-ba43-e2194de78739' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-f46f7e46-8f9e-4cf2-ba43-e2194de78739' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Building the <code class="docutils literal notranslate"><span class="pre">VRT</span></code> object assigns every object in the .txt file to a different band. In doing this, we lose the metadata that is associated with the files. The next notebook walks through the steps of reconstructing necessary metadata stored in file names and auxiliary files and attaching it to the Xarray objects read from VRTs.</p>
 <section id="take-a-look-at-chunking">

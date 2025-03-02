@@ -416,23 +416,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book">How to use this book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book"><em>How to use this book</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-used-in-this-book"><em>Data used in this book</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-book"><em>Overview of book</em></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-using-xarray-to-examine-cloud-based-glacier-surface-velocity-data">Part 1: Using Xarray to examine cloud-based glacier surface velocity data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-sentinel-1-rtc-data-workflows-with-xarray">Part 2: Sentinel-1 RTC data workflows with xarray</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-its-live-ice-velocity-data-tutorial">Part 1: ITS_LIVE ice velocity data tutorial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-sentinel-1-rtc-imagery-tutorial">Part 2: Sentinel-1 RTC imagery tutorial</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-conclusion">Summary + Conclusion</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-book-for">Who is this book for?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-book-for"><em>Who is this book for?</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives"><em>Learning objectives</em></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cubes-and-array-data-structures">Data cubes and array data structures</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-very-large-data">Working with very large data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-data">Reading and writing data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xarray-and-the-pangeo-software-stack">Xarray and the Pangeo software stack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xarray-zarr-and-the-pangeo-software-stack"><em>Xarray, Zarr, and the Pangeo software stack</em></a></li>
 </ul>
             </nav>
         </div>
@@ -447,29 +447,29 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="getting-started">
 <h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h1>
 <section id="how-to-use-this-book">
-<h2>How to use this book<a class="headerlink" href="#how-to-use-this-book" title="Permalink to this heading">#</a></h2>
+<h2><em>How to use this book</em><a class="headerlink" href="#how-to-use-this-book" title="Permalink to this heading">#</a></h2>
 <p>Our goal is for this book to be useful to users across a range of backgrounds and with different needs and interests. It is designed to be a comprehensive walk-through of scientific workflows using earth observation data in Python. At the same time, we recognize some users may be interested in following individual segments and a more modular structure. Read from start to finish or check out the individual sections that interest you. To see which topics are covered in different notebooks, see the overview pages of each tutorial linked below, the <span class="xref myst">glossary</span> or enter a specific term in the search bar to see the pages where it is used. todo decide about having glossary or not.</p>
 <div class="admonition-running-tutorial-notebooks-on-your-own admonition">
 <p class="admonition-title">Running tutorial notebooks on your own</p>
 <p>Head to the <a class="reference internal" href="software.html"><span class="std std-doc">software</span></a> page for detailed instructions on how to get started running the tutorial notebooks on your own.</p>
 </div>
 </section>
-<section id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<section id="data-used-in-this-book">
+<h2><em>Data used in this book</em><a class="headerlink" href="#data-used-in-this-book" title="Permalink to this heading">#</a></h2>
 <p>Most of the examples in this book use data accessed programmatically from cloud-object storage. We make subsets of the data available in this book’s Github repository to remove the need for computationally-intensive operations in the tutorials. In one example, working with Sentinel-1 data processed by Alaska Satelllite Facility, we start with data downloaded locally. Users who would like to complete this processing step on their own may do so (and access the data <a class="reference internal" href="#"><span class="xref myst">here</span></a>), but a smaller subset of this data is stored in the repository. For more detail on data used in this book see <a class="reference internal" href="../background/tutorial_data.html"><span class="std std-doc">Tutorial Data</span></a>.</p>
 </section>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<section id="overview-of-book">
+<h2><em>Overview of book</em><a class="headerlink" href="#overview-of-book" title="Permalink to this heading">#</a></h2>
 <section id="background">
 <h3>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h3>
 <p>Background on data cubes and an introduction to array-based geoscience data and how it is represented in Xarray and Python. This section provides an overview and explanations of topics that will be referenced in the applied tutorials.</p>
 </section>
-<section id="part-1-using-xarray-to-examine-cloud-based-glacier-surface-velocity-data">
-<h3>Part 1: Using Xarray to examine cloud-based glacier surface velocity data<a class="headerlink" href="#part-1-using-xarray-to-examine-cloud-based-glacier-surface-velocity-data" title="Permalink to this heading">#</a></h3>
+<section id="part-1-its-live-ice-velocity-data-tutorial">
+<h3>Part 1: ITS_LIVE ice velocity data tutorial<a class="headerlink" href="#part-1-its-live-ice-velocity-data-tutorial" title="Permalink to this heading">#</a></h3>
 <p>A tutorial focusing on <a class="reference external" href="https://its-live.jpl.nasa.gov/">ITS_LIVE</a>, a NASA MEASURES project and publicly accessible dataset stored in an AWS S3 repo as Zarr data cubes.</p>
 </section>
-<section id="part-2-sentinel-1-rtc-data-workflows-with-xarray">
-<h3>Part 2: Sentinel-1 RTC data workflows with xarray<a class="headerlink" href="#part-2-sentinel-1-rtc-data-workflows-with-xarray" title="Permalink to this heading">#</a></h3>
+<section id="part-2-sentinel-1-rtc-imagery-tutorial">
+<h3>Part 2: Sentinel-1 RTC imagery tutorial<a class="headerlink" href="#part-2-sentinel-1-rtc-imagery-tutorial" title="Permalink to this heading">#</a></h3>
 <p>This <span class="xref myst">tutorial</span> focuses on another satellite dataset: Sentinel-1 Radiometric Terrain Corrected imagery. Sentinel-1 is a synthetic aperture radar sensor; SAR data undergoes different types of processing for different scientific applications. Part 3 demonstrates how to access this data from two publicly available, online respositories: Alaska Satellite Facility and Microsoft Planetary Computer. These notebooks demonstrate the different ways to read this data and prepare it for analysis, as well as an initial comparison of the two datasets.</p>
 <p>Each tutorial focuses on a different type of remote sensing dataset and demonstrates how to assess and work through the nuances, details and challenges that can arise from each. A common characteristic of each dataset that is emphasized throughout the notebooks is working with larger-than-memory datasets on the computational resources of a standard laptop.</p>
 </section>
@@ -479,7 +479,7 @@ document.write(`
 </section>
 </section>
 <section id="who-is-this-book-for">
-<h2>Who is this book for?<a class="headerlink" href="#who-is-this-book-for" title="Permalink to this heading">#</a></h2>
+<h2><em>Who is this book for?</em><a class="headerlink" href="#who-is-this-book-for" title="Permalink to this heading">#</a></h2>
 <p>This book is for anyone who is interested in working with earth observation data in Python! Follow along from start to finish for a more comprehensive explanation on what we’re doing and why, or drop in to the sections that interest you. We try to provide relevant domain and background information where necessary, and we direct the reader to helpful resources that provide more robust discussions of important concepts when appropriate.</p>
 <p>We provide all of the resources necessary to work through the Jupyter Notebooks contained in these tutorials on your own machine. Some experience working with Python will be helpful, however the tutorials are designed to be beginner-friendly.</p>
 <div class="admonition-if-you-d-like-a-more-thorough-background-on-working-with-geospatial-data-in-python admonition">
@@ -494,7 +494,7 @@ document.write(`
 </ul>
 </section>
 <section id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
+<h2><em>Learning objectives</em><a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
 <section id="data-cubes-and-array-data-structures">
 <h3>Data cubes and array data structures<a class="headerlink" href="#data-cubes-and-array-data-structures" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
@@ -524,18 +524,21 @@ document.write(`
 </ul>
 </section>
 </section>
-<section id="xarray-and-the-pangeo-software-stack">
-<h2>Xarray and the Pangeo software stack<a class="headerlink" href="#xarray-and-the-pangeo-software-stack" title="Permalink to this heading">#</a></h2>
-<p>todo figure out why image not rendering, add other logos</p>
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p><strong><a href="https://xarray.dev/">Xarray</a></strong> is an open-source project and Python package that provides a set of tools for working with n-dimensional array-like datasets. Xarray provides labeled dimensions, coordinate arrays and metadata that make computational workflows with multi-dimensional arrays more intuitive, efficient and scalable.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="/JOSE_tutorials_submission/book/logos/Xarray_Logo_RGB_Final.svg" alt="Xarray logo" style="max-width: 100%;">
-  </div>
-</div>
-<p><strong><a class="reference external" href="https://www.pangeo.io/">Pangeo</a></strong> is a community scientists, developers, and practitioners who are dedicated to promoting open, reproducible, and scalable science. Members of the Pangeo community develop and contribute to open-source software libraries within the geosciences and across scientific domains, including Xarray, Dask, Zarr, and Jupyter.</p>
+<section id="xarray-zarr-and-the-pangeo-software-stack">
+<h2><em>Xarray, Zarr, and the Pangeo software stack</em><a class="headerlink" href="#xarray-zarr-and-the-pangeo-software-stack" title="Permalink to this heading">#</a></h2>
+<p>TODO include Dask in this section?</p>
+<figure class="align-right">
+<a class="reference internal image-reference" href="../_images/Xarray_Logo_RGB_Final.png"><img alt="../_images/Xarray_Logo_RGB_Final.png" src="../_images/Xarray_Logo_RGB_Final.png" style="width: 250.0px; height: 125.0px;" /></a>
+</figure>
+<p><strong><a class="reference external" href="https://docs.xarray.dev/en/stable/#">Xarray</a></strong> is a Python library and open-source project that introduces a data structure with named dimensions, coordinates and attributes that wrap NumPy-like arrays. This allows the co-location of raw data and metadata for complex, n-dimensional datasets in ways that streamline scientific analysis, enabling more consise, readable and intuitive workflows.</p>
+<figure class="align-right">
+<a class="reference internal image-reference" href="../_images/zarr_logo.png"><img alt="../_images/zarr_logo.png" src="../_images/zarr_logo.png" style="width: 195.5px; height: 195.5px;" /></a>
+</figure>
+<p><strong><a class="reference external" href="https://zarr.readthedocs.io/en/stable/#">Zarr</a></strong> is a Python library for reading and writing data stored as Zarr groups and arrays. Zarr is built for array-like data and has flexible storage backends making it suitable data stored in local file systems as well as cloud object storage.</p>
+<figure class="align-right">
+<a class="reference internal image-reference" href="../_images/pangeo_logo.png"><img alt="../_images/pangeo_logo.png" src="../_images/pangeo_logo.png" style="width: 240.5px; height: 60.0px;" /></a>
+</figure>
+<p><strong><a class="reference external" href="https://www.pangeo.io/">Pangeo</a></strong> is a community scientists, developers, and practitioners dedicated to promoting open, reproducible, and scalable science. Members of the Pangeo community develop and contribute to open-source software libraries within the geosciences and across scientific domains, including Xarray, Dask, Zarr, and Jupyter.</p>
 <p>In addition to these software libraries, the Pangeo community emphasizes the development of educational resources (see <a class="reference external" href="https://foundations.projectpythia.org/landing-page.html">Project Pythia</a>), regular community <a class="reference external" href="https://www.pangeo.io/meetings">meetings</a> and <a class="reference external" href="https://www.pangeo.io/showcase">showcase talks</a>, and working groups on specialized topics.</p>
 </section>
 </section>
@@ -604,23 +607,23 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book">How to use this book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book"><em>How to use this book</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-used-in-this-book"><em>Data used in this book</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-book"><em>Overview of book</em></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-using-xarray-to-examine-cloud-based-glacier-surface-velocity-data">Part 1: Using Xarray to examine cloud-based glacier surface velocity data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-sentinel-1-rtc-data-workflows-with-xarray">Part 2: Sentinel-1 RTC data workflows with xarray</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-its-live-ice-velocity-data-tutorial">Part 1: ITS_LIVE ice velocity data tutorial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-sentinel-1-rtc-imagery-tutorial">Part 2: Sentinel-1 RTC imagery tutorial</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-conclusion">Summary + Conclusion</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-book-for">Who is this book for?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-book-for"><em>Who is this book for?</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives"><em>Learning objectives</em></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cubes-and-array-data-structures">Data cubes and array data structures</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-very-large-data">Working with very large data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-data">Reading and writing data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xarray-and-the-pangeo-software-stack">Xarray and the Pangeo software stack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xarray-zarr-and-the-pangeo-software-stack"><em>Xarray, Zarr, and the Pangeo software stack</em></a></li>
 </ul>
   </nav></div>
 
