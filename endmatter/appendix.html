@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'endmatter/appendix';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Handling different geometry types in a GeoPandas.GeoDataFrame" href="appendix_1_1_handle_mult_geom_types.html" />
+    <link rel="next" title="Other resources" href="other_resources.html" />
     <link rel="prev" title="Principles of tidy array data" href="../pt4/tidy_principles.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -209,10 +209,8 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/1_read_asf_data.html">1. Read Sentinel-1 data processed by ASF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/2_wrangle_metadata.html">2. Metadata wrangling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/3_asf_exploratory_analysis.html">2. Inspect and organize S1-RTC data processed by ASF</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/4_read_pc_data.html">3. Read and inspect Sentinel-1 RTC imagery processed by Microsoft Planetary Computer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/5_comparing_s1_rtc_datasets.html">1. Comparing Sentinel-1 RTC datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/6_example_s1_rtc_time_series_analysis.html">2: Example of Sentinel-1 RTC time series analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/3_asf_exploratory_analysis.html">3. Exploratory analysis of ASF S1 imagery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial2/nbs/4_read_pc_data.html">4. Read Sentinel-1 RTC data from Microsoft Planetary Computer</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
 <ul class="nav bd-sidenav">
@@ -222,8 +220,6 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Appendix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix_1_1_handle_mult_geom_types.html">Handling different geometry types in a <code class="docutils literal notranslate"><span class="pre">GeoPandas.GeoDataFrame</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix_1_2_read_w_xropen_mfdataset.html">Read Sentinel-1 RTC data processed by ASF using <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="other_resources.html">Other resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about_this_book.html">Aboout this book</a></li>
 </ul>
@@ -440,14 +436,14 @@ document.write(`
 <section id="troubleshooting-geometry-types-its-live-tutorial">
 <h2>1.1. Troubleshooting geometry types (ITS_LIVE tutorial)<a class="headerlink" href="#troubleshooting-geometry-types-its-live-tutorial" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="appendix_1_1_handle_mult_geom_types.html"><span class="std std-doc">Appendix 1.1 notebook</span></a></p></li>
+<li><p><span class="xref myst">Appendix 1.1 notebook</span></p></li>
 </ul>
 <p>In the first tutorial, while making an <a class="reference internal" href="#../itslive_nbs/3_combining_raster_vector_data.ipynb"><span class="xref myst">interactive visualization of vector dataframes</span></a>, we encountered a warning. The notebook below includes a step-by-step demonstration of troubleshooting this warning, identifying its source and resolving it.</p>
 </section>
 <section id="reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial">
 <h2>1.2 Reading a stack of files with <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> (Sentinel-1 tutorial)<a class="headerlink" href="#reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="appendix_1_2_read_w_xropen_mfdataset.html"><span class="std std-doc">Appendix 1.2 noteobok</span></a></p></li>
+<li><p><span class="xref myst">Appendix 1.2 noteobok</span></p></li>
 </ul>
 <p>Xarray’s <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.open_mfdataset.html">function</a> allows the user to read in and combine multiple files at once to produce a single <code class="docutils literal notranslate"><span class="pre">xr.DataArray</span></code> object. I first used this to read in the geotiff files for each ASF-processed scene of Sentinel-1 RTC imagery. The <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> function takes a preprocess argument which allows you to write a function that specifies how each raster file is read in so that the structure and metadata of the returned object is correct. This gives you a lot of flexibility and makes reading in a large stack of files very smooth.</p>
 <p>However, for this dataset, I found that the <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> function wasn’t a great fit. The raster stack all covered a common area of interest, but each file did not have the exact same spatial footprint. This created problems when specifying a chunking strategy, because the chunking was defined off of the first file in the stack, but would not be appropriate for files further down in the stack with different borders. The processing would work fine for all lazy steps, but a memory ‘blow-up’ would occur when I tried to perform a step that required computation. I initially thought I had bypassed this issue by clipping the returned dataset to the spatial extent of my area of interest (much smaller), but soon realized that this process encountered memory issues as well.</p>
@@ -510,11 +506,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="appendix_1_1_handle_mult_geom_types.html"
+       href="other_resources.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Handling different geometry types in a <code class="docutils literal notranslate"><span class="pre">GeoPandas.GeoDataFrame</span></code></p>
+        <p class="prev-next-title">Other resources</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

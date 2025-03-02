@@ -1,7 +1,7 @@
 # Relevant concepts
 
+## *Larger than memory data, parallelization and Dask*
 ```{glossary}
-## *1. Larger than memory data, parallelization and Dask*
 Larger than memory data
     Notebooks in this tutorial spend a considerable amount of time focusing on 'larger-than-memory' datasets and strategies for working with them 'in memory'. What does this mean? When we say memory, we're referring to the available CPU space, or RAM (wc: internal memory?) on whatever machine you're working on. When we're working with smaller datasets, the data and intermediate copies that are created during many operations don't exceed the internal memory available on our machine. However, as datasets increase in size, the memory required for many workflows can quickly scale and exceed the availability of most personal machines. This is what we mean when we refer to 'larger than memory' data. In the case of this tutorial, the dataset we'll be using is very large (several hundred gigabytes when uncompressed). With datasets this large, we need to employ different approaches that can be a bit more complicated than a straightforward operation that ingests and produces smaller amounts of data. 
 
@@ -25,9 +25,9 @@ Chunking
     - [Choosing good chunk sizes](https://blog.dask.org/2021/11/02/choosing-dask-chunk-sizes) blog post,  
     - [Xarray - Parallel Computing with Dask](https://docs.xarray.dev/en/stable/user-guide/dask.html)
         - Specifically the [Chunking and Performance](https://docs.xarray.dev/en/stable/user-guide/dask.html#chunking-and-performance) section.
-
-## *2. Importance of metadata naming and metadata naming conventions*
-
+```
+## *Importance of metadata naming and metadata naming conventions*
+```{glossary}
 Metadata naming
 
     Metadata is vital to understanding your dataset, however, because of the range of types of metadata and ways it is often stored, it can become very complicated to work with and keep track of. There are a few priorities to keep in mind when working with metadata and/or writing your own.
@@ -44,3 +44,4 @@ Climate Forecase (CF) Metadata Conventions
     >The CF metadata conventions are designed to promote the processing and sharing of files created with the NetCDF API. The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities. The CF convention includes a standard name table, which defines strings that identify physical quantities.
 
     CF metadata conventions set common expectations for metadata names and locations across datasets.  In this tutorial, we will use tools such as [cf_xarray]() that leverage CF conventions to add programmatic handling of CF metadata to Xarray objects, meaning that users can spend less time wrangling metadata. 🤩
+```
