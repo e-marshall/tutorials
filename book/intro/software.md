@@ -72,5 +72,5 @@ import glob #don't think this is necessary but double check
 from IPython.display import Image
 ```
 
-Both tutorials also uses functions that are stored in scripts associated with each dataset. You can find these scripts here: [`itslivetools.py`](../itslive_nbs/itslivetools.py) and [`s1_tools.py`](../s1_nbs/s1_tools.py).
+Both tutorials also uses functions that are stored in scripts associated with each dataset. You can find these scripts here: [`itslive_tools.py`](../itslive_nbs/itslive_tools.py) and [`s1_tools.py`](../s1_nbs/s1_tools.py).
 

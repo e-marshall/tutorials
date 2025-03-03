@@ -33,7 +33,7 @@ parts:
   - caption: Summary + Conclusion
     chapters:
     - file: pt4/summary
-    - file: pt4/tidy_principles
+    #- file: pt4/tidy_principles
     - file: pt4/conclusion
   - caption: Additional material
     chapters:
