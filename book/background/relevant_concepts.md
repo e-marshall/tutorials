@@ -1,6 +1,12 @@
 # Relevant concepts
 
-## *1. Larger than memory data, parallelization and Dask*
+## *Larger than memory data, parallelization and Dask*
+
+TODO - notes on this section
+- maybe add a figure showing how jobs distributed to workers
+- maybe add a figure illustrating chunks ? 
+
+
 ```{glossary}
 Larger than memory data
     Notebooks in this tutorial spend a considerable amount of time focusing on 'larger-than-memory' datasets and strategies for working with them 'in memory'. What does this mean? When we say memory, we're referring to the available CPU space, or RAM (wc: internal memory?) on whatever machine you're working on. When we're working with smaller datasets, the data and intermediate copies that are created during many operations don't exceed the internal memory available on our machine. However, as datasets increase in size, the memory required for many workflows can quickly scale and exceed the availability of most personal machines. This is what we mean when we refer to 'larger than memory' data. In the case of this tutorial, the dataset we'll be using is very large (several hundred gigabytes when uncompressed). With datasets this large, we need to employ different approaches that can be a bit more complicated than a straightforward operation that ingests and produces smaller amounts of data. 
@@ -19,14 +25,14 @@ Chunking
 
     Choosing chunks can be complicated and have a significant impact on how fast your code runs. Typically, you want enough chunks that each individual chunk is relatively small and many chunks can fit into into memory. However, if you have too many chunks, Dask now needs to keep track of many individual tasks, meaning that more time will be spent managing the task graph compared to executing tasks. In addition, tasks should reflect the shape of yoour data and how you want to use it. If you're working with a space-time dataset but you're most interested in spatial analysis, having smaller chunks along the `x` and `y` dimensions will make spatial operations easier to parallelize. 
 
-    Dask and Xarray have a number of resources focused on this topic. We recommend:
+    ### Further reading
     - [Dask Array - Best Practices](https://docs.dask.org/en/latest/array-best-practices.html),   
     - [Dask Array Chunks](https://docs.dask.org/en/stable/array-chunks.html),  
     - [Choosing good chunk sizes](https://blog.dask.org/2021/11/02/choosing-dask-chunk-sizes) blog post,  
     - [Xarray - Parallel Computing with Dask](https://docs.xarray.dev/en/stable/user-guide/dask.html)
         - Specifically the [Chunking and Performance](https://docs.xarray.dev/en/stable/user-guide/dask.html#chunking-and-performance) section.
 ```
-## *2. Importance of metadata naming and metadata naming conventions*
+## *Importance of metadata naming and metadata naming conventions*
 ```{glossary}
 Metadata naming
 

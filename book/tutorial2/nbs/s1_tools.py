@@ -16,74 +16,70 @@ from dask.distributed import Client as daskClient
 # --------------------------------------------------------------------
 # --------------------- Read ASF VRT Functions -----------------
 # Function to extract path for target files from each scene
-def extract_fnames(data_path: str, scene_name: str) -> list:
-    """return a list of files associated with a single S1 scene"""
+def extract_fnames(data_path: str, scene_name:str, variable:str):
     # Make list of files within each scene directory in data directory
     scene_files_ls = os.listdir(os.path.join(data_path, scene_name))
 
-    # Make a list to hold README files
-    rm = [file for file in scene_files_ls if file.endswith("README.md.txt")]
+    if variable in ['vv','vh']:
+        scene_files = [fname for fname in scene_files_ls if fname.endswith(f"_{variable.upper()}.tif")]
+    
+    elif variable == 'ls_map':
+        scene_files = [fname for fname in scene_files_ls if fname.endswith(f"_ls_map.tif")]
+    
+    elif variable == 'readme':
+        scene_files = [file for file in scene_files_ls if file.endswith("README.md.txt")]
+ 
+    return scene_files
 
-    # Make a list to hold tif file names for each variable
-    scene_files_vv = [fname for fname in scene_files_ls if fname.endswith("_VV.tif")]
-    scene_files_vh = [fname for fname in scene_files_ls if fname.endswith("_VH.tif")]
-    scene_files_ls = [
-        fname for fname in scene_files_ls if fname.endswith("_ls_map.tif")
-    ]
 
-    return scene_files_vv, scene_files_vh, scene_files_ls, rm
-
-
-def make_filename_lists(asf_s1_data_path: str):
-    # Make list of all scenes in dir
+def make_filepath_lists(asf_s1_data_path: str, variable:str):
+    """ For a single variable (vv, vh, ls_map or readme), make list of 
+    full filepath for each file in time series. Also return dates to ensure
+    extraction happens in correct order for each variable
+    Return tuple with form (filepaths list, dates list)"""
     scenes_ls = os.listdir(asf_s1_data_path)
 
-    # Make empty lists to hold file paths for different variables
-    fpaths_vv, fpaths_vh, fpaths_ls, fpaths_rm = [], [], [], []
+    fpaths, dates_ls = [],[]
 
     for element in range(len(scenes_ls)):
+
         # Extract filenames of each file of interest
-        files_of_interest = extract_fnames(asf_s1_data_path, scenes_ls[element])
-
+        files_of_interest = extract_fnames(asf_s1_data_path, scenes_ls[element], variable)
         # Make full path with filename for each variable
-        path_vv = os.path.join(
-            asf_s1_data_path, scenes_ls[element], files_of_interest[0][0]
+        path = os.path.join(
+            asf_s1_data_path, scenes_ls[element], files_of_interest[0]
         )
-        path_vh = os.path.join(
-            asf_s1_data_path, scenes_ls[element], files_of_interest[1][0]
-        )
-        path_ls = os.path.join(
-            asf_s1_data_path, scenes_ls[element], files_of_interest[2][0]
-        )
-        path_readme = os.path.join(
-            asf_s1_data_path, scenes_ls[element], files_of_interest[3][0]
-        )
+        #extract dates to make sure dates are identical across variable lists
+        date = pathlib.Path(path).stem.split("_")[2]
+        
+        dates_ls.append(date)
+        fpaths.append(path)
+    
+    return (fpaths, dates_ls)
 
-        # add a check to ensure that the files are aligned correctly
-        date_vv = pathlib.Path(path_vv).stem.split("_")[2]
-        date_vh = pathlib.Path(path_vh).stem.split("_")[2]
-        date_ls = pathlib.Path(path_ls).stem.split("_")[2]
-        date_rm = pathlib.Path(path_readme).stem.split("_")[2]
-        assert date_vh == date_vv == date_ls == date_rm, (
-            "AssertionError: File dates do not match across variables."
-        )
+def create_filenames_dict(rtc_path, variables_ls):
 
-        fpaths_vv.append(path_vv)
-        fpaths_vh.append(path_vh)
-        fpaths_ls.append(path_ls)
-        fpaths_rm.append(path_readme)
+    keys, filepaths, dates = [],[],[]
+    for variable in variables_ls:
+        keys.append(variable)
 
-    # Check that all lists are the same length
-    assert len(fpaths_vv) == len(fpaths_vh) == len(fpaths_ls) == len(fpaths_rm), (
-        f"Files weren't extracted correctly. Expected all lists to be the same length, received \n"
-        "{len(fpaths_vv)}, {len(fpaths_vh)}, {len(fpaths_ls)}, {len(fpaths_rm)}"
-    )
-    # Check that all lists are the same length
-    assert len(fpaths_vv) == len(fpaths_vh) == len(fpaths_ls) == len(fpaths_rm), (
-        "Files weren't extracted correctly or fname lists weren't made correctly"
-    )
-    return (fpaths_vv, fpaths_vh, fpaths_ls, fpaths_rm)
+        filespaths_list, dates_list = make_filepath_lists(rtc_path, variable)
+        filepaths.append(filespaths_list)
+        dates.append(dates_list)
+    
+    #make dict of variable names (keys) and associated filepaths
+    filepaths_dict = dict(zip(keys, filepaths))
 
+    #make sure that dates are identical across all lists
+    assert all(lst == dates[0] for lst in dates) == True
+    #make sure length of each variable list is the same 
+    assert len(list(set([len(v) for k,v in filepaths_dict.items()]))) == 1
+    
+
+
+    #make dict of variable names (keys) and associated filepaths
+    filepaths_dict = dict(zip(keys, filepaths))
+    return filepaths_dict
 
 # ---------------------------------------------------------------------
 # ----------------------- Metadata Wrangling Functions-----------------
@@ -248,7 +244,7 @@ def make_coord_data(readme_fpaths_ls):
         "proc_lvl_class_pol": (4, f"[A-Z0-9]{{4}}"),
         "acq_start": (15, r"[0-9]{8}T[0-9]{6}"),  # schema for acquisition dat
         "acq_stop": (15, r"[0-9]{8}T[0-9]{6}"),  # schema for acquisition dat
-        "orbit_no": (6, r"[0-9]{6}"),  # schema for orbit number
+        "orbit_num": (6, r"[0-9]{6}"),  # schema for orbit number
         "data_take_id": (6, "A-Z0-9{6}"),  # schema for data take id
     }
 
@@ -264,14 +260,17 @@ def make_coord_data(readme_fpaths_ls):
                 single_granule_parsed_data["acq_start"] = pd.to_datetime(
                     part, format="%Y%m%dT%H%M%S"
                 )
+            elif name == 'orbit_num':
+                single_granule_parsed_data[name] = part
             elif name == "data_take_id":
                 single_granule_parsed_data[name] = part
         all_granules_parsed_data.append(single_granule_parsed_data)
 
     acq_dates = [granule["acq_start"] for granule in all_granules_parsed_data]
+    abs_orbit_no = [granule["orbit_num"] for granule in all_granules_parsed_data]
     data_take_ids = [granule["data_take_id"] for granule in all_granules_parsed_data]
 
-    return (acq_dates, data_take_ids)
+    return (acq_dates, abs_orbit_no, data_take_ids)
 
 
 def extract_granule_id(filepath):
@@ -291,7 +290,7 @@ def extract_granule_id(filepath):
 
 
 # metadata wrangling processor
-def metadata_processor(vv_path: str, vh_path: str, ls_path: str):
+def metadata_processor(vv_path: str, vh_path: str, ls_path: str, timeseries_type:str= 'full'):
     cwd = pathlib.Path.cwd()
     tutorial2_dir = pathlib.Path(cwd).parent
 
@@ -304,11 +303,13 @@ def metadata_processor(vv_path: str, vh_path: str, ls_path: str):
     ds_vh = ds_vh.rename({"band_data": "vh"})
     ds_ls = ds_ls.rename({"band_data": "ls"})
     # make file paths lists for each variable
-    s1_asf_data = pathlib.Path(cwd.parents[3], "sentinel1_rtc/data/asf_rtcs")
+
+    s1_asf_data = pathlib.Path(f"../data/{timeseries_type}_timeseries/asf_rtcs")
     # Make file path lists for vv, vh, ls
-    filepaths_vv, filepaths_vh, filepaths_ls, filepaths_rm = make_filename_lists(
-        s1_asf_data
-    )
+    variables_ls = ['vv','vh','ls_map','readme']
+    filepaths_dict = create_filenames_dict(s1_asf_data, variables_ls)
+    filepaths_vv, filepaths_vh, filepaths_ls, filepaths_rm = filepaths_dict.values()
+
     acq_dates_vh = [
         parse_fname_metadata(filepaths_vh[file])["acq_date"].strftime("%m/%d/%YT%H%M%S")
         for file in range(len(filepaths_vh))
@@ -322,7 +323,7 @@ def metadata_processor(vv_path: str, vh_path: str, ls_path: str):
         for file in range(len(filepaths_ls))
     ]
     # Make sure they are identical
-    assert acq_dates_vh == acq_dates_vv == acq_dates_ls, (
+    assert acq_dates_vv == acq_dates_vh == acq_dates_ls, (
         "Acquisition dates lists for VH, VV and L-S Map do not match"
     )
     # Assign acquisition dates to band dimension and format as datetime
@@ -389,7 +390,8 @@ def metadata_processor(vv_path: str, vh_path: str, ls_path: str):
     # Assign them as attrs
     ds_w_metadata.attrs = static_attr_dict
     # Adding metadata from readme
-    acquisition_dates, data_take_ids_ls = make_coord_data(filepaths_rm)
+    acquisition_dates, abs_orbit_ls, data_take_ids_ls = make_coord_data(filepaths_rm)
+
     # Create xr.DA of data take IDs
     data_take_id_da = create_da(
         value_name="data_take_id",
@@ -403,6 +405,19 @@ def metadata_processor(vv_path: str, vh_path: str, ls_path: str):
     # add data take DA as coordinate variable of data cube
     ds_w_metadata.coords["data_take_ID"] = data_take_id_da
 
+    #repeat for abs orbit
+    abs_orbit_da = create_da(
+        value_name = "abs_orbit_num",
+        values_ls = abs_orbit_ls,
+        dim_name = "acq_date",
+        dim_values= acquisition_dates,
+        desc = "Absolute orbit number"
+    )
+    abs_orbit_da = abs_orbit_da.sortby("acq_date")
+    ds_w_metadata.coords["abs_orbit_num"] = abs_orbit_da
+
+    #Set layover shadow map as coordinate variable
+    ds_w_metadata = ds_w_metadata.set_coords('ls')
     return ds_w_metadata
 
 
@@ -433,7 +448,7 @@ def make_granule_coord_pc(granule_ls):
 
     return granule_da
 
-
+# Class to recreate PC dataset for comparison nb
 class S1PC_DataCube:
     def __init__(
         self, time_range: str, bbox: list, epsg: int, collection: str = "sentinel-1-rtc"
@@ -445,7 +460,7 @@ class S1PC_DataCube:
         self.epsg = epsg
         self.items = self.search_for_items()
         self.da = self.stack_assets()
-        self.ds_pc = self.format_metadata()
+        #self.ds_pc = self.format_metadata()
 
     def search_for_items(self):
         catalog = Client.open("https://planetarycomputer.microsoft.com/api/stac/v1")
@@ -474,6 +489,9 @@ class S1PC_DataCube:
         ds_ps = da.to_dataset(dim="band")
         return ds_pc
 
+
+# --------------------------------------------------------------------
+# ---------------------------utility functions -----------------------
 
 def points2coords(pt_ls: list) -> list:  # should be [xmin, ymin, xmax, ymax]
     """
@@ -513,7 +531,6 @@ def power_to_db(input_arr: np.array) -> np.array:
         Output array with values converted to decibel (dB) scale.
     """
     return 10 * np.log10(np.abs(input_arr))
-
 
 def plot_timestep(input_arr: np.array, time_step: int):
     """
@@ -555,15 +572,21 @@ def plot_timestep(input_arr: np.array, time_step: int):
     axs[2].set_title(f"{date} VH backscatter")
 
 
-def asf_pc_sidebyside(asf_input, pc_input, timestep):
+def asf_pc_sidebyside(asf_input:xr.Dataset, 
+                      pc_input:xr.Dataset, 
+                      timestep:int, 
+                      band:str):
     fig, axs = plt.subplots(ncols=2, figsize=(15, 10))
 
-    power_to_db(asf_input.vv.isel(acq_date=timestep)).plot(
+    power_to_db(asf_input[f'{band}'].isel(acq_date=timestep)).plot(
         ax=axs[0], cmap=plt.cm.Greys_r, label="ASF"
     )
-    power_to_db(pc_input.vv.isel(time=timestep)).plot(
+    power_to_db(pc_input[f'{band}'].isel(time=timestep)).plot(
         ax=axs[1], cmap=plt.cm.Greys_r, label="PC"
     )
+    date = asf.isel(time=timestep)['acq_date'].dt.date
+    fig.suptitle(f'Comparing ASF and Planetary Computer Sentinel-1 RTC {band.upper} backscatter at {date}.')
+    fig.legend()
 
 
 def single_time_mean_compare(asf_input, pc_input, time):

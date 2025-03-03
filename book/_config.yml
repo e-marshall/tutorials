@@ -12,7 +12,7 @@ only_build_toc_files: true
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: auto #cache
+  execute_notebooks: 'auto'
   allow_errors: true
   timeout: 1500
 
@@ -29,7 +29,7 @@ latex:
 # Information about where the book exists on the web
 repository:
   url: https://e-marshall.github.io/cloud-open-source-geospatial-datacube-workflows/introduction.html  # Online location of your book
-  branch: main  # Which branch of the repository should be used when creating links (optional)
+  branch: combine_books  # Which branch of the repository should be used when creating links (optional)
 
 launch_buttons:
   binderhub_url: "https://mybinder.org"
@@ -64,10 +64,10 @@ sphinx:
 
     myst_substitutions:
       part1_title: "Background"
-      #part2_title: "ITS_LIVE ice velocity data tutorial"
-      part2_title: "Using Xarray to examine cloud-based glacier surface velocity data"
-      #part3_title: "Sentinel-1 RTC imagery tutorial"
-      part3_title:  "Sentinel-1 RTC data workflows with xarray"
+      part2_title: "ITS_LIVE ice velocity data tutorial"
+      #part2_title: "Using Xarray to examine cloud-based glacier surface velocity data"
+      part3_title: "Sentinel-1 RTC imagery tutorial"
+      #part3_title:  "Sentinel-1 RTC data workflows with xarray"
       part4_title: "Summary + Conclusion"
 
       #tutorial 1 nb titles
@@ -192,36 +192,59 @@ sphinx:
       
       #sentinel nb3
       a_s1_nb3: "A. Read and prepare data"
-      a1_s1_nb3: "1) Clip by spatial area of interest"
+      a1_s1_nb3: "1) Clip to spatial area of interest"
 
-      b_s1_nb3: "B. Initial visualization"
-      b1_s1_nb3: "1) Layover-shadow mask"
+      b_s1_nb3: "B. Layover-shadow mask"
 
       c_s1_nb3: "C. Orbital direction"
       c1_s1_nb3: "1) Is a pass ascending or descending?"
       c2_s1_nb3: "2) Assign orbital direction as a coordinate variable"
 
-      d_s1_nb3: "D. Examine backscatter variability"
-      d1_s1_nb3: "1) Seasonal backscatter variability"
+      d_s1_nb3: "D. Duplicate time steps"
+      d1_s1_nb3: "1) Identify duplicate time steps"
+      d2_s1_nb3: "2) Visualize duplicates"
+      d3_s1_nb3: "3) Drop duplicates"
 
-      e_s1_nb3: "E. Handling duplicate time steps"
-      e1_s1_nb3: "1) Identify duplicate time steps"
-      e2_s1_nb3: "2) Visualize duplicates"
-      e3_s1_nb3: "3) Drop duplicates"
+      e_s1_nb3: "E. Data visualization"
+      e1_s1_nb3: "1) Mean backscatter over time"
+      e2_s1_nb3: "2) Seasonal backscatter variability"
+      e3_s1_nb3: "3) Backscatter time series"
+
+
+
 
       #s1 nb4
       a_s1_nb4: "A. Connect to Microsoft Planetary Computer"
       a1_s1_nb4: "1) Explore STAC metadata"
 
-      b_s1_nb4: "B. Read data with Xarray"
+      b_s1_nb4: "B. Read data and create Xarray data cube"
       b1_s1_nb4: "1) Create a Dask distributed cluster"
       b2_s1_nb4: "2) Use `stackstac` to pull queried data from Planetary Computer"
       b3_s1_nb4: "3) Inspect dataset"
-      b4_s1_nb4: "4) Convert a 4-d `xr.DataArray` to a 3-d `xr.Dataset`"
+      #b4_s1_nb4: "4) Convert a 4-d `xr.DataArray` to a 3-d `xr.Dataset`"
 
       c_s1_nb4: "C. Visualize data"
       c1_s1_nb4: "1) Ascending and descending pass acquisitions"
       c2_s1_nb4: "2) Variability over time"
+      c3_s1_nb4: "3) Seasonal variability"
+
+      #s1 nb5
+      a_s1_nb5: "A. Read and prepare data"
+      a1_s1_nb5: "1) Check coordinate reference system information"
+
+      b_s1_nb5: "B. Ensure direct comparison between datasets"
+      b1_s1_nb5: "1) Check that orbit numbers of both objects match"
+      b2_s1_nb5: "2) Handle differences in spatial resolution"
+      b3_s1_nb5: "3) Mask missing data from one dataset"
+
+      c_s1_nb5: "C. Combine objects"
+      c1_s1_nb5: "1) `expand_dims()` to add 'source' dimension"
+      c2_s1_nb5: "2) `combine_by_coords()`"
+
+      d_s1_nb5: "D. Visualize comparison"
+      d1_s1_nb5: "1) Mean over time"
+      d2_s1_nb5: "2) Mean over space"
+      d3_s1_nb5: "3) Difference"
 
 #  extra_extensions:
 #  - sphinxext.opengraph

@@ -1,6 +1,6 @@
 # Getting started
 
-## How to use this book
+## *How to use this book*
 
 Our goal is for this book to be useful to users across a range of backgrounds and with different needs and interests. It is designed to be a comprehensive walk-through of scientific workflows using earth observation data in Python. At the same time, we recognize some users may be interested in following individual segments and a more modular structure. Read from start to finish or check out the individual sections that interest you. To see which topics are covered in different notebooks, see the overview pages of each tutorial linked below, the [glossary](../pt4/glossary.md) or enter a specific term in the search bar to see the pages where it is used. todo decide about having glossary or not.
 
@@ -8,12 +8,12 @@ Our goal is for this book to be useful to users across a range of backgrounds an
 Head to the [software](software.md) page for detailed instructions on how to get started running the tutorial notebooks on your own.
 :::
 
-## Data
+## *Data used in this book*
 
 Most of the examples in this book use data accessed programmatically from cloud-object storage. We make subsets of the data available in this book's Github repository to remove the need for computationally-intensive operations in the tutorials. In one example, working with Sentinel-1 data processed by Alaska Satelllite Facility, we start with data downloaded locally. Users who would like to complete this processing step on their own may do so (and access the data [here]()), but a smaller subset of this data is stored in the repository. For more detail on data used in this book see [Tutorial Data](../background/tutorial_data.md).
 
 
-## Overview
+## *Overview of book*
 
 ### {{part1_title}}
 Background on data cubes and an introduction to array-based geoscience data and how it is represented in Xarray and Python. This section provides an overview and explanations of topics that will be referenced in the applied tutorials.
@@ -30,7 +30,7 @@ Each tutorial focuses on a different type of remote sensing dataset and demonstr
 
 A summary of the lessons learned throughout the tutorials and synthesis of these ideas into suggestions and best practices for developing scientific workflows analyzing n-dimensional earth observation data. 
 
-## Who is this book for?
+## *Who is this book for?*
 
 This book is for anyone who is interested in working with earth observation data in Python! Follow along from start to finish for a more comprehensive explanation on what we're doing and why, or drop in to the sections that interest you. We try to provide relevant domain and background information where necessary, and we direct the reader to helpful resources that provide more robust discussions of important concepts when appropriate.
 
@@ -46,7 +46,7 @@ The tutorials in this book include discussion of different types of geospatial d
 - [**Intro to vector data**](https://datacarpentry.github.io/organization-geospatial/02-intro-vector-data.html#about-vector-data) - *Data Carpentry*
 - [**Data cubes**](https://openeo.org/documentation/1.0/datacubes.html#what-are-datacubes) - *openEO*
 
-## Learning objectives
+## *Learning objectives*
 
 ### Data cubes and array data structures
 - Understanding fundamental structures of data cubes and how to organize earth observation datasets within this data model
@@ -68,18 +68,33 @@ The tutorials in this book include discussion of different types of geospatial d
 - Reading and writing Zarr data cubes with Xarray
 
 
-## Xarray and the Pangeo software stack
+## *Xarray, Zarr, and the Pangeo software stack*
 
-todo figure out why image not rendering, add other logos 
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p><strong><a href="https://xarray.dev/">Xarray</a></strong> is an open-source project and Python package that provides a set of tools for working with n-dimensional array-like datasets. Xarray provides labeled dimensions, coordinate arrays and metadata that make computational workflows with multi-dimensional arrays more intuitive, efficient and scalable.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="/JOSE_tutorials_submission/book/logos/Xarray_Logo_RGB_Final.svg" alt="Xarray logo" style="max-width: 100%;">
-  </div>
-</div>
+TODO include Dask in this section?
 
-**[Pangeo](https://www.pangeo.io/)** is a community scientists, developers, and practitioners who are dedicated to promoting open, reproducible, and scalable science. Members of the Pangeo community develop and contribute to open-source software libraries within the geosciences and across scientific domains, including Xarray, Dask, Zarr, and Jupyter.
+```{figure} logos/Xarray_Logo_RGB_Final.png
+---
+scale: 5%
+align: right
+---
+```
+**[Xarray](https://docs.xarray.dev/en/stable/#)** is a Python library and open-source project that introduces a data structure with named dimensions, coordinates and attributes that wrap NumPy-like arrays. This allows the co-location of raw data and metadata for complex, n-dimensional datasets in ways that streamline scientific analysis, enabling more consise, readable and intuitive workflows. 
+
+```{figure} zarr_logo.png
+---
+scale: 50% 
+align: right
+---
+```
+
+**[Zarr](https://zarr.readthedocs.io/en/stable/#)** is a Python library for reading and writing data stored as Zarr groups and arrays. Zarr is built for array-like data and has flexible storage backends making it suitable data stored in local file systems as well as cloud object storage. 
+
+```{figure} logos/pangeo_logo.png
+---
+scale: 50% 
+align: right
+---
+```
+**[Pangeo](https://www.pangeo.io/)** is a community scientists, developers, and practitioners dedicated to promoting open, reproducible, and scalable science. Members of the Pangeo community develop and contribute to open-source software libraries within the geosciences and across scientific domains, including Xarray, Dask, Zarr, and Jupyter.
 
 In addition to these software libraries, the Pangeo community emphasizes the development of educational resources (see [Project Pythia](https://foundations.projectpythia.org/landing-page.html)), regular community [meetings](https://www.pangeo.io/meetings) and [showcase talks](https://www.pangeo.io/showcase), and working groups on specialized topics. 

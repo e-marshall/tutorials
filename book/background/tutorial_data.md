@@ -6,7 +6,7 @@ Most of the examples in this book use data accessed programmatically from cloud-
 
 Here is a broad overview the data included in this tutorial, including how it is collected, it's potential scientific applications, and how and where it is stored and accessed in these tutorials. 
 
-## Inter-mission Time Series of Land Ice Velocity and Elevation (ITS_LIVE)
+## *Inter-mission Time Series of Land Ice Velocity and Elevation (ITS_LIVE)*
 
 | Dataset name | Produced by | Storage format | Storage location |
 | :-----------:|:---------- | :------------- | :--------------- |
@@ -28,7 +28,7 @@ Be sure to also check out the ITS_LIVE image pair velocities [documentation](htt
 - [NASA/USGS Provide Global View of Speed of Ice](https://www.jpl.nasa.gov/news/nasausgs-provide-global-view-of-speed-of-ice/)
 
 
-## Sentinel-1 Radiometric Terrain Corrected (RTC) imagery 
+## *Sentinel-1 Radiometric Terrain Corrected (RTC) imagery*
 
 Part 2 focuses on Sentinel-1 Radiometric Terrain Corrected imagery. Sentinel-1 is a dataset of synthetic aperture radar (SAR) imagery collected from sensors located on satellites operated by the Sentinel satellites operated by the European Space Agency (ESA). SAR data is exciting because doesn't require solar illumination like passive optical systems and, at the wavelength where Sentinel-1 imagery is collected, it is minimally impacted by atmospheric water vapor, meaning that Sentinel-1 can acquire clear images of Earth's surface even during cloudy and nighttime conditions. SAR imagery has a wide range of scientific applications including monitoring land surface deformation related to seismic activities, tracking flooding extents following extreme weather events, and mapping deforestation and characterizing biomass. 
 
@@ -98,7 +98,7 @@ Further reading on SAR data and Sentinel-1:
 - [University of Alaska Fairbanks - Microwave Remote Sensing](https://radar.community.uaf.edu/)
 - [Mathematical tutorial on SAR](https://www.earthdata.nasa.gov/s3fs-public/2024-06/sar%20mathematical%20tutorial.pdf) (by Margaret Cheney, from NASA EarthData)
 
-## Vector data
+## *Vector data*
 
 ### Randolph Glacier Inventory version 7 (RGI7) glacier outlines 
 

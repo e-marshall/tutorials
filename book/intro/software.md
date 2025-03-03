@@ -2,7 +2,7 @@
 
 On this page you'll find information about the computing environment and datasets that will be used in both of the tutorials in this book.
 
-## Running tutorial materials locally
+## *Running tutorial materials locally*
 
 There are two options for creating a software environment, we recommend using [pixi](https://pixi.sh/latest/) to create a consistent environment on different operating systems. If you have pixi installed, simply run the following commands to open either the itslive or sentinel-1 Jupyter notebooks:
 
@@ -32,7 +32,7 @@ pixi run sentinel1
 - update required packages below, some not necessary.
 
 
-## Required software packages
+## *Required software packages*
 
 Below is a list of all packages imported throughout the notebooks:
 

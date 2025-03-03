@@ -6,7 +6,7 @@ The key object of our analyses will be a [raster data cube](https://openeo.org/d
 
 A very common data cube structure is a 3-dimensional object with (`x`,`y`,`time`) dimensions. This may sound quite simple, and it can be, but in practice, the amount and types of information contained within a single dataset can become complicated and unwieldy. As analysts, we accesss data (usually from providers such as Distributed Active Archive Centers ([DAACs](https://nssdc.gsfc.nasa.gov/earth/daacs.html))), and then we are responsible for organizing the data in a way that let's us ask the questions we'd like to of it. While some of these decisions can be very intuitive (eg. it makes sense to stack observations from different points in time along a time dimension), some can be less straightforward (Where and how should important metadata be stored so that it will propagate across appropriate operations and be accessible when it is needed?). 
 
-### *Two types of information*
+## *Two types of information*
 Fundamentally, many of these complexities can be reduced to one distinction: is a particular piece of information a physical information (the main focus, or target, of the dataset), or is it metadata that provides information that is necessary to properly interpret and handle the physical observable? Answering this question will help you understand how to situate a piece of information wtihin the broader data object. 
 
 ((insert example and diagram))
@@ -25,7 +25,7 @@ Fundamentally, many of these complexities can be reduced to one distinction: is 
 
 - alot of this is pointing at tidy data principles (eg. how should data be structured to facilitate analysis), reference that (for tabular or array data)? 
 
-### *Open-source setting*
+## *Open-source setting*
 
 Luckily, there are great open-source tools out there that handle much of the complexity described above. These tools streamline the parsing and handling of metadata and many have built-in integrations with one another so that to the user, they often 'just work.' But, it takes some familiarity with these tools (and knowing they exist!) in order to take advantage of them and use them appropriately in your workflows. 
 

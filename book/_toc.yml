@@ -5,8 +5,6 @@ parts:
   - caption: Introduction
     chapters:
     - file: intro/getting_started
-    - file: intro/other_resources
-    - file: intro/about_this_book
   - caption: Background
     chapters:
     - file: background/background
@@ -25,7 +23,7 @@ parts:
     - file: tutorial1/nbs/5_exploratory_data_analysis_group
   - caption: Part 2
     chapters:
-    - file: tutorial2/new_s1_intro
+    - file: tutorial2/s1_intro
     - file: tutorial2/nbs/1_read_asf_data
     - file: tutorial2/nbs/2_wrangle_metadata
     - file: tutorial2/nbs/3_asf_exploratory_analysis
@@ -36,12 +34,9 @@ parts:
     chapters:
     - file: pt4/summary
     - file: pt4/tidy_principles
-    - file: pt4/Conclusion
+    - file: pt4/conclusion
   - caption: Additional material
     chapters:
     - file: endmatter/appendix
-    #- file: endmatter/appendix_1_1_handle_mult_geom_types
-    #- file: endmatter/appendix_1_2_read_w_xropen_mfdataset
     - file: endmatter/other_resources
     - file: endmatter/about_this_book
-    - file: endmatter/glossary
