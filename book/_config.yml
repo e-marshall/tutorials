@@ -79,7 +79,7 @@ sphinx:
 
       #tutorial 2 nb titles
       title_s1_1: "# 1. Read Sentinel-1 data processed by ASF"
-      title_s1_2: "# 2. Metadata wrangling"
+      title_s1_2: "# 2. Wrangle metadata"
       title_s1_3: "# 3. Exploratory analysis of ASF S1 imagery"
       title_s1_4: "# 4. Read Sentinel-1 RTC data from Microsoft Planetary Computer"
       title_s1_5: "# 5. Comparing Sentinel-1 RTC datasets"
