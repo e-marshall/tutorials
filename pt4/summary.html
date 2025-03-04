@@ -274,7 +274,7 @@
       
       
       
-      <li><a href="https://e-marshall.github.io/cloud-open-source-geospatial-datacube-workflows/introduction.html" target="_blank"
+      <li><a href="https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +291,7 @@
       
       
       
-      <li><a href="https://e-marshall.github.io/cloud-open-source-geospatial-datacube-workflows/introduction.html/issues/new?title=Issue%20on%20page%20%2Fpt4/summary.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows/issues/new?title=Issue%20on%20page%20%2Fpt4/summary.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -392,7 +392,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -408,6 +410,23 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-data">Reading and writing data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specific-topics">Specific topics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-in-notebooks">Examples in notebooks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#larger-than-memory-data">Larger-than-memory data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joining-raster-and-vector-data">Joining raster and vector data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leveraging-metadata-conventions">Leveraging metadata conventions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-analysis-ready-data-cubes">Making analysis-ready data cubes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data visualization</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -419,6 +438,60 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorials-summary">
 <h1>Tutorials summary<a class="headerlink" href="#tutorials-summary" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>brief overview of different topics addressed in tutorials and links to relevant notebooks</p></li>
+</ul>
+<section id="reading-and-writing-data">
+<h2>Reading and writing data<a class="headerlink" href="#reading-and-writing-data" title="Permalink to this heading">#</a></h2>
+<p>In this book, we worked through tutorials accessing two satellite remote sensing datasets, preparing them for analysis and performing exploratory data analysis and visualization. Data used in the tutorials include Zarr datacubes and cloud-optimized GeoTIFFs (COGs) accessed from cloud object stores such as AWS S3 asand Microsoft Planetary Computer and GeoTIFF files read from local storage by creating a virtual representation of the data on disk. We also wrote <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> objects to disk as Zarr data cubes for later reuse.</p>
+<section id="specific-topics">
+<h3>Specific topics<a class="headerlink" href="#specific-topics" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Reading Zarr data cubes stored in S3 buckets with Xarray (ITS_LIVE tutorial, <a class="reference internal" href="../tutorial1/nbs/1_accessing_itslive_s3_data.html"><span class="std std-doc">notebook 1</span></a>).</p></li>
+<li><p>Creating GDAL VRT objects from lists of GeoTIFF files (Sentinel-1 tutorial, <a class="reference internal" href="../tutorial2/nbs/1_read_asf_data.html"><span class="std std-doc">notebook 1</span></a>).</p></li>
+<li><p>Using tools such as <a class="reference internal" href="#"><span class="xref myst">PySTAC</span></a> and <a class="reference internal" href="#"><span class="xref myst">stackstac</span></a> to query and read data from Microsoft Planetary Computer (Sentinel-1 tutorial, <a class="reference internal" href="../tutorial2/nbs/4_read_pc_data.html"><span class="std std-doc">notebook 4</span></a>).</p></li>
+<li><p>Formatting encoding of <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> objects so that files can be written to disk (ITS_LIVE tutorial, <a class="reference internal" href="../tutorial1/nbs/3_combining_raster_vector_data.html"><span class="std std-doc">notebook 3</span></a>).</p></li>
+<li><p>Using <a class="reference internal" href="#"><span class="xref myst">cf_xarray</span></a> and <a class="reference internal" href="#"><span class="xref myst">Xvec</span></a> to read and write vector data cubes to disk (ITS_LIV Etutorial, <a class="reference internal" href="../tutorial1/nbs/5_exploratory_data_analysis_group.html"><span class="std std-doc">notebook 5</span></a>).</p></li>
+</ul>
+</section>
+<section id="examples-in-notebooks">
+<h3>Examples in notebooks<a class="headerlink" href="#examples-in-notebooks" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="larger-than-memory-data">
+<h2>Larger-than-memory data<a class="headerlink" href="#larger-than-memory-data" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Chunking strategies for reading data into memory</p></li>
+<li><p>Re-chunking along given dimensions</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">.compute()</span></code> and <code class="docutils literal notranslate"><span class="pre">.persist()</span></code> …</p></li>
+</ul>
+</section>
+<section id="joining-raster-and-vector-data">
+<h2>Joining raster and vector data<a class="headerlink" href="#joining-raster-and-vector-data" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Clip raster with vector</p></li>
+<li><p>Create vector dataframe by sampling raster data cube with geometries</p></li>
+</ul>
+</section>
+<section id="leveraging-metadata-conventions">
+<h2>Leveraging metadata conventions<a class="headerlink" href="#leveraging-metadata-conventions" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>cf_xarray</p></li>
+<li><p>PySTAC, stackstac…</p></li>
+</ul>
+</section>
+<section id="making-analysis-ready-data-cubes">
+<h2>Making analysis-ready data cubes<a class="headerlink" href="#making-analysis-ready-data-cubes" title="Permalink to this heading">#</a></h2>
+<p>Many sections in this book focused on connecting observations from satellite imagery such as SAR backscatter and ice velocity estimates to metadata that is necessary to inerpret the observations. This process, often called ‘data tidying’, requires a detailed understanding of one’s data and the Xarray data model.</p>
+</section>
+<section id="data-visualization">
+<h2>Data visualization<a class="headerlink" href="#data-visualization" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Xarray FacetGrid plotting</p></li>
+<li><p>Interactive visualizations with hvplot</p></li>
+<li><p>Using geopandas to make interactive map-based visualizations of vector data cubes…</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -475,6 +548,30 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-data">Reading and writing data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specific-topics">Specific topics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-in-notebooks">Examples in notebooks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#larger-than-memory-data">Larger-than-memory data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joining-raster-and-vector-data">Joining raster and vector data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leveraging-metadata-conventions">Leveraging metadata conventions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-analysis-ready-data-cubes">Making analysis-ready data cubes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data visualization</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
