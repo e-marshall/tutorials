@@ -18,6 +18,10 @@ Throughout this book, we reference a number of resources on different topics. Th
 - [Cloud Computing - NASA Earth Observation Data Basics](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/cloud-computing)
 - [Vector Data Cubes - Edzer Pebesma](https://r-spatial.org/r/2022/09/12/vdc.html)
 
+## Geospatial data and coordinate reference systems
+- [Coordinate Reference Systems - Geocomputaion with Python](https://py.geocompx.org/01-spatial-data#geographic-coordinate-systems)
+- [Reprojecting Geographic Data - Geocomputation with Python](https://py.geocompx.org/06-reproj)
+
 ## Remote sensing data types and formats 
 - [Types of SAR Products - NASA Earth Observation Data Basics](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/types-sar-products)
 
