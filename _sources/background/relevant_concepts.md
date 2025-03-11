@@ -2,9 +2,10 @@
 
 ## *Larger than memory data, parallelization and Dask*
 
-TODO - notes on this section
+TODO
 - maybe add a figure showing how jobs distributed to workers
 - maybe add a figure illustrating chunks ? 
+- Add section on STAC
 
 
 ```{glossary}
@@ -25,7 +26,7 @@ Chunking
 
     Choosing chunks can be complicated and have a significant impact on how fast your code runs. Typically, you want enough chunks that each individual chunk is relatively small and many chunks can fit into into memory. However, if you have too many chunks, Dask now needs to keep track of many individual tasks, meaning that more time will be spent managing the task graph compared to executing tasks. In addition, tasks should reflect the shape of yoour data and how you want to use it. If you're working with a space-time dataset but you're most interested in spatial analysis, having smaller chunks along the `x` and `y` dimensions will make spatial operations easier to parallelize. 
 
-    ### Further reading
+    **Further reading**
     - [Dask Array - Best Practices](https://docs.dask.org/en/latest/array-best-practices.html),   
     - [Dask Array Chunks](https://docs.dask.org/en/stable/array-chunks.html),  
     - [Choosing good chunk sizes](https://blog.dask.org/2021/11/02/choosing-dask-chunk-sizes) blog post,  

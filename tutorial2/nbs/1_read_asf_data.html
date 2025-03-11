@@ -116,7 +116,7 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 <aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content">🚧 Feb 2025 - This book is under construction! 🚧
+  <div class="bd-header-announcement__content">🚧 March 2025 - This book is under construction! 🚧
 </div>
 </aside>
 
@@ -182,11 +182,13 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../intro/getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/learning_objectives.html">Learning objectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/open_source_setting.html">Open source setting</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../background/background.html">Context and motivation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../background/anatomy_of_a_data_cube.html">Anatomy of a data cube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/context_motivation.html">Context &amp; Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/data_cubes.html">Data cubes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../background/tutorials_overview.html">Tutorials overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../background/tutorial_data.html">Data used in tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../intro/software.html">Software and computing environment</a></li>
@@ -213,13 +215,15 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../pt4/summary.html">Tutorials summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pt4/takeaways.html">Takeaways</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pt4/conclusion.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../endmatter/appendix.html">Appendix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endmatter/other_resources.html">Other resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../endmatter/about_this_book.html">Aboout this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endmatter/about_this_book.html">About this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endmatter/references.html">References</a></li>
 </ul>
 
     </div>
@@ -508,6 +512,11 @@ Learning goals</label><div class="sd-tab-content docutils">
 <li><p>Read larger-than-memory data into memory</p></li>
 <li><p>Use VRT files to create 3-d Xarray data cubes from stack of 2-d image files</p></li>
 </ul>
+<h4 class="rubric" id="techniques">Techniques</h4>
+<ul class="simple">
+<li><p>Create <a class="reference external" href="https://gdal.org/en/stable/drivers/raster/vrt.html">GDAL VRT</a> files.</p></li>
+</ul>
+<p>TODO add these</p>
 </div>
 </div>
 <p>Expand the next cell to see specific packages used in this notebook and relevant system and version information.</p>
@@ -790,37 +799,28 @@ Learning goals</label><div class="sd-tab-content docutils">
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0..
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0...10.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.10...20...30...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..20...30...40...50...60...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40...50...60...70.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..80...90...100 - done.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>70...80...90...100 - done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...10...20...30...40
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...10...20...30...40...50..
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...50...60...70.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..80...90...100 - done.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.60...70...80...90...100 - done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...10...20...30
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...40...50...60...70
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...10...20...30...40...50...60...70
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...80...90...100 - done.

@@ -113,7 +113,7 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 <aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content">🚧 Feb 2025 - This book is under construction! 🚧
+  <div class="bd-header-announcement__content">🚧 March 2025 - This book is under construction! 🚧
 </div>
 </aside>
 
@@ -181,11 +181,13 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro/getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro/learning_objectives.html">Learning objectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro/open_source_setting.html">Open source setting</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="background/background.html">Context and motivation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="background/anatomy_of_a_data_cube.html">Anatomy of a data cube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background/context_motivation.html">Context &amp; Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background/data_cubes.html">Data cubes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="background/tutorials_overview.html">Tutorials overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="background/tutorial_data.html">Data used in tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro/software.html">Software and computing environment</a></li>
@@ -212,13 +214,15 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pt4/summary.html">Tutorials summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pt4/takeaways.html">Takeaways</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pt4/conclusion.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="endmatter/appendix.html">Appendix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endmatter/other_resources.html">Other resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endmatter/about_this_book.html">Aboout this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endmatter/about_this_book.html">About this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endmatter/references.html">References</a></li>
 </ul>
 
     </div>
@@ -372,20 +376,55 @@ document.write(`
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#C"><strong>C</strong></a>
+ <a href="#Symbols"><strong>Symbols</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
+ | <a href="#G"><strong>G</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#Z"><strong>Z</strong></a>
  
 </div>
+<h2 id="Symbols">Symbols</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pt4/glossary.html#term-Data-types"><strong>##Data types</strong></a>
+</li>
+      <li><a href="pt4/glossary.html#term-Python-pkg-specific-terms"><strong>##Python / pkg specific terms</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pt4/glossary.html#term-Remote-sensing"><strong>##Remote sensing</strong></a>
+</li>
+      <li><a href="pt4/glossary.html#term-Software-and-data-formats"><strong>##Software and data formats</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pt4/glossary.html#term-Amazon-Web-Services-AWS-Simple-Storage-Service-S3"><strong>Amazon Web Services (AWS) Simple Storage Service (S3)</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="background/relevant_concepts.html#term-Chunking"><strong>Chunking</strong></a>
 </li>
+      <li><a href="pt4/glossary.html#term-chunks-chunking"><strong>chunks, chunking</strong></a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="background/relevant_concepts.html#term-Climate-Forecase-CF-Metadata-Conventions"><strong>Climate Forecase (CF) Metadata Conventions</strong></a>
+</li>
+      <li><a href="pt4/glossary.html#term-Cloud-optimized-GeoTIFF-COG"><strong>Cloud-optimized GeoTIFF (COG)</strong></a>
 </li>
   </ul></td>
 </tr></table>
@@ -394,6 +433,18 @@ document.write(`
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="background/relevant_concepts.html#term-Dask"><strong>Dask</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pt4/glossary.html#term-GeoTIFF"><strong>GeoTIFF</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pt4/glossary.html#term-GRD"><strong>GRD</strong></a>
 </li>
   </ul></td>
 </tr></table>
@@ -410,6 +461,46 @@ document.write(`
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="background/relevant_concepts.html#term-Metadata-naming"><strong>Metadata naming</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pt4/glossary.html#term-Radiometric-terrain-corrected-RTC"><strong>Radiometric terrain corrected (RTC)</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pt4/glossary.html#term-Raster"><strong>Raster</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pt4/glossary.html#term-SLC"><strong>SLC</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pt4/glossary.html#term-Synthetic-aperture-radar-SAR"><strong>Synthetic aperture radar (SAR)</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pt4/glossary.html#term-Vector"><strong>Vector</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Z">Z</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pt4/glossary.html#term-Zarr"><strong>Zarr</strong></a>
 </li>
   </ul></td>
 </tr></table>

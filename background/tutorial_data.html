@@ -116,7 +116,7 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 <aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content">🚧 Feb 2025 - This book is under construction! 🚧
+  <div class="bd-header-announcement__content">🚧 March 2025 - This book is under construction! 🚧
 </div>
 </aside>
 
@@ -182,11 +182,13 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../intro/getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/learning_objectives.html">Learning objectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/open_source_setting.html">Open source setting</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="background.html">Context and motivation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="anatomy_of_a_data_cube.html">Anatomy of a data cube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="context_motivation.html">Context &amp; Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_cubes.html">Data cubes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials_overview.html">Tutorials overview</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Data used in tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../intro/software.html">Software and computing environment</a></li>
@@ -213,13 +215,15 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../pt4/summary.html">Tutorials summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt4/takeaways.html">Takeaways</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pt4/conclusion.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../endmatter/appendix.html">Appendix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../endmatter/other_resources.html">Other resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../endmatter/about_this_book.html">Aboout this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/about_this_book.html">About this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/references.html">References</a></li>
 </ul>
 
     </div>
@@ -437,7 +441,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-used-in-tutorials">
 <h1>Data used in tutorials<a class="headerlink" href="#data-used-in-tutorials" title="Permalink to this heading">#</a></h1>
-<p>We use a few different types of data throughout these tutorials. While each tutorial is focused on a different raster time series (ITS_LIVE ice velocity data and Sentinel-1 imagery), we’ll also use vector data to represent points of interest that we’ll take a look at in the different examples.</p>
+<p>We use a many different datasts throughout these tutorials. While each tutorial is focused on a different raster time series (ITS_LIVE ice velocity data and Sentinel-1 imagery), we also use vector data to represent points of interest.</p>
 <p>Most of the examples in this book use data accessed programmatically from cloud-object storage. We make subset of the data available in this books Github repository to remove the need for computationally-intensive operations in the tutorials. In one example, working with Sentinel-1 data processed by Alaska Satelllite Facility, we start with data downloaded locally. Users who would like to complete this processing step on their own may do so (and access the data <a class="reference internal" href="#"><span class="xref myst">here</span></a>), but a smaller subset of this data is stored in the repository.</p>
 <p>Here is a broad overview the data included in this tutorial, including how it is collected, it’s potential scientific applications, and how and where it is stored and accessed in these tutorials.</p>
 <section id="inter-mission-time-series-of-land-ice-velocity-and-elevation-its-live">
@@ -486,7 +490,7 @@ Be sure to also check out the ITS_LIVE image pair velocities <a class="reference
 <figure class="margin-caption align-default" id="sar-diagram">
 <a class="reference internal image-reference" href="../_images/SARticle_first-fig_redone-06.jpg"><img alt="../_images/SARticle_first-fig_redone-06.jpg" src="../_images/SARticle_first-fig_redone-06.jpg" style="height: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Schematic of observation geometry used to form a SAR imgae.<br />
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Schematic of observation geometry used to form a SAR imgae.<br />
 Credit: <a class="reference external" href="https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/sar">NASA EarthData / NASA SAR Handbook</a>.</span><a class="headerlink" href="#sar-diagram" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>

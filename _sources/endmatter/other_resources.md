@@ -1,8 +1,6 @@
 # Other resources
 
-(*I think this should be moved to a section/page at the end that has general info about book like references, citation, glossary (if using) etc*
-)
-Throughout this book, we reference a number of resources on different topics. This page contains all of the external resources referenced in this book organized by subject: 
+Throughout this book, we reference a number of resources on different topics. This page contains the external resources referenced in this book organized by subject: 
 
 
 ## Xarray-specific resources

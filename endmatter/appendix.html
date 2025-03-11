@@ -116,7 +116,7 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 <aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content">🚧 Feb 2025 - This book is under construction! 🚧
+  <div class="bd-header-announcement__content">🚧 March 2025 - This book is under construction! 🚧
 </div>
 </aside>
 
@@ -182,11 +182,13 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../intro/getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/learning_objectives.html">Learning objectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/open_source_setting.html">Open source setting</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../background/background.html">Context and motivation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../background/anatomy_of_a_data_cube.html">Anatomy of a data cube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/context_motivation.html">Context &amp; Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/data_cubes.html">Data cubes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background/tutorials_overview.html">Tutorials overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background/tutorial_data.html">Data used in tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../intro/software.html">Software and computing environment</a></li>
@@ -213,13 +215,15 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../pt4/summary.html">Tutorials summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt4/takeaways.html">Takeaways</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pt4/conclusion.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Appendix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="other_resources.html">Other resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about_this_book.html">Aboout this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_this_book.html">About this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
     </div>
@@ -416,7 +420,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-geometry-types-its-live-tutorial"><span class="xref myst">1. Troubleshooting geometry types (ITS_LIVE tutorial)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial"><span class="xref myst">2 Reading a stack of files with <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> (Sentinel-1 tutorial)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial"><span class="xref myst">2. Reading a stack of files with <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> (Sentinel-1 tutorial)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-regridding-approach-using-xesmf-sentinel-1-tutorial"><span class="xref myst">3. Another regridding approach using <code class="docutils literal notranslate"><span class="pre">xESMF</span></code> (Sentinel-1 tutorial)</span></a></li>
 </ul>
             </nav>
         </div>
@@ -432,11 +437,11 @@ document.write(`
 <h1>Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading">#</a></h1>
 <p>While developing this book, we encountered different examples that didn’t always fit into the overall scope of the tutorials, but still may be useful to others.</p>
 <section id="troubleshooting-geometry-types-its-live-tutorial">
-<h2><span class="xref myst">1. Troubleshooting geometry types (ITS_LIVE tutorial)</span><a class="headerlink" href="#troubleshooting-geometry-types-its-live-tutorial" title="Permalink to this heading">#</a></h2>
+<h2><a class="reference internal" href="nbs/1_handle_mult_geom_types.html"><span class="std std-doc">1. Troubleshooting geometry types (ITS_LIVE tutorial)</span></a><a class="headerlink" href="#troubleshooting-geometry-types-its-live-tutorial" title="Permalink to this heading">#</a></h2>
 <p>In the first tutorial, while making an <a class="reference internal" href="#../itslive_nbs/3_combining_raster_vector_data.ipynb"><span class="xref myst">interactive visualization of vector dataframes</span></a>, we encountered a warning. This notebook includes a step-by-step demonstration of troubleshooting this warning, identifying its source and resolving it.</p>
 </section>
 <section id="reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial">
-<h2><span class="xref myst">2 Reading a stack of files with <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> (Sentinel-1 tutorial)</span><a class="headerlink" href="#reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial" title="Permalink to this heading">#</a></h2>
+<h2><a class="reference internal" href="nbs/2_read_w_xropen_mfdataset.html"><span class="std std-doc">2. Reading a stack of files with <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> (Sentinel-1 tutorial)</span></a><a class="headerlink" href="#reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial" title="Permalink to this heading">#</a></h2>
 <p>Xarray’s <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.open_mfdataset.html">function</a> allows the user to read in and combine multiple files at once to produce a single <code class="docutils literal notranslate"><span class="pre">xr.DataArray</span></code> object. This approach was explore when developing the <a class="reference internal" href="../tutorial2/nbs/1_read_asf_data.html"><span class="std std-doc">Read ASF-processed Sentinel-1 RTC data notebook</span></a>. However, `xr.open_mfdataset() didn’t work well for this purpose because, while the stack of raster files used in this example covers a common area of interest, it includes several different spatial footprints. This creates problems when specifying a chunking strategy.</p>
 <p><code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> takes a ‘preprocess’ argument that allows the user to write a function to specify how each raster file should be read so that the structure and metadata of the returned object matches the desired format. However, because it applies the same preprocessing steps to each file, the chunking strategyy is defined off of the first file in the stack. With files that cover different spatial footprints, different chunking strategies will be required. The processing works fine for lazy steps, but a memory ‘blow-up’ occurs at computation time.</p>
 <p>For this reason, <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> was not an appropriate tool for this workflow. We kept this example in the book as an appendix item in case it is useful for users who would like to see an example of how to write a <code class="docutils literal notranslate"><span class="pre">preprocess</span></code> argument and how to call <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code>.</p>
@@ -450,12 +455,12 @@ document.write(`
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>TODO that i’m interpreting the solution on this thread correctly?</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
 <p>If you wanted to select scenes from a single viewing geometry at the expense of a denser time series, <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> might work a bit better (this approach has not been tested).</p>
 </div>
+</section>
+<section id="another-regridding-approach-using-xesmf-sentinel-1-tutorial">
+<h2><a class="reference internal" href="nbs/3_regridding_w_xesmf.html"><span class="std std-doc">3. Another regridding approach using <code class="docutils literal notranslate"><span class="pre">xESMF</span></code> (Sentinel-1 tutorial)</span></a><a class="headerlink" href="#another-regridding-approach-using-xesmf-sentinel-1-tutorial" title="Permalink to this heading">#</a></h2>
+<p>This notebook demonstrates an alternative approach to the regridding shown in <a class="reference internal" href="../tutorial2/nbs/5_comparing_s1_rtc_datasets.html"><span class="std std-doc">noteboook 5</span></a> of Tutorial 2, but this time using a different regridding package.</p>
 </section>
 </section>
 
@@ -524,7 +529,8 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-geometry-types-its-live-tutorial"><span class="xref myst">1. Troubleshooting geometry types (ITS_LIVE tutorial)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial"><span class="xref myst">2 Reading a stack of files with <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> (Sentinel-1 tutorial)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-a-stack-of-files-with-xr-open-mfdataset-sentinel-1-tutorial"><span class="xref myst">2. Reading a stack of files with <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code> (Sentinel-1 tutorial)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-regridding-approach-using-xesmf-sentinel-1-tutorial"><span class="xref myst">3. Another regridding approach using <code class="docutils literal notranslate"><span class="pre">xESMF</span></code> (Sentinel-1 tutorial)</span></a></li>
 </ul>
   </nav></div>
 

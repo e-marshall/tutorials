@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro/getting_started';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Context and motivation" href="../background/background.html" />
+    <link rel="next" title="Learning objectives" href="learning_objectives.html" />
     <link rel="prev" title="Cloud-native geospatial datacube workflows with open-source tools" href="../introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -116,7 +116,7 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 <aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content">🚧 Feb 2025 - This book is under construction! 🚧
+  <div class="bd-header-announcement__content">🚧 March 2025 - This book is under construction! 🚧
 </div>
 </aside>
 
@@ -182,11 +182,13 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="learning_objectives.html">Learning objectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open_source_setting.html">Open source setting</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../background/background.html">Context and motivation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../background/anatomy_of_a_data_cube.html">Anatomy of a data cube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/context_motivation.html">Context &amp; Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/data_cubes.html">Data cubes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background/tutorials_overview.html">Tutorials overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background/tutorial_data.html">Data used in tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software.html">Software and computing environment</a></li>
@@ -213,13 +215,15 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../pt4/summary.html">Tutorials summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pt4/takeaways.html">Takeaways</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pt4/conclusion.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../endmatter/appendix.html">Appendix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../endmatter/other_resources.html">Other resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../endmatter/about_this_book.html">Aboout this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/about_this_book.html">About this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/references.html">References</a></li>
 </ul>
 
     </div>
@@ -417,21 +421,17 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book"><em>How to use this book</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-used-in-this-book"><em>Data used in this book</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-book-for"><em>Who is this book for?</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-book"><em>Overview of book</em></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-its-live-ice-velocity-data-tutorial">Part 1: ITS_LIVE ice velocity data tutorial</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-sentinel-1-rtc-imagery-tutorial">Part 2: Sentinel-1 RTC imagery tutorial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials">Tutorials</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-its-live-ice-velocity-data-tutorial">Part 1: ITS_LIVE ice velocity data tutorial</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-sentinel-1-rtc-imagery-tutorial">Part 2: Sentinel-1 RTC imagery tutorial</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-conclusion">Summary + Conclusion</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-book-for"><em>Who is this book for?</em></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives"><em>Learning objectives</em></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cubes-and-array-data-structures">Data cubes and array data structures</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-very-large-data">Working with very large data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-data">Reading and writing data</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xarray-zarr-and-the-pangeo-software-stack"><em>Xarray, Zarr, and the Pangeo software stack</em></a></li>
 </ul>
             </nav>
         </div>
@@ -447,7 +447,8 @@ document.write(`
 <h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h1>
 <section id="how-to-use-this-book">
 <h2><em>How to use this book</em><a class="headerlink" href="#how-to-use-this-book" title="Permalink to this heading">#</a></h2>
-<p>Our goal is for this book to be useful to users across a range of backgrounds and with different needs and interests. It is designed to be a comprehensive walk-through of scientific workflows using earth observation data in Python. At the same time, we recognize some users may be interested in following individual segments and a more modular structure. Read from start to finish or check out the individual sections that interest you. To see which topics are covered in different notebooks, see the overview pages of each tutorial linked below, the <span class="xref myst">glossary</span> or enter a specific term in the search bar to see the pages where it is used. todo decide about having glossary or not.</p>
+<p>Our goal is for this book to be useful to users across a range of backgrounds and with different needs and interests. It is designed to be a comprehensive walk-through of scientific workflows using earth observation data in Python. At the same time, we recognize some users may be interested in following individual segments and a more modular structure. Read from start to finish or check out the individual sections that interest you. To see which topics are covered in different notebooks, check out the <a class="reference internal" href="../background/tutorials_overview.html"><span class="std std-doc">tutorials overview</span></a> page.</p>
+<p>If you’re interested in a more-detailed introduction and background on data cubes and cloud-optimized geoscience, head to the <a class="reference internal" href="#../background/background_root.md"><span class="xref myst">background</span></a> section, otherwise, head straight to the tutorials.</p>
 <div class="admonition-running-tutorial-notebooks-on-your-own admonition">
 <p class="admonition-title">Running tutorial notebooks on your own</p>
 <p>Head to the <a class="reference internal" href="software.html"><span class="std std-doc">software</span></a> page for detailed instructions on how to get started running the tutorial notebooks on your own.</p>
@@ -455,31 +456,16 @@ document.write(`
 </section>
 <section id="data-used-in-this-book">
 <h2><em>Data used in this book</em><a class="headerlink" href="#data-used-in-this-book" title="Permalink to this heading">#</a></h2>
-<p>Most of the examples in this book use data accessed programmatically from cloud-object storage. We make subsets of the data available in this book’s Github repository to remove the need for computationally-intensive operations in the tutorials. In one example, working with Sentinel-1 data processed by Alaska Satelllite Facility, we start with data downloaded locally. Users who would like to complete this processing step on their own may do so (and access the data <a class="reference internal" href="#"><span class="xref myst">here</span></a>), but a smaller subset of this data is stored in the repository. For more detail on data used in this book see <a class="reference internal" href="../background/tutorial_data.html"><span class="std std-doc">Tutorial Data</span></a>.</p>
-</section>
-<section id="overview-of-book">
-<h2><em>Overview of book</em><a class="headerlink" href="#overview-of-book" title="Permalink to this heading">#</a></h2>
-<section id="background">
-<h3>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h3>
-<p>Background on data cubes and an introduction to array-based geoscience data and how it is represented in Xarray and Python. This section provides an overview and explanations of topics that will be referenced in the applied tutorials.</p>
-</section>
-<section id="part-1-its-live-ice-velocity-data-tutorial">
-<h3>Part 1: ITS_LIVE ice velocity data tutorial<a class="headerlink" href="#part-1-its-live-ice-velocity-data-tutorial" title="Permalink to this heading">#</a></h3>
-<p>A tutorial focusing on <a class="reference external" href="https://its-live.jpl.nasa.gov/">ITS_LIVE</a>, a NASA MEASURES project and publicly accessible dataset stored in an AWS S3 repo as Zarr data cubes.</p>
-</section>
-<section id="part-2-sentinel-1-rtc-imagery-tutorial">
-<h3>Part 2: Sentinel-1 RTC imagery tutorial<a class="headerlink" href="#part-2-sentinel-1-rtc-imagery-tutorial" title="Permalink to this heading">#</a></h3>
-<p>This <span class="xref myst">tutorial</span> focuses on another satellite dataset: Sentinel-1 Radiometric Terrain Corrected imagery. Sentinel-1 is a synthetic aperture radar sensor; SAR data undergoes different types of processing for different scientific applications. Part 3 demonstrates how to access this data from two publicly available, online respositories: Alaska Satellite Facility and Microsoft Planetary Computer. These notebooks demonstrate the different ways to read this data and prepare it for analysis, as well as an initial comparison of the two datasets.</p>
-<p>Each tutorial focuses on a different type of remote sensing dataset and demonstrates how to assess and work through the nuances, details and challenges that can arise from each. A common characteristic of each dataset that is emphasized throughout the notebooks is working with larger-than-memory datasets on the computational resources of a standard laptop.</p>
-</section>
-<section id="summary-conclusion">
-<h3>Summary + Conclusion<a class="headerlink" href="#summary-conclusion" title="Permalink to this heading">#</a></h3>
-<p>A summary of the lessons learned throughout the tutorials and synthesis of these ideas into suggestions and best practices for developing scientific workflows analyzing n-dimensional earth observation data.</p>
-</section>
+<p>Most of the examples in this book use data accessed programmatically from cloud-object storage. We make subsets of the data available in this book’s Github repository to remove the need for computationally-intensive operations in the tutorials.</p>
+<p>Several notebooks in the second tutorial use Sentinel-1 data processed by the Alaska Satellite Facility and downloaded locally. Users who would like to follow these steps on their own may do so (and access the data <a class="reference internal" href="#"><span class="xref myst">here</span></a>), but a smaller subset of the dataset is also made available <a class="reference internal" href="#"><span class="xref myst">here</span></a>. For more detail on different ways to work through the Sentinel-1 tutorial, head <a class="reference internal" href="../tutorial2/s1_intro.html"><span class="std std-doc">here</span></a>, and for more background on all of the datasets used in this book see <a class="reference internal" href="../background/tutorial_data.html"><span class="std std-doc">Tutorial Data</span></a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The datasets used in these tutorials can be complicated to work with and require significant background knowledge in order to understand their limitations and how best to interpret them. <strong>It is the responsibility of the user</strong> to understand the physical principles that underpin remote sensing datasets and how they should be used and interpreted. See the <a class="reference internal" href="../background/tutorial_data.html"><span class="std std-doc">Tutorial Data</span></a> section for detailed discussion of these datasets and links to important background information.</p>
+</div>
 </section>
 <section id="who-is-this-book-for">
 <h2><em>Who is this book for?</em><a class="headerlink" href="#who-is-this-book-for" title="Permalink to this heading">#</a></h2>
-<p>This book is for anyone who is interested in working with earth observation data in Python! Follow along from start to finish for a more comprehensive explanation on what we’re doing and why, or drop in to the sections that interest you. We try to provide relevant domain and background information where necessary, and we direct the reader to helpful resources that provide more robust discussions of important concepts when appropriate.</p>
+<p>This book is for anyone who is interested in working with earth observation data in Python! We try to provide relevant domain and background information where necessary, and we direct the reader to helpful resources that provide more robust discussions of important concepts when appropriate.</p>
 <p>We provide all of the resources necessary to work through the Jupyter Notebooks contained in these tutorials on your own machine. Some experience working with Python will be helpful, however the tutorials are designed to be beginner-friendly.</p>
 <div class="admonition-if-you-d-like-a-more-thorough-background-on-working-with-geospatial-data-in-python admonition">
 <p class="admonition-title">If you’d like a more thorough background on working with geospatial data in Python</p>
@@ -492,53 +478,28 @@ document.write(`
 <li><p><a class="reference external" href="https://openeo.org/documentation/1.0/datacubes.html#what-are-datacubes"><strong>Data cubes</strong></a> - <em>openEO</em></p></li>
 </ul>
 </section>
-<section id="learning-objectives">
-<h2><em>Learning objectives</em><a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
-<section id="data-cubes-and-array-data-structures">
-<h3>Data cubes and array data structures<a class="headerlink" href="#data-cubes-and-array-data-structures" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Understanding fundamental structures of data cubes and how to organize earth observation datasets within this data model</p></li>
-<li><p>Using Xarray label-based indexing and selection to manipulate and organize multi-dimensional data objects</p></li>
-<li><p>Performing dimensional computations and visualizations with Xarray</p></li>
-<li><p>Visualizing and querying vector datasets with GeoPandas</p></li>
-<li><p>Using Xvec to create and use vector datasets, combining the functionality of Xarray and GeoPandas</p></li>
-<li><p>Aligning and comparing two objects with different spatial resolutions</p></li>
-</ul>
+<section id="overview-of-book">
+<h2><em>Overview of book</em><a class="headerlink" href="#overview-of-book" title="Permalink to this heading">#</a></h2>
+<section id="background">
+<h3>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h3>
+<p>Background on data cubes and an introduction to array-based geoscience data and how it is represented in Xarray and Python. This section provides an overview and explanations of topics that will be referenced in the applied tutorials.</p>
 </section>
-<section id="working-with-very-large-data">
-<h3>Working with very large data<a class="headerlink" href="#working-with-very-large-data" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>How to read very large local data into memory using Gdal VRT</p></li>
-<li><p>Parallelizing local data reads with Xarray <code class="docutils literal notranslate"><span class="pre">open_mfdataset()</span></code></p></li>
-<li><p>Using dask to parallelize workflows in order to work with larger-than-memory data</p></li>
-</ul>
+<section id="tutorials">
+<h3>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this heading">#</a></h3>
+<p>Each tutorial focuses on a different type of remote sensing dataset and demonstrates how to assess and work through the nuances, details and challenges that can arise from each. A common characteristic of each dataset that is emphasized throughout the notebooks is working with larger-than-memory datasets on the computational resources of a standard laptop.</p>
+<section id="part-1-its-live-ice-velocity-data-tutorial">
+<h4>Part 1: ITS_LIVE ice velocity data tutorial<a class="headerlink" href="#part-1-its-live-ice-velocity-data-tutorial" title="Permalink to this heading">#</a></h4>
+<p>A <a class="reference internal" href="../tutorial1/itslive_intro.html"><span class="std std-doc">tutorial</span></a> focusing on <a class="reference external" href="https://its-live.jpl.nasa.gov/">ITS_LIVE</a>, a NASA MEASURES project and publicly accessible dataset stored in an AWS S3 repo as Zarr data cubes.</p>
 </section>
-<section id="reading-and-writing-data">
-<h3>Reading and writing data<a class="headerlink" href="#reading-and-writing-data" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Reading raster data from cloud object storage</p></li>
-<li><p>Handling geospatial metadata and geospatial operations involving array data using Xarray and Rioxarray</p></li>
-<li><p>Understanding STAC metadata specification and how to use it to query and read data from cloud object storage</p></li>
-<li><p>Reading and writing Zarr data cubes with Xarray</p></li>
-</ul>
+<section id="part-2-sentinel-1-rtc-imagery-tutorial">
+<h4>Part 2: Sentinel-1 RTC imagery tutorial<a class="headerlink" href="#part-2-sentinel-1-rtc-imagery-tutorial" title="Permalink to this heading">#</a></h4>
+<p>This <a class="reference internal" href="../tutorial2/s1_intro.html"><span class="std std-doc">tutorial</span></a> focuses on another satellite dataset: <a class="reference external" href="https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-1">Sentinel-1</a> Radiometric Terrain Corrected imagery. Sentinel-1 is a satellite-based imaging radar. More specifically, it is a synthetic aperture radar (SAR). SAR sensor look to the side rather than straight-down like conentional optical and infrared satellite sensors. This side-looking geometry causes geometric distortions that need to be addressed prior to analysis. SAR data undergoes different types of processing for different scientific applications. Part 2 demonstrates how to access this data from two publicly available, online respositories: Alaska Satellite Facility and Microsoft Planetary Computer. These notebooks demonstrate the different ways to read this data and prepare it for analysis, as well as an initial comparison of the two datasets.</p>
 </section>
 </section>
-<section id="xarray-zarr-and-the-pangeo-software-stack">
-<h2><em>Xarray, Zarr, and the Pangeo software stack</em><a class="headerlink" href="#xarray-zarr-and-the-pangeo-software-stack" title="Permalink to this heading">#</a></h2>
-<p>TODO include Dask in this section?</p>
-<figure class="align-right">
-<a class="reference internal image-reference" href="../_images/Xarray_Logo_RGB_Final.png"><img alt="../_images/Xarray_Logo_RGB_Final.png" src="../_images/Xarray_Logo_RGB_Final.png" style="width: 250.0px; height: 125.0px;" /></a>
-</figure>
-<p><strong><a class="reference external" href="https://docs.xarray.dev/en/stable/#">Xarray</a></strong> is a Python library and open-source project that introduces a data structure with named dimensions, coordinates and attributes that wrap NumPy-like arrays. This allows the co-location of raw data and metadata for complex, n-dimensional datasets in ways that streamline scientific analysis, enabling more consise, readable and intuitive workflows.</p>
-<figure class="align-right">
-<a class="reference internal image-reference" href="../_images/zarr_logo.png"><img alt="../_images/zarr_logo.png" src="../_images/zarr_logo.png" style="width: 195.5px; height: 195.5px;" /></a>
-</figure>
-<p><strong><a class="reference external" href="https://zarr.readthedocs.io/en/stable/#">Zarr</a></strong> is a Python library for reading and writing data stored as Zarr groups and arrays. Zarr is built for array-like data and has flexible storage backends making it suitable data stored in local file systems as well as cloud object storage.</p>
-<figure class="align-right">
-<a class="reference internal image-reference" href="../_images/pangeo_logo.png"><img alt="../_images/pangeo_logo.png" src="../_images/pangeo_logo.png" style="width: 240.5px; height: 60.0px;" /></a>
-</figure>
-<p><strong><a class="reference external" href="https://www.pangeo.io/">Pangeo</a></strong> is a community scientists, developers, and practitioners dedicated to promoting open, reproducible, and scalable science. Members of the Pangeo community develop and contribute to open-source software libraries within the geosciences and across scientific domains, including Xarray, Dask, Zarr, and Jupyter.</p>
-<p>In addition to these software libraries, the Pangeo community emphasizes the development of educational resources (see <a class="reference external" href="https://foundations.projectpythia.org/landing-page.html">Project Pythia</a>), regular community <a class="reference external" href="https://www.pangeo.io/meetings">meetings</a> and <a class="reference external" href="https://www.pangeo.io/showcase">showcase talks</a>, and working groups on specialized topics.</p>
+<section id="summary-conclusion">
+<h3>Summary + Conclusion<a class="headerlink" href="#summary-conclusion" title="Permalink to this heading">#</a></h3>
+<p>A summary of the lessons learned throughout the tutorials and synthesis of these ideas into suggestions and best practices for developing scientific workflows analyzing n-dimensional earth observation data.</p>
+</section>
 </section>
 </section>
 
@@ -582,11 +543,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../background/background.html"
+       href="learning_objectives.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Context and motivation</p>
+        <p class="prev-next-title">Learning objectives</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -608,21 +569,17 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book"><em>How to use this book</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-used-in-this-book"><em>Data used in this book</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-book-for"><em>Who is this book for?</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-book"><em>Overview of book</em></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-its-live-ice-velocity-data-tutorial">Part 1: ITS_LIVE ice velocity data tutorial</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-sentinel-1-rtc-imagery-tutorial">Part 2: Sentinel-1 RTC imagery tutorial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials">Tutorials</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-its-live-ice-velocity-data-tutorial">Part 1: ITS_LIVE ice velocity data tutorial</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-sentinel-1-rtc-imagery-tutorial">Part 2: Sentinel-1 RTC imagery tutorial</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-conclusion">Summary + Conclusion</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-book-for"><em>Who is this book for?</em></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives"><em>Learning objectives</em></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cubes-and-array-data-structures">Data cubes and array data structures</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-very-large-data">Working with very large data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-data">Reading and writing data</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xarray-zarr-and-the-pangeo-software-stack"><em>Xarray, Zarr, and the Pangeo software stack</em></a></li>
 </ul>
   </nav></div>
 
