@@ -1,8 +1,6 @@
 # Context & Motivation
 
-:::{admonition} Motivation
 This book demonstrates scientific workflows using publicly-available, cloud-optimized geospatial datasets and open-source scientific software tools in order to address the need for educational resources related to new technologies and reduce barriers to entry to working with earth observation data. The tutorials in this book focus on the complexities inherent to working with n-dimensional, gridded datasets and use the core stack of software packages built on and around the Xarray data model.
-:::
 
 ### *I. Moving away from the 'download model' of scientific data analysis*
 
