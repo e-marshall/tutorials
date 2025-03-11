@@ -1631,7 +1631,6 @@ Attributes: (12/19)
 <li><p><code class="docutils literal notranslate"><span class="pre">single_glacier_raster</span></code> is a 3-dimensional object. We want to plot it in 2-d space with the RGI glacier outline. So, we perform a reduction (in this case, compute the mean), in order to reduce the dataset from 3-d to 2-d (Another option would be to select a single time step).</p></li>
 <li><p>We could make this plot with a white background, but it is also nice to be able to add a base map to the image. Here, we’ll use <a class="reference external" href="https://contextily.readthedocs.io/en/latest/">contextily</a> to do so. This will require converting the coordinate reference system (CRS) of both objects to the Web Mercator projection (EPSG:3857).</p></li>
 </ul>
-<p>TODO Add note explaining CRS isn’t set yet, looks like wasn’t picked up in decode coords?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check that CRS of vector and raster data are the same</span>

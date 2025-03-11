@@ -1,5 +1,4 @@
 # Tutorials summary
-todo add links to ind notebook sections in the 'see:...' sections below 
 
 In this book, we worked through tutorials accessing two satellite remote sensing datasets, preparing them for analysis and performing exploratory data analysis and visualization. 
 
