@@ -11,7 +11,6 @@ This tutorial focuses on a dataset of ice velocity observations derived from sat
 3) Subsettting a larger raster data cube to an area of interest using vector data,
 4) Inspecting metadata and using metadata to subset and visualize the dataset,
 5) Exploratory data analysis and visulization at the scale of a single glacier
-6) Exploratory data analysis and visualization looking at multiple glaciers
 
 ## *Part 2: {{part3_title}}*
 
