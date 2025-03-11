@@ -1,0 +1,256 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Cloud-native geospatial datacube workflows with open-source tools
+author: Emma Marshall
+#logo: logo.png
+
+collapse_inactive_sections: true
+#only want to include files listed in toc
+only_build_toc_files: false
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks:  cache #'auto' 
+  allow_errors: true
+  timeout: 1500
+
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+bibtex_bibfiles:
+  - "paper.bib"
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows
+  #url: https://e-marshall.github.io/cloud-open-source-geospatial-datacube-workflows/introduction.html  # Online location of your book
+  branch: combine_books  # Which branch of the repository should be used when creating links (optional)
+
+launch_buttons:
+  binderhub_url: "https://mybinder.org"
+  notebook_interface: "jupyterlab"
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: true
+  use_repository_button: true
+  announcement: > 
+    🚧 March 2025 - This book is under construction! 🚧
+
+
+parse:
+  myst_enable_extensions:
+    - substitution
+sphinx:
+  config:
+    bibtex_reference_style: author_year
+    myst_heading_anchors: 3
+    myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution
+
+    myst_substitutions:
+      part1_title: "Background"
+      part2_title: "ITS_LIVE ice velocity data tutorial"
+      #part2_title: "Using Xarray to examine cloud-based glacier surface velocity data"
+      part3_title: "Sentinel-1 RTC imagery tutorial"
+      #part3_title:  "Sentinel-1 RTC data workflows with xarray"
+      part4_title: "Summary + Conclusion"
+
+      #tutorial 1 nb titles
+      title_its_nb1: "# 1. Accessing cloud-hosted ITS_LIVE data"
+      title_its_nb2: "# 2. Working with larger than memory data"
+      title_its_nb3: "# 3. Handling raster and vector data"
+      title_its_nb4: "# 4. Exploratory data analysis of a single glacier"
+      title_its_nb5: "# 5. Exploratory data analysis of multiple glaciers"
+
+      #tutorial 2 nb titles
+      title_s1_1: "# 1. Read Sentinel-1 data processed by ASF"
+      title_s1_2: "# 2. Wrangle metadata"
+      title_s1_3: "# 3. Exploratory analysis of ASF S1 imagery"
+      title_s1_4: "# 4. Read Sentinel-1 RTC data from Microsoft Planetary Computer"
+      title_s1_5: "# 5. Comparing Sentinel-1 RTC datasets"
+      #title_s1_6: "# 6. Example of Sentinel-1 RTC time series analysis"
+
+      #global nb sections
+      intro: "## Introduction"
+      overview: "### Overview"
+      outline: "### Outline"
+      learning_goals: "### Learning goals"
+      concepts: "#### Concepts"
+      techniques: "#### Techniques"
+      conclusion: "## Conclusion"
+      break: "----"
+
+      #nb1
+      #can't get subs + links to headings to work
+      # so not using lettered headings for now
+      # but still using numbered subsections (a1_...)
+      a_its_nb1: "A. Overview of ITS_LIVE data"
+      a1_its_nb1: "1) Data structure overview"
+      a2_its_nb1: "2) Climate Forecast (CF) Metadata Conventions"
+
+      b_its_nb1: "B. Read ITS_LIVE data from AWS S3 using Xarray"
+      b1_its_nb1: "1) Overview of ITS_LIVE data storage and catalog"
+      b2_its_nb1: "2) Read ITS_LIVE data from S3 storage into memory"
+      b3_its_nb1: "3) Check spatial footprint of data"
+
+      c_its_nb1: "C. Query ITS_LIVE catalog"
+      c1_its_nb1: "1) Find ITS_LIVE granule for a point of interest"
+      c2_its_nb1: "2) Read + visualize spatial footprint of ITS_LIVE data"
+
+
+      #nb2
+      a_its_nb2: "A. Compare approaches for reading larger than memory data"
+      a1_its_nb2: "1) `chunks = 'auto'`"
+      a2_its_nb2: "2) `chunks = {}`"
+      a3_its_nb2: "3) An out-of-order time dimensions"
+      a4_its_nb2: "4) Read the dataset without Dask"
+      b_its_nb2: "B. Organize data once it's in memory"
+      b1_its_nb2: "1) Arrange dataset in chronological order"
+      b2_its_nb2: "2) Convert to a Dask-backed `Xarray.Dataset`"
+
+      #nb3 
+      a_its_nb3: "Read data using strategy identified in previous notebook"
+      b_its_nb3: "Incorporate glacier outline (vector) data"
+      b1_its_nb3: "1) Read and reproject vector data"
+      b2_its_nb3: "2) Visualize spatial extents of glacier outlines and ITS_LIVE data cube"
+      b3_its_nb3: "3) Crop vector data to spatial extent of raster data"
+      c_its_nb3: "C. Combine raster and vector data"
+      c1_its_nb3: "1) Use vector data to crop raster data"
+      c2_its_nb3: "2) Write clipped raster data cube to disk"
+      
+      #nb4
+      a_its_nb4: "A. Data exploration"
+      a1_its_nb4: "1) Load raster data and visualize with vector data"
+      a2_its_nb4: "2) Examine data coverage along the time dimension"
+      a3_its_nb4: "3) Look at data by sensor"
+      b_its_nb4: "B. Comparing different satellites"
+      b1_its_nb4: "1) DataTree approach"
+      b2_its_nb4: "2) GroupBy approach"
+      c_its_nb4: "C. Examine velocity variability"
+      c1_its_nb4: "1) Histograms and summary statistics"
+      c2_its_nb4: "2) Spatial velocity variablity"
+      c3_its_nb4: "3) Temporal velocity variability"
+      d_its_nb4: "D. Dimensional computations"
+      d1_its_nb4: "1) Temporal resampling"
+      d2_its_nb4: "2) Grouped analysis by season"
+    
+      #nb5
+      a_its_nb5: "A. Read and organize data"
+      a1_its_nb5: "1) Raster data"
+      a2_its_nb5: "2) Vector data"
+
+      b_its_nb5: "B. Combine raster and vector to create a vector data cube"
+      b1_its_nb5: "1) Make a vector data cube"
+      b2_its_nb5: "2) Add attribute data to vector cube"
+      b3_its_nb5: "3) Write vector cube to disk"
+
+      c_its_nb5: "C. Data visualization"
+      c1_its_nb5: "1) Read vector data cube into memory"
+      c2_its_nb5: "2) Visualize velocity data"
+      c3_its_nb5: "3) Visualize associations between velocity and attribute data"
+
+
+      #sentinel nb1
+      a_s1_nb1: "A. Prepare to read data into memory"
+      a1_s1_nb1: "1) Build lists of file names and paths needed for VRT objects"
+      a2_s1_nb1: "2) Create VRT objects"
+      b_s1_nb1: "B. Read data"
+      b1_s1_nb1: "1) Take a look at chunking"
+      # sentinel nb2
+      a_s1_nb2: "A. Read and inspect initial metadata"
+      a1_s1_nb2: "1) Add appropriate names to variables"
+      a2_s1_nb2: "2) What metadata currently exists?"
+
+      b_s1_nb2: "B. Add metadata from file name"
+      b1_s1_nb2: "1) Parse file name"
+      b2_s1_nb2: "2) Extract and format acquisition dates"
+      b3_s1_nb2: "3) Combine data cubes"
+
+      c_s1_nb2: "C. Time-varying metadata"
+      c1_s1_nb2: "1) Extract attributes as list of dictionaries"
+      c2_s1_nb2: "2) Create tuple of metadata for each type of information"
+      c3_s1_nb2: "3) Assign metadata tuple to Xarray dataset as a coordinate variable"
+
+      d_s1_nb2: "D. Add metadata from a markdown file"
+      d1_s1_nb2: "1) Extract granule ID"
+      d2_s1_nb2: "2) Build coordinate `xr.DataArray`"
+      
+      #sentinel nb3
+      a_s1_nb3: "A. Read and prepare data"
+      a1_s1_nb3: "1) Clip to spatial area of interest"
+
+      b_s1_nb3: "B. Layover-shadow map"
+      b1_s1_nb3: "1) Interactive visualization of layover-shadow maps"
+
+      c_s1_nb3: "C. Orbital direction"
+      c1_s1_nb3: "1) Is a pass ascending or descending?"
+      c2_s1_nb3: "2) Assign orbital direction as a coordinate variable"
+
+      d_s1_nb3: "D. Duplicate time steps"
+      d1_s1_nb3: "1) Identify duplicate time steps"
+      d2_s1_nb3: "2) Visualize duplicates"
+      d3_s1_nb3: "3) Drop duplicates"
+
+      e_s1_nb3: "E. Data visualization"
+      e1_s1_nb3: "1) Mean backscatter over time"
+      e2_s1_nb3: "2) Seasonal backscatter variability"
+      e3_s1_nb3: "3) Backscatter time series"
+
+
+
+
+      #s1 nb4
+      a_s1_nb4: "A. Connect to Microsoft Planetary Computer"
+      a1_s1_nb4: "1) Explore STAC metadata"
+
+      b_s1_nb4: "B. Read data and create Xarray data cube"
+      b1_s1_nb4: "1) Create a Dask distributed cluster"
+      b2_s1_nb4: "2) Use `stackstac` to pull queried data from Planetary Computer"
+      b3_s1_nb4: "3) Inspect dataset"
+      #b4_s1_nb4: "4) Convert a 4-d `xr.DataArray` to a 3-d `xr.Dataset`"
+
+      c_s1_nb4: "C. Visualize data"
+      c1_s1_nb4: "1) Ascending and descending pass acquisitions"
+      c2_s1_nb4: "2) Variability over time"
+      c3_s1_nb4: "3) Seasonal variability"
+
+      #s1 nb5
+      a_s1_nb5: "A. Read and prepare data"
+      a1_s1_nb5: "1) Check coordinate reference system information"
+
+      b_s1_nb5: "B. Ensure direct comparison between datasets"
+      b1_s1_nb5: "1) Subset time series to common time steps"
+      b2_s1_nb5: "2) Handle differences in spatial resolution"
+      b3_s1_nb5: 3) Mask missing data from one dataset"
+
+      c_s1_nb5: "C. Combine objects"
+      c1_s1_nb5: "1) `expand_dims()` to add 'source' dimension"
+      c2_s1_nb5: "2) `combine_by_coords()`"
+
+      d_s1_nb5: "D. Visualize comparison"
+      d1_s1_nb5: "1) Mean over time"
+      d2_s1_nb5: "2) Mean over space"
+      d3_s1_nb5: "3) Difference"
+
+#  extra_extensions:
+#  - sphinxext.opengraph
+#  config:
+#    ogp_site_url: "https://e-marshall.github.io/itslive/intro.html"
+#    ogp_image: "https://e-marshall.github.io/itslive/_static/itslive_explore_img.png"
+#    ogp_description_length: 200

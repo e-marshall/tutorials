@@ -1,0 +1,15 @@
+{
+    "_ARRAY_DIMENSIONS": [
+        "y",
+        "x"
+    ],
+    "coordinates": "mapping spatial_ref",
+    "description": "floating ice mask, 0 = non-floating-ice, 1 = floating-ice",
+    "flag_meanings": "non-ice ice",
+    "flag_values": [
+        0,
+        1
+    ],
+    "standard_name": "floating ice mask",
+    "url": "https://its-live-data.s3.amazonaws.com/autorift_parameters/v001/N46_0120m_floatingice.tif"
+}
