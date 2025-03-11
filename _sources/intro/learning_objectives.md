@@ -1,5 +1,4 @@
 # Learning objectives
-todo add links to libraries mentioned below
 By the end of this book, you will have familiarity with and have seen examples demonstrating the following concepts and operations: 
 
 ## Data cubes and array data structures

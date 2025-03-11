@@ -3,7 +3,7 @@
 ## Open source tools and packages
 In this book, we mainly focused on Xarray and several tools within the Xarray ecosystem and that integrate with Xarray to streamline data cube workflows such as:
 - Xvec  
-- cf_Xarray   
+- cf_xarray   
 - Dask   
 - PySTAC   
 - stackstac   
