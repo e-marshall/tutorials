@@ -1,7 +1,6 @@
 # Open source setting
 ## *Xarray, Zarr, and the Pangeo software stack*
 
-TODO include Dask in this section?
 
 ```{figure} logos/Xarray_Logo_RGB_Final.png
 ---
