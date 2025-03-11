@@ -26,10 +26,10 @@ There are two options for creating a software environment: [pixi](https://pixi.s
 ```cd cloud-open-source-geospatial-datacube-workflows/book```
 
 3. Create and activate a conda environment from the `environment.yml` file located in the repo:  
-```conda env create -f .binder/environment.yaml```
+```conda env create -f .binder/environment.yml```
 
-4. Start Jupyterlab and navigate to the directories containing the jupyter notebooks (`itslive_nbs` and `s1_nbs`):  
+4. Start Jupyterlab and navigate to the directories containing the Jupyter notebooks (`itslive/nbs` and `s1/nbs`):  
 ```jupyterlab```
 
-Both tutorials also uses functions that are stored in scripts associated with each dataset. You can find these scripts here: [`itslive_tools.py`](../itslive_nbs/itslive_tools.py) and [`s1_tools.py`](../s1_nbs/s1_tools.py).
+Both tutorials use functions that are stored in scripts associated with each dataset. You can find these scripts here: [`itslive_tools.py`](../itslive/nbs/itslive_tools.py) and [`s1_tools.py`](../s1/nbs/s1_tools.py).
 
