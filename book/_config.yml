@@ -7,12 +7,12 @@ author: Emma Marshall
 
 collapse_inactive_sections: true
 #only want to include files listed in toc
-only_build_toc_files: true
+only_build_toc_files: false
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: cache
+  execute_notebooks:  cache #'auto' 
   allow_errors: true
   timeout: 1500
 
@@ -22,9 +22,8 @@ latex:
   latex_documents:
     targetname: book.tex
 
-# Add a bibtex file so that we can create citations
-#bibtex_bibfiles:
-#  - references.bib
+bibtex_bibfiles:
+  - "paper.bib"
 
 # Information about where the book exists on the web
 repository:
@@ -42,7 +41,7 @@ html:
   use_issues_button: true
   use_repository_button: true
   announcement: > 
-    🚧 Feb 2025 - This book is under construction! 🚧
+    🚧 March 2025 - This book is under construction! 🚧
 
 
 parse:
@@ -50,6 +49,7 @@ parse:
     - substitution
 sphinx:
   config:
+    bibtex_reference_style: author_year
     myst_heading_anchors: 3
     myst_enable_extensions:
     - amsmath
@@ -84,7 +84,7 @@ sphinx:
       title_s1_3: "# 3. Exploratory analysis of ASF S1 imagery"
       title_s1_4: "# 4. Read Sentinel-1 RTC data from Microsoft Planetary Computer"
       title_s1_5: "# 5. Comparing Sentinel-1 RTC datasets"
-      title_s1_6: "# 6. Example of Sentinel-1 RTC time series analysis"
+      #title_s1_6: "# 6. Example of Sentinel-1 RTC time series analysis"
 
       #global nb sections
       intro: "## Introduction"
@@ -195,7 +195,8 @@ sphinx:
       a_s1_nb3: "A. Read and prepare data"
       a1_s1_nb3: "1) Clip to spatial area of interest"
 
-      b_s1_nb3: "B. Layover-shadow mask"
+      b_s1_nb3: "B. Layover-shadow map"
+      b1_s1_nb3: "1) Interactive visualization of layover-shadow maps"
 
       c_s1_nb3: "C. Orbital direction"
       c1_s1_nb3: "1) Is a pass ascending or descending?"
@@ -234,9 +235,9 @@ sphinx:
       a1_s1_nb5: "1) Check coordinate reference system information"
 
       b_s1_nb5: "B. Ensure direct comparison between datasets"
-      b1_s1_nb5: "1) Check that orbit numbers of both objects match"
+      b1_s1_nb5: "1) Subset time series to common time steps"
       b2_s1_nb5: "2) Handle differences in spatial resolution"
-      b3_s1_nb5: "3) Mask missing data from one dataset"
+      b3_s1_nb5: 3) Mask missing data from one dataset"
 
       c_s1_nb5: "C. Combine objects"
       c1_s1_nb5: "1) `expand_dims()` to add 'source' dimension"

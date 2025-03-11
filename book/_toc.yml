@@ -5,10 +5,13 @@ parts:
   - caption: Introduction
     chapters:
     - file: intro/getting_started
+    - file: intro/learning_objectives
+    - file: intro/open_source_setting
   - caption: Background
     chapters:
-    - file: background/background
-    - file: background/anatomy_of_a_data_cube
+    #- file: background/background_root
+    - file: background/context_motivation
+    - file: background/data_cubes
     - file: background/tutorials_overview
     - file: background/tutorial_data
     - file: intro/software
@@ -33,10 +36,12 @@ parts:
   - caption: Summary + Conclusion
     chapters:
     - file: pt4/summary
-    #- file: pt4/tidy_principles
+   # - file: pt4/tidy_principles
+    - file: pt4/takeaways
     - file: pt4/conclusion
   - caption: Additional material
     chapters:
     - file: endmatter/appendix
     - file: endmatter/other_resources
     - file: endmatter/about_this_book
+    - file: endmatter/references
