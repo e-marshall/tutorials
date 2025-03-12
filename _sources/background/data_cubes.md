@@ -43,7 +43,7 @@ To use this data for scientific analysis, we need to construct it into the form 
 Source:[EOX](https://eox.at/2021/01/earth-observation-data-cubes-as-a-service/)
 ```
 
-In the context of the Xarray data model, univariate data cubes can be represented by an `xr.DataArray` or a `xr.Dataset` with one `data_variable`. Multivariate data cubes should be represented by `xr.Dataset` objects. The building blocks of `xr.DataArrays` and `xr.Datasets` are dimensions, coordinates, data variables, attribues (and indexes?). 
+In the context of the Xarray data model, univariate data cubes can be represented by an `xr.DataArray` or a `xr.Dataset` with one `data_variable`. Multivariate data cubes should be represented by `xr.Dataset` objects. The building blocks of `xr.DataArrays` and `xr.Datasets` are dimensions, coordinates, data variables, attribues (and indexes?). We recommend the Xarray [terminology](https://docs.xarray.dev/en/stable/user-guide/terminology.html) for a detailed overview of Xarray objects and common operations.
 
 A data cube should be organized out of these building blocks adhering to the following rules and definitions: 
 
