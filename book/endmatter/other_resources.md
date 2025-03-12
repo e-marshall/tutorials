@@ -8,9 +8,11 @@ Throughout this book, we reference a number of resources on different topics. Th
 - [How do I...](https://docs.xarray.dev/en/stable/howdoi.html)
 - [Xarray High-level computational patterns](https://tutorial.xarray.dev/intermediate/01-high-level-computation-patterns.html)
 - [Parallel computing with dask](https://tutorial.xarray.dev/intermediate/xarray_and_dask.html)
+- [Terminology](https://docs.xarray.dev/en/stable/user-guide/terminology.html)
 
 ## Geospatial data science and data formats
 - [Introduction to Earth and Environmental Data Science](https://earth-env-data-science.github.io/intro.html)
+- [Geocomputation wtih Python](https://py.geocompx.org/)
 - [Datacubes - openEO](https://openeo.org/documentation/1.0/datacubes.html#what-are-datacubes)
 - [Data Formats - NASA Earth Observation Data Basics](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/data-formats)
 - [Cloud Computing - NASA Earth Observation Data Basics](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/cloud-computing)
