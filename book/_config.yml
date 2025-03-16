@@ -49,7 +49,7 @@ parse:
     - substitution
 sphinx:
   config:
-    bibtex_reference_style: author_year
+    bibtex_reference_style: label
     myst_heading_anchors: 3
     myst_enable_extensions:
     - amsmath
@@ -207,10 +207,12 @@ sphinx:
       d2_s1_nb3: "2) Visualize duplicates"
       d3_s1_nb3: "3) Drop duplicates"
 
-      e_s1_nb3: "E. Data visualization"
-      e1_s1_nb3: "1) Mean backscatter over time"
-      e2_s1_nb3: "2) Seasonal backscatter variability"
-      e3_s1_nb3: "3) Backscatter time series"
+      e_s1_nb3: "E. Examine coverage over time series"
+
+      f_s1_nb3: "F. Data visualization"
+      f1_s1_nb3: "1) Mean backscatter over time"
+      f2_s1_nb3: "2) Seasonal backscatter variability"
+      f3_s1_nb3: "3) Backscatter time series"
 
 
 
