@@ -2,11 +2,12 @@
 title: "Educational resources to accelerate analysis of remote sensing data using cloud resources with Xarray"
 tags:
   - Python
-  - remote sensing
-  - earth science
-  - cryosphere
+  - Remote Sensing
+  - Earth Science
+  - Geospatial data cubes
+  - Cryosphere
   - Xarray
-  - cloud-hosted data
+  - Cloud-optimized data
 authors:
   - name: Emma Marshall
     orcid: "0000-0001-6348-977X"
@@ -20,6 +21,9 @@ authors:
   - name: Jessica Scheick
     orcid: "0000-0002-3421-4459"
     affiliation: "4"
+  - name: Richard Forster
+    orcid: "0000-0003-3945-5072"
+    affiliation: "1"
 affiliations:
   - name: Department of Geography, University of Utah, Salt Lake City, UT, U.S.A.
     index: 1
@@ -30,7 +34,7 @@ affiliations:
   - name: Earth Systems Research Center, University of New Hampshire, Durham, NH, U.S.A.
     index: 4
     
-date: "05 March 2023"
+date: "14 March 2025"
 bibliography: "paper.bib"
 ---
 
