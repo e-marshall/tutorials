@@ -3,9 +3,7 @@ _build
 _static 
 
 #Data 
-tutorial2/data/full_timeseries/asf_rtcs
-tutorial2/data/full_timeseries/intermediate_cubes/s1_pc_cube.zarr
-tutorial2/data/subset_timeseries/asf_rtcs
+**/data/*
 
 #Extra nbs
 tutorial2/subste_nbs
