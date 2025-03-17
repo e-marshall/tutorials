@@ -12,7 +12,7 @@ only_build_toc_files: false
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks:  cache #'auto' 
+  execute_notebooks:  cache #'auto'
   allow_errors: true
   timeout: 1500
 
@@ -38,9 +38,10 @@ launch_buttons:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
+  home_page_in_navbar: false
   use_issues_button: true
   use_repository_button: true
-  announcement: > 
+  announcement: >
     🚧 March 2025 - This book is under construction! 🚧
 
 
@@ -124,7 +125,7 @@ sphinx:
       b1_its_nb2: "1) Arrange dataset in chronological order"
       b2_its_nb2: "2) Convert to a Dask-backed `Xarray.Dataset`"
 
-      #nb3 
+      #nb3
       a_its_nb3: "Read data using strategy identified in previous notebook"
       b_its_nb3: "Incorporate glacier outline (vector) data"
       b1_its_nb3: "1) Read and reproject vector data"
@@ -133,7 +134,7 @@ sphinx:
       c_its_nb3: "C. Combine raster and vector data"
       c1_its_nb3: "1) Use vector data to crop raster data"
       c2_its_nb3: "2) Write clipped raster data cube to disk"
-      
+
       #nb4
       a_its_nb4: "A. Data exploration"
       a1_its_nb4: "1) Load raster data and visualize with vector data"
@@ -149,7 +150,7 @@ sphinx:
       d_its_nb4: "D. Dimensional computations"
       d1_its_nb4: "1) Temporal resampling"
       d2_its_nb4: "2) Grouped analysis by season"
-    
+
       #nb5
       a_its_nb5: "A. Read and organize data"
       a1_its_nb5: "1) Raster data"
@@ -190,7 +191,7 @@ sphinx:
       d_s1_nb2: "D. Add metadata from a markdown file"
       d1_s1_nb2: "1) Extract granule ID"
       d2_s1_nb2: "2) Build coordinate `xr.DataArray`"
-      
+
       #sentinel nb3
       a_s1_nb3: "A. Read and prepare data"
       a1_s1_nb3: "1) Clip to spatial area of interest"
