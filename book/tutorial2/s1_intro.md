@@ -25,7 +25,12 @@ This tutorial focuses on data from Sentinel-1, a synthetic aperture radar (SAR) 
 :::{tab-item} Relevant Concepts
 
 ## 1. [Sentinel-1 RTC imagery](../background/tutorial_data.md#sentinel-1-radiometric-terrain-corrected-rtc-imagery)
-add 
+
+## 2. Virtual raster datasets
+
+## 3. Analysis-ready data
+
+## 4. Spatio-temporal Asset Catalogs (STAC)
 :::
 :::{tab-item} Learning goals
 

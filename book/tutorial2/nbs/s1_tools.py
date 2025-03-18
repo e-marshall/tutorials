@@ -5,12 +5,54 @@ import os
 import pandas as pd
 import pathlib
 import planetary_computer
+import pooch
 import pystac
 import re
 import stackstac
 import xarray as xr
 from pystac_client import Client
 from dask.distributed import Client as daskClient
+
+def download_s1_data_from_zenodo(timeseries_type:str) -> str:
+
+    if timeseries_type not in ['full', 'subset']:
+        raise ValueError('timeseries_type must be either "full" or "subset"')
+    if timeseries_type == 'subset':
+        s1_rtc_url = 'https://zenodo.org/uploads/15036782'
+        s1_asf_data_cache = pooch.os_cache('asf_rtcs_subset')
+
+        pooch_obj = pooch.create(
+            path = s1_asf_data_cache,
+            base_url = s1_rtc_url,
+            registry={
+                'asf_rtcs_subset.zip':'md5:a61df69f92b06c798a17e893b06950bc'
+            })
+        file_path = pooch_obj.fetch('asf_rtcs_subset.zip',
+                                    processor=pooch.Unzip(),
+                                    progressbar=True)
+
+    if timeseries_type == 'full':
+        s1_rtc_url = 'https://zenodo.org/records/7236413/files/'
+        s1_asf_data_cache = pooch.os_cache('asf_rtcs')
+
+        pooch_obj = pooch.create(
+            path=s1_asf_data_cache,
+            base_url=s1_rtc_url,
+            registry={
+                'asf_rtcs.zip': 'md5:836014eac6769b2c9515872140568ff1'
+                }
+        )
+        file_path = pooch_obj.fetch('asf_rtcs.zip', 
+                                processor=pooch.Unzip(),
+                                progressbar=True)
+    
+    p = pathlib.Path(file_path[0])
+    path_to_rtcs = str(p.parents[1])
+    return path_to_rtcs
+
+
+
+
 
 
 # --------------------------------------------------------------------
@@ -304,7 +346,8 @@ def metadata_processor(vv_path: str, vh_path: str, ls_path: str, timeseries_type
     ds_ls = ds_ls.rename({"band_data": "ls"})
     # make file paths lists for each variable
 
-    s1_asf_data = pathlib.Path(f"../data/{timeseries_type}_timeseries/asf_rtcs")
+    #s1_asf_data = pathlib.Path(f"../data/{timeseries_type}_timeseries/asf_rtcs")
+    s1_asf_data = '/home/emmamarshall/.var/app/com.visualstudio.code/cache/asf_rtcs/asf_rtcs.zip.unzip/asf_rtcs'
     # Make file path lists for vv, vh, ls
     variables_ls = ['vv','vh','ls_map','readme']
     filepaths_dict = create_filenames_dict(s1_asf_data, variables_ls)
