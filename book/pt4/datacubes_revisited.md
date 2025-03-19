@@ -1,4 +1,4 @@
-# Takeaways
+# Data Cubes Revisited
 
 In this book, we saw a range of real-world datasets and the steps required to prepare them for analysis. Several guiding principles for assembling and using analysis-ready data cubes in Xarray can be drawn from these examples.
 
