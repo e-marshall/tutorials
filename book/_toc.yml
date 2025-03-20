@@ -25,12 +25,12 @@ parts:
     - file: itslive/nbs/5_exploratory_data_analysis_group
   - caption: Part 2
     chapters:
-    - file: tutorial2/s1_intro
-    - file: tutorial2/nbs/1_read_asf_data
-    - file: tutorial2/nbs/2_wrangle_metadata
-    - file: tutorial2/nbs/3_asf_exploratory_analysis
-    - file: tutorial2/nbs/4_read_pc_data
-    - file: tutorial2/nbs/5_comparing_s1_rtc_datasets
+    - file: sentinel1/s1_intro
+    - file: sentinel1/nbs/1_read_asf_data
+    - file: sentinel1/nbs/2_wrangle_metadata
+    - file: sentinel1/nbs/3_asf_exploratory_analysis
+    - file: sentinel1/nbs/4_read_pc_data
+    - file: sentinel1/nbs/5_comparing_s1_rtc_datasets
   - caption: Summary + Conclusion
     chapters:
     - file: pt4/summary

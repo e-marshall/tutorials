@@ -58,7 +58,7 @@ As mentioned in the introduction, **this tutorial uses data downloaded locally.*
 
 Here are your options:  
 ### a. Work with a subset of the full time series.
-1) If you cloned this books GitHub repository, the data should already be downloaded in the appopriate location. If you didn't clone the repo download the files located in `../tutorial2/data/subset_timeseries/asf_rtcs/`. Make sure they are in a directory on your computer with the following relative path: `tutorial2/data/subset_timeseries/asf_rtcs`.  
+1) If you cloned this books GitHub repository, the data should already be downloaded in the appopriate location. If you didn't clone the repo download the files located in `../sentinel1/data/subset_timeseries/asf_rtcs/`. Make sure they are in a directory on your computer with the following relative path: `sentinel1/data/subset_timeseries/asf_rtcs`.  
 
 2) You will use this data in notebooks 1,2, and 3. **Be sure to set** `'timeseries_type' = 'subset'` and `path_to_rtcs` **at the top of each notebook**. The notebooks will not  run correctly if you don't! Also note that the text in the notebooks will have references to the full timeseries, not the subset. 
 
@@ -69,8 +69,8 @@ Here are your options:
 ### b. Work with the full time series.
 If you have room on your computer, you are welcome to follow the steps in this tutorial using the full time series.   
 1) Download the data [here](https://zenodo.org/records/7236413).  
-2) Unzip it so that its location on your computer matches the relative path: `tutorial2/data/full_timeseries/asf_rtcs`.   
-3) If you cloned the GitHub repo, you should be all set. If you didn't, make sure that `tutorial2/data/full_timeseries` also has the following subdirectories:  
+2) Unzip it so that its location on your computer matches the relative path: `sentinel1/data/full_timeseries/asf_rtcs`.   
+3) If you cloned the GitHub repo, you should be all set. If you didn't, make sure that `sentinel1/data/full_timeseries` also has the following subdirectories:  
         `data/full_timeseries/txt_files`  
         `data/full_timeseries/vrt_files`  
 :::
