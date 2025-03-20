@@ -68,7 +68,7 @@ The development and increasing adoption of analysis-ready specifications for sat
 However, many legacy datasets still require significant effort in order to be considered 'analysis-ready'. Furthermore, for analysts, 'analysis-ready' can be a subjective and evolving label. Semantically, from a user-perspective, analysis-ready data can be thought of as data whose structure is conducive to scientific analysis.
 
 ## *III. Analysis-ready data cubes & this book*
-The tutorials in this book contain examples of data at various degrees of 'analysis-ready'. [Tutorial 1](../tutorial1/itslive_intro.md) uses a dataset of multi-sensor observations that is already organized as a `(x,y,time)` cube with a common grid. In [tutorial 2](../tutorial2/s1_intro.md), we will see an example of a dataset that has undergone intensive processing to make it 'analysis-ready' but requires further manipulation to arrive at the `(x,y,time)` cube format that will be easist to work with. 
+The tutorials in this book contain examples of data at various degrees of 'analysis-ready'. [Tutorial 1: ITS_LIVE](../itslive/itslive_intro.md) uses a dataset of multi-sensor observations that is already organized as a `(x,y,time)` cube with a common grid. In [tutorial 2](../tutorial2/s1_intro.md), we will see an example of a dataset that has undergone intensive processing to make it 'analysis-ready' but requires further manipulation to arrive at the `(x,y,time)` cube format that will be easist to work with. 
 
 ### References
 - {cite:t}`montero_2024_EarthSystemData`

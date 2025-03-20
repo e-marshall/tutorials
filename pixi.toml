@@ -9,7 +9,7 @@ version = "0.1.0"
 book = { features = ["book"], solve-group = "default" }
 
 [tasks]
-itslive = "jupyter lab --LabApp.default_url='/lab/tree/book/tutorial1/nbs/1_accessing_itslive_s3_data.ipynb'"
+itslive = "jupyter lab --LabApp.default_url='/lab/tree/book/itslive/nbs/1_accessing_itslive_s3_data.ipynb'"
 sentinel1 = "jupyter lab --LabApp.default_url='/lab/tree/book/tutorial2/nbs/1_read_asf_data.ipynb'"
 
 [dependencies]
