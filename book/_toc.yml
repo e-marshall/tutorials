@@ -17,7 +17,7 @@ parts:
     - file: background/tutorial_data
     - file: intro/software
     - file: background/relevant_concepts
-  - caption: "Part 1: ITS_LIVE"
+  - caption: Part 1
     #numbered: 2
     chapters:
     - file: itslive/itslive_intro

@@ -45,4 +45,14 @@ Climate Forecase (CF) Metadata Conventions
     >The CF metadata conventions are designed to promote the processing and sharing of files created with the NetCDF API. The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities. The CF convention includes a standard name table, which defines strings that identify physical quantities.
 
     CF metadata conventions set common expectations for metadata names and locations across datasets.  In this tutorial, we will use tools such as [cf_xarray]() that leverage CF conventions to add programmatic handling of CF metadata to Xarray objects, meaning that users can spend less time wrangling metadata. 🤩
+
+Spatio-temporal Asset Catalog (STAC)
+    STAC is a metadata specification for geospatial data that allows the data to be more easily "worked with, indexed, and discovered" [$\tiny \nearrow$](https://stacspec.org/en). It does this by setting a common format for how metadata will be structured. This functions like setting a common expectation that all users of the data can rely on so that they know where certain information will be located and how it will be stored. 
+    
+     The STAC specification is built around four core objects: Items, Catalogs, Collections, and an API. These take the form of a series of GeoJSON and JSON files that allow users to lazily query and index datasets before actually reading data into memory, which can be especially helpful for data stored in cloud object storage. Working off of a common metadata structure allows a suite of generalized tools to be developed and used to query and read all sorts of data, as long as they have STAC-compliant metadata. A few examples of these tools are [PySTAC](https://pystac.readthedocs.io/en/stable/), [stackstac](https://stackstac.readthedocs.io/en/latest/), and [odc-stac](https://odc-stac.readthedocs.io/en/latest/). stackstac and odc-stac both provide methods to read STAC data into memory as Xarray Datasets. If you’re interested, see this [Pangeo thread](https://discourse.pangeo.io/t/comparing-odc-stac-load-and-stackstac-for-raster-composite-workflow/4097/2) for a discussion of the similarities and differences between these approaches. 
+
+    **Futher reading**
+    - STAC Overview - [USGS](https://www.usgs.gov/landsat-missions/spatiotemporal-asset-catalog-stac)
+    - STAC Introduction - [Planet](https://developers.planet.com/docs/planetschool/introduction-to-stac-part-1-an-overview-of-the-specification/)
+    - STAC Tutorials - [STAC](https://stacspec.org/en/tutorials/)
 ```
