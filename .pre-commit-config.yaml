@@ -1,13 +1,25 @@
 
 repos:
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.9.6
-    hooks:
-      - id: ruff
-      - id: ruff-format
+#  - repo: https://github.com/astral-sh/ruff-pre-commit
+#    rev: v0.9.6
+#    hooks:
+#      - id: ruff
+#      - id: ruff-format
 
-  - repo: https://github.com/nbQA-dev/nbQA
-    rev: 1.9.1  # Check latest version
+#  - repo: https://github.com/nbQA-dev/nbQA
+#    rev: 1.9.1  # Check latest version
+#    hooks:
+#      - id: nbqa-ruff
+#        args: ["format"]
+  
+  - repo: https://github.com/srstevenson/nb-clean
+    rev: 4.0.1
     hooks:
-      - id: nbqa-ruff
-        args: ["format"]
+      - id: nb-clean
+        args:
+          - --remove-empty-cells
+          - --preserve-cell-metadata
+          - tags
+          - slideshow
+          - --
+        exclude: "^.*/data/.*$"
