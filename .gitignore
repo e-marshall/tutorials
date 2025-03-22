@@ -3,10 +3,10 @@ _build
 _static 
 
 #Data 
-**/data/*
+**/data/raster_data/*
 
 #Extra nbs
-tutorial2/subste_nbs
+sentinel1/subste_nbs
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

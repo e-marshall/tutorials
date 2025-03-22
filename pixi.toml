@@ -9,8 +9,8 @@ version = "0.1.0"
 book = { features = ["book"], solve-group = "default" }
 
 [tasks]
-itslive = "jupyter lab --LabApp.default_url='/lab/tree/book/tutorial1/nbs/1_accessing_itslive_s3_data.ipynb'"
-sentinel1 = "jupyter lab --LabApp.default_url='/lab/tree/book/tutorial2/nbs/1_read_asf_data.ipynb'"
+itslive = "jupyter lab --LabApp.default_url='/lab/tree/book/itslive/nbs/1_accessing_itslive_s3_data.ipynb'"
+sentinel1 = "jupyter lab --LabApp.default_url='/lab/tree/book/sentinel1/nbs/1_read_asf_data.ipynb'"
 
 [dependencies]
 aiohttp = ">=3.11.13,<4"
@@ -37,6 +37,8 @@ stackstac = ">=0.5.1,<0.6"
 xarray = ">=2025.1.2,<2026"
 xvec = ">=0.3.1,<0.4"
 zarr = "<3"
+nb-clean = ">=4.0.1,<5"
+papermill = ">=2.5.0,<3"
 
 [feature.book.dependencies]
 jupyter-book = ">=1,<2"
