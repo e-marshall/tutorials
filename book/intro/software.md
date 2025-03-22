@@ -6,7 +6,7 @@ On this page you'll find information about the computing environment and dataset
 
 There are two options for creating a software environment: [pixi](https://pixi.sh/latest/) or [mamba](https://mamba.readthedocs.io/en/latest/) / [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html). We recommend using pixi to create a consistent environment on different operating systems. If you have pixi installed, follow the steps below, otherwise, follow the steps for conda/mamba below.
 
-### To use pixi:
+### To use pixi
 1. Clone the book's GitHub repository:   
     ```git clone https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows.git```
 
@@ -17,7 +17,7 @@ There are two options for creating a software environment: [pixi](https://pixi.s
 ```pixi run itslive```
 ```pixi run sentinel1```
 
-### To use conda/mamba:
+### To use conda/mamba
 
 1. Clone this book's GitHub repository:  
 ```git clone https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows.git```

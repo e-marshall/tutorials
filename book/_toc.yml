@@ -3,11 +3,13 @@ format: jb-book
 root: introduction
 parts:
   - caption: Introduction
+    #numbered: 2
     chapters:
     - file: intro/getting_started
     - file: intro/learning_objectives
     - file: intro/open_source_setting
   - caption: Background
+    #numbered: 2
     chapters:
     - file: background/context_motivation
     - file: background/data_cubes
@@ -16,6 +18,7 @@ parts:
     - file: intro/software
     - file: background/relevant_concepts
   - caption: "Part 1: ITS_LIVE"
+    #numbered: 2
     chapters:
     - file: itslive/itslive_intro
     - file: itslive/nbs/1_accessing_itslive_s3_data
@@ -24,6 +27,7 @@ parts:
     - file: itslive/nbs/4_exploratory_data_analysis_single
     - file: itslive/nbs/5_exploratory_data_analysis_group
   - caption: Part 2
+    #numbered: 2
     chapters:
     - file: sentinel1/s1_intro
     - file: sentinel1/nbs/1_read_asf_data
@@ -31,11 +35,12 @@ parts:
     - file: sentinel1/nbs/3_asf_exploratory_analysis
     - file: sentinel1/nbs/4_read_pc_data
     - file: sentinel1/nbs/5_comparing_s1_rtc_datasets
-  - caption: Summary + Conclusion
+  - caption: Conclusion
+    #numbered: 2
     chapters:
-    - file: pt4/summary
-    - file: pt4/datacubes_revisited
-    - file: pt4/conclusion
+    - file: conclusion/conclusion
+    - file: conclusion/summary
+    - file: conclusion/datacubes_revisited
   - caption: Additional material
     chapters:
     - file: endmatter/appendix
