@@ -15,22 +15,22 @@ parts:
     - file: background/tutorial_data
     - file: intro/software
     - file: background/relevant_concepts
-  - caption: Part 1
+  - caption: "Part 1: ITS_LIVE"
     chapters:
-    - file: tutorial1/itslive_intro
-    - file: tutorial1/nbs/1_accessing_itslive_s3_data
-    - file: tutorial1/nbs/2_larger_than_memory_data
-    - file: tutorial1/nbs/3_combining_raster_vector_data
-    - file: tutorial1/nbs/4_exploratory_data_analysis_single
-    - file: tutorial1/nbs/5_exploratory_data_analysis_group
+    - file: itslive/itslive_intro
+    - file: itslive/nbs/1_accessing_itslive_s3_data
+    - file: itslive/nbs/2_larger_than_memory_data
+    - file: itslive/nbs/3_combining_raster_vector_data
+    - file: itslive/nbs/4_exploratory_data_analysis_single
+    - file: itslive/nbs/5_exploratory_data_analysis_group
   - caption: Part 2
     chapters:
-    - file: tutorial2/s1_intro
-    - file: tutorial2/nbs/1_read_asf_data
-    - file: tutorial2/nbs/2_wrangle_metadata
-    - file: tutorial2/nbs/3_asf_exploratory_analysis
-    - file: tutorial2/nbs/4_read_pc_data
-    - file: tutorial2/nbs/5_comparing_s1_rtc_datasets
+    - file: sentinel1/s1_intro
+    - file: sentinel1/nbs/1_read_asf_data
+    - file: sentinel1/nbs/2_wrangle_metadata
+    - file: sentinel1/nbs/3_asf_exploratory_analysis
+    - file: sentinel1/nbs/4_read_pc_data
+    - file: sentinel1/nbs/5_comparing_s1_rtc_datasets
   - caption: Summary + Conclusion
     chapters:
     - file: pt4/summary
