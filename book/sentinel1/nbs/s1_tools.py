@@ -4,82 +4,83 @@ import markdown
 import os
 import pandas as pd
 import pathlib
-import planetary_computer
-import pystac
 import re
-import stackstac
 import xarray as xr
-from pystac_client import Client
-from dask.distributed import Client as daskClient
 
 
 # --------------------------------------------------------------------
 # --------------------- Read ASF VRT Functions -----------------
 # Function to extract path for target files from each scene
-def extract_fnames(data_path: str, scene_name:str, variable:str):
+def extract_fnames(data_path: str, scene_name: str, variable: str):
     # Make list of files within each scene directory in data directory
     scene_files_ls = os.listdir(os.path.join(data_path, scene_name))
 
-    if variable in ['vv','vh']:
-        scene_files = [fname for fname in scene_files_ls if fname.endswith(f"_{variable.upper()}.tif")]
-    
-    elif variable == 'ls_map':
-        scene_files = [fname for fname in scene_files_ls if fname.endswith(f"_ls_map.tif")]
-    
-    elif variable == 'readme':
-        scene_files = [file for file in scene_files_ls if file.endswith("README.md.txt")]
- 
+    if variable in ["vv", "vh"]:
+        scene_files = [
+            fname
+            for fname in scene_files_ls
+            if fname.endswith(f"_{variable.upper()}.tif")
+        ]
+
+    elif variable == "ls_map":
+        scene_files = [
+            fname for fname in scene_files_ls if fname.endswith("_ls_map.tif")
+        ]
+
+    elif variable == "readme":
+        scene_files = [
+            file for file in scene_files_ls if file.endswith("README.md.txt")
+        ]
+
     return scene_files
 
 
-def make_filepath_lists(asf_s1_data_path: str, variable:str):
-    """ For a single variable (vv, vh, ls_map or readme), make list of 
+def make_filepath_lists(asf_s1_data_path: str, variable: str):
+    """For a single variable (vv, vh, ls_map or readme), make list of
     full filepath for each file in time series. Also return dates to ensure
     extraction happens in correct order for each variable
     Return tuple with form (filepaths list, dates list)"""
     scenes_ls = os.listdir(asf_s1_data_path)
 
-    fpaths, dates_ls = [],[]
+    fpaths, dates_ls = [], []
 
     for element in range(len(scenes_ls)):
-
         # Extract filenames of each file of interest
-        files_of_interest = extract_fnames(asf_s1_data_path, scenes_ls[element], variable)
-        # Make full path with filename for each variable
-        path = os.path.join(
-            asf_s1_data_path, scenes_ls[element], files_of_interest[0]
+        files_of_interest = extract_fnames(
+            asf_s1_data_path, scenes_ls[element], variable
         )
-        #extract dates to make sure dates are identical across variable lists
+        # Make full path with filename for each variable
+        path = os.path.join(asf_s1_data_path, scenes_ls[element], files_of_interest[0])
+        # extract dates to make sure dates are identical across variable lists
         date = pathlib.Path(path).stem.split("_")[2]
-        
+
         dates_ls.append(date)
         fpaths.append(path)
-    
+
     return (fpaths, dates_ls)
 
-def create_filenames_dict(rtc_path, variables_ls):
 
-    keys, filepaths, dates = [],[],[]
+def create_filenames_dict(rtc_path, variables_ls):
+    keys, filepaths, dates = [], [], []
     for variable in variables_ls:
         keys.append(variable)
 
         filespaths_list, dates_list = make_filepath_lists(rtc_path, variable)
         filepaths.append(filespaths_list)
         dates.append(dates_list)
-    
-    #make dict of variable names (keys) and associated filepaths
+
+    # make dict of variable names (keys) and associated filepaths
     filepaths_dict = dict(zip(keys, filepaths))
 
-    #make sure that dates are identical across all lists
+    # make sure that dates are identical across all lists
     assert all(lst == dates[0] for lst in dates) == True
-    #make sure length of each variable list is the same 
-    assert len(list(set([len(v) for k,v in filepaths_dict.items()]))) == 1
-    
+    # make sure length of each variable list is the same
+    assert len(list(set([len(v) for k, v in filepaths_dict.items()]))) == 1
 
-
-    #make dict of variable names (keys) and associated filepaths
+    # make dict of variable names (keys) and associated filepaths
     filepaths_dict = dict(zip(keys, filepaths))
     return filepaths_dict
+
 
 # ---------------------------------------------------------------------
 # ----------------------- Metadata Wrangling Functions-----------------
@@ -210,7 +211,7 @@ def create_da(
         coords={dim_name: dim_values},
         name=value_name,
     )
-    if desc != None:
+    if desc is not None:
         da.attrs = {"description": desc}
     return da
 
@@ -241,7 +242,7 @@ def make_coord_data(readme_fpaths_ls):
         "mission_identifier": (3, r"S1[A-B]"),  # schema for sensor
         "mode_beam_identifier": (2, r"[A-Z]{2}"),  # schema for beam mode
         "esa_product_type": (3, r"[A-Z]{3}"),  # schema for ESA product type
-        "proc_lvl_class_pol": (4, f"[A-Z0-9]{{4}}"),
+        "proc_lvl_class_pol": (4, r"[A-Z0-9]{{4}}"),
         "acq_start": (15, r"[0-9]{8}T[0-9]{6}"),  # schema for acquisition dat
         "acq_stop": (15, r"[0-9]{8}T[0-9]{6}"),  # schema for acquisition dat
         "orbit_num": (6, r"[0-9]{6}"),  # schema for orbit number
@@ -260,7 +261,7 @@ def make_coord_data(readme_fpaths_ls):
                 single_granule_parsed_data["acq_start"] = pd.to_datetime(
                     part, format="%Y%m%dT%H%M%S"
                 )
-            elif name == 'orbit_num':
+            elif name == "orbit_num":
                 single_granule_parsed_data[name] = part
             elif name == "data_take_id":
                 single_granule_parsed_data[name] = part
@@ -290,7 +291,9 @@ def extract_granule_id(filepath):
 
 
 # metadata wrangling processor
-def metadata_processor(vv_path: str, vh_path: str, ls_path: str, timeseries_type:str= 'full'):
+def metadata_processor(
+    vv_path: str, vh_path: str, ls_path: str, timeseries_type: str = "full"
+):
     cwd = pathlib.Path.cwd()
     tutorial2_dir = pathlib.Path(cwd).parent
 
@@ -304,9 +307,11 @@ def metadata_processor(vv_path: str, vh_path: str, ls_path: str, timeseries_type
     ds_ls = ds_ls.rename({"band_data": "ls"})
     # make file paths lists for each variable
 
-    s1_asf_data = pathlib.Path(f"../data/raster_data/{timeseries_type}_timeseries/asf_rtcs")
+    s1_asf_data = pathlib.Path(
+        f"../data/raster_data/{timeseries_type}_timeseries/asf_rtcs"
+    )
     # Make file path lists for vv, vh, ls
-    variables_ls = ['vv','vh','ls_map','readme']
+    variables_ls = ["vv", "vh", "ls_map", "readme"]
     filepaths_dict = create_filenames_dict(s1_asf_data, variables_ls)
     filepaths_vv, filepaths_vh, filepaths_ls, filepaths_rm = filepaths_dict.values()
 
@@ -405,93 +410,25 @@ def metadata_processor(vv_path: str, vh_path: str, ls_path: str, timeseries_type
     # add data take DA as coordinate variable of data cube
     ds_w_metadata.coords["data_take_ID"] = data_take_id_da
 
-    #repeat for abs orbit
+    # repeat for abs orbit
     abs_orbit_da = create_da(
-        value_name = "abs_orbit_num",
-        values_ls = abs_orbit_ls,
-        dim_name = "acq_date",
-        dim_values= acquisition_dates,
-        desc = "Absolute orbit number"
+        value_name="abs_orbit_num",
+        values_ls=abs_orbit_ls,
+        dim_name="acq_date",
+        dim_values=acquisition_dates,
+        desc="Absolute orbit number",
     )
     abs_orbit_da = abs_orbit_da.sortby("acq_date")
     ds_w_metadata.coords["abs_orbit_num"] = abs_orbit_da
 
-    #Set layover shadow map as coordinate variable
-    ds_w_metadata = ds_w_metadata.set_coords('ls')
+    # Set layover shadow map as coordinate variable
+    ds_w_metadata = ds_w_metadata.set_coords("ls")
     return ds_w_metadata
 
 
 # --------------------------------------------------------------------
-# ---------------------------read planetary computer data ------------
-def extract_source_granule_pc(rtc_id):
-    base_url = "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-rtc/items/"
-    full_url = base_url + str(rtc_id)
-    stac_item = pystac.read_file(full_url)
-    source_granule = stac_item.links[5].target[-62:]
-    return source_granule
-
-
-def make_granule_coord_pc(granule_ls):
-    """this fn takes a list of granule IDs, extracts acq date for each granule, organizes this as an array that can be assigned as a coord to an xr obj"""
-
-    acq_date = [pd.to_datetime(granule[17:25]) for granule in granule_ls]
-
-    granule_da = xr.DataArray(
-        data=granule_ls,
-        dims=["time"],
-        coords={"time": acq_date},
-        attrs={
-            "description": "source granule ID S1 GRD files used to process PC RTC images, extracted from STAC metadata"
-        },
-        name="granule_id",
-    )
-
-    return granule_da
-
-# Class to recreate PC dataset for comparison nb
-class S1PC_DataCube:
-    def __init__(
-        self, time_range: str, bbox: list, epsg: int, collection: str = "sentinel-1-rtc"
-    ):
-        self.time_range = time_range
-        self.bbox = bbox
-        self.bbox_coords = points2coords(self.bbox)
-        self.collection = collection
-        self.epsg = epsg
-        self.items = self.search_for_items()
-        self.da = self.stack_assets()
-        #self.ds_pc = self.format_metadata()
-
-    def search_for_items(self):
-        catalog = Client.open("https://planetarycomputer.microsoft.com/api/stac/v1")
-        search = catalog.search(
-            collections=[self.collection], bbox=self.bbox, datetime=self.time_range
-        )
-        items = search.item_collection()
-        return items
-
-    def stack_assets(self):
-        client = daskClient(processes=False)
-        da = stackstac.stack(
-            planetary_computer.sign(self.items), bounds_latlon=self.bbox, epsg=self.epsg
-        )
-        return da
-
-    def format_metadata(self):
-        da = self.da
-        granule_ls = [
-            extract_source_granule_pc(da.isel(time=t).id.values)
-            for t in range(len(da.time))
-        ]
-        granule_coord = make_granule_coord_pc(granule_ls)
-        da.coords["granule_id"] = ("time", granule_coord.data)
-
-        ds_ps = da.to_dataset(dim="band")
-        return ds_pc
-
-
-# --------------------------------------------------------------------
 # ---------------------------utility functions -----------------------
+
 
 def points2coords(pt_ls: list) -> list:  # should be [xmin, ymin, xmax, ymax]
     """
@@ -531,67 +468,3 @@ def power_to_db(input_arr: np.array) -> np.array:
         Output array with values converted to decibel (dB) scale.
     """
     return 10 * np.log10(np.abs(input_arr))
-
-def plot_timestep(input_arr: np.array, time_step: int):
-    """
-    Plots VV and VH polarizations of a given dataset at a specified time step.
-    Parameters
-    ----------
-    input_arr : np.array
-        The input dataset containing the polarizations and acquisition dates.
-    time_step : int
-        The specific time step to plot.
-    Returns
-    -------
-    None
-        This function does not return any value. It generates and displays plots.
-    Notes
-    -----
-    The function creates a figure with three subplots:
-    - Layover-shadow mask
-    - VV backscatter
-    - VH backscatter
-    Each subplot is titled with the acquisition date corresponding to the given time step.
-    """
-
-    date = input_arr.isel(acq_date=time_step).acq_date.dt.date.data
-    fig, axs = plt.subplots(ncols=3, figsize=(24, 7))
-
-    input_arr.isel(acq_date=time_step).ls.plot(ax=axs[0])
-    power_to_db(input_arr.isel(acq_date=time_step).vv).plot(
-        ax=axs[1], cmap=plt.cm.Greys_r
-    )
-    power_to_db(input_arr.isel(acq_date=time_step).vh).plot(
-        ax=axs[2], cmap=plt.cm.Greys_r
-    )
-    fig.suptitle(
-        f"Layover-shadow mask (L), VV (C) and VH (R) backscatter {str(input_arr.isel(acq_date=time_step).acq_date.data)[:-19]}"
-    )
-    axs[0].set_title(f"{date} layover-shadow map")
-    axs[1].set_title(f"{date} VV backscatter")
-    axs[2].set_title(f"{date} VH backscatter")
-
-
-def asf_pc_sidebyside(asf_input:xr.Dataset, 
-                      pc_input:xr.Dataset, 
-                      timestep:int, 
-                      band:str):
-    fig, axs = plt.subplots(ncols=2, figsize=(15, 10))
-
-    power_to_db(asf_input[f'{band}'].isel(acq_date=timestep)).plot(
-        ax=axs[0], cmap=plt.cm.Greys_r, label="ASF"
-    )
-    power_to_db(pc_input[f'{band}'].isel(time=timestep)).plot(
-        ax=axs[1], cmap=plt.cm.Greys_r, label="PC"
-    )
-    date = asf.isel(time=timestep)['acq_date'].dt.date
-    fig.suptitle(f'Comparing ASF and Planetary Computer Sentinel-1 RTC {band.upper} backscatter at {date}.')
-    fig.legend()
-
-
-def single_time_mean_compare(asf_input, pc_input, time):
-    fig, ax = plt.subplots(figsize=(8, 8))
-    power_to_db(asf_input["vv"].isel(acq_date=time).mean(dim=["x", "y"])).plot(ax=ax)
-    power_to_db(pc_input["vv"].isel(time=time).mean(dim=["x", "y"])).plot(
-        ax=ax, color="red"
-    )
