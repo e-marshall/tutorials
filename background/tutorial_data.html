@@ -204,11 +204,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../sentinel1/nbs/4_read_pc_data.html">4. Read Sentinel-1 RTC data from Microsoft Planetary Computer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sentinel1/nbs/5_comparing_s1_rtc_datasets.html">5. Comparing Sentinel-1 RTC datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Conclusion</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../pt4/summary.html">Tutorials summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pt4/datacubes_revisited.html">Data Cubes Revisited</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pt4/conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/summary.html">Tutorials summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/datacubes_revisited.html">Data Cubes Revisited</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="nav bd-sidenav">
@@ -472,6 +471,10 @@ Be sure to also check out the ITS_LIVE image pair velocities <a class="reference
 <section id="sentinel-1-radiometric-terrain-corrected-rtc-imagery">
 <h2><em>Sentinel-1 Radiometric Terrain Corrected (RTC) imagery</em><a class="headerlink" href="#sentinel-1-radiometric-terrain-corrected-rtc-imagery" title="Permalink to this heading">#</a></h2>
 <p>Part 2 focuses on Sentinel-1 Radiometric Terrain Corrected imagery. Sentinel-1 is a dataset of synthetic aperture radar (SAR) imagery collected from sensors located on satellites operated by the Sentinel satellites operated by the European Space Agency (ESA). SAR data is exciting because doesn’t require solar illumination like passive optical systems and, at the wavelength where Sentinel-1 imagery is collected, it is minimally impacted by atmospheric water vapor, meaning that Sentinel-1 can acquire clear images of Earth’s surface even during cloudy and nighttime conditions. SAR imagery has a wide range of scientific applications including monitoring land surface deformation related to seismic activities, tracking flooding extents following extreme weather events, and mapping deforestation and characterizing biomass.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For an in-depth example of how SAR backscatter data can be used to map flooding extent, check out this <a class="reference external" href="https://projectpythia.org/eo-datascience-cookbook/notebooks/tutorials/floodmapping.html">notebook</a> in the <a class="reference external" href="https://projectpythia.org/eo-datascience-cookbook/README.html">Project Pythia Earth Observation Data Science Cookbook</a>.</p>
+</div>
 <p>Because SAR imagery is collected from a side-looking sensor, it can contain distortions related to the viewing geometry of the sensor and the surface topography of the area being imaged. This tutorial focuses on RTC imagery, which is SAR data that has undergone processing to remove the above-mentioned distortions.</p>
 <p>Multiple algorithms perform radiometric terrain correction, and it is important to understand the components of whichever dataset you use and their relative benefits and tradeoffs. This book will demonstrate working with two different (but similar) datasets of Sentinel-1 RTC imagery: one produced by Alaska Satellite Facility and one produced by Microsoft Planetary Coomputer, shown below. Processing of SAR imagery can be very computationally intensive, both of these options leverage cloud-hosted computational resources to make processed SAR imagery available to users, reducing the need for individual users to perform complicated, resource and time-intensive processing.</p>
 <div class="admonition important">

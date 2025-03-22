@@ -59,6 +59,8 @@
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'background/relevant_concepts';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -204,11 +206,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../sentinel1/nbs/4_read_pc_data.html">4. Read Sentinel-1 RTC data from Microsoft Planetary Computer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sentinel1/nbs/5_comparing_s1_rtc_datasets.html">5. Comparing Sentinel-1 RTC datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Conclusion</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../pt4/summary.html">Tutorials summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pt4/datacubes_revisited.html">Data Cubes Revisited</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pt4/conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/summary.html">Tutorials summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/datacubes_revisited.html">Data Cubes Revisited</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="nav bd-sidenav">
@@ -467,6 +468,14 @@ document.write(`
 <div><p>The CF metadata conventions are designed to promote the processing and sharing of files created with the NetCDF API. The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities. The CF convention includes a standard name table, which defines strings that identify physical quantities.</p>
 </div></blockquote>
 <p>CF metadata conventions set common expectations for metadata names and locations across datasets.  In this tutorial, we will use tools such as <a class="reference internal" href="#"><span class="xref myst">cf_xarray</span></a> that leverage CF conventions to add programmatic handling of CF metadata to Xarray objects, meaning that users can spend less time wrangling metadata. 🤩</p>
+</dd>
+<dt id="term-Spatio-temporal-Asset-Catalog-STAC">Spatio-temporal Asset Catalog (STAC)<a class="headerlink" href="#term-Spatio-temporal-Asset-Catalog-STAC" title="Permalink to this term">#</a></dt><dd><p>STAC is a metadata specification for geospatial data that allows the data to be more easily “worked with, indexed, and discovered” <a class="reference external" href="https://stacspec.org/en"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></a>. It does this by setting a common format for how metadata will be structured. This functions like setting a common expectation that all users of the data can rely on so that they know where certain information will be located and how it will be stored.</p>
+<p>The STAC specification is built around four core objects: Items, Catalogs, Collections, and an API. These take the form of a series of GeoJSON and JSON files that allow users to lazily query and index datasets before actually reading data into memory, which can be especially helpful for data stored in cloud object storage. Working off of a common metadata structure allows a suite of generalized tools to be developed and used to query and read all sorts of data, as long as they have STAC-compliant metadata. A few examples of these tools are <a class="reference external" href="https://pystac.readthedocs.io/en/stable/">PySTAC</a>, <a class="reference external" href="https://stackstac.readthedocs.io/en/latest/">stackstac</a>, and <a class="reference external" href="https://odc-stac.readthedocs.io/en/latest/">odc-stac</a>. stackstac and odc-stac both provide methods to read STAC data into memory as Xarray Datasets. If you’re interested, see this <a class="reference external" href="https://discourse.pangeo.io/t/comparing-odc-stac-load-and-stackstac-for-raster-composite-workflow/4097/2">Pangeo thread</a> for a discussion of the similarities and differences between these approaches.</p>
+<p><strong>Futher reading</strong></p>
+<ul class="simple">
+<li><p>STAC Overview - <a class="reference external" href="https://www.usgs.gov/landsat-missions/spatiotemporal-asset-catalog-stac">USGS</a></p></li>
+<li><p>STAC Introduction - <a class="reference external" href="https://developers.planet.com/docs/planetschool/introduction-to-stac-part-1-an-overview-of-the-specification/">Planet</a></p></li>
+</ul>
 </dd>
 </dl>
 </section>

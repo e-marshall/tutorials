@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Conclusion &#8212; Cloud-native geospatial datacube workflows with open-source tools</title>
+    <title>Wrapping up &#8212; Cloud-native geospatial datacube workflows with open-source tools</title>
   
   
   
@@ -59,11 +59,13 @@
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pt4/conclusion';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Appendix" href="../endmatter/appendix.html" />
-    <link rel="prev" title="Data Cubes Revisited" href="datacubes_revisited.html" />
+    <link rel="next" title="Tutorials summary" href="summary.html" />
+    <link rel="prev" title="5. Comparing Sentinel-1 RTC datasets" href="../sentinel1/nbs/5_comparing_s1_rtc_datasets.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -204,11 +206,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../sentinel1/nbs/4_read_pc_data.html">4. Read Sentinel-1 RTC data from Microsoft Planetary Computer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sentinel1/nbs/5_comparing_s1_rtc_datasets.html">5. Comparing Sentinel-1 RTC datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Conclusion</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Wrapping up</a></li>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Tutorials summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datacubes_revisited.html">Data Cubes Revisited</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="nav bd-sidenav">
@@ -401,7 +403,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Conclusion</h1>
+    <h1>Wrapping up</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -411,7 +413,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-source-tools-and-packages">Open source tools and packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-summary-tiny-nearrow">Tutorials Summary<span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cubes-revisited-tiny-nearrow">Data cubes revisited <span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broader-context-tiny-nearrow">Broader context <span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-source-tools-and-packages">Open source tools and packages</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -423,10 +430,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="conclusion">
-<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="wrapping-up">
+<h1>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this heading">#</a></h1>
+<p>It is a popular refrain, and a sentiment many analysts can likey relate to, “that 80% of data analysis is spent on the cleaning and preparing of data” <span id="id1">Dasu and Johnson [<a class="reference internal" href="../endmatter/references.html#id5" title="Tamraparni Dasu and Theodore Johnson. Exploratory Data Mining and Data Cleaning. John Wiley &amp; Sons, Inc., USA, 1 edition, 2003. ISBN 0471268518.">3</a>], Wickham [<a class="reference internal" href="../endmatter/references.html#id20" title="Hadley Wickham. Tidy data. The Journal of Statistical Software, 2014. URL: http://www.jstatsoft.org/v59/i10/.">16</a>]</span>. This book focuses on the data cleaning and preparation steps of an analytical workflow that ingests satellite remote sensing time series datasets. We draw on the wealth of knowledge and research that attends to this topic in order to produce tutorials that demonstrate and explain these concepts in the context of cloud-optimized, publicly available array data and the software ecosystem built around the Xarray data model in Python.</p>
+<p>In this chapter, you will find summaries of the concepts covered throughout the Jupyter Notebooks included in this book, a return to the introduction’s <a class="reference internal" href="../background/data_cubes.html"><span class="std std-doc">discussion of data cubes</span></a> with synthesis and lessons learned from the tutorials, and a short discussion of the broader context of this book and next steps for interested readers.</p>
+<section id="tutorials-summary-tiny-nearrow">
+<h2>Tutorials Summary<a class="reference internal" href="summary.html"><span class="std std-doc"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a><a class="headerlink" href="#tutorials-summary-tiny-nearrow" title="Permalink to this heading">#</a></h2>
+<p>This book features two tutorials, each focuses on a different earth observation dataset and containing five notebooks that cover different steps of a typical workflow such as data access, manpiulation and organizatoin and visualization and exploratory analysis. In this section, you will find a few of the common topics throughout these notebooks and links to where they are addressed in each tutorial.</p>
+</section>
+<section id="data-cubes-revisited-tiny-nearrow">
+<h2>Data cubes revisited <a class="reference internal" href="datacubes_revisited.html"><span class="std std-doc"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a><a class="headerlink" href="#data-cubes-revisited-tiny-nearrow" title="Permalink to this heading">#</a></h2>
+<p>Synthesizing lessons from tutorial examples to enumerate guidance and best-practices for working Xarray geospatial data cubes.</p>
+</section>
+<section id="broader-context-tiny-nearrow">
+<h2>Broader context <a class="reference internal" href="#"><span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a><a class="headerlink" href="#broader-context-tiny-nearrow" title="Permalink to this heading">#</a></h2>
+<p>It is a popular refrain, and a sentiment many analysts can likey relate to, “that 80% of data analysis is spent on the cleaning and preparing of data” <span id="id2">Dasu and Johnson [<a class="reference internal" href="../endmatter/references.html#id5" title="Tamraparni Dasu and Theodore Johnson. Exploratory Data Mining and Data Cleaning. John Wiley &amp; Sons, Inc., USA, 1 edition, 2003. ISBN 0471268518.">3</a>], Wickham [<a class="reference internal" href="../endmatter/references.html#id20" title="Hadley Wickham. Tidy data. The Journal of Statistical Software, 2014. URL: http://www.jstatsoft.org/v59/i10/.">16</a>]</span>. This book focuses on the data cleaning and preparation steps of an analytical workflow. We draw on the wealth of knowledge and research that attends to this topic in order to produce tutorials that demonstrate and explain these topics in the context of satellite remote sensing earth observation datasets and the software ecosystem built around the Xarray data model in Python.<br />
+This book largely focused on the beginning steps of scientific workflows where data is prepared for analysis and manipulated to support different types of analysis.</p>
 <section id="open-source-tools-and-packages">
-<h2>Open source tools and packages<a class="headerlink" href="#open-source-tools-and-packages" title="Permalink to this heading">#</a></h2>
+<h3>Open source tools and packages<a class="headerlink" href="#open-source-tools-and-packages" title="Permalink to this heading">#</a></h3>
 <p>In this book, we mainly focused on Xarray and several tools within the Xarray ecosystem and that integrate with Xarray to streamline data cube workflows such as:</p>
 <ul class="simple">
 <li><p>Xvec</p></li>
@@ -437,7 +458,7 @@ document.write(`
 <li><p>GeoPandas</p></li>
 <li><p>holoviz</p></li>
 </ul>
-<p>There are many exciting open-source projects and tools related to Xarray data cubes that were not highlight in this book. A few are:</p>
+<p>There are many exciting open-source projects and tools related to Xarray data cubes that were not highlighted in this book. A few are:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/bcdev/xrlint">XRLint</a></p></li>
 <li><p><a class="reference external" href="https://www.lexcube.org/">LexCube</a></p></li>
@@ -445,6 +466,7 @@ document.write(`
 <li><p><a class="reference external" href="https://github.com/ESDS-Leipzig/cubo">cubo</a></p></li>
 <li><p><a class="reference external" href="https://opendatacube.readthedocs.io/en/latest/index.html">Open Data Cube</a></p></li>
 </ul>
+</section>
 </section>
 </section>
 
@@ -479,20 +501,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="datacubes_revisited.html"
+       href="../sentinel1/nbs/5_comparing_s1_rtc_datasets.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Data Cubes Revisited</p>
+        <p class="prev-next-title">5. Comparing Sentinel-1 RTC datasets</p>
       </div>
     </a>
     <a class="right-next"
-       href="../endmatter/appendix.html"
+       href="summary.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Appendix</p>
+        <p class="prev-next-title">Tutorials summary</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -512,7 +534,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-source-tools-and-packages">Open source tools and packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-summary-tiny-nearrow">Tutorials Summary<span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cubes-revisited-tiny-nearrow">Data cubes revisited <span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broader-context-tiny-nearrow">Broader context <span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-source-tools-and-packages">Open source tools and packages</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

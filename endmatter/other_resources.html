@@ -204,11 +204,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../sentinel1/nbs/4_read_pc_data.html">4. Read Sentinel-1 RTC data from Microsoft Planetary Computer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sentinel1/nbs/5_comparing_s1_rtc_datasets.html">5. Comparing Sentinel-1 RTC datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Conclusion</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../pt4/summary.html">Tutorials summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pt4/datacubes_revisited.html">Data Cubes Revisited</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pt4/conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/summary.html">Tutorials summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/datacubes_revisited.html">Data Cubes Revisited</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="current nav bd-sidenav">
@@ -412,12 +411,13 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xarray-specific-resources">Xarray-specific resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geospatial-data-science-and-data-formats">Geospatial data science and data formats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dask-resources">Dask resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geospatial-data-science-data-formats-and-metadata">Geospatial data science, data formats, and metadata</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geospatial-data-and-coordinate-reference-systems">Geospatial data and coordinate reference systems</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-sensing-data-types-and-formats">Remote sensing data types and formats</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-sensing-principles">Remote sensing principles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-documentation">Data documentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-tips-and-best-practices">Software tips and best practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-processing-documentation">Data  &amp; Processing documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-data-cube-resources">More data cube resources</a></li>
 </ul>
             </nav>
         </div>
@@ -440,10 +440,19 @@ document.write(`
 <li><p><a class="reference external" href="https://tutorial.xarray.dev/intermediate/01-high-level-computation-patterns.html">Xarray High-level computational patterns</a></p></li>
 <li><p><a class="reference external" href="https://tutorial.xarray.dev/intermediate/xarray_and_dask.html">Parallel computing with dask</a></p></li>
 <li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/terminology.html">Terminology</a></p></li>
+<li><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/dask.html#chunking-and-performance">Xarray, Dask - Chunking &amp; Performance</a></p></li>
+<li><p><a class="reference external" href="https://projectpythia.org/gridding-cookbook/README.html">Regridding with Xarray Cookbook - Project Pythia</a></p></li>
 </ul>
 </section>
-<section id="geospatial-data-science-and-data-formats">
-<h2>Geospatial data science and data formats<a class="headerlink" href="#geospatial-data-science-and-data-formats" title="Permalink to this heading">#</a></h2>
+<section id="dask-resources">
+<h2>Dask resources<a class="headerlink" href="#dask-resources" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.dask.org/2021/11/02/choosing-dask-chunk-sizes">Choosing good chunk sizes in Dask</a></p></li>
+<li><p><a class="reference external" href="https://projectpythia.org/dask-cookbook/README.html">Dask Cookbook - Project Pythia</a></p></li>
+</ul>
+</section>
+<section id="geospatial-data-science-data-formats-and-metadata">
+<h2>Geospatial data science, data formats, and metadata<a class="headerlink" href="#geospatial-data-science-data-formats-and-metadata" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://earth-env-data-science.github.io/intro.html">Introduction to Earth and Environmental Data Science</a></p></li>
 <li><p><a class="reference external" href="https://py.geocompx.org/">Geocomputation wtih Python</a></p></li>
@@ -451,6 +460,10 @@ document.write(`
 <li><p><a class="reference external" href="https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/data-formats">Data Formats - NASA Earth Observation Data Basics</a></p></li>
 <li><p><a class="reference external" href="https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/cloud-computing">Cloud Computing - NASA Earth Observation Data Basics</a></p></li>
 <li><p><a class="reference external" href="https://r-spatial.org/r/2022/09/12/vdc.html">Vector Data Cubes - Edzer Pebesma</a></p></li>
+<li><p><a class="reference external" href="https://cfconventions.org/">Climate Forecase Conventions</a></p></li>
+<li><p><a class="reference external" href="https://gdal.org/en/stable/drivers/raster/vrt.html">GDAL Virtual Raster Format</a></p></li>
+<li><p><a class="reference external" href="https://stacspec.org/en">STAC Specification</a></p></li>
+<li></li>
 </ul>
 </section>
 <section id="geospatial-data-and-coordinate-reference-systems">
@@ -458,12 +471,15 @@ document.write(`
 <ul class="simple">
 <li><p><a class="reference external" href="https://py.geocompx.org/01-spatial-data#geographic-coordinate-systems">Coordinate Reference Systems - Geocomputaion with Python</a></p></li>
 <li><p><a class="reference external" href="https://py.geocompx.org/06-reproj">Reprojecting Geographic Data - Geocomputation with Python</a></p></li>
+<li><p><a class="reference external" href="https://pyproj4.github.io/pyproj/stable/">PyPROJ</a></p></li>
+<li><p><a class="reference external" href="https://cf-xarray.readthedocs.io/en/latest/">cfxarray</a></p></li>
 </ul>
 </section>
 <section id="remote-sensing-data-types-and-formats">
 <h2>Remote sensing data types and formats<a class="headerlink" href="#remote-sensing-data-types-and-formats" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/types-sar-products">Types of SAR Products - NASA Earth Observation Data Basics</a></p></li>
+<li><p><a class="reference external" href="https://ceos.org/ard/index.html">CEOS Analysis Ready Data</a></p></li>
 </ul>
 </section>
 <section id="remote-sensing-principles">
@@ -475,21 +491,24 @@ document.write(`
 <li><p><a class="reference external" href="https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/sar/image-interpretation">SAR Image Interpretation - NASA Earth Observation Data Basics</a></p></li>
 <li><p><a class="reference external" href="https://radar.community.uaf.edu/">Microwave Remote Sensing - University of Alaska Fairbanks</a></p></li>
 <li><p><a class="reference external" href="https://www.earthdata.nasa.gov/s3fs-public/2024-06/sar%20mathematical%20tutorial.pdf">A mathematical tutorial on SAR - Margaret Cheney, NASA EarthData</a></p></li>
+<li><p><a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/introduction_to_sar/">ASF HyP3 Introduction to SAR</a></p></li>
 </ul>
 </section>
-<section id="data-documentation">
-<h2>Data documentation<a class="headerlink" href="#data-documentation" title="Permalink to this heading">#</a></h2>
+<section id="data-processing-documentation">
+<h2>Data  &amp; Processing documentation<a class="headerlink" href="#data-processing-documentation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://its-live.jpl.nasa.gov/#documentation">ITS_LIVE Documentation</a></p></li>
 <li><p><a class="reference external" href="https://sentinel.esa.int/web/sentinel/user-guides/sentinel-1-sar/overview">ESA Sentinel-1 Documentation</a></p></li>
 <li><p><a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/">ASF Sentinel-1 RTC Product Guide</a></p></li>
-<li><p><a class="reference external" href="http://www.glims.org/rgi_user_guide/welcome.html">Randolph Glacier Inventory User Guide</a></p></li>
+<li><p><a class="reference external" href="https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc">Microsoft Planetary Computer - Sentinel-1 RTC data</a></p></li>
+<li><p><a class="reference external" href="http://www.glims.org/rgi_user_guide/welcome.html">Randolph Glacier Inventory User Guide</a>
+<a class="reference external" href="https://hyp3-docs.asf.alaska.edu/tutorials/">ASF HyP3 Tutorials</a></p></li>
 </ul>
 </section>
-<section id="software-tips-and-best-practices">
-<h2>Software tips and best practices<a class="headerlink" href="#software-tips-and-best-practices" title="Permalink to this heading">#</a></h2>
+<section id="more-data-cube-resources">
+<h2>More data cube resources<a class="headerlink" href="#more-data-cube-resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://blog.dask.org/2021/11/02/choosing-dask-chunk-sizes">Choosing good chunk sizes in Dask</a></p></li>
+<li><p><a class="reference external" href="http://www.earthserver.eu/tech/datacube-manifesto/The-Datacube-Manifesto.pdf">The Data Cube Manifesto</a></p></li>
 </ul>
 </section>
 </section>
@@ -559,12 +578,13 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xarray-specific-resources">Xarray-specific resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geospatial-data-science-and-data-formats">Geospatial data science and data formats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dask-resources">Dask resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geospatial-data-science-data-formats-and-metadata">Geospatial data science, data formats, and metadata</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geospatial-data-and-coordinate-reference-systems">Geospatial data and coordinate reference systems</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-sensing-data-types-and-formats">Remote sensing data types and formats</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-sensing-principles">Remote sensing principles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-documentation">Data documentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-tips-and-best-practices">Software tips and best practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-processing-documentation">Data  &amp; Processing documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-data-cube-resources">More data cube resources</a></li>
 </ul>
   </nav></div>
 

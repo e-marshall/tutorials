@@ -204,11 +204,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../sentinel1/nbs/4_read_pc_data.html">4. Read Sentinel-1 RTC data from Microsoft Planetary Computer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sentinel1/nbs/5_comparing_s1_rtc_datasets.html">5. Comparing Sentinel-1 RTC datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Conclusion</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../pt4/summary.html">Tutorials summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../pt4/datacubes_revisited.html">Data Cubes Revisited</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../pt4/conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conclusion/summary.html">Tutorials summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conclusion/datacubes_revisited.html">Data Cubes Revisited</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="nav bd-sidenav">
@@ -270,7 +269,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/e-marshall/cloud-open-source-geospatial-datacube-workflows/main?urlpath=lab/tree/endmatter/nbs/2_read_w_xropen_mfdataset.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/e-marshall/cloud-open-source-geospatial-datacube-workflows/relevant_concepts?urlpath=lab/tree/endmatter/nbs/2_read_w_xropen_mfdataset.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -482,10 +481,8 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">contextily</span> <span class="k">as</span> <span class="nn">cx</span>
-<span class="kn">import</span> <span class="nn">dask</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask</span>
 <span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -493,7 +490,6 @@ document.write(`
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">pathlib</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 </pre></div>
@@ -516,7 +512,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/emmamarshall/miniforge3/envs/geospatial_datacube_book_env/lib/python3.11/site-packages/distributed/node.py:187: UserWarning: Port 8787 is already in use.
 Perhaps you already have a cluster running?
-Hosting the HTTP server on port 40205 instead
+Hosting the HTTP server on port 33809 instead
   warnings.warn(
 </pre></div>
 </div>
@@ -524,7 +520,7 @@ Hosting the HTTP server on port 40205 instead
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-f0137d89-06d4-11f0-a99a-c858b3e3e5bd</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-02c6e779-06e3-11f0-99dd-c858b3e3e5bd</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -537,7 +533,7 @@ Hosting the HTTP server on port 40205 instead
         
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard: </strong> <a href="http://192.168.86.116:40205/status" target="_blank">http://192.168.86.116:40205/status</a>
+                    <strong>Dashboard: </strong> <a href="http://192.168.86.116:33809/status" target="_blank">http://192.168.86.116:33809/status</a>
                 </td>
                 <td style="text-align: left;"></td>
             </tr>
@@ -555,11 +551,11 @@ Hosting the HTTP server on port 40205 instead
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">5d15ff39</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">17ba8461</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard:</strong> <a href="http://192.168.86.116:40205/status" target="_blank">http://192.168.86.116:40205/status</a>
+                    <strong>Dashboard:</strong> <a href="http://192.168.86.116:33809/status" target="_blank">http://192.168.86.116:33809/status</a>
                 </td>
                 <td style="text-align: left;">
                     <strong>Workers:</strong> 1
@@ -592,11 +588,11 @@ Hosting the HTTP server on port 40205 instead
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-f60574f4-27de-4098-b5ab-67244c47ace2</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-cd2e0452-dafd-445e-bad1-9ba00d837d3a</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> inproc://192.168.86.116/76186/1
+                        <strong>Comm:</strong> inproc://192.168.86.116/88541/1
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 1
@@ -604,7 +600,7 @@ Hosting the HTTP server on port 40205 instead
                 </tr>
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Dashboard:</strong> <a href="http://192.168.86.116:40205/status" target="_blank">http://192.168.86.116:40205/status</a>
+                        <strong>Dashboard:</strong> <a href="http://192.168.86.116:33809/status" target="_blank">http://192.168.86.116:33809/status</a>
                     </td>
                     <td style="text-align: left;">
                         <strong>Total threads:</strong> 14
@@ -638,7 +634,7 @@ Hosting the HTTP server on port 40205 instead
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> inproc://192.168.86.116/76186/4
+                            <strong>Comm: </strong> inproc://192.168.86.116/88541/4
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 14
@@ -646,7 +642,7 @@ Hosting the HTTP server on port 40205 instead
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://192.168.86.116:39377/status" target="_blank">http://192.168.86.116:39377/status</a>
+                            <strong>Dashboard: </strong> <a href="http://192.168.86.116:33661/status" target="_blank">http://192.168.86.116:33661/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 38.76 GiB
@@ -660,7 +656,7 @@ Hosting the HTTP server on port 40205 instead
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /tmp/dask-scratch-space/worker-q18f3gn9
+                            <strong>Local directory: </strong> /tmp/dask-scratch-space/worker-h1gc312x
                         </td>
                     </tr>
 
@@ -750,15 +746,15 @@ Hosting the HTTP server on port 40205 instead
     <span class="c1"># Make list of files within each scene directory in data directory</span>
     <span class="n">scene_files_ls</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">scene_name</span><span class="p">))</span>
 
-    <span class="k">if</span> <span class="n">variable</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;vv&#39;</span><span class="p">,</span> <span class="s1">&#39;vh&#39;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">variable</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;vv&quot;</span><span class="p">,</span> <span class="s2">&quot;vh&quot;</span><span class="p">]:</span>
         <span class="n">scene_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">fname</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">fname</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">variable</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">.tif&quot;</span><span class="p">)]</span>
-    
-    <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="s1">&#39;ls_map&#39;</span><span class="p">:</span>
-        <span class="n">scene_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">fname</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">fname</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;_ls_map.tif&quot;</span><span class="p">)]</span>
-    
-    <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="s1">&#39;readme&#39;</span><span class="p">:</span>
+
+    <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="s2">&quot;ls_map&quot;</span><span class="p">:</span>
+        <span class="n">scene_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">fname</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">fname</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;_ls_map.tif&quot;</span><span class="p">)]</span>
+
+    <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="s2">&quot;readme&quot;</span><span class="p">:</span>
         <span class="n">scene_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;README.md.txt&quot;</span><span class="p">)]</span>
-   
+
     <span class="k">return</span> <span class="n">scene_files</span>
 </pre></div>
 </div>
@@ -766,10 +762,10 @@ Hosting the HTTP server on port 40205 instead
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;vv&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;vh&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;ls_map&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;readme&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;vv&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;vh&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;ls_map&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;readme&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -777,9 +773,9 @@ Hosting the HTTP server on port 40205 instead
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;vv&#39;</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;vh&#39;</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;ls_map&#39;</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;vv&quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;vh&quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;ls_map&quot;</span><span class="p">))</span>
 
 <span class="ne">NameError</span>: name &#39;scenes_ls&#39; is not defined
 </pre></div>
@@ -856,13 +852,13 @@ Hosting the HTTP server on port 40205 instead
         <span class="n">filespaths_list</span><span class="p">,</span> <span class="n">dates_list</span> <span class="o">=</span> <span class="n">make_filepath_lists</span><span class="p">(</span><span class="n">rtc_path</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span>
         <span class="n">filepaths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filespaths_list</span><span class="p">)</span>
         <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dates_list</span><span class="p">)</span>
-    
+
     <span class="c1"># Make dict of variable names (keys) and associated filepaths</span>
     <span class="n">filepaths_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">filepaths</span><span class="p">))</span>
 
     <span class="c1"># Make sure that dates are identical across all lists</span>
     <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">lst</span> <span class="o">==</span> <span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">lst</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span>
-    <span class="c1"># Make sure length of each variable list is the same </span>
+    <span class="c1"># Make sure length of each variable list is the same</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">filepaths_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()])))</span> <span class="o">==</span> <span class="mi">1</span>
 
     <span class="k">return</span> <span class="n">filepaths_dict</span>
@@ -872,7 +868,7 @@ Hosting the HTTP server on port 40205 instead
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepaths_dict</span> <span class="o">=</span> <span class="n">create_filenames_dict</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;vv&#39;</span><span class="p">,</span><span class="s1">&#39;vh&#39;</span><span class="p">,</span><span class="s1">&#39;ls_map&#39;</span><span class="p">,</span><span class="s1">&#39;readme&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepaths_dict</span> <span class="o">=</span> <span class="n">create_filenames_dict</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;vv&quot;</span><span class="p">,</span> <span class="s2">&quot;vh&quot;</span><span class="p">,</span> <span class="s2">&quot;ls_map&quot;</span><span class="p">,</span> <span class="s2">&quot;readme&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -880,7 +876,7 @@ Hosting the HTTP server on port 40205 instead
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">filepaths_dict</span> <span class="o">=</span> <span class="n">create_filenames_dict</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;vv&#39;</span><span class="p">,</span><span class="s1">&#39;vh&#39;</span><span class="p">,</span><span class="s1">&#39;ls_map&#39;</span><span class="p">,</span><span class="s1">&#39;readme&#39;</span><span class="p">])</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">filepaths_dict</span> <span class="o">=</span> <span class="n">create_filenames_dict</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;vv&quot;</span><span class="p">,</span> <span class="s2">&quot;vh&quot;</span><span class="p">,</span> <span class="s2">&quot;ls_map&quot;</span><span class="p">,</span> <span class="s2">&quot;readme&quot;</span><span class="p">])</span>
 
 <span class="nn">Cell In[9], line 26,</span> in <span class="ni">create_filenames_dict</span><span class="nt">(rtc_path, variables_ls)</span>
 <span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">variables_ls</span><span class="p">:</span>
@@ -933,7 +929,7 @@ Hosting the HTTP server on port 40205 instead
 <p>Here is an example of reading a single file with <code class="docutils literal notranslate"><span class="pre">xr.open_datatset()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s1">&#39;vv&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s2">&quot;vv&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">ds1</span>
 </pre></div>
 </div>
@@ -942,7 +938,7 @@ Hosting the HTTP server on port 40205 instead
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ds1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s1">&#39;vv&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ds1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s2">&quot;vv&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ds1</span>
 
 <span class="ne">NameError</span>: name &#39;filepaths_dict&#39; is not defined
@@ -988,9 +984,7 @@ Hosting the HTTP server on port 40205 instead
 
     <span class="c1"># Check that number of parts matches expected schema</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">schema</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Input filename does not match schema of expected format: </span><span class="si">{</span><span class="n">parts</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input filename does not match schema of expected format: </span><span class="si">{</span><span class="n">parts</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># Create dict to store parsed data</span>
     <span class="n">parsed_data</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1010,9 +1004,7 @@ Hosting the HTTP server on port 40205 instead
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Part </span><span class="si">{</span><span class="n">part</span><span class="si">}</span><span class="s2"> does not have expected length </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">part</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="c1"># Check that each part matches expected pattern from schema</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">part</span><span class="p">)</span> <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">pattern_options</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Part </span><span class="si">{</span><span class="n">part</span><span class="si">}</span><span class="s2"> does not match expected patterns </span><span class="si">{</span><span class="n">pattern_options</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Part </span><span class="si">{</span><span class="n">part</span><span class="si">}</span><span class="s2"> does not match expected patterns </span><span class="si">{</span><span class="n">pattern_options</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="c1"># Special handling of a part (pol orbit) that has 3 types of metadata</span>
         <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;pol_orbit&quot;</span><span class="p">:</span>
@@ -1020,9 +1012,7 @@ Hosting the HTTP server on port 40205 instead
                 <span class="p">{</span>
                     <span class="s2">&quot;polarization_type&quot;</span><span class="p">:</span> <span class="n">part</span><span class="p">[:</span><span class="mi">1</span><span class="p">],</span>  <span class="c1"># Single (S) or Dual (D) pol</span>
                     <span class="s2">&quot;primary_polarization&quot;</span><span class="p">:</span> <span class="n">part</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span>  <span class="c1"># Primary polarization (H or V)</span>
-                    <span class="s2">&quot;orbit_type&quot;</span><span class="p">:</span> <span class="n">part</span><span class="p">[</span>
-                        <span class="o">-</span><span class="mi">1</span>
-                    <span class="p">],</span>  <span class="c1"># Precise (p), Restituted (r) or Original predicted (o)</span>
+                    <span class="s2">&quot;orbit_type&quot;</span><span class="p">:</span> <span class="n">part</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>  <span class="c1"># Precise (p), Restituted (r) or Original predicted (o)</span>
                 <span class="p">}</span>
             <span class="p">)</span>
         <span class="c1"># Format string acquisition date as a datetime time stamp</span>
@@ -1063,10 +1053,11 @@ Hosting the HTTP server on port 40205 instead
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">ds_orig</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">ds_orig</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;function that should return an xarray object with time dimension and associated metadata given a path to a single RTC scene, if its dualpol will have multiple bands, currently just as 2 data arrays but could merge.</span>
 <span class="sd">    goal would be to apply this a list of directories for different RTC products, return cube along time dimension - I think?</span>
-<span class="sd">    - for concatenating, would need to check footprints and only take products with the same footprint, or subset them all to a common AOI?&quot;&quot;&quot;</span>
+<span class="sd">    - for concatenating, would need to check footprints and only take products with the same footprint, or subset them all to a common AOI?</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># fname_ls = []</span>
 
@@ -1078,7 +1069,6 @@ Hosting the HTTP server on port 40205 instead
     <span class="c1"># print(&#39;fname: &#39;, vv_fn)</span>
 
     <span class="n">attrs_dict</span> <span class="o">=</span> <span class="n">parse_fname_metadata</span><span class="p">(</span><span class="n">vh_fn</span><span class="p">)</span>
-
 
     <span class="c1"># link the strings for each of the above variables to their full names (from README, commented above)</span>
     <span class="c1"># eg if output_type=g, should read &#39;gamma&#39;</span>
@@ -1096,7 +1086,7 @@ Hosting the HTTP server on port 40205 instead
     <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span><span class="s2">&quot;acq_date&quot;</span><span class="p">:</span> <span class="n">date</span><span class="p">})</span>
     <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="s2">&quot;acq_date&quot;</span><span class="p">)</span>
     <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">ds</span>  
+    <span class="k">return</span> <span class="n">ds</span>
 </pre></div>
 </div>
 </div>
@@ -1104,9 +1094,9 @@ Hosting the HTTP server on port 40205 instead
 <p>Create the wrapper function for each variable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preprocess_vh_partial</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">preprocess</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="s1">&#39;vh&#39;</span><span class="p">)</span>
-<span class="n">preprocess_vv_partial</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">preprocess</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="s1">&#39;vv&#39;</span><span class="p">)</span>
-<span class="n">preprocess_ls_partial</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">preprocess</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="s1">&#39;ls_map&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preprocess_vh_partial</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">preprocess</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="s2">&quot;vh&quot;</span><span class="p">)</span>
+<span class="n">preprocess_vv_partial</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">preprocess</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="s2">&quot;vv&quot;</span><span class="p">)</span>
+<span class="n">preprocess_ls_partial</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">preprocess</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="s2">&quot;ls_map&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1129,7 +1119,7 @@ Hosting the HTTP server on port 40205 instead
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vh</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
-    <span class="n">paths</span><span class="o">=</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s1">&#39;vh&#39;</span><span class="p">],</span>
+    <span class="n">paths</span><span class="o">=</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s2">&quot;vh&quot;</span><span class="p">],</span>
     <span class="n">preprocess</span><span class="o">=</span><span class="n">preprocess_vh_partial</span><span class="p">,</span>
     <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
     <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;rasterio&quot;</span><span class="p">,</span>
@@ -1147,7 +1137,7 @@ Hosting the HTTP server on port 40205 instead
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">asf_vh</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
-<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">paths</span><span class="o">=</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s1">&#39;vh&#39;</span><span class="p">],</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">paths</span><span class="o">=</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s2">&quot;vh&quot;</span><span class="p">],</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">preprocess</span><span class="o">=</span><span class="n">preprocess_vh_partial</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;rasterio&quot;</span><span class="p">,</span>
@@ -1166,7 +1156,7 @@ Hosting the HTTP server on port 40205 instead
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_vv</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
-    <span class="n">paths</span><span class="o">=</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s1">&#39;vv&#39;</span><span class="p">],</span>
+    <span class="n">paths</span><span class="o">=</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s2">&quot;vv&quot;</span><span class="p">],</span>
     <span class="n">preprocess</span><span class="o">=</span><span class="n">preprocess_vv_partial</span><span class="p">,</span>
     <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
     <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;rasterio&quot;</span><span class="p">,</span>
@@ -1184,7 +1174,7 @@ Hosting the HTTP server on port 40205 instead
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">asf_vv</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
-<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">paths</span><span class="o">=</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s1">&#39;vv&#39;</span><span class="p">],</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">paths</span><span class="o">=</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s2">&quot;vv&quot;</span><span class="p">],</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">preprocess</span><span class="o">=</span><span class="n">preprocess_vv_partial</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;rasterio&quot;</span><span class="p">,</span>
@@ -1203,7 +1193,7 @@ Hosting the HTTP server on port 40205 instead
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ls</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
-    <span class="n">paths</span><span class="o">=</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s1">&#39;ls_map&#39;</span><span class="p">],</span>
+    <span class="n">paths</span><span class="o">=</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s2">&quot;ls_map&quot;</span><span class="p">],</span>
     <span class="n">preprocess</span><span class="o">=</span><span class="n">preprocess_ls_partial</span><span class="p">,</span>
     <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
     <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;rasterio&quot;</span><span class="p">,</span>
@@ -1221,7 +1211,7 @@ Hosting the HTTP server on port 40205 instead
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">asf_ls</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
-<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">paths</span><span class="o">=</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s1">&#39;ls_map&#39;</span><span class="p">],</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">paths</span><span class="o">=</span><span class="n">filepaths_dict</span><span class="p">[</span><span class="s2">&quot;ls_map&quot;</span><span class="p">],</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">preprocess</span><span class="o">=</span><span class="n">preprocess_ls_partial</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;rasterio&quot;</span><span class="p">,</span>
@@ -1270,9 +1260,7 @@ Hosting the HTTP server on port 40205 instead
 <p>Merge the VH, VV and layover-shadow mask objects into one <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span>
-    <span class="p">{</span><span class="s2">&quot;vv&quot;</span><span class="p">:</span> <span class="n">asf_vv</span><span class="o">.</span><span class="n">vv</span><span class="p">,</span> <span class="s2">&quot;vh&quot;</span><span class="p">:</span> <span class="n">asf_vh</span><span class="o">.</span><span class="n">vh</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">:</span> <span class="n">asf_ls</span><span class="o">.</span><span class="n">ls_map</span><span class="p">}</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">({</span><span class="s2">&quot;vv&quot;</span><span class="p">:</span> <span class="n">asf_vv</span><span class="o">.</span><span class="n">vv</span><span class="p">,</span> <span class="s2">&quot;vh&quot;</span><span class="p">:</span> <span class="n">asf_vh</span><span class="o">.</span><span class="n">vh</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">:</span> <span class="n">asf_ls</span><span class="o">.</span><span class="n">ls_map</span><span class="p">})</span>
 <span class="n">asf_ds</span>
 </pre></div>
 </div>
@@ -1280,11 +1268,9 @@ Hosting the HTTP server on port 40205 instead
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">asf_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span>
-<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="p">{</span><span class="s2">&quot;vv&quot;</span><span class="p">:</span> <span class="n">asf_vv</span><span class="o">.</span><span class="n">vv</span><span class="p">,</span> <span class="s2">&quot;vh&quot;</span><span class="p">:</span> <span class="n">asf_vh</span><span class="o">.</span><span class="n">vh</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">:</span> <span class="n">asf_ls</span><span class="o">.</span><span class="n">ls_map</span><span class="p">}</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">asf_ds</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">asf_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">({</span><span class="s2">&quot;vv&quot;</span><span class="p">:</span> <span class="n">asf_vv</span><span class="o">.</span><span class="n">vv</span><span class="p">,</span> <span class="s2">&quot;vh&quot;</span><span class="p">:</span> <span class="n">asf_vh</span><span class="o">.</span><span class="n">vh</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">:</span> <span class="n">asf_ls</span><span class="o">.</span><span class="n">ls_map</span><span class="p">})</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">asf_ds</span>
 
 <span class="ne">NameError</span>: name &#39;asf_vv&#39; is not defined
 </pre></div>
@@ -1314,7 +1300,7 @@ Hosting the HTTP server on port 40205 instead
 <p>How large is this object?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ds_sorted</span><span class="o">.</span><span class="n">nbytes</span><span class="o">/</span><span class="mf">1e9</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_ds_sorted</span><span class="o">.</span><span class="n">nbytes</span> <span class="o">/</span> <span class="mf">1e9</span>
 </pre></div>
 </div>
 </div>
@@ -1322,7 +1308,7 @@ Hosting the HTTP server on port 40205 instead
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">asf_ds_sorted</span><span class="o">.</span><span class="n">nbytes</span><span class="o">/</span><span class="mf">1e9</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">asf_ds_sorted</span><span class="o">.</span><span class="n">nbytes</span> <span class="o">/</span> <span class="mf">1e9</span>
 
 <span class="ne">NameError</span>: name &#39;asf_ds_sorted&#39; is not defined
 </pre></div>
@@ -1336,9 +1322,7 @@ Hosting the HTTP server on port 40205 instead
 <p>This is a pretty unwieldy object (nearly 300 GB). Let’s subset it down to just the area we want to focus on. Read in the following GeoJSON to clip the dataset to the area of interest we’ll be using in this tutorial. This AOI covers a region in the central Himalaya near the Chinese border. We will use the <code class="docutils literal notranslate"><span class="pre">rioxarray.clip()</span></code> function which you can read more about <a class="reference external" href="https://corteva.github.io/rioxarray/stable/examples/clip_geom.html">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_aoi</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span>
-    <span class="s2">&quot;https://github.com/e-marshall/sentinel1_rtc/raw/main/hma_rtc_aoi.geojson&quot;</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_aoi</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;https://github.com/e-marshall/sentinel1_rtc/raw/main/hma_rtc_aoi.geojson&quot;</span><span class="p">)</span>
 <span class="n">pc_aoi</span>
 </pre></div>
 </div>
@@ -1408,7 +1392,7 @@ Hosting the HTTP server on port 40205 instead
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_6c1b4d91c1ce4e66e3d7600e93251b6a {
+                #map_fdaa3de6545a9a589c753a957347e983 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -1438,14 +1422,14 @@ Hosting the HTTP server on port 40205 instead
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_6c1b4d91c1ce4e66e3d7600e93251b6a&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_fdaa3de6545a9a589c753a957347e983&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_6c1b4d91c1ce4e66e3d7600e93251b6a = L.map(
-                &quot;map_6c1b4d91c1ce4e66e3d7600e93251b6a&quot;,
+            var map_fdaa3de6545a9a589c753a957347e983 = L.map(
+                &quot;map_fdaa3de6545a9a589c753a957347e983&quot;,
                 {
                     center: [27.980899894349285, 88.25845802418118],
                     crs: L.CRS.EPSG3857,
@@ -1454,77 +1438,77 @@ Hosting the HTTP server on port 40205 instead
                     preferCanvas: false,
                 }
             );
-            L.control.scale().addTo(map_6c1b4d91c1ce4e66e3d7600e93251b6a);
+            L.control.scale().addTo(map_fdaa3de6545a9a589c753a957347e983);
 
             
 
         
     
-            var tile_layer_a89ead0318fa25a83d5029e4b373aecf = L.tileLayer(
+            var tile_layer_28d53c59f738245813bae72e516a0ad1 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_6c1b4d91c1ce4e66e3d7600e93251b6a);
+            ).addTo(map_fdaa3de6545a9a589c753a957347e983);
         
     
-            map_6c1b4d91c1ce4e66e3d7600e93251b6a.fitBounds(
+            map_fdaa3de6545a9a589c753a957347e983.fitBounds(
                 [[27.9269320247679, 88.21371414544961], [28.034867763930674, 88.30320190291276]],
                 {}
             );
         
     
-        function geo_json_da11c737068c45bb7a293dd4d7565a92_styler(feature) {
+        function geo_json_3d683a3aaae68b437fbf6bc330529606_styler(feature) {
             switch(feature.id) {
                 default:
                     return {&quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
             }
         }
-        function geo_json_da11c737068c45bb7a293dd4d7565a92_highlighter(feature) {
+        function geo_json_3d683a3aaae68b437fbf6bc330529606_highlighter(feature) {
             switch(feature.id) {
                 default:
                     return {&quot;fillOpacity&quot;: 0.75};
             }
         }
-        function geo_json_da11c737068c45bb7a293dd4d7565a92_pointToLayer(feature, latlng) {
+        function geo_json_3d683a3aaae68b437fbf6bc330529606_pointToLayer(feature, latlng) {
             var opts = {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 2, &quot;stroke&quot;: true, &quot;weight&quot;: 3};
             
-            let style = geo_json_da11c737068c45bb7a293dd4d7565a92_styler(feature)
+            let style = geo_json_3d683a3aaae68b437fbf6bc330529606_styler(feature)
             Object.assign(opts, style)
             
             return new L.CircleMarker(latlng, opts)
         }
 
-        function geo_json_da11c737068c45bb7a293dd4d7565a92_onEachFeature(feature, layer) {
+        function geo_json_3d683a3aaae68b437fbf6bc330529606_onEachFeature(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if(typeof e.target.setStyle === &quot;function&quot;){
-                        geo_json_da11c737068c45bb7a293dd4d7565a92.resetStyle(e.target);
+                        geo_json_3d683a3aaae68b437fbf6bc330529606.resetStyle(e.target);
                     }
                 },
                 mouseover: function(e) {
                     if(typeof e.target.setStyle === &quot;function&quot;){
-                        const highlightStyle = geo_json_da11c737068c45bb7a293dd4d7565a92_highlighter(e.target.feature)
+                        const highlightStyle = geo_json_3d683a3aaae68b437fbf6bc330529606_highlighter(e.target.feature)
                         e.target.setStyle(highlightStyle);
                     }
                 },
             });
         };
-        var geo_json_da11c737068c45bb7a293dd4d7565a92 = L.geoJson(null, {
-                onEachFeature: geo_json_da11c737068c45bb7a293dd4d7565a92_onEachFeature,
+        var geo_json_3d683a3aaae68b437fbf6bc330529606 = L.geoJson(null, {
+                onEachFeature: geo_json_3d683a3aaae68b437fbf6bc330529606_onEachFeature,
             
-                style: geo_json_da11c737068c45bb7a293dd4d7565a92_styler,
-                pointToLayer: geo_json_da11c737068c45bb7a293dd4d7565a92_pointToLayer
+                style: geo_json_3d683a3aaae68b437fbf6bc330529606_styler,
+                pointToLayer: geo_json_3d683a3aaae68b437fbf6bc330529606_pointToLayer
         });
 
-        function geo_json_da11c737068c45bb7a293dd4d7565a92_add (data) {
-            geo_json_da11c737068c45bb7a293dd4d7565a92
+        function geo_json_3d683a3aaae68b437fbf6bc330529606_add (data) {
+            geo_json_3d683a3aaae68b437fbf6bc330529606
                 .addData(data)
-                .addTo(map_6c1b4d91c1ce4e66e3d7600e93251b6a);
+                .addTo(map_fdaa3de6545a9a589c753a957347e983);
         }
-            geo_json_da11c737068c45bb7a293dd4d7565a92_add({&quot;bbox&quot;: [88.21371414544961, 27.9269320247679, 88.30320190291276, 28.034867763930674], &quot;features&quot;: [{&quot;bbox&quot;: [88.21371414544961, 27.9269320247679, 88.30320190291276, 28.034867763930674], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[88.21371414544961, 27.927737613558246], [88.3019145774449, 27.9269320247679], [88.30320190291276, 28.034058548381726], [88.21491431301274, 28.034867763930674], [88.21371414544961, 27.927737613558246]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;0&quot;, &quot;properties&quot;: {}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
+            geo_json_3d683a3aaae68b437fbf6bc330529606_add({&quot;bbox&quot;: [88.21371414544961, 27.9269320247679, 88.30320190291276, 28.034867763930674], &quot;features&quot;: [{&quot;bbox&quot;: [88.21371414544961, 27.9269320247679, 88.30320190291276, 28.034867763930674], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[88.21371414544961, 27.927737613558246], [88.3019145774449, 27.9269320247679], [88.30320190291276, 28.034058548381726], [88.21491431301274, 28.034867763930674], [88.21371414544961, 27.927737613558246]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;0&quot;, &quot;properties&quot;: {}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
 
         
     
-    geo_json_da11c737068c45bb7a293dd4d7565a92.bindTooltip(
+    geo_json_3d683a3aaae68b437fbf6bc330529606.bindTooltip(
     function(layer){
     let div = L.DomUtil.create(&#x27;div&#x27;);
     
@@ -1556,7 +1540,7 @@ Hosting the HTTP server on port 40205 instead
 <p>Check the size of the clipped object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_clip</span><span class="o">.</span><span class="n">nbytes</span> <span class="o">/</span> <span class="mf">1e9</span> <span class="c1">#units are GB</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asf_clip</span><span class="o">.</span><span class="n">nbytes</span> <span class="o">/</span> <span class="mf">1e9</span>  <span class="c1"># units are GB</span>
 </pre></div>
 </div>
 </div>
@@ -1564,7 +1548,7 @@ Hosting the HTTP server on port 40205 instead
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">27</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">asf_clip</span><span class="o">.</span><span class="n">nbytes</span> <span class="o">/</span> <span class="mf">1e9</span> <span class="c1">#units are GB</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">asf_clip</span><span class="o">.</span><span class="n">nbytes</span> <span class="o">/</span> <span class="mf">1e9</span>  <span class="c1"># units are GB</span>
 
 <span class="ne">NameError</span>: name &#39;asf_clip&#39; is not defined
 </pre></div>
@@ -1591,7 +1575,7 @@ Hosting the HTTP server on port 40205 instead
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we don&#39;t want to compute this right now, will kill kernel</span>
-<span class="c1">#asf_clip_load = asf_clip.compute()</span>
+<span class="c1"># asf_clip_load = asf_clip.compute()</span>
 </pre></div>
 </div>
 </div>

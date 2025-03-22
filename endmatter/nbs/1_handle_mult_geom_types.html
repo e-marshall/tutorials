@@ -204,11 +204,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../sentinel1/nbs/4_read_pc_data.html">4. Read Sentinel-1 RTC data from Microsoft Planetary Computer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sentinel1/nbs/5_comparing_s1_rtc_datasets.html">5. Comparing Sentinel-1 RTC datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Conclusion</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../pt4/summary.html">Tutorials summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../pt4/datacubes_revisited.html">Data Cubes Revisited</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../pt4/conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conclusion/summary.html">Tutorials summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conclusion/datacubes_revisited.html">Data Cubes Revisited</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="nav bd-sidenav">
@@ -270,7 +269,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/e-marshall/cloud-open-source-geospatial-datacube-workflows/main?urlpath=lab/tree/endmatter/nbs/1_handle_mult_geom_types.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/e-marshall/cloud-open-source-geospatial-datacube-workflows/relevant_concepts?urlpath=lab/tree/endmatter/nbs/1_handle_mult_geom_types.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -707,9 +706,7 @@ document.write(`
 <p>Make a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> object that is just the above-identified outlines:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">problem_geoms_gdf</span> <span class="o">=</span> <span class="n">se_asia_subset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-    <span class="n">se_asia_subset</span><span class="p">[</span><span class="s2">&quot;glims_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">problem_geom_ids</span><span class="p">)</span>
-<span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">problem_geoms_gdf</span> <span class="o">=</span> <span class="n">se_asia_subset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">se_asia_subset</span><span class="p">[</span><span class="s2">&quot;glims_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">problem_geom_ids</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -717,9 +714,7 @@ document.write(`
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">problem_geoms_gdf</span> <span class="o">=</span> <span class="n">se_asia_subset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">se_asia_subset</span><span class="p">[</span><span class="s2">&quot;glims_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">problem_geom_ids</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">problem_geoms_gdf</span> <span class="o">=</span> <span class="n">se_asia_subset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">se_asia_subset</span><span class="p">[</span><span class="s2">&quot;glims_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">problem_geom_ids</span><span class="p">)]</span>
 
 <span class="ne">NameError</span>: name &#39;se_asia_subset&#39; is not defined
 </pre></div>
@@ -765,9 +760,9 @@ document.write(`
 <p>Let’s dig a bit more into these flagged geometries. To do this, use the <a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.explode.html">geopandas method <code class="docutils literal notranslate"><span class="pre">explode()</span></code></a> to split multiple geometries into multiple single geometries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_flagged_feature</span> <span class="o">=</span> <span class="n">problem_geoms_gdf</span><span class="p">[</span>
-    <span class="n">problem_geoms_gdf</span><span class="o">.</span><span class="n">glims_id</span> <span class="o">==</span> <span class="s2">&quot;G095301E30377N&quot;</span>
-<span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="n">index_parts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_flagged_feature</span> <span class="o">=</span> <span class="n">problem_geoms_gdf</span><span class="p">[</span><span class="n">problem_geoms_gdf</span><span class="o">.</span><span class="n">glims_id</span> <span class="o">==</span> <span class="s2">&quot;G095301E30377N&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span>
+    <span class="n">index_parts</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -775,9 +770,9 @@ document.write(`
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">first_flagged_feature</span> <span class="o">=</span> <span class="n">problem_geoms_gdf</span><span class="p">[</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">problem_geoms_gdf</span><span class="o">.</span><span class="n">glims_id</span> <span class="o">==</span> <span class="s2">&quot;G095301E30377N&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="n">index_parts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">first_flagged_feature</span> <span class="o">=</span> <span class="n">problem_geoms_gdf</span><span class="p">[</span><span class="n">problem_geoms_gdf</span><span class="o">.</span><span class="n">glims_id</span> <span class="o">==</span> <span class="s2">&quot;G095301E30377N&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">index_parts</span><span class="o">=</span><span class="kc">True</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">)</span>
 
 <span class="ne">NameError</span>: name &#39;problem_geoms_gdf&#39; is not defined
 </pre></div>
@@ -805,9 +800,9 @@ document.write(`
 <p>Let’s look at the other two:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">second_flagged_feature</span> <span class="o">=</span> <span class="n">problem_geoms_gdf</span><span class="p">[</span>
-    <span class="n">problem_geoms_gdf</span><span class="o">.</span><span class="n">glims_id</span> <span class="o">==</span> <span class="s2">&quot;G095869E30315N&quot;</span>
-<span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="n">index_parts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">second_flagged_feature</span> <span class="o">=</span> <span class="n">problem_geoms_gdf</span><span class="p">[</span><span class="n">problem_geoms_gdf</span><span class="o">.</span><span class="n">glims_id</span> <span class="o">==</span> <span class="s2">&quot;G095869E30315N&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span>
+    <span class="n">index_parts</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
 <span class="n">second_flagged_feature</span>
 </pre></div>
 </div>
@@ -816,9 +811,9 @@ document.write(`
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">second_flagged_feature</span> <span class="o">=</span> <span class="n">problem_geoms_gdf</span><span class="p">[</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">problem_geoms_gdf</span><span class="o">.</span><span class="n">glims_id</span> <span class="o">==</span> <span class="s2">&quot;G095869E30315N&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="n">index_parts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">second_flagged_feature</span> <span class="o">=</span> <span class="n">problem_geoms_gdf</span><span class="p">[</span><span class="n">problem_geoms_gdf</span><span class="o">.</span><span class="n">glims_id</span> <span class="o">==</span> <span class="s2">&quot;G095869E30315N&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">index_parts</span><span class="o">=</span><span class="kc">True</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">second_flagged_feature</span>
 
 <span class="ne">NameError</span>: name &#39;problem_geoms_gdf&#39; is not defined
@@ -828,9 +823,9 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">third_flagged_feature</span> <span class="o">=</span> <span class="n">problem_geoms_gdf</span><span class="p">[</span>
-    <span class="n">problem_geoms_gdf</span><span class="o">.</span><span class="n">glims_id</span> <span class="o">==</span> <span class="s2">&quot;G095721E29941N&quot;</span>
-<span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="n">index_parts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">third_flagged_feature</span> <span class="o">=</span> <span class="n">problem_geoms_gdf</span><span class="p">[</span><span class="n">problem_geoms_gdf</span><span class="o">.</span><span class="n">glims_id</span> <span class="o">==</span> <span class="s2">&quot;G095721E29941N&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span>
+    <span class="n">index_parts</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
 <span class="n">third_flagged_feature</span>
 </pre></div>
 </div>
@@ -839,9 +834,9 @@ document.write(`
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">third_flagged_feature</span> <span class="o">=</span> <span class="n">problem_geoms_gdf</span><span class="p">[</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">problem_geoms_gdf</span><span class="o">.</span><span class="n">glims_id</span> <span class="o">==</span> <span class="s2">&quot;G095721E29941N&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="n">index_parts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">third_flagged_feature</span> <span class="o">=</span> <span class="n">problem_geoms_gdf</span><span class="p">[</span><span class="n">problem_geoms_gdf</span><span class="o">.</span><span class="n">glims_id</span> <span class="o">==</span> <span class="s2">&quot;G095721E29941N&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">index_parts</span><span class="o">=</span><span class="kc">True</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">third_flagged_feature</span>
 
 <span class="ne">NameError</span>: name &#39;problem_geoms_gdf&#39; is not defined
@@ -902,9 +897,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">se_asia_subset_geom_collection</span> <span class="o">=</span> <span class="n">se_asia_subset</span><span class="p">[</span>
-    <span class="n">se_asia_subset</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span>
-    <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">geom_type</span> <span class="o">==</span> <span class="s2">&quot;GeometryCollection&quot;</span><span class="p">)</span>
+    <span class="n">se_asia_subset</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">geom_type</span> <span class="o">==</span> <span class="s2">&quot;GeometryCollection&quot;</span><span class="p">)</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -914,10 +907,8 @@ document.write(`
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">se_asia_subset_geom_collection</span> <span class="o">=</span> <span class="n">se_asia_subset</span><span class="p">[</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">se_asia_subset</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">geom_type</span> <span class="o">==</span> <span class="s2">&quot;GeometryCollection&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">se_asia_subset</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">geom_type</span> <span class="o">==</span> <span class="s2">&quot;GeometryCollection&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">]</span>
 
 <span class="ne">NameError</span>: name &#39;se_asia_subset&#39; is not defined
 </pre></div>

@@ -204,11 +204,10 @@
 <li class="toctree-l1"><a class="reference internal" href="4_read_pc_data.html">4. Read Sentinel-1 RTC data from Microsoft Planetary Computer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_comparing_s1_rtc_datasets.html">5. Comparing Sentinel-1 RTC datasets</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary + Conclusion</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Conclusion</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../pt4/summary.html">Tutorials summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../pt4/datacubes_revisited.html">Data Cubes Revisited</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../pt4/conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conclusion/summary.html">Tutorials summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conclusion/datacubes_revisited.html">Data Cubes Revisited</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
 <ul class="nav bd-sidenav">
@@ -270,7 +269,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/e-marshall/cloud-open-source-geospatial-datacube-workflows/main?urlpath=lab/tree/sentinel1/nbs/1_read_asf_data.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/e-marshall/cloud-open-source-geospatial-datacube-workflows/relevant_concepts?urlpath=lab/tree/sentinel1/nbs/1_read_asf_data.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -519,22 +518,10 @@ Learning goals</label><div class="sd-tab-content docutils">
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%xmode minimal</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %xmode minimal</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pathlib</span>
-<span class="kn">import</span> <span class="nn">re</span>
-
-<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
-<span class="kn">import</span> <span class="nn">markdown</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">pathlib</span>
-<span class="kn">import</span> <span class="nn">rioxarray</span> <span class="k">as</span> <span class="nn">rio</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 </pre></div>
 </div>
 </div>
@@ -618,19 +605,19 @@ Learning goals</label><div class="sd-tab-content docutils">
 <p>The below function makes a list of all file names across the individual scene directory for VV, VH, ls_map and README files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_fnames</span><span class="p">(</span><span class="n">data_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">scene_name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_fnames</span><span class="p">(</span><span class="n">data_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">scene_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
     <span class="c1"># Make list of files within each scene directory in data directory</span>
     <span class="n">scene_files_ls</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">scene_name</span><span class="p">))</span>
 
-    <span class="k">if</span> <span class="n">variable</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;vv&#39;</span><span class="p">,</span><span class="s1">&#39;vh&#39;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">variable</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;vv&quot;</span><span class="p">,</span> <span class="s2">&quot;vh&quot;</span><span class="p">]:</span>
         <span class="n">scene_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">fname</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">fname</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">variable</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">.tif&quot;</span><span class="p">)]</span>
-    
-    <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="s1">&#39;ls_map&#39;</span><span class="p">:</span>
-        <span class="n">scene_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">fname</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">fname</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;_ls_map.tif&quot;</span><span class="p">)]</span>
-    
-    <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="s1">&#39;readme&#39;</span><span class="p">:</span>
+
+    <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="s2">&quot;ls_map&quot;</span><span class="p">:</span>
+        <span class="n">scene_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">fname</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">fname</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;_ls_map.tif&quot;</span><span class="p">)]</span>
+
+    <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="s2">&quot;readme&quot;</span><span class="p">:</span>
         <span class="n">scene_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">scene_files_ls</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;README.md.txt&quot;</span><span class="p">)]</span>
-   
+
     <span class="k">return</span> <span class="n">scene_files</span>
 </pre></div>
 </div>
@@ -639,10 +626,10 @@ Learning goals</label><div class="sd-tab-content docutils">
 <p>Below is the output of <code class="docutils literal notranslate"><span class="pre">extract_fnames()</span></code> for two one scene directory. Note that <code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code> <strong>does not</strong> preserve the order of the subdirectories as listed on disk. This is okay because we will ensure that the files are sorted in chronological order later.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;vv&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;vh&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;ls_map&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;readme&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;vv&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;vh&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;ls_map&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extract_fnames</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;readme&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -658,34 +645,27 @@ Learning goals</label><div class="sd-tab-content docutils">
 <p>We need to attach the filenames to the path of each file so that we end up with a list of the full paths to the VV and VH band imagery, layover-shadow maps and README files. Within this step, we will also add checks to ensure that the process is doing what we want, which is to create lists of filepaths for each character <strong>with the same order across lists</strong> so that we can combine the lists into a multivariate time series. As noted above, it is okay that the lists are not in chronological order, as long as they are in <strong>the same</strong> order across variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_filepath_lists</span><span class="p">(</span><span class="n">asf_s1_data_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; For a single variable (vv, vh, ls_map or readme), make list of </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_filepath_lists</span><span class="p">(</span><span class="n">asf_s1_data_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;For a single variable (vv, vh, ls_map or readme), make list of</span>
 <span class="sd">    full filepath for each file in time series. Also return dates to ensure</span>
 <span class="sd">    extraction happens in correct order for each variable</span>
 <span class="sd">    Return tuple with form (filepaths list, dates list)&quot;&quot;&quot;</span>
     <span class="n">scenes_ls</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">asf_s1_data_path</span><span class="p">)</span>
 
-    <span class="n">fpaths</span><span class="p">,</span> <span class="n">dates_ls</span> <span class="o">=</span> <span class="p">[],[]</span>
+    <span class="n">fpaths</span><span class="p">,</span> <span class="n">dates_ls</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
 
     <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scenes_ls</span><span class="p">)):</span>
-
         <span class="c1"># Extract filenames of each file of interest</span>
         <span class="n">files_of_interest</span> <span class="o">=</span> <span class="n">extract_fnames</span><span class="p">(</span><span class="n">asf_s1_data_path</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="n">element</span><span class="p">],</span> <span class="n">variable</span><span class="p">)</span>
         <span class="c1"># Make full path with filename for each variable</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="n">asf_s1_data_path</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="n">element</span><span class="p">],</span> <span class="n">files_of_interest</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="p">)</span>
-        <span class="c1">#extract dates to make sure dates are identical across variable lists</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">asf_s1_data_path</span><span class="p">,</span> <span class="n">scenes_ls</span><span class="p">[</span><span class="n">element</span><span class="p">],</span> <span class="n">files_of_interest</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="c1"># extract dates to make sure dates are identical across variable lists</span>
         <span class="n">date</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
-        
+
         <span class="n">dates_ls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
         <span class="n">fpaths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="p">(</span><span class="n">fpaths</span><span class="p">,</span> <span class="n">dates_ls</span><span class="p">)</span>
-
-    
-
-    
 </pre></div>
 </div>
 </div>
@@ -693,26 +673,23 @@ Learning goals</label><div class="sd-tab-content docutils">
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_filenames_dict</span><span class="p">(</span><span class="n">rtc_path</span><span class="p">,</span> <span class="n">variables_ls</span><span class="p">):</span>
-
-    <span class="n">keys</span><span class="p">,</span> <span class="n">filepaths</span><span class="p">,</span> <span class="n">dates</span> <span class="o">=</span> <span class="p">[],[],[]</span>
+    <span class="n">keys</span><span class="p">,</span> <span class="n">filepaths</span><span class="p">,</span> <span class="n">dates</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">variables_ls</span><span class="p">:</span>
         <span class="n">keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
 
         <span class="n">filespaths_list</span><span class="p">,</span> <span class="n">dates_list</span> <span class="o">=</span> <span class="n">make_filepath_lists</span><span class="p">(</span><span class="n">rtc_path</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span>
         <span class="n">filepaths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filespaths_list</span><span class="p">)</span>
         <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dates_list</span><span class="p">)</span>
-    
-    <span class="c1">#make dict of variable names (keys) and associated filepaths</span>
+
+    <span class="c1"># make dict of variable names (keys) and associated filepaths</span>
     <span class="n">filepaths_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">filepaths</span><span class="p">))</span>
 
-    <span class="c1">#make sure that dates are identical across all lists</span>
+    <span class="c1"># make sure that dates are identical across all lists</span>
     <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">lst</span> <span class="o">==</span> <span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">lst</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span>
-    <span class="c1">#make sure length of each variable list is the same </span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">filepaths_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()])))</span> <span class="o">==</span> <span class="mi">1</span>
-    
+    <span class="c1"># make sure length of each variable list is the same</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">filepaths_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()])))</span> <span class="o">==</span> <span class="mi">1</span>
 
-
-    <span class="c1">#make dict of variable names (keys) and associated filepaths</span>
+    <span class="c1"># make dict of variable names (keys) and associated filepaths</span>
     <span class="n">filepaths_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">filepaths</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">filepaths_dict</span>
 </pre></div>
@@ -721,7 +698,7 @@ Learning goals</label><div class="sd-tab-content docutils">
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepaths_dict</span> <span class="o">=</span> <span class="n">create_filenames_dict</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;vv&#39;</span><span class="p">,</span><span class="s1">&#39;vh&#39;</span><span class="p">,</span><span class="s1">&#39;ls_map&#39;</span><span class="p">,</span><span class="s1">&#39;readme&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepaths_dict</span> <span class="o">=</span> <span class="n">create_filenames_dict</span><span class="p">(</span><span class="n">s1_asf_data</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;vv&quot;</span><span class="p">,</span> <span class="s2">&quot;vh&quot;</span><span class="p">,</span> <span class="s2">&quot;ls_map&quot;</span><span class="p">,</span> <span class="s2">&quot;readme&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -747,23 +724,21 @@ Learning goals</label><div class="sd-tab-content docutils">
 <p>Here is where we use the list of file paths we created above. For each variable, write the list of file paths to a <code class="docutils literal notranslate"><span class="pre">.txt</span></code> file which is then passed to <code class="docutils literal notranslate"><span class="pre">gdalbuildvrt</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_vrt_object</span><span class="p">(</span><span class="n">fpaths_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeseries_type</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_vrt_object</span><span class="p">(</span><span class="n">fpaths_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeseries_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to create VRT files for each variable given a</span>
 <span class="sd">    list of file paths fo that variable.&quot;&quot;&quot;</span>
 
-    <span class="n">full_timeseries_data</span> <span class="o">=</span> <span class="s1">&#39;../data/raster_data/full_timeseries&#39;</span>
-    <span class="n">subset_timeseries_data</span> <span class="o">=</span> <span class="s1">&#39;../data/raster_data/subset_timeseries&#39;</span>
+    <span class="n">full_timeseries_data</span> <span class="o">=</span> <span class="s2">&quot;../data/raster_data/full_timeseries&quot;</span>
+    <span class="n">subset_timeseries_data</span> <span class="o">=</span> <span class="s2">&quot;../data/raster_data/subset_timeseries&quot;</span>
 
-    <span class="k">if</span> <span class="n">timeseries_type</span> <span class="o">==</span> <span class="s1">&#39;full&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">timeseries_type</span> <span class="o">==</span> <span class="s2">&quot;full&quot;</span><span class="p">:</span>
         <span class="n">data_path</span> <span class="o">=</span> <span class="n">full_timeseries_data</span>
-    <span class="k">elif</span> <span class="n">timeseries_type</span> <span class="o">==</span> <span class="s1">&#39;subset&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">timeseries_type</span> <span class="o">==</span> <span class="s2">&quot;subset&quot;</span><span class="p">:</span>
         <span class="n">data_path</span> <span class="o">=</span> <span class="n">subset_timeseries_data</span>
-    
-    <span class="c1">#switch &#39;ls&#39; to match variable name in dict</span>
+
+    <span class="c1"># switch &#39;ls&#39; to match variable name in dict</span>
     <span class="k">if</span> <span class="n">variable</span> <span class="o">==</span> <span class="s2">&quot;ls&quot;</span><span class="p">:</span>
         <span class="n">variable</span> <span class="o">=</span> <span class="s2">&quot;ls_map&quot;</span>
-    
-
 
     <span class="c1"># Write file paths to txt file</span>
     <span class="n">fpath_input_txt</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;txt_files/s1_</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s2">_fpaths.txt&quot;</span><span class="p">)</span>
@@ -791,43 +766,28 @@ Learning goals</label><div class="sd-tab-content docutils">
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...10...20...30..
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10...20...30...40...50...60...70...80...90..
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.40...50...60...70
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.100 - done.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...80...90...100 - done.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0...10.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...10...20
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...30...40...50...60.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..70...80...90...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100 - done.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..20...30...40...50...60...70...80...90...100 - done.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...10...20
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...10...20...30...40...50...60...70...80
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...30...40...50...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60...70...80...90...100 - done.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...90...100 - done.
 </pre></div>
 </div>
 </div>
@@ -850,9 +810,18 @@ Learning goals</label><div class="sd-tab-content docutils">
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_vv</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../data/raster_data/</span><span class="si">{</span><span class="n">timeseries_type</span><span class="si">}</span><span class="s2">_timeseries/vrt_files/s1_stack_vv.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
-<span class="n">ds_vh</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../data/raster_data/</span><span class="si">{</span><span class="n">timeseries_type</span><span class="si">}</span><span class="s2">_timeseries/vrt_files/s1_stack_vh.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
-<span class="n">ds_ls</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../data/raster_data/</span><span class="si">{</span><span class="n">timeseries_type</span><span class="si">}</span><span class="s2">_timeseries/vrt_files/s1_stack_ls_map.vrt&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_vv</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;../data/raster_data/</span><span class="si">{</span><span class="n">timeseries_type</span><span class="si">}</span><span class="s2">_timeseries/vrt_files/s1_stack_vv.vrt&quot;</span><span class="p">,</span>
+    <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ds_vh</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;../data/raster_data/</span><span class="si">{</span><span class="n">timeseries_type</span><span class="si">}</span><span class="s2">_timeseries/vrt_files/s1_stack_vh.vrt&quot;</span><span class="p">,</span>
+    <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ds_ls</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;../data/raster_data/</span><span class="si">{</span><span class="n">timeseries_type</span><span class="si">}</span><span class="s2">_timeseries/vrt_files/s1_stack_ls_map.vrt&quot;</span><span class="p">,</span>
+    <span class="n">chunks</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
