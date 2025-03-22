@@ -38,6 +38,7 @@ xarray = ">=2025.1.2,<2026"
 xvec = ">=0.3.1,<0.4"
 zarr = "<3"
 nb-clean = ">=4.0.1,<5"
+papermill = ">=2.5.0,<3"
 
 [feature.book.dependencies]
 jupyter-book = ">=1,<2"

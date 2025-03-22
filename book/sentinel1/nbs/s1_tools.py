@@ -16,21 +16,13 @@ def extract_fnames(data_path: str, scene_name: str, variable: str):
     scene_files_ls = os.listdir(os.path.join(data_path, scene_name))
 
     if variable in ["vv", "vh"]:
-        scene_files = [
-            fname
-            for fname in scene_files_ls
-            if fname.endswith(f"_{variable.upper()}.tif")
-        ]
+        scene_files = [fname for fname in scene_files_ls if fname.endswith(f"_{variable.upper()}.tif")]
 
     elif variable == "ls_map":
-        scene_files = [
-            fname for fname in scene_files_ls if fname.endswith("_ls_map.tif")
-        ]
+        scene_files = [fname for fname in scene_files_ls if fname.endswith("_ls_map.tif")]
 
     elif variable == "readme":
-        scene_files = [
-            file for file in scene_files_ls if file.endswith("README.md.txt")
-        ]
+        scene_files = [file for file in scene_files_ls if file.endswith("README.md.txt")]
 
     return scene_files
 
@@ -46,9 +38,7 @@ def make_filepath_lists(asf_s1_data_path: str, variable: str):
 
     for element in range(len(scenes_ls)):
         # Extract filenames of each file of interest
-        files_of_interest = extract_fnames(
-            asf_s1_data_path, scenes_ls[element], variable
-        )
+        files_of_interest = extract_fnames(asf_s1_data_path, scenes_ls[element], variable)
         # Make full path with filename for each variable
         path = os.path.join(asf_s1_data_path, scenes_ls[element], files_of_interest[0])
         # extract dates to make sure dates are identical across variable lists
@@ -119,9 +109,7 @@ def parse_fname_metadata(input_fname: str) -> dict:
 
     # Check that number of parts matches expected schema
     if len(parts) != len(schema):
-        raise ValueError(
-            f"Input filename does not match schema of expected format: {parts}"
-        )
+        raise ValueError(f"Input filename does not match schema of expected format: {parts}")
 
     # Create dict to store parsed data
     parsed_data = {}
@@ -141,9 +129,7 @@ def parse_fname_metadata(input_fname: str) -> dict:
             raise ValueError(f"Part {part} does not have expected length {len(part)}")
         # Check that each part matches expected pattern from schema
         if not any(re.fullmatch(pattern, part) for pattern in pattern_options):
-            raise ValueError(
-                f"Part {part} does not match expected patterns {pattern_options}"
-            )
+            raise ValueError(f"Part {part} does not match expected patterns {pattern_options}")
 
         # Special handling of a part (pol orbit) that has 3 types of metadata
         if name == "pol_orbit":
@@ -151,9 +137,7 @@ def parse_fname_metadata(input_fname: str) -> dict:
                 {
                     "polarization_type": part[:1],  # Single (S) or Dual (D) pol
                     "primary_polarization": part[1:2],  # Primary polarization (H or V)
-                    "orbit_type": part[
-                        -1
-                    ],  # Precise (p), Restituted (r) or Original predicted (o)
+                    "orbit_type": part[-1],  # Precise (p), Restituted (r) or Original predicted (o)
                 }
             )
         # Format string acquisition date as a datetime time stamp
@@ -198,9 +182,7 @@ def transpose_metadata_dict_list(input_ls: list) -> dict:
     return (attrs_dict, acq_date_ls)
 
 
-def create_da(
-    value_name: str, values_ls: list, dim_name: str, dim_values: list, desc: str = None
-) -> xr.DataArray:
+def create_da(value_name: str, values_ls: list, dim_name: str, dim_values: list, desc: str = None) -> xr.DataArray:
     """Given a list of metadata values, create a 1-d xr.DataArray with values
     as data that exists along a specified dimension (here, hardcoded to be
     acq_date). Optionally, add description of metadata as attr.
@@ -233,10 +215,7 @@ def make_coord_data(readme_fpaths_ls):
     Returns a tuple of lists of acquisition dates and data take IDs."""
 
     # Make a list of all granules in time series
-    granule_ls = [
-        extract_granule_id(readme_fpaths_ls[element])
-        for element in range(len(readme_fpaths_ls))
-    ]
+    granule_ls = [extract_granule_id(readme_fpaths_ls[element]) for element in range(len(readme_fpaths_ls))]
     # Define a schema for aquisition date
     schema = {
         "mission_identifier": (3, r"S1[A-B]"),  # schema for sensor
@@ -258,9 +237,7 @@ def make_coord_data(readme_fpaths_ls):
         single_granule_parsed_data = {}
         for part, (name, (length, pattern)) in zip(parts, schema.items()):
             if name == "acq_start":
-                single_granule_parsed_data["acq_start"] = pd.to_datetime(
-                    part, format="%Y%m%dT%H%M%S"
-                )
+                single_granule_parsed_data["acq_start"] = pd.to_datetime(part, format="%Y%m%dT%H%M%S")
             elif name == "orbit_num":
                 single_granule_parsed_data[name] = part
             elif name == "data_take_id":
@@ -291,9 +268,7 @@ def extract_granule_id(filepath):
 
 
 # metadata wrangling processor
-def metadata_processor(
-    vv_path: str, vh_path: str, ls_path: str, timeseries_type: str = "full"
-):
+def metadata_processor(vv_path: str, vh_path: str, ls_path: str, timeseries_type: str = "full"):
     cwd = pathlib.Path.cwd()
     tutorial2_dir = pathlib.Path(cwd).parent
 
@@ -307,9 +282,7 @@ def metadata_processor(
     ds_ls = ds_ls.rename({"band_data": "ls"})
     # make file paths lists for each variable
 
-    s1_asf_data = pathlib.Path(
-        f"../data/raster_data/{timeseries_type}_timeseries/asf_rtcs"
-    )
+    s1_asf_data = pathlib.Path(f"../data/raster_data/{timeseries_type}_timeseries/asf_rtcs")
     # Make file path lists for vv, vh, ls
     variables_ls = ["vv", "vh", "ls_map", "readme"]
     filepaths_dict = create_filenames_dict(s1_asf_data, variables_ls)
@@ -328,58 +301,44 @@ def metadata_processor(
         for file in range(len(filepaths_ls))
     ]
     # Make sure they are identical
-    assert acq_dates_vv == acq_dates_vh == acq_dates_ls, (
-        "Acquisition dates lists for VH, VV and L-S Map do not match"
-    )
+    assert acq_dates_vv == acq_dates_vh == acq_dates_ls, "Acquisition dates lists for VH, VV and L-S Map do not match"
     # Assign acquisition dates to band dimension and format as datetime
-    ds_vv = ds_vv.assign_coords(
-        {"band": pd.to_datetime(acq_dates_vv, format="%m/%d/%YT%H%M%S")}
-    ).rename({"band": "acq_date"})
-    ds_vh = ds_vh.assign_coords(
-        {"band": pd.to_datetime(acq_dates_vh, format="%m/%d/%YT%H%M%S")}
-    ).rename({"band": "acq_date"})
-    ds_ls = ds_ls.assign_coords(
-        {"band": pd.to_datetime(acq_dates_ls, format="%m/%d/%YT%H%M%S")}
-    ).rename({"band": "acq_date"})
+    ds_vv = ds_vv.assign_coords({"band": pd.to_datetime(acq_dates_vv, format="%m/%d/%YT%H%M%S")}).rename(
+        {"band": "acq_date"}
+    )
+    ds_vh = ds_vh.assign_coords({"band": pd.to_datetime(acq_dates_vh, format="%m/%d/%YT%H%M%S")}).rename(
+        {"band": "acq_date"}
+    )
+    ds_ls = ds_ls.assign_coords({"band": pd.to_datetime(acq_dates_ls, format="%m/%d/%YT%H%M%S")}).rename(
+        {"band": "acq_date"}
+    )
     # combine variables into one cube
     ds = xr.combine_by_coords([ds_vv, ds_vh, ds_ls])
     # Sort in chronological order
     ds = ds.sortby("acq_date")
 
     # make lists of filename metadata for each geotiff file type (vv,vh,ls)
-    meta_attrs_list_vv = [
-        parse_fname_metadata(filepaths_vv[file]) for file in range(len(filepaths_vv))
-    ]
+    meta_attrs_list_vv = [parse_fname_metadata(filepaths_vv[file]) for file in range(len(filepaths_vv))]
 
-    meta_attrs_list_vh = [
-        parse_fname_metadata(filepaths_vh[file]) for file in range(len(filepaths_vh))
-    ]
+    meta_attrs_list_vh = [parse_fname_metadata(filepaths_vh[file]) for file in range(len(filepaths_vh))]
 
-    meta_attrs_list_ls = [
-        parse_fname_metadata(filepaths_ls[file]) for file in range(len(filepaths_ls))
-    ]
+    meta_attrs_list_ls = [parse_fname_metadata(filepaths_ls[file]) for file in range(len(filepaths_ls))]
     # make sure all identical
-    assert meta_attrs_list_ls == meta_attrs_list_vh == meta_attrs_list_vv, (
-        "Lists of metadata dicts should be identical for all variables"
-    )
+    assert (
+        meta_attrs_list_ls == meta_attrs_list_vh == meta_attrs_list_vv
+    ), "Lists of metadata dicts should be identical for all variables"
 
     # Transpose attr dict lists
     attr_dict, acq_dt_list = transpose_metadata_dict_list(meta_attrs_list_vv)
     # Create xr.DAs of metadata
     coord_ds = create_metadata_ds(attr_dict, acq_dt_list)
     # Assign coordinate variables
-    coord_ds = coord_ds.assign_coords(
-        {k: v for k, v in dict(coord_ds.data_vars).items()}
-    )
+    coord_ds = coord_ds.assign_coords({k: v for k, v in dict(coord_ds.data_vars).items()})
     # Combine data  cube and metadata cube
     ds_w_metadata = xr.merge([ds, coord_ds])
     # Move some coordinate variables to be attrs
     # Make list of coords that are along time dimension
-    coords_along_time_dim = [
-        coord
-        for coord in ds_w_metadata._coord_names
-        if "acq_date" in ds_w_metadata[coord].dims
-    ]
+    coords_along_time_dim = [coord for coord in ds_w_metadata._coord_names if "acq_date" in ds_w_metadata[coord].dims]
     dynamic_attrs = []
     static_attr_dict = {}
     for i in coords_along_time_dim:

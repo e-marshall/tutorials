@@ -75,9 +75,7 @@ def find_granule_by_point(input_point: list) -> str:
     str
         The URL of the granule containing the specified point.
     """
-    catalog = gpd.read_file(
-        "https://its-live-data.s3.amazonaws.com/datacubes/catalog_v02.json"
-    )
+    catalog = gpd.read_file("https://its-live-data.s3.amazonaws.com/datacubes/catalog_v02.json")
 
     # make shapely point of input point
     p = gpd.GeoSeries([Point(input_point[0], input_point[1])], crs="EPSG:4326")
