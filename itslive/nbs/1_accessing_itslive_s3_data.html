@@ -186,7 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../intro/software.html">Software and computing environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../background/relevant_concepts.html">Relevant concepts</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1: ITS_LIVE</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../itslive_intro.html">Introduction</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Accessing cloud-hosted ITS_LIVE data</a></li>
@@ -269,7 +269,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/e-marshall/cloud-open-source-geospatial-datacube-workflows/relevant_concepts?urlpath=lab/tree/itslive/nbs/1_accessing_itslive_s3_data.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/e-marshall/cloud-open-source-geospatial-datacube-workflows/curl_access?urlpath=lab/tree/itslive/nbs/1_accessing_itslive_s3_data.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -6905,7 +6905,6 @@ Attributes:
 </div>
 </div>
 <p>In addition to passing <code class="docutils literal notranslate"><span class="pre">url</span></code> to <code class="docutils literal notranslate"><span class="pre">xr.open_dataset()</span></code>, we include <code class="docutils literal notranslate"><span class="pre">chunks='auto'</span></code>. This introduces <a class="reference external" href="https://www.dask.org/">dask</a> into our workflow; <code class="docutils literal notranslate"><span class="pre">chunks='auto'</span></code> will choose chunk sizes that match the underlying data structure; this is often ideal, but sometimes you may need to specify different chunking schemes. You can read more about choosing good chunk sizes <a class="reference external" href="https://blog.dask.org/2021/11/02/choosing-dask-chunk-sizes">here</a>; subsequent notebooks in this tutorial will explore different approaches to dask chunking.</p>
-<p><span id="papermill-error-cell" style="color:red; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-size:2em;">Execution using papermill encountered an exception here and stopped:</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">decode_timedelta</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>

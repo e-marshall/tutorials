@@ -186,7 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../intro/software.html">Software and computing environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background/relevant_concepts.html">Relevant concepts</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1: ITS_LIVE</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../itslive/itslive_intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../itslive/nbs/1_accessing_itslive_s3_data.html">1. Accessing cloud-hosted ITS_LIVE data</a></li>
@@ -387,7 +387,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -403,6 +405,29 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#different-ways-to-use-this-tutorial">Different ways to use this tutorial</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-options">Dataset options</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#work-with-a-subset-of-the-time-series">1. Work with a <strong>subset</strong> of the time series.</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-data-download">Manual data download</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#programmatic-data-download">Programmatic data download</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#work-with-the-full-time-series">2. Work with the <strong>full</strong> time series.</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Manual data download</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Programmatic data download</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -426,23 +451,24 @@ Overview</label><div class="sd-tab-content docutils">
 <p><strong><a class="reference internal" href="nbs/3_asf_exploratory_analysis.html"><span class="std std-doc">3) Data insepction and exploratory analysis</span></a></strong>
 - Exploring available metadata and how it can be used to aid interpretation of data about physical observable</p>
 <p><strong><a class="reference internal" href="nbs/4_read_pc_data.html"><span class="std std-doc">4. Access data from cloud object storage</span></a></strong>
-- Query and access data from cloud object storage that adheres to <a class="reference external" href="https://stacspec.org/en">STAC</a> metadata specification using tools such as <a class="reference external" href="https://pystac.readthedocs.io/">PySTAC</a> and <a class="reference external" href="https://stackstac.readthedocs.io/en/latest/">stackstac</a>
-:::{admonition} Important information about Microsoft Planetary Computer data
-Microsoft Planetary Computer requires a subscription (which is currently free). You can find out more about getting access <a class="reference external" href="https://planetarycomputer.developer.azure-api.net/">here</a>.
-:::</p>
+- Query and access data from cloud object storage that adheres to <a class="reference external" href="https://stacspec.org/en">STAC</a> metadata specification using tools such as <a class="reference external" href="https://pystac.readthedocs.io/">PySTAC</a> and <a class="reference external" href="https://stackstac.readthedocs.io/en/latest/">stackstac</a>.<br />
+<em><strong>Note</strong></em>: Important information about Microsoft Planetary Computer data
+Microsoft Planetary Computer requires a subscription (which is currently free). You can find out more about getting access <a class="reference external" href="https://planetarycomputer.developer.azure-api.net/">here</a>.</p>
 <p><strong><a class="reference internal" href="nbs/5_comparing_s1_rtc_datasets.html"><span class="std std-doc">5. Dataset comparison</span></a></strong>
 - Aligning two datasets for comparison by addressing different spatial resolutions, differences in data coverage and metadata formatting.</p>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-1">
 Relevant Concepts</label><div class="sd-tab-content docutils">
-<h3 class="rubric" id="sentinel-1-rtc-imagery">1. <a class="reference internal" href="../background/tutorial_data.html#sentinel-1-radiometric-terrain-corrected-rtc-imagery"><span class="std std-ref">Sentinel-1 RTC imagery</span></a></h3>
-<h3 class="rubric" id="spatio-temporal-asset-catalog-stac">2. <a class="reference internal" href="../background/relevant_concepts.html#term-Spatio-temporal-Asset-Catalog-STAC"><span class="xref std std-term">Spatio-temporal Asset Catalog (STAC)</span></a></h3>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../background/tutorial_data.html#sentinel-1-radiometric-terrain-corrected-rtc-imagery"><span class="std std-ref">Sentinel-1 RTC imagery</span></a></p></li>
+<li><p><a class="reference internal" href="../background/relevant_concepts.html#term-Spatio-temporal-Asset-Catalog-STAC"><span class="xref std std-term">Spatio-temporal Asset Catalog (STAC)</span></a></p></li>
+</ol>
 </div>
 <input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-2">
 Learning goals</label><div class="sd-tab-content docutils">
-<p>This tutorial focuses on two datasets processed from the same source satellite imagery. By the end of this tutorial you should know how to:</p>
+<p>This tutorial works with two datasets processed from the same source satellite imagery. By the end of this tutorial you should know how to:</p>
 <ul class="simple">
 <li><p>Create VRT objects based on locally-downloaded files to be able to more-easily read and work with very large files in memory,</p></li>
 <li><p>Use Xarray operations to organize data objects so that they sensibly store data about the target physical observable and metadata about that observable,</p></li>
@@ -469,27 +495,66 @@ Data</label><div class="sd-tab-content docutils">
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<h2 class="rubric" id="different-ways-to-use-this-tutorial">Different ways to use this tutorial</h2>
-<p>As mentioned in the introduction, <strong>this tutorial uses data downloaded locally.</strong> The full dataset is quite large. You do not need to download the full time series to follow along with this tutorial. Instead, we make the full time series available as well as a subset of the time series that will take up much less space on your computer. This is only a factor in notebooks <a class="reference internal" href="nbs/1_read_asf_data.html"><span class="std std-doc">1</span></a>, <a class="reference internal" href="nbs/2_wrangle_metadata.html"><span class="std std-doc">2</span></a>, and <a class="reference internal" href="nbs/3_asf_exploratory_analysis.html"><span class="std std-doc">3</span></a>. All of the data needed for notebooks <a class="reference internal" href="nbs/4_read_pc_data.html"><span class="std std-doc">4</span></a> and <a class="reference internal" href="nbs/5_comparing_s1_rtc_datasets.html"><span class="std std-doc">5</span></a> is in the GitHub repo.</p>
-<p>Here are your options:</p>
-<h3 class="rubric" id="a-work-with-a-subset-of-the-full-time-series">a. Work with a subset of the full time series.</h3>
-<ol class="arabic simple">
-<li><p>If you cloned this books GitHub repository, the data should already be downloaded in the appopriate location. If you didn’t clone the repo download the files located in <code class="docutils literal notranslate"><span class="pre">../sentinel1/data/subset_timeseries/asf_rtcs/</span></code>. Make sure they are in a directory on your computer with the following relative path: <code class="docutils literal notranslate"><span class="pre">sentinel1/data/subset_timeseries/asf_rtcs</span></code>.</p></li>
-<li><p>You will use this data in notebooks 1,2, and 3. <strong>Be sure to set</strong> <code class="docutils literal notranslate"><span class="pre">'timeseries_type'</span> <span class="pre">=</span> <span class="pre">'subset'</span></code> and <code class="docutils literal notranslate"><span class="pre">path_to_rtcs</span></code> <strong>at the top of each notebook</strong>. The notebooks will not  run correctly if you don’t! Also note that the text in the notebooks will have references to the full timeseries, not the subset.</p></li>
-<li><p>If you did not clone the GitHub repo, make sure that <code class="docutils literal notranslate"><span class="pre">data/subset_timeseries</span></code> also contains the following subdirectories:
-<code class="docutils literal notranslate"><span class="pre">data/subset_timeseries/txt_files/</span></code>
-<code class="docutils literal notranslate"><span class="pre">data/subset_timeseries/vrt_files</span></code></p></li>
-</ol>
-<h3 class="rubric" id="b-work-with-the-full-time-series">b. Work with the full time series.</h3>
-<p>If you have room on your computer, you are welcome to follow the steps in this tutorial using the full time series.</p>
-<ol class="arabic simple">
-<li><p>Download the data <a class="reference external" href="https://zenodo.org/records/7236413">here</a>.</p></li>
-<li><p>Unzip it so that its location on your computer matches the relative path: <code class="docutils literal notranslate"><span class="pre">sentinel1/data/full_timeseries/asf_rtcs</span></code>.</p></li>
-<li><p>If you cloned the GitHub repo, you should be all set. If you didn’t, make sure that <code class="docutils literal notranslate"><span class="pre">sentinel1/data/full_timeseries</span></code> also has the following subdirectories:<br />
-<code class="docutils literal notranslate"><span class="pre">data/full_timeseries/txt_files</span></code><br />
-<code class="docutils literal notranslate"><span class="pre">data/full_timeseries/vrt_files</span></code></p></li>
-</ol>
+<p>If you haven’t cloned the GitHub repository for this book yet and you want to follow the code in this tutorial, you’ll need to do so now. This tutorial uses data downloaded from Zenodo (details below) as well as data contained within the GitHub repository. Instructions for  cloning the repo can be found on the <a class="reference internal" href="../intro/software.html"><span class="std std-doc">Software and computing environment</span></a> page.</p>
 </div>
+<section id="different-ways-to-use-this-tutorial">
+<h2>Different ways to use this tutorial<a class="headerlink" href="#different-ways-to-use-this-tutorial" title="Permalink to this heading">#</a></h2>
+<p><strong>This tutorial uses data downloaded locally.</strong> The full dataset is quite large. You do not need to download the full time series to follow along with this tutorial. Instead, we make the full time series available as well as a subset of the time series that will take up much less space on your computer. This is only a factor in notebooks <a class="reference internal" href="nbs/1_read_asf_data.html"><span class="std std-doc">1</span></a>, <a class="reference internal" href="nbs/2_wrangle_metadata.html"><span class="std std-doc">2</span></a>, and <a class="reference internal" href="nbs/3_asf_exploratory_analysis.html"><span class="std std-doc">3</span></a>. All of the data needed for notebooks <a class="reference internal" href="nbs/4_read_pc_data.html"><span class="std std-doc">4</span></a> and <a class="reference internal" href="nbs/5_comparing_s1_rtc_datasets.html"><span class="std std-doc">5</span></a> is in the GitHub repo.</p>
+<hr class="docutils" />
+<section id="dataset-options">
+<h3>Dataset options<a class="headerlink" href="#dataset-options" title="Permalink to this heading">#</a></h3>
+<p>The Sentinel-1 RTC scenes processed by ASF used in this tutorial are stored in a Zenodo <a class="reference external" href="https://zenodo.org/records/15036782">record</a>. You can manually download the data and move it to the correct location or use provided code to download the necessary data programmatically. The sections below have detailed information on each option and how to download the data.</p>
+<section id="work-with-a-subset-of-the-time-series">
+<h4>1. Work with a <strong>subset</strong> of the time series.<a class="headerlink" href="#work-with-a-subset-of-the-time-series" title="Permalink to this heading">#</a></h4>
+<p>This option includes 5 Sentinel-1 scenes and the downloaded data will take up ~ 3 GB on your computer. If you use this option, make sure that the <code class="docutils literal notranslate"><span class="pre">timeseries_type</span></code> variable in each notebook is set to <code class="docutils literal notranslate"><span class="pre">'subset'</span></code>. Keep in mind that the text in the notebooks refers to the full time series, so there will be discrepancies in some of the references. Notebook 3 of this tutorial involves subsetting the full spatial extent of the time series to a smaller area of interest and writing it to disk so that it can be used in notebook 5. This object is made available in the GitHub repo for this book. If you cloned the GitHub repo, you should have everything you need to execute notebook 5.</p>
+<section id="manual-data-download">
+<h5>Manual data download<a class="headerlink" href="#manual-data-download" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p>Go to the Zenodo record and click the <code class="docutils literal notranslate"><span class="pre">'Download'</span></code> button for <code class="docutils literal notranslate"><span class="pre">asf_rtcs_subset.zip</span></code>.</p></li>
+<li><p>Once the download completes, extract the data from the zip file and move it to the following location: <code class="docutils literal notranslate"><span class="pre">cloud_os_geospatial_datacube_workflows/book/sentinel1/data/raster_data/subset_timeseries</span></code>.
+For example, if I downloaded the zip file to my <code class="docutils literal notranslate"><span class="pre">'Downloads'</span></code> and extracted it there, its path would look something like this:
+<code class="docutils literal notranslate"><span class="pre">/home/my_user/Downloads/asf_rtcs_subset</span></code>
+And I could move it to the appropriate location like this:
+<code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">/home/my_user/Downloads/asf_rtcs_subset/.</span>&#160; <span class="pre">/home/my_user/Desktop/work/cloud_os_geospatial_datacube_workflows/book/sentinel1/data/raster_data/subset_timeseries/</span></code></p></li>
+</ol>
+</section>
+<section id="programmatic-data-download">
+<h5>Programmatic data download<a class="headerlink" href="#programmatic-data-download" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p>Go do the <a class="reference internal" href="nbs/download_zenodo_data_curl.html"><span class="std std-doc">Data download notebook</span></a>.</p></li>
+<li><p>Execute the cell with package imports and the two cells in the ‘Subset timeseries’ section.</p></li>
+<li><p>Wait for the data to download.</p></li>
+</ol>
+<p>Once the download completes, head to the first notebook to get started.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="work-with-the-full-time-series">
+<h4>2. Work with the <strong>full</strong> time series.<a class="headerlink" href="#work-with-the-full-time-series" title="Permalink to this heading">#</a></h4>
+<p>This option includes 103 Sentinel-1 scenes that are approximately 47 GB. If you’re working on a machine with a large amount of space and would like to follow along with these steps of the tutorial you can do so but, once again, <strong>it is not necessary to download the full time series!</strong>. See the ‘Downloading data’ section below for more information and be sure to set <code class="docutils literal notranslate"><span class="pre">timeseries_type</span> <span class="pre">=</span> <span class="pre">'full'</span></code> if you use the programmatic option.</p>
+<section id="id1">
+<h5>Manual data download<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p>Go to the Zenodo record and click the <code class="docutils literal notranslate"><span class="pre">'Download'</span></code> button for <code class="docutils literal notranslate"><span class="pre">asf_rtcs.zip</span></code>.</p></li>
+<li><p>Once the download completes, extract the data from the zip file and move it to the following location: <code class="docutils literal notranslate"><span class="pre">cloud_os_geospatial_datacube_workflows/book/sentinel1/data/raster_data/full_timeseries</span></code>.
+For example, if I downloaded the zip file to my <code class="docutils literal notranslate"><span class="pre">'Downloads'</span></code> and extracted it there, its path would look something like this:
+<code class="docutils literal notranslate"><span class="pre">/home/my_user/Downloads/asf_rtcs</span></code>
+And I could move it to the appropriate location like this:
+<code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">/home/my_user/Downloads/asf_rtcs/.</span>&#160; <span class="pre">/home/my_user/Desktop/work/cloud_os_geospatial_datacube_workflows/book/sentinel1/data/raster_data/full_timeseries/</span></code></p></li>
+</ol>
+</section>
+<section id="id2">
+<h5>Programmatic data download<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p>Go do the <a class="reference internal" href="nbs/download_zenodo_data_curl.html"><span class="std std-doc">Data download notebook</span></a>.</p></li>
+<li><p>Execute the cell with package imports and the two cells in the ‘Full timeseries’ section.</p></li>
+<li><p>Wait for the data to download.</p></li>
+</ol>
+<p>Once the download completes, head to the first notebook to get started.</p>
+</section>
+</section>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -546,6 +611,36 @@ Data</label><div class="sd-tab-content docutils">
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#different-ways-to-use-this-tutorial">Different ways to use this tutorial</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-options">Dataset options</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#work-with-a-subset-of-the-time-series">1. Work with a <strong>subset</strong> of the time series.</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-data-download">Manual data download</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#programmatic-data-download">Programmatic data download</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#work-with-the-full-time-series">2. Work with the <strong>full</strong> time series.</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Manual data download</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Programmatic data download</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

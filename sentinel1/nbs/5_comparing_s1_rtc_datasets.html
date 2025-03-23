@@ -186,7 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../intro/software.html">Software and computing environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../background/relevant_concepts.html">Relevant concepts</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1: ITS_LIVE</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../itslive/itslive_intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../itslive/nbs/1_accessing_itslive_s3_data.html">1. Accessing cloud-hosted ITS_LIVE data</a></li>
@@ -269,7 +269,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/e-marshall/cloud-open-source-geospatial-datacube-workflows/relevant_concepts?urlpath=lab/tree/sentinel1/nbs/5_comparing_s1_rtc_datasets.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/e-marshall/cloud-open-source-geospatial-datacube-workflows/curl_access?urlpath=lab/tree/sentinel1/nbs/5_comparing_s1_rtc_datasets.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -448,7 +448,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-ensure-direct-comparison-between-datasets">B. Ensure direct comparison between datasets</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subset-time-series-to-common-time-steps">1) Subset time series to common time steps</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handle-differences-in-spatial-resolution">2) Handle differences in spatial resolution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mask-missing-data-from-one-dataset">3) Mask missing data from one dataset”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mask-missing-data-from-one-dataset">3) Mask missing data from one dataset</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-combine-objects">C. Combine objects</a><ul class="nav section-nav flex-column">
@@ -523,7 +523,7 @@ Outline</label><div class="sd-tab-content docutils">
 </ol>
 </li>
 <li><ol class="arabic simple" start="3">
-<li><p>Mask missing data from one dataset”</p></li>
+<li><p>Mask missing data from one dataset</p></li>
 </ol>
 </li>
 </ul>
@@ -1386,7 +1386,7 @@ if (window.Jupyter !== undefined) {
 <p>Great, now the data are aligned on the same spatial grid, but we still need to mask the data in the PC dataset categorized as ‘shadow’ in the ASF dataset.</p>
 </section>
 <section id="mask-missing-data-from-one-dataset">
-<h3>3) Mask missing data from one dataset”<a class="headerlink" href="#mask-missing-data-from-one-dataset" title="Permalink to this heading">#</a></h3>
+<h3>3) Mask missing data from one dataset<a class="headerlink" href="#mask-missing-data-from-one-dataset" title="Permalink to this heading">#</a></h3>
 <p>We’ll use <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.where.html"><code class="docutils literal notranslate"><span class="pre">xr.where()</span></code></a> to assign NaN to all pixels in the PC dataset where the corrsponding pixel in the ASF datast is NaN:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2589,7 +2589,7 @@ Attributes: (12/13)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-ensure-direct-comparison-between-datasets">B. Ensure direct comparison between datasets</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subset-time-series-to-common-time-steps">1) Subset time series to common time steps</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handle-differences-in-spatial-resolution">2) Handle differences in spatial resolution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mask-missing-data-from-one-dataset">3) Mask missing data from one dataset”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mask-missing-data-from-one-dataset">3) Mask missing data from one dataset</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-combine-objects">C. Combine objects</a><ul class="nav section-nav flex-column">

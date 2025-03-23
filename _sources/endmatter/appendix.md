@@ -1,12 +1,14 @@
 # Appendix
 
-While developing this book, we encountered different examples that didn't always fit into the overall scope of the tutorials, but still may be useful to others. 
+While developing this book, we encountered different examples that didn't always fit into the overall scope of the tutorials, but still may be useful to others, which we've included here.
 
-## [1. Troubleshooting geometry types (ITS_LIVE tutorial)](nbs/1_handle_mult_geom_types.ipynb)
+## 1. Troubleshooting visualizations with different geometry types[$\tiny \nearrow$](nbs/1_handle_mult_geom_types.ipynb)
+*From the ITS_LIVE [tutorial](../itslive/itslive_intro.md).*  
 
 In the first tutorial, while making an [interactive visualization of vector dataframes](../itslive_nbs/3_combining_raster_vector_data.ipynb), we encountered a warning. This notebook includes a step-by-step demonstration of troubleshooting this warning, identifying its source and resolving it. 
 
-## [2. Reading a stack of files with `xr.open_mfdataset()` (Sentinel-1 tutorial)](nbs/2_read_w_xropen_mfdataset.ipynb)
+## 2. Reading multiple files with `xr.open_mfdataset()`[$\tiny \nearrow$](nbs/2_read_w_xropen_mfdataset.ipynb)
+*From the Sentinel-1 RTC [tutorial](../sentinel1/s1_intro.md).*  
 
 Xarray's `xr.open_mfdataset()` [function](https://docs.xarray.dev/en/stable/generated/xarray.open_mfdataset.html) allows the user to read in and combine multiple files at once to produce a single `xr.DataArray` object. This approach was explore when developing the [Read ASF-processed Sentinel-1 RTC data notebook](../sentinel1/nbs/1_read_asf_data.ipynb). However, `xr.open_mfdataset() didn't work well for this purpose because, while the stack of raster files used in this example covers a common area of interest, it includes several different spatial footprints. This creates problems when specifying a chunking strategy. 
 
@@ -26,6 +28,3 @@ In addition to the documentation linked above, some other useful resources for `
 ```{note}
 If you wanted to select scenes from a single viewing geometry at the expense of a denser time series, `xr.open_mfdataset()` might work a bit better (this approach has not been tested).
 ```
-
-## [3. Another regridding approach using `xESMF` (Sentinel-1 tutorial)](nbs/3_regridding_w_xesmf.ipynb)
-This notebook demonstrates an alternative approach to the regridding shown in [noteboook 5](../sentinel1/nbs/5_comparing_s1_rtc_datasets.ipynb) of Tutorial 2, but this time using a different regridding package. 
