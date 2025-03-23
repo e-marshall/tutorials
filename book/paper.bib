@@ -33,6 +33,18 @@
   journal={Retrieved from EarthServer website: http://earthserver. eu/tech/datacube-manifesto},
   year={2017}
 }
+
+@article{cheney_SAR_2001,
+author = {Cheney, Margaret},
+year = {2001},
+month = {03},
+pages = {},
+title = {Cheney, M.: A mathematical tutorial on synthetic aperture radar. SIAM Rev. 43(2), 301-312},
+volume = {43},
+journal = {SIAM Review},
+doi = {10.1137/S0036144500368859}
+}
+
 @book{Dasu_2003_Exploratory,
 author = {Dasu, Tamraparni and Johnson, Theodore},
 title = {Exploratory Data Mining and Data Cleaning},
@@ -99,6 +111,45 @@ abstract = {From the Publisher:A groundbreaking addition to the existing literat
     year = {2017},
     pages = {4--20},
 }
+
+@article{lei_2021_AutonomousRepeatImage,
+  title = {Autonomous {{Repeat Image Feature Tracking}} ({{autoRIFT}}) and {{Its Application}} for {{Tracking Ice Displacement}}},
+  author = {Lei, Yang and Gardner, Alex and Agram, Piyush},
+  year = {2021},
+  month = jan,
+  journal = {Remote Sensing},
+  volume = {13},
+  number = {4},
+  pages = {749},
+  publisher = {Multidisciplinary Digital Publishing Institute},
+  issn = {2072-4292},
+  doi = {10.3390/rs13040749},
+  urldate = {2025-01-07},
+  abstract = {In this paper, we build on past efforts with regard to the implementation of an efficient feature tracking algorithm for the mass processing of satellite images. This generic open-source feature tracking routine can be applied to any type of imagery to measure sub-pixel displacements between images. The routine consists of a feature tracking module (autoRIFT) that enhances computational efficiency and a geocoding module (Geogrid) that mitigates problems found in existing geocoding algorithms. When applied to satellite imagery, autoRIFT can run on a grid in the native image coordinates (such as radar or map) and, when used in conjunction with the Geogrid module, on a user-defined grid in geographic Cartesian coordinates such as Universal Transverse Mercator or Polar Stereographic. To validate the efficiency and accuracy of this approach, we demonstrate its use for tracking ice motion by using ESA's Sentinel-1A/B radar data (seven pairs) and NASA's Landsat-8 optical data (seven pairs) collected over Greenland's Jakobshavn Isbr{\ae} glacier in 2017. Feature-tracked velocity errors are characterized over stable surfaces, where the best Sentinel-1A/B pair with a 6 day separation has errors in X/Y of 12 m/year or 39 m/year, compared to 22 m/year or 31 m/year for Landsat-8 with a 16-day separation. Different error sources for radar and optical image pairs are investigated, where the seasonal variation and the error dependence on the temporal baseline are analyzed. Estimated velocities were compared with reference velocities derived from DLR's TanDEM-X SAR/InSAR data over the fast-moving glacier outlet, where Sentinel-1 results agree within 4\% compared to 3--7\% for Landsat-8. A comprehensive apples-to-apples comparison is made with regard to runtime and accuracy between multiple implementations of the proposed routine and the widely-used ``dense ampcor" program from NASA/JPL's ISCE software. autoRIFT is shown to provide two orders of magnitude of runtime improvement with a 20\% improvement in accuracy.},
+  copyright = {http://creativecommons.org/licenses/by/3.0/},
+  langid = {english},
+  keywords = {earthquake displacement,feature tracking,glacier velocity,ice displacement,landslide,optical,radar,remote sensing,satellite imagery,surface displacement},
+  file = {/home/emmamarshall/Desktop/Zotero/storage/YIXDBZVG/Lei et al. - 2021 - Autonomous Repeat Image Feature Tracking (autoRIFT) and Its Application for Tracking Ice Displacemen.pdf}
+}
+@article{Lei_2022_Processing,
+  title = {Processing Methodology for the {{ITS}}\_{{LIVE Sentinel-1}} Ice Velocity Products},
+  author = {Lei, Yang and Gardner, Alex S. and Agram, Piyush},
+  year = {2022},
+  month = nov,
+  journal = {Earth System Science Data},
+  volume = {14},
+  number = {11},
+  pages = {5111--5137},
+  issn = {1866-3516},
+  doi = {10.5194/essd-14-5111-2022},
+  urldate = {2025-01-14},
+  abstract = {The NASA MEaSUREs Inter-mission Time Series of Land Ice Velocity and Elevation (ITS\_LIVE) project seeks to accelerate understanding of critical glaciers and ice sheet processes by providing researchers with global, low-latency, comprehensive and state of the art records of surface velocities and elevations as observed from space. Here we describe the image-pair ice velocity product and processing methodology for ESA Sentinel-1 radar data. We demonstrate improvements to the core processing algorithm for dense offset tracking, ``autoRIFT'', that provide finer resolution (120 m instead of the previous 240 m used for version 1) and higher accuracy (20 \% to 50 \% improvement) data products with significantly enhanced computational efficiency ({$>$}2 orders of magnitude) when compared to earlier versions and the state of the art ``dense ampcor'' routine in the JPL ISCE software. In particular, the disparity filter is upgraded for handling finer grid resolution with overlapping search chip sizes, and the oversampling ratio in the subpixel cross-correlation estimation is adaptively determined for Sentinel-1 data by matching the precision of the measured displacement based on the search chip size used. A novel calibration is applied to the data to correct for Sentinel-1A/B subswath and full-swath dependent geolocation biases caused by systematic issues with the instruments. Sentinel-1 C-band images are affected by variations in the total electron content of the ionosphere that results in large velocity errors in the azimuth (alongtrack) direction. To reduce these effects, slant range (line of sight or LOS) velocities are used and accompanied by LOS parameters that support map coordinate (x/y) velocity inversion from ascending and descending slant range offset measurements, as derived from two image pairs. After the proposed correction of ionosphere errors, the uncertainties in velocities are reduced by 9 \%--61 \%. We further validate the ITS\_LIVE Version 2 Sentinel-1 image-pair products, with 6-year time series composed of thousands of epochs, over three typical test sites covering the globe: the Jakobshavn Isbr{\ae} Glacier of Greenland, Pine Island Glacier of the Antarctic, and Malaspina Glacier of Alaska. By comparing with other similar products (PROMICE, FAU, and MEaSUREs Annual Antarctic Ice Velocity Map products), as well as other ITS\_LIVE version 2 products from Landsat-8 and Sentinel-2 data, we find an overall variation between products around 100 m yr-1 over fast-flowing glacier outlets, where both mean velocity and variation are on the order of km yr-1, and increases up to 300--500 m yr-1 (3 \%--6 \%) for the fastest Jakobshavn Isbr{\ae} Glacier. The velocity magnitude uncertainty of the ITS\_LIVE Sentinel-1 products is calculated to be uniformly distributed around 60 m yr-1 for the three test regions investigated. The described product and methods comprise the MEaSUREs ITS\_LIVE Sentinel-1 Image-Pair Glacier and Ice Sheet Surface Velocities: version 2 (DOI: https://doi.org/10.5067/0506KQLS6512, Lei et al., 2022).},
+  copyright = {https://creativecommons.org/licenses/by/4.0/},
+  langid = {english},
+  file = {/home/emmamarshall/Desktop/Zotero/storage/C9A79WZ5/Lei et al. - 2022 - Processing methodology for the ITS_LIVE Sentinel-1 ice velocity products.pdf}
+}
+
+
 @inproceedings{lewis_2018_CEOSAnalysisReady,
   title = {{{CEOS Analysis Ready Data}} for {{Land}} ({{CARD4L}}) {{Overview}}},
   booktitle = {{{IGARSS}} 2018 - 2018 {{IEEE International Geoscience}} and {{Remote Sensing Symposium}}},
@@ -311,6 +362,25 @@ abstract = {From the Publisher:A groundbreaking addition to the existing literat
     
 }
 
+@misc{hogenson_2024_10903242,
+  title = {Hybrid {{Pluggable Processing Pipeline}} ({{HyP3}}): {{A}} Cloud-Native Infrastructure for Generic Processing of {{SAR}} Data},
+  author = {Hogenson, Kirk and Kristenson, Heidi and Kennedy, Joseph and Johnston, Andrew and Rine, James and Logan, Thomas and Zhu, Jiang and Williams, Forrest and Herrmann, Jake and Smale, Jacquelyn and Meyer, Franz},
+  year = {2024},
+  month = apr,
+  doi = {10.5281/zenodo.10903242},
+  howpublished = {Zenodo}
+}
+
+@misc{andrew_johnston_2022_6629125,
+  title = {{{ASFHyP3}}/Hyp3-Gamma: {{HyP3 GAMMA}} v5.4.1},
+  author = {Johnston, Andrew and Kennedy, Joseph H and Kristenson, Heidi and {cirrusasf} and Logan, Tom and Hogenson, Kirk and Rine, James and Smale, Jacquelyn and Herrmann, Jake and team {bot}, ASF APD/Tools and Gens, Rudi and Lundell, Eric and {ninneman}},
+  year = {2022},
+  month = jun,
+  doi = {10.5281/zenodo.6629125},
+  howpublished = {Zenodo}
+}
+
+
 @misc{Procida_Diataxis_documentation_framework,
 author = {Procida, Daniele},
 title = {{Diátaxis documentation framework}},
@@ -335,6 +405,65 @@ url = {https://diataxis.fr/}
     Organization = {IOS Press},
     Pages = {87 - 90},
     Year = {2016}
+}
+
+@misc{filipe_2025_folium,
+  title = {Python-Visualization/Folium: V0.19.5},
+  author = {{Filipe} and Anema, Frank and Story, Rob and Gardiner, James and Journois, Martin and Bird, Andrew and Then, Hans and Lima, Antonio and Cano, Joshua and {dbf} and Oefelein, Martina and Leonel, Juliana and Baker, Jason and Sampson, Tim and Reades, Jon and Rump, Halfdan and Welsh, Ben and Fleischmann, Martin and Kong, Qingkai and Komarov, Oleg and Crosby, Alex and Harris, George and Dumas, Raphael and KRIEF, David and Furtado, Leonardo and {kenmatsu4} and Nogueira, Tales Paiva},
+  year = {2025},
+  month = feb,
+  doi = {10.5281/zenodo.14941122},
+  howpublished = {Zenodo}
+}
+@misc{snow_2025_pyproj,
+  title = {Pyproj4/Pyproj: 3.7.1 {{Release}}},
+  author = {Snow, Alan D. and Whitaker, Jeff and Cochran, Micah and Miara, Idan and {den Bossche}, Joris Van and Mayo, Chris and Lucas, Greg and Cochrane, Paul and {de Kloe}, Jos and Karney, Charles and Shaw, Javier Jimenez and Anh, Trinh Quoc and {Filipe} and Ouzounoudis, George and Dearing, Justin and Lostis, Guillaume and Couwenberg, Bas and Hoese, David and {de Bittencourt}, Heitor and Little, Bill and May, Ryan and Itkin, Mikhail and McDonald, Daniel and Schneck, Cora and Gohlke, Christoph and Jurd, Brendan and Raspaud, Martin and Brett, Matthew and Meulien, Matthias},
+  year = {2025},
+  month = feb,
+  doi = {10.5281/zenodo.14876934},
+  howpublished = {Zenodo},
+  swhid = {swh:1:dir:c39dd2e1e3b1c7950d430358080bcd5de50ffe8e ;origin=https://doi.org/10.5281/zenodo.2592232;vis it=swh:1:snp:f6836d7cd4e0d85a422e0924fa526837dc7f0 fa8;anchor=swh:1:rel:efe77ff02f4bc1c90c455447778a6 ad65dbb1164;path=pyproj4-pyproj-0aa1b38}
+}
+
+@misc{executable_books_community_2020_4539666,
+  title = {Jupyter Book},
+  author = {Community, Executable Books},
+  year = {2020},
+  month = feb,
+  doi = {10.5281/zenodo.4539666},
+  howpublished = {Zenodo}
+}
+
+@misc{ralf_gommers_2024_scipy,
+  title = {Scipy/Scipy: {{SciPy}} 1.14.1},
+  author = {Gommers, Ralf and Virtanen, Pauli and Haberland, Matt and Burovski, Evgeni and Weckesser, Warren and Reddy, Tyler and Oliphant, Travis E. and Cournapeau, David and Nelson, Andrew and {alexbrc} and Roy, Pamphile and Peterson, Pearu and Polat, Ilhan and Wilson, Josh and {endolith} and Mayorov, Nikolay and {van der Walt}, Stefan and Brett, Matthew and Laxalde, Denis and Larson, Eric and Sakai, Atsushi and Millman, Jarrod and Colley, Lucas and {Lars} and {peterbell10} and Carey, {\relax CJ} and {van Mulbregt}, Paul and Bowhay, Jake and {eric-jones} and Striega, Kai},
+  year = {2024},
+  month = aug,
+  doi = {10.5281/zenodo.13352243},
+  howpublished = {Zenodo}
+}
+
+@Article{         harris2020array,
+ title         = {Array programming with {NumPy}},
+ author        = {Charles R. Harris and K. Jarrod Millman and St{\'{e}}fan J.
+                 van der Walt and Ralf Gommers and Pauli Virtanen and David
+                 Cournapeau and Eric Wieser and Julian Taylor and Sebastian
+                 Berg and Nathaniel J. Smith and Robert Kern and Matti Picus
+                 and Stephan Hoyer and Marten H. van Kerkwijk and Matthew
+                 Brett and Allan Haldane and Jaime Fern{\'{a}}ndez del
+                 R{\'{i}}o and Mark Wiebe and Pearu Peterson and Pierre
+                 G{\'{e}}rard-Marchant and Kevin Sheppard and Tyler Reddy and
+                 Warren Weckesser and Hameer Abbasi and Christoph Gohlke and
+                 Travis E. Oliphant},
+ year          = {2020},
+ month         = sep,
+ journal       = {Nature},
+ volume        = {585},
+ number        = {7825},
+ pages         = {357--362},
+ doi           = {10.1038/s41586-020-2649-2},
+ publisher     = {Springer Science and Business Media {LLC}},
+ url           = {https://doi.org/10.1038/s41586-020-2649-2}
 }
 
  @misc{Caswell_Droettboom_Lee_Andrade_Hoffmann_Hunter_Klymak_Firing_Stansby_Varoquaux_etal_2021, 
@@ -387,13 +516,31 @@ url = {https://diataxis.fr/}
         author={Jupyter, Project and Bussonnier, Matthias and Forde, Jessica and Freeman, Jeremy and Granger, Brian and Head, Tim and Holdgraf, Chris and Kelley, Kyle and Nalvarte, Gladys and Osheroff, Andrew and Pacer, M and Panda, Yuvi and Perez, Fernando and Ragan-Kelley, Benjamin and Willing, Carol},
         year={2018}, pages={113–120}, language={en} }
 
- @misc{Miles_Kirkham_Durant_Bourbeau_Onalan_Hamman_Patel_shikharsg_Rocklin_dussin_etal_2020, 
+@misc{philipp_rudiger_2020_holoviz,
+  title = {Holoviz/Hvplot: {{Version}} 0.5.2},
+  author = {Rudiger, Philipp and Signell, Julia and Bednar, James A. and {Andrew} and Stevens, Jean-Luc and B, Chris and Samuels, Jordan and {Todd} and PEDOT, Thomas and {van den Oord}, Sander and Mease, Jon and Virshup, Isaac and Corona, Gabriel and Hermes, Danny and H., Curtis and Graser, Anita},
+  year = {2020},
+  month = feb,
+  doi = {10.5281/zenodo.3634720},
+  howpublished = {Zenodo}
+}
+@misc{cherian_2025_cfxarray,
+  title = {Cf\_xarray},
+  author = {Cherian, Deepak and Almansi, Mattia and Bourgault, Pascal and Thyng, Kristen and Thielen, Jonathan and Magin, Justus and Aoun, Abel and Buntemeyer, Lars and Caneill, Romain and Davis, Luke and Fernandes, Filipe and Hauser, Matthias and Heerdegen, Aidan and Kent, Julia and Mankoff, Ken and M{\"u}ller, Sebastian and Schupfner, Martin and Vo, Tom and Ha{\"e}ck, Cl{\'e}ment and Boutte, Jason},
+  year = {2025},
+  month = mar,
+  doi = {10.5281/zenodo.14984490},
+  howpublished = {Zenodo},
+  swhid = {swh:1:dir:2677bf2878ee050d08d4ebb7e118e2806333f368 ;origin=https://doi.org/10.5281/zenodo.4749735;vis it=swh:1:snp:0385c9420b2e660dc18ce9cd5255579a8e5f0 e52;anchor=swh:1:rel:212af174c9fd0b2be3fd213115f78 42111692df1;path=xarray-contrib-cf-xarray-760b6b0}
+}
+
+ @misc{Zarr_2020_dev, 
         title={zarr-developers/zarr-python: v2.4.0}, 
         url={https://doi.org/10.5281/zenodo.3773450}, 
         DOI={10.5281/zenodo.3773450}, publisher={Zenodo}, 
         author={Miles, Alistair and Kirkham, John and Durant, Martin and Bourbeau, James and Onalan, Tarik and Hamman, Joe and Patel, Zain and shikharsg and Rocklin, Matthew and dussin, raphael and Schut, Vincent and Andrade, Elliott Sales de and Abernathey, Ryan and Noyes, Charles and sbalmer and bot, pyup io and Tran, Tommy and Saalfeld, Stephan and Swaney, Justin and Moore, Josh and Jevnik, Joe and Kelleher, Jerome and Funke, Jan and Sakkis, George and Barnes, Chris and Banihirwe, Anderson}, 
         year={2020}, month=apr }
- @misc{Snow_Brochart_Raspaud_Taves_Bell_RichardScottOZ_Chegini_Amici_Braun_Annex_etal_2022, 
+ @misc{rioxarray_2022_dev, 
         title={corteva/rioxarray: 0.12.1}, 
         url={https://doi.org/10.5281/zenodo.7080195}, 
         DOI={10.5281/zenodo.7080195}, 

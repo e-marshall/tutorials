@@ -32,4 +32,3 @@ There are two options for creating a software environment: [pixi](https://pixi.s
 ```jupyterlab```
 
 Both tutorials use functions that are stored in scripts associated with each dataset. You can find these scripts here: [`itslive_tools.py`](../itslive/nbs/itslive_tools.py) and [`s1_tools.py`](../s1/nbs/s1_tools.py).
-
