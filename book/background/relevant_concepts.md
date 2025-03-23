@@ -44,7 +44,7 @@ Climate Forecase (CF) Metadata Conventions
 
     >The CF metadata conventions are designed to promote the processing and sharing of files created with the NetCDF API. The conventions define metadata that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. This enables users of data from different sources to decide which quantities are comparable, and facilitates building applications with powerful extraction, regridding, and display capabilities. The CF convention includes a standard name table, which defines strings that identify physical quantities.
 
-    CF metadata conventions set common expectations for metadata names and locations across datasets.  In this tutorial, we will use tools such as [cf_xarray]() that leverage CF conventions to add programmatic handling of CF metadata to Xarray objects, meaning that users can spend less time wrangling metadata. 🤩
+    CF metadata conventions set common expectations for metadata names and locations across datasets.  In this tutorial, we will use tools such as [cf_xarray]() that leverage CF conventions to add programmatic handling of CF metadata to Xarray objects, meaning that users can spend less time wrangling metadata. 
 
 Spatio-temporal Asset Catalog (STAC)
     STAC is a metadata specification for geospatial data that allows the data to be more easily "worked with, indexed, and discovered" [$\tiny \nearrow$](https://stacspec.org/en). It does this by setting a common format for how metadata will be structured. This functions like setting a common expectation that all users of the data can rely on so that they know where certain information will be located and how it will be stored. 

@@ -35,11 +35,11 @@ This tutorial contains jupyter notebooks demonstrating various steps of a typica
 
 This tutorial will spend a lot of time discussing the following concepts, if they're unfamiliar to you, we recommend first heading to [Relevant Concepts](../background/relevant_concepts.md).
 
-## 1. {term}`Larger than memory data`
+ 1. {term}`Larger than memory data`
 
-## 2. {term}`Dask`
+ 2. {term}`Dask`
 
-## 3. {term}`Chunking`
+ 3. {term}`Chunking`
 
 :::
 :::{tab-item} Learning goals
@@ -63,3 +63,5 @@ For instructions on setting up a computing environment needed for this tutorial,
 For more background on the data used in this tutorial, head to [Tutorial Data](../background/tutorial_data.md).
 
 ::::
+
+To get started with this tutorial, make sure you've followed the instructions on the [Software](../intro/software.md) page for downloading the necessary material and setting up a virtual environment, then head to the first notebook.

@@ -243,7 +243,7 @@ sphinx:
       b_s1_nb5: "B. Ensure direct comparison between datasets"
       b1_s1_nb5: "1) Subset time series to common time steps"
       b2_s1_nb5: "2) Handle differences in spatial resolution"
-      b3_s1_nb5: 3) Mask missing data from one dataset"
+      b3_s1_nb5: "3) Mask missing data from one dataset"
 
       c_s1_nb5: "C. Combine objects"
       c1_s1_nb5: "1) `expand_dims()` to add 'source' dimension"
