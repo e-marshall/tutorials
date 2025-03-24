@@ -1,4 +1,4 @@
-# Relevant concepts
+# 2.6 Relevant concepts
 
 ## *Larger than memory data, parallelization and Dask*
 

@@ -1,8 +1,8 @@
-# Data cubes
+# 2.2 Data cubes
 
 The term **data cube** is used frequently throughout this book. This page contains an introduction of ***what*** a data cube is and ***why*** it is useful. 
 
-## *I. Anatomy of a data cube*
+## *Anatomy of a data cube*
 
 The key object of analysis in this book is a [raster data cube](https://openeo.org/documentation/1.0/datacubes.html). Raster data cubes are n-dimensional objects that store continuous measurements or estimates of physical quantities that exist along given dimension(s). Many scientific workflows involve examining how a variable (such as temperature, windspeed, relative humidity, etc.) varies over time and/or space. Data cubes are a way of organizing geospatial data that let us ask these questions.
 
@@ -55,7 +55,7 @@ A data cube should be organized out of these building blocks adhering to the fol
 **Attributes** - Metadata that can be assigned to a given `xr.Dataset` or `xr.DataArray` that is ***static*** along that object's dimensions.   
 :::
 
-## *II. 'Analysis-ready' data*
+## *'Analysis-ready' data*
 The process described above is an example of preparing data for analysis. Thanks to development and collaboration across the earth observation community, analysis-ready for earth observation has a specific, technical definition:
 
 ```{epigraph}
@@ -67,7 +67,7 @@ The development and increasing adoption of analysis-ready specifications for sat
 
 However, many legacy datasets still require significant effort in order to be considered 'analysis-ready'. Furthermore, for analysts, 'analysis-ready' can be a subjective and evolving label. Semantically, from a user-perspective, analysis-ready data can be thought of as data whose structure is conducive to scientific analysis.
 
-## *III. Analysis-ready data cubes & this book*
+## *Analysis-ready data cubes & this book*
 The tutorials in this book contain examples of data at various degrees of 'analysis-ready'. [Tutorial 1: ITS_LIVE](../itslive/itslive_intro.md) uses a dataset of multi-sensor observations that is already organized as a `(x,y,time)` cube with a common grid. In [Tutorial 2: Sentinel-1](../sentinel1/s1_intro.md), we will see an example of a dataset that has undergone intensive processing to make it 'analysis-ready' but requires further manipulation to arrive at the `(x,y,time)` cube format that will be easist to work with. 
 
 ### References
@@ -75,7 +75,7 @@ The tutorials in this book contain examples of data at various degrees of 'analy
 - {cite:t}`appel_2019_ondemand`
 - {cite:t}`giuliani_2019_EarthObservationOpen`
 - {cite:t}`truckenbrodt_2019_Sentinel1ARD`
-## Additional data cube resources
+### Additional data cube resources*
 - [OpenEO - Data Cubes](https://openeo.org/documentation/1.0/datacubes.html)
 - [Open Data Cube initiative](https://www.opendatacube.org/about-draft)
 - [The Datacube Manifesto](http://www.earthserver.eu/tech/datacube-manifesto/The-Datacube-Manifesto.pdf)

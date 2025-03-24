@@ -1,4 +1,4 @@
-# Tutorials overview
+# 2.3 Tutorials overview
 
 This book contains two distinct tutorials, each of which focuses on a different cloud-optimized geospatial dataset and different cloud-computing resources. Read more about the datasets used [here](tutorial_data.md).
 

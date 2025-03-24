@@ -1,8 +1,8 @@
-# Context & Motivation
+# 2.1 Context & Motivation
 
 This book demonstrates scientific workflows using publicly-available, cloud-optimized geospatial datasets and open-source scientific software tools in order to address the need for educational resources related to new technologies and reduce barriers to entry to working with earth observation data. The tutorials in this book focus on the complexities inherent to working with n-dimensional, gridded datasets and use the core stack of software packages built on and around the Xarray data model.
 
-### *I. Moving away from the 'download model' of scientific data analysis*
+### *Moving away from the 'download model' of scientific data analysis*
 
 Technological developments in recent decades have engendered fundamental shifts in the nature of scientific data and how it is used for analysis.
 
@@ -11,7 +11,7 @@ Technological developments in recent decades have engendered fundamental shifts 
 -- {cite}`abernathey_2021_cloud`
 ```
 
-### *II. Increasingly large, cloud-optimized data means new tools and approaches for data management*
+### *Increasingly large, cloud-optimized data means new tools and approaches for data management*
 
 The increase in publicly available earth observation data has transformed scientific workflows across a range of fields, prompting analysts to gain new skills in order to work with larger volumes of data in new formats and locations, and to use distributed cloud-computational resources in their analysis ({cite:t}`abernathey_2021_cloud,gentemann_2021_science,mathieu_2017_esas,ramachandran_2021_open,Sudmanns_2020_big,wagemann_2021_user`). 
 
@@ -21,7 +21,7 @@ The increase in publicly available earth observation data has transformed scient
 Volume of NASA Earth Science Data archives, including growth of existing-mission archives and new missions, projected through 2029. Source: [NASA EarthData - Open Science](https://www.earthdata.nasa.gov/about/open-science).
 ```
 
-### *III. Asking questions of complex datasets*
+### *Asking questions of complex datasets*
 
 Scientific workflows involve asking complex questions of diverse types of data. Earth observation and related datasets often contain two types of information: measurements of a physical observable (e.g. temperature) and metadata that provides auxiliary information that required in order to interpret the physical observable (time and location of measurement, information about the sensor, etc.). With the increasingly complex and large volume of earth observation data that is currently available, storing, managing and organizing these types of data can very quickly become a complex and challenging task, especially for students and early-career analysts {cite}`mathieu_esas_2017,palumbo_2017_building,Sudmanns_2020_big,wagemann_2021_user`. 
 

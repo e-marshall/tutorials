@@ -1,8 +1,8 @@
-# Software and computing environment
+# 1.4 Software and computing environment
 
 On this page you'll find information about the computing environment and datasets that will be used in both of the tutorials in this book.
 
-## *Running tutorial materials locally*
+## *1.4.1 Running tutorial materials locally*
 
 There are two options for creating a software environment: [pixi](https://pixi.sh/latest/) or [mamba](https://mamba.readthedocs.io/en/latest/) / [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html). We recommend using pixi to create a consistent environment on different operating systems. If you have pixi installed, follow the steps below, otherwise, follow the steps for conda/mamba below.
 

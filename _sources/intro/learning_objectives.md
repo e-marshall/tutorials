@@ -1,4 +1,4 @@
-# Learning objectives
+# 1.2 Learning objectives
 By the end of this book, you will have familiarity with and have seen examples demonstrating the following concepts and operations: 
 
 ## *Data cubes and array data structures*
