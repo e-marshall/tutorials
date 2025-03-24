@@ -1,4 +1,4 @@
-# Getting started
+# 1.1 Getting started
 
 ## *How to use this book*
 
@@ -45,10 +45,10 @@ Background on data cubes and an introduction to array-based geoscience data and 
 
 Each tutorial focuses on a different type of remote sensing dataset and demonstrates how to assess and work through the nuances, details and challenges that can arise from each. A common characteristic of each dataset that is emphasized throughout the notebooks is working with larger-than-memory datasets on the computational resources of a standard laptop. 
 
-#### Part 1: {{part2_title}} [$\tiny \nearrow$](../itslive/itslive_intro.md)
+#### Part 3: {{part2_title}} [$\tiny \nearrow$](../itslive/itslive_intro.md)
 A tutorial focusing on [ITS_LIVE](https://its-live.jpl.nasa.gov/), a NASA MEASURES project and publicly accessible dataset stored in an AWS S3 repo as Zarr data cubes. 
 
-#### Part 2: {{part3_title}} [$\tiny \nearrow$](../sentinel1/s1_intro.md)
+#### Part 4: {{part3_title}} [$\tiny \nearrow$](../sentinel1/s1_intro.md)
 This tutorial focuses on another satellite dataset: [Sentinel-1](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-1) Radiometric Terrain Corrected imagery. Sentinel-1 is a satellite-based imaging radar. More specifically, it is a synthetic aperture radar (SAR). SAR sensor look to the side rather than straight-down like conentional optical and infrared satellite sensors. This side-looking geometry causes geometric distortions that need to be addressed prior to analysis. SAR data undergoes different types of processing for different scientific applications. Part 2 demonstrates how to access this data from two publicly available, online respositories: Alaska Satellite Facility and Microsoft Planetary Computer. These notebooks demonstrate the different ways to read this data and prepare it for analysis, as well as an initial comparison of the two datasets. 
 
 ### {{part4_title}} [$\tiny \nearrow$](../conclusion/wrapping_up.md)

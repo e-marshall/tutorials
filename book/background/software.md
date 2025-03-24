@@ -1,4 +1,4 @@
-# Software and computing environment
+# 2.5 Software and computing environment
 
 On this page you'll find information about the computing environment and datasets that will be used in both of the tutorials in this book.
 

@@ -1,4 +1,4 @@
-# Data used in tutorials
+# 2.4 Data used in tutorials
 
 We use a many different datasts throughout these tutorials. While each tutorial is focused on a different raster time series (ITS_LIVE ice velocity data and Sentinel-1 imagery), we also use vector data to represent points of interest. 
 

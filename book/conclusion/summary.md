@@ -1,4 +1,4 @@
-# Tutorials summary
+# 5.2 Tutorials summary
 
 In this book, we worked through tutorials accessing two satellite remote sensing datasets, preparing them for analysis and performing exploratory data analysis and visualization. 
 

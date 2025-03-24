@@ -24,7 +24,7 @@ latex:
     targetname: book.tex
 
 bibtex_bibfiles:
-  - "paper.bib"
+  - "book_refs.bib"
 
 # Information about where the book exists on the web
 repository:
@@ -76,18 +76,18 @@ sphinx:
       part4_title: "Summary + Conclusion"
 
       #tutorial 1 nb titles
-      title_its_nb1: "# 1. Accessing cloud-hosted ITS_LIVE data"
-      title_its_nb2: "# 2. Working with larger than memory data"
-      title_its_nb3: "# 3. Handling raster and vector data"
-      title_its_nb4: "# 4. Exploratory data analysis of a single glacier"
-      title_its_nb5: "# 5. Exploratory data analysis of multiple glaciers"
+      title_its_nb1: "# 3.1 Accessing cloud-hosted ITS_LIVE data"
+      title_its_nb2: "# 3.2 Working with larger than memory data"
+      title_its_nb3: "# 3.3 Handling raster and vector data"
+      title_its_nb4: "# 3.4 Exploratory data analysis of a single glacier"
+      title_its_nb5: "# 3.5 Exploratory data analysis of multiple glaciers"
 
       #tutorial 2 nb titles
-      title_s1_1: "# 1. Read Sentinel-1 data processed by ASF"
-      title_s1_2: "# 2. Wrangle metadata"
-      title_s1_3: "# 3. Exploratory analysis of ASF S1 imagery"
-      title_s1_4: "# 4. Read Sentinel-1 RTC data from Microsoft Planetary Computer"
-      title_s1_5: "# 5. Comparing Sentinel-1 RTC datasets"
+      title_s1_1: "# 4.1 Read Sentinel-1 data processed by ASF"
+      title_s1_2: "# 4.2 Wrangle metadata"
+      title_s1_3: "# 4.3 Exploratory analysis of ASF S1 imagery"
+      title_s1_4: "# 4.4 Read Sentinel-1 RTC data from Microsoft Planetary Computer"
+      title_s1_5: "# 4.5 Comparing Sentinel-1 RTC datasets"
       #title_s1_6: "# 6. Example of Sentinel-1 RTC time series analysis"
 
       #global nb sections

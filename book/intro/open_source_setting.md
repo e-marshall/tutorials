@@ -1,4 +1,4 @@
-# Open source setting
+# 1.3 Open source setting
 ## *Xarray, Zarr, and the Pangeo software stack*
 
 
