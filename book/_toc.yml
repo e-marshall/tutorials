@@ -4,34 +4,34 @@ root: introduction
 parts:
   - caption: Part 1. Introduction
     chapters:
-    - file: intro/getting_started
-    - file: intro/learning_objectives
-    - file: intro/open_source_setting
+    - file: intro/1_getting_started
+    - file: intro/2_learning_objectives
+    - file: intro/3_open_source_setting
   - caption: Part 2. Background
     chapters:
-    - file: background/context_motivation
+    - file: background/1_context_motivation
     #- file: background/ard_data_tidying
-    - file: background/data_cubes
-    - file: background/tutorials_overview
-    - file: background/tutorial_data
-    - file: background/software
-    - file: background/relevant_concepts
+    - file: background/2_data_cubes
+    - file: background/3_tutorials_overview
+    - file: background/4_tutorial_data
+    - file: background/5_software
+    - file: background/6_relevant_concepts
   - caption: Part 3. ITS_LIVE Tutorial
     chapters:
     - file: itslive/itslive_intro
-    - file: itslive/nbs/accessing_itslive_s3_data
-    - file: itslive/nbs/larger_than_memory_data
-    - file: itslive/nbs/combining_raster_vector_data
-    - file: itslive/nbs/exploratory_data_analysis_single
-    - file: itslive/nbs/exploratory_data_analysis_group
+    - file: itslive/nbs/1_accessing_itslive_s3_data
+    - file: itslive/nbs/2_larger_than_memory_data
+    - file: itslive/nbs/3_combining_raster_vector_data
+    - file: itslive/nbs/4_exploratory_data_analysis_single
+    - file: itslive/nbs/5_exploratory_data_analysis_group
   - caption: Part 4. Sentinel-1 RTC Tutorial
     chapters:
     - file: sentinel1/s1_intro
-    - file: sentinel1/nbs/read_asf_data
-    - file: sentinel1/nbs/wrangle_metadata
-    - file: sentinel1/nbs/asf_exploratory_analysis
-    - file: sentinel1/nbs/read_pc_data
-    - file: sentinel1/nbs/comparing_s1_rtc_datasets
+    - file: sentinel1/nbs/1_read_asf_data
+    - file: sentinel1/nbs/2_wrangle_metadata
+    - file: sentinel1/nbs/3_asf_exploratory_analysis
+    - file: sentinel1/nbs/4_read_pc_data
+    - file: sentinel1/nbs/5_comparing_s1_rtc_datasets
   - caption: Part 5. Conclusion
     chapters:
     - file: conclusion/wrapping_up
