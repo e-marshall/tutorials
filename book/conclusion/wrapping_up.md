@@ -4,7 +4,7 @@ It is a popular refrain, and a sentiment many analysts can likey relate to, "tha
 
 In this chapter, you will find summaries of the concepts covered throughout the Jupyter Notebooks included in this book and a return to the introduction's [discussion of data cubes](../background/data_cubes.md) that synthesizes lessons learned in the tutorials. 
 
-### Open source tools and packages
+## Open source tools and packages
 We mainly use Xarray and tools within the Xarray ecosystem. There are many exciting open-source projects and tools related to Xarray data cubes that were not highlighted in this book. A few are:
 - [XRLint](https://github.com/bcdev/xrlint)
 - [LexCube](https://www.lexcube.org/)
