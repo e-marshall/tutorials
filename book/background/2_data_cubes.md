@@ -59,7 +59,7 @@ CEOS Analysis Ready Data (CEOS-ARD) are satellite data that have been processed 
     - Committee on Earth Observation Satellites ([CEOS](https://ceos.org/ard/index.html)) Analysis-Ready Data {cite}`lewis_2018_CEOSAnalysisReady`
 ```
 
-Alongside the definition of the ARD specification has been the development and increasing availability of analysis-ready datasets {cite:t}`chatenouxSwissDataCube2021,frantzFORCELandsatSentinel22019,killough_2019_AfricaRegionalDataCube,truckenbrodt_2019_Sentinel1ARD`, which represent exciting and transformative opportunities to increase the utilization and impact of earth observation datasets. 
+Alongside the definition of the ARD specification has been the development and increasing availability of analysis-ready datasets and pipelines to produce them {cite:t}`chatenouxSwissDataCube2021,frantzFORCELandsatSentinel22019,killough_2019_AfricaRegionalDataCube,truckenbrodt_2019_Sentinel1ARD,stern_2022_PangeoForge`, which represent exciting and transformative opportunities to increase the utilization and impact of earth observation datasets. 
 
 However, many legacy datasets still require significant effort in order to be considered 'analysis-ready'. Furthermore, for analysts, 'analysis-ready' can be a subjective and evolving label. Semantically, from a user-perspective, analysis-ready data can be thought of as data whose structure is conducive to the analysis the user would like to perform.
 

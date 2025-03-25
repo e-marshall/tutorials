@@ -4,7 +4,7 @@ This book demonstrates scientific workflows using publicly available, cloud-opti
 
 ## *Moving away from the 'download model' of scientific data analysis*
 
-Technological developments in recent decades have engendered fundamental shifts in the nature of scientific data and how it is used for analysis.
+Technological developments in recent decades have engendered fundamental shifts in the nature of scientific data and how it is used for analysis {cite:t}`abernathey_2021_cloud,gentemann_2021_science,stern_2022_PangeoForge`.
 
 ```{epigraph}
 "Traditionally, scientific data have been distributed via a “download model,” wherein scientists download individual data files to local computers for analysis. After downloading many files, scientists typically have to do extensive processing and organizing to make them useful for the data analysis; this creates a barrier to reproducibility, since a scientist’s analysis code must account for this unique “local” organization. Furthermore, the sheer size of the datasets (many terabytes to petabytes) can make downloading effectively impossible. Analysis of such data volumes also can benefit from parallel / distributed computing, which is not always readily available on local computers. Finally, this model reinforces inequality between privileged institutions that have the resources to host local copies of the data and those that don’t. This restricts who can participate in science."

@@ -1,6 +1,6 @@
 # 5.1 Wrapping up
 
-It is a popular refrain, and a sentiment many analysts can likey relate to, "that 80% of data analysis is spent on the cleaning and preparing of data" {cite}`Wickham_2014_Tidy,Dasu_2003_Exploratory`. This book focuses on the data cleaning and preparation steps of an analytical workflow that ingests satellite remote sensing time series datasets. We draw on the wealth of knowledge and research that attends to this topic in order to produce tutorials that demonstrate and explain these concepts in the context of cloud-optimized, publicly available array data and the software ecosystem built around the Xarray data model in Python. 
+It is a popular refrain, and a sentiment many analysts can likey relate to, "that 80% of data analysis is spent on the cleaning and preparing of data" {cite}`gentemann_2021_science,Wickham_2014_Tidy,Dasu_2003_Exploratory`. This book focuses on the data cleaning and preparation steps of an analytical workflow that ingests satellite remote sensing time series datasets. We draw on the wealth of knowledge and research that attends to this topic in order to produce tutorials that demonstrate and explain these concepts in the context of cloud-optimized, publicly available array data and the software ecosystem built around the Xarray data model in Python. 
 
 In this chapter, you will find summaries of the concepts covered throughout the Jupyter Notebooks included in this book and a return to the introduction's [discussion of data cubes](../background/data_cubes.md) that synthesizes lessons learned in the tutorials. 
 
