@@ -21,6 +21,10 @@ Imagine we have a time series of [NDVI](https://www.usgs.gov/landsat-missions/la
 
 In this example, we're accessing the dataset at a common dissemination point, an 'image collection'[^mynote1]. It looks something like this:
 ```{figure} imgs/image_stack.png
+---
+---
+Illustration of earth observation time series as a stack of 2-d images and associated metadata. 
+
 ```
 
 
@@ -28,7 +32,9 @@ Without coordinate information and metadata, the image data are abstract arrays,
 
 To use this data for scientific analysis, we need to construct it into the form of a cube. This requires a comprehensive understanding of the different pieces of information contained in the dataset and how they relate to one another in order to map the components of the dataset onto a cube structure. 
 ```{figure} imgs/cube.png
-Source: Adapted from [Xarray Dev](https://xarray.dev/)
+---
+---
+Illustration of earth observation time series organized as a 3-d Xarray data cube. Source: Adapted from [Xarray Dev](https://xarray.dev/)
 ```
 
 In the context of the Xarray data model, univariate data cubes can be represented by an `xr.DataArray` or a `xr.Dataset` with one `data_variable`. Multivariate data cubes should be represented by `xr.Dataset` objects. The building blocks of `xr.DataArrays` and `xr.Datasets` are dimensions, coordinates, data variables, attribues (and indexes?). We recommend the Xarray [terminology](https://docs.xarray.dev/en/stable/user-guide/terminology.html) for a detailed overview of Xarray objects and common operations.

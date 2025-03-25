@@ -1,6 +1,6 @@
 # 2.6 Relevant concepts
 
-## *Larger than memory data, parallelization and Dask*
+## *Larger-than-memory data, parallelization, and Dask*
 
 ```{glossary}
 Larger than memory data
