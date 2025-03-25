@@ -2,9 +2,9 @@
 
 ## *How to use this book*
 
-Our goal is for this book to be useful to users across a range of backgrounds and with different needs and interests. It is designed to be a comprehensive walk-through of scientific workflows using earth observation data in Python. At the same time, we recognize some users may be interested in following individual segments and a more modular structure. Read from start to finish or check out the individual sections that interest you. To see which topics are covered in different notebooks, check out the [tutorials overview](../background/tutorials_overview.md) page.
+Our goal is for this book to be useful to users across a range of backgrounds and with different needs and interests. It is designed to be a comprehensive walk-through of scientific workflows using earth observation data in Python. At the same time, we recognize some users may be interested in following individual segments and a more modular structure; follow the book from start to finish or check out the individual sections that interest you. To see which topics are covered in different notebooks, check out the [tutorials overview](../background/tutorials_overview.md) page.
 
-If you're interested in a more-detailed introduction and background on data cubes and cloud-optimized geoscience, head to the [background](../background/background_root.md) section, otherwise, head straight to the tutorials.
+For an introduction and background on data cubes and cloud-optimized geoscience, head to the [background](../background/background_root.md) section, otherwise, head straight to the tutorials.
 
 :::{admonition} Running tutorial notebooks on your own
 Head to the [software](software.md) page for detailed instructions on how to get started running the tutorial notebooks on your own.
