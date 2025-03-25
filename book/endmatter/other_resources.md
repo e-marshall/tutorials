@@ -25,7 +25,7 @@ Throughout this book, we reference a number of resources on different topics. Th
 - [Climate Forecase Conventions](https://cfconventions.org/)
 - [GDAL Virtual Raster Format](https://gdal.org/en/stable/drivers/raster/vrt.html)
 - [STAC Specification](https://stacspec.org/en)
-- 
+
 ## Geospatial data and coordinate reference systems
 - [Coordinate Reference Systems - Geocomputaion with Python](https://py.geocompx.org/01-spatial-data#geographic-coordinate-systems)
 - [Reprojecting Geographic Data - Geocomputation with Python](https://py.geocompx.org/06-reproj)

@@ -4,7 +4,7 @@ It is a popular refrain, and a sentiment many analysts can likey relate to, "tha
 
 In this chapter, you will find summaries of the concepts covered throughout the Jupyter Notebooks included in this book and a return to the introduction's [discussion of data cubes](../background/data_cubes.md) that synthesizes lessons learned in the tutorials. 
 
-### Broader context [$\tiny \nearrow$]()
+### Broader context
  
 This book largely focused on the beginning steps of scientific workflows where data is prepared for analysis and manipulated to support different types of analysis. 
 

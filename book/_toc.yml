@@ -10,6 +10,7 @@ parts:
   - caption: Part 2. Background
     chapters:
     - file: background/context_motivation
+    #- file: background/ard_data_tidying
     - file: background/data_cubes
     - file: background/tutorials_overview
     - file: background/tutorial_data

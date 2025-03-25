@@ -27,11 +27,52 @@
   file = {/home/emmamarshall/Desktop/Zotero/storage/SPSU55IR/Appel and Pebesma - 2019 - On-Demand Processing of Data Cubes from Satellite Image Collections with the gdalcubes Library.pdf}
 }
 
+@incollection{Baumann2019,
+  title = {Datacubes: {{Towards}} Space/Time Analysis-Ready Data},
+  booktitle = {Service-Oriented Mapping: {{Changing}} Paradigm in Map Production and Geoinformation Management},
+  author = {Baumann, Peter and Misev, Dimitar and Merticariu, Vlad and Huu, Bang Pham},
+  editor = {D{\"o}llner, J{\"u}rgen and Jobst, Markus and Schmitz, Peter},
+  year = {2019},
+  pages = {269--299},
+  publisher = {Springer International Publishing},
+  address = {Cham},
+  doi = {10.1007/978-3-319-72434-8_14},
+  abstract = {Datacubes form an emerging paradigm in the quest for providing EO data ready for spatial and temporal analysis; this concept, which generalizes the concept of seamless maps from 2-D to n-D, is based on preprocessing incoming data so as to integrate all data form one sensor into one logical array, say 3-D x/y/t for image timeseries or 4-D x/y/z/t for weather forecasts. This enables spatial analysis (both horizontally and vertically) and multi-temporal analysis simultaneously. Adequate service interfaces enable ``shipping code to the data'' to avoid excessive data transport. In standardization, datacubes belong to the category of coverages as established by ISO and OGC. In this contribution we present the OGC datacube data and service model, the Coverage Implementation Schema (CIS) and the Web Coverage Service (WCS) with its datacube analytics language, Web Coverage Processing Service (WCPS) and put them in context with further related standards is provided. Finally, we discuss architectural details of datacube services by way of operational tool examples.},
+  isbn = {978-3-319-72434-8}
+}
+
+
 @article{baumann2017datacube,
   title={The datacube manifesto},
   author={Baumann, Peter},
   journal={Retrieved from EarthServer website: http://earthserver. eu/tech/datacube-manifesto},
   year={2017}
+}
+@article{Boulton02012018,
+  title = {The Challenges of a Big Data Earth},
+  author = {Boulton, Geoffrey},
+  year = {2018},
+  journal = {Big Earth Data},
+  volume = {2},
+  number = {1},
+  eprint = {https://doi.org/10.1080/20964471.2017.1397411},
+  pages = {1--7},
+  publisher = {Taylor \& Francis},
+  doi = {10.1080/20964471.2017.1397411}
+}
+
+@article{chatenouxSwissDataCube2021,
+  title = {The {{Swiss}} Data Cube, Analysis Ready Data Archive Using Earth Observations of {{Switzerland}}},
+  author = {Chatenoux, Bruno and Richard, Jean-Philippe and Small, David and Roeoesli, Claudia and Wingate, Vladimir and Poussin, Charlotte and Rodila, Denisa and Peduzzi, Pascal and Steinmeier, Charlotte and Ginzler, Christian and Psomas, Achileas and Schaepman, Michael E. and Giuliani, Gregory},
+  year = {2021},
+  month = nov,
+  journal = {Scientific Data},
+  volume = {8},
+  number = {1},
+  pages = {295},
+  issn = {2052-4463},
+  doi = {10.1038/s41597-021-01076-6},
+  abstract = {Since the opening of Earth Observation (EO) archives (USGS/NASA Landsat and EC/ESA Sentinels), large collections of EO data are freely available, offering scientists new possibilities to better understand and quantify environmental changes. Fully exploiting these satellite EO data will require new approaches for their acquisition, management, distribution, and analysis. Given rapid environmental changes and the emergence of big data, innovative solutions are needed to support policy frameworks and related actions toward sustainable development. Here we present the Swiss Data Cube (SDC), unleashing the information power of Big Earth Data for monitoring the environment, providing Analysis Ready Data over the geographic extent of Switzerland since 1984, which is updated on a daily basis. Based on a cloud-computing platform allowing to access, visualize and analyse optical (Sentinel-2; Landsat 5, 7, 8) and radar (Sentinel-1) imagery, the SDC minimizes the time and knowledge required for environmental analyses, by offering consistent calibrated and spatially co-registered satellite observations. SDC derived analysis ready data supports generation of environmental information, allowing to inform a variety of environmental policies with unprecedented timeliness and quality.}
 }
 
 @article{cheney_SAR_2001,
@@ -55,10 +96,37 @@ address = {USA},
 edition = {1},
 abstract = {From the Publisher:A groundbreaking addition to the existing literature, Exploratory Data Mining and Data Cleaning serves as an important reference for data analysts who need to analyze large amounts of unfamiliar data, operations managers, and students in undergraduate or graduate-level courses, dealing with data analysis and data mining.}
 }
+@article{frantzFORCELandsatSentinel22019,
+  title = {{{FORCE}}---{{Landsat}} + {{Sentinel-2 Analysis Ready Data}} and {{Beyond}}},
+  author = {Frantz, David},
+  year = {2019},
+  month = may,
+  journal = {Remote Sensing},
+  volume = {11},
+  number = {9},
+  pages = {1124},
+  issn = {2072-4292},
+  doi = {10.3390/rs11091124},
+  urldate = {2025-03-10},
+  abstract = {Ever increasing data volumes of satellite constellations call for multi-sensor analysis ready data (ARD) that relieve users from the burden of all costly preprocessing steps. This paper describes the scientific software FORCE (Framework for Operational Radiometric Correction for Environmental monitoring), an `all-in-one' solution for the mass-processing and analysis of Landsat and Sentinel-2 image archives. FORCE is increasingly used to support a wide range of scientific to operational applications that are in need of both large area, as well as deep and dense temporal information. FORCE is capable of generating Level 2 ARD, and higher-level products. Level 2 processing is comprised of state-of-the-art cloud masking and radiometric correction (including corrections that go beyond ARD specification, e.g., topographic or bidirectional reflectance distribution function correction). It further includes data cubing, i.e., spatial reorganization of the data into a non-overlapping grid system for enhanced efficiency and simplicity of ARD usage. However, the usage barrier of Level 2 ARD is still high due to the considerable data volume and spatial incompleteness of valid observations (e.g., clouds). Thus, the higher-level modules temporally condense multi-temporal ARD into manageable amounts of spatially seamless data. For data mining purposes, per-pixel statistics of clear sky data availability can be generated. FORCE provides functionality for compiling best-available-pixel composites and spectral temporal metrics, which both utilize all available observations within a defined temporal window using selection and statistical aggregation techniques, respectively. These products are immediately fit for common Earth observation analysis workflows, such as machine learning-based image classification, and are thus referred to as highly analysis ready data (hARD). FORCE provides data fusion functionality to improve the spatial resolution of (i) coarse continuous fields like land surface phenology and (ii) Landsat ARD using Sentinel-2 ARD as prediction targets. Quality controlled time series preparation and analysis functionality with a number of aggregation and interpolation techniques, land surface phenology retrieval, and change and trend analyses are provided. Outputs of this module can be directly ingested into a geographic information system (GIS) to fuel research questions without any further processing, i.e., hARD+. FORCE is open source software under the terms of the GNU General Public License v. {$>$}= 3, and can be downloaded from http://force.feut.de.},
+  copyright = {https://creativecommons.org/licenses/by/4.0/},
+  langid = {english},
+  file = {/home/emmamarshall/Desktop/Zotero/storage/WJ5B8DCP/Frantz - 2019 - FORCE—Landsat + Sentinel-2 Analysis Ready Data and Beyond.pdf}
+}
 
-  
 
-
+@inproceedings{geffner_2000_dynamic,
+  title = {The Dynamic Data Cube},
+  booktitle = {Advances in Database Technology --- {{EDBT}} 2000},
+  author = {Geffner, Steven and Agrawal, Divakant and El Abbadi, Amr},
+  editor = {Zaniolo, Carlo and Lockemann, Peter C. and Scholl, Marc H. and Grust, Torsten},
+  year = {2000},
+  pages = {237--253},
+  publisher = {Springer Berlin Heidelberg},
+  address = {Berlin, Heidelberg},
+  abstract = {Range sum queries on data cubes are a powerful tool for analysis. A range sum query applies an aggregation operation (e.g., SUM, AVERAGE) over all selected cells in a data cube, where the selection is specified by providing ranges of values for numeric dimensions. We present the Dynamic Data Cube, a new approach to range sum queries which provides efficient performance for both queries and updates, which handles clustered and sparse data gracefully, and which allows for the dynamic expansion of the data cube in any direction.},
+  isbn = {978-3-540-46439-6}
+}
 
 @article{gentemann_2021_science,
     title = {Science {Storms} the {Cloud}},
@@ -95,6 +163,23 @@ abstract = {From the Publisher:A groundbreaking addition to the existing literat
   file = {/home/emmamarshall/Desktop/Zotero/storage/VHCMH3GQ/Giuliani et al. - 2019 - Earth Observation Open Science Enhancing Reproducible Science Using Data Cubes.pdf}
 }
 
+@inproceedings{grayDataCubeRelational1996,
+  title = {Data Cube: A Relational Aggregation Operator Generalizing {{GROUP-BY}}, {{CROSS-TAB}}, and {{SUB-TOTALS}}},
+  shorttitle = {Data Cube},
+  booktitle = {Proceedings of the {{Twelfth International Conference}} on {{Data Engineering}}},
+  author = {Gray, J. and Bosworth, A. and Lyaman, A. and Pirahesh, H.},
+  year = {1996},
+  pages = {152--159},
+  publisher = {IEEE Comput. Soc. Press},
+  address = {New Orleans, LA, USA},
+  doi = {10.1109/ICDE.1996.492099},
+  urldate = {2025-03-08},
+  abstract = {Data analysis applications typically aggregate data across many dimensions looking for anomalies or unusual patterns. The SQL aggregate functions and the GROUP BY operator produce zero-dimensional or one-dimensional aggregates. Applications need the N -dimensional generalization of these operators. This paper defines that operator, called the data cube or simply cube. The cube operator generalizes the histogram, crosstabulation, roll-up, drill-down, and sub-total constructs found in most report writers. The novelty is that cubes are relations. Consequently, the cube operator can be imbedded in more complex non-procedural data analysis programs. The cube operator treats each of the N aggregation attributes as a dimension of N -space. The aggregate of a particular set of attribute values is a point in this space. The set of points forms an N -dimensional cube. Super-aggregates are computed by aggregating the N -cube to lower dimensional spaces. This paper (1) explains the cube and roll-up operators, (2) shows how they fit in SQL, (3) explains how users can define new aggregate functions for cubes, and (4) discusses efficient techniques to compute the cube. Many of these features are being added to the SQL Standard.},
+  isbn = {978-0-8186-7240-8},
+  langid = {english},
+  file = {/home/emmamarshall/Desktop/Zotero/storage/NWBDFV2P/Gray et al. - 1996 - Data cube a relational aggregation operator generalizing GROUP-BY, CROSS-TAB, and SUB-TOTALS.pdf}
+}
+
 @article{guo_2017_big,
     title = {Big {Earth} data: {A} new frontier in {Earth} and information sciences},
     volume = {1},
@@ -111,6 +196,16 @@ abstract = {From the Publisher:A groundbreaking addition to the existing literat
     year = {2017},
     pages = {4--20},
 }
+@INPROCEEDINGS{killough_2019_AfricaRegionalDataCube,
+  author={Killough, Brian},
+  booktitle={IGARSS 2019 - 2019 IEEE International Geoscience and Remote Sensing Symposium}, 
+  title={The Impact of Analysis Ready Data in the Africa Regional Data Cube}, 
+  year={2019},
+  volume={},
+  number={},
+  pages={5646-5649},
+  keywords={Earth;Satellites;Time series analysis;Africa;Artificial satellites;Remote sensing;Forestry;Open Data Cube;CEOS;Earth Observation;Satellite Data;Analysis Ready Data;Sustainable Development Goals},
+  doi={10.1109/IGARSS.2019.8898321}}
 
 @article{lei_2021_AutonomousRepeatImage,
   title = {Autonomous {{Repeat Image Feature Tracking}} ({{autoRIFT}}) and {{Its Application}} for {{Tracking Ice Displacement}}},
@@ -292,6 +387,17 @@ abstract = {From the Publisher:A groundbreaking addition to the existing literat
   publisher = {Taylor \& Francis},
   doi = {10.1080/17538947.2019.1585976}
 }
+@article{stern_2022_PangeoForge,
+  title = {Pangeo Forge: {{Crowdsourcing}} Analysis-Ready, Cloud Optimized Data Production},
+  author = {Stern, Charles and Abernathey, Ryan and Hamman, Joseph and Wegener, Rachel and Lepore, Chiara and Harkins, Sean and Merose, Alexander},
+  year = {2022},
+  journal = {Frontiers in Climate},
+  volume = {3},
+  issn = {2624-9553},
+  doi = {10.3389/fclim.2021.782909},
+  abstract = {{\textexclamdown}p{\textquestiondown}Pangeo Forge is a new community-driven platform that accelerates science by providing high-level recipe frameworks alongside cloud compute infrastructure for extracting data from provider archives, transforming it into analysis-ready, cloud-optimized (ARCO) data stores, and providing a human- and machine-readable catalog for browsing and loading. In abstracting the scientific domain logic of data recipes from cloud infrastructure concerns, Pangeo Forge aims to open a door for a broader community of scientists to participate in ARCO data production. A wholly open-source platform composed of multiple modular components, Pangeo Forge presents a foundation for the practice of reproducible, cloud-native, big-data ocean, weather, and climate science without relying on proprietary or cloud-vendor-specific tooling.{\textexclamdown}/p{\textquestiondown}}
+}
+
 
 @article{truckenbrodt_2019_Sentinel1ARD,
   title = {Towards {{Sentinel-1 SAR Analysis-Ready Data}}: {{A Best Practices Assessment}} on {{Preparing Backscatter Data}} for the {{Cube}}},
@@ -466,7 +572,7 @@ url = {https://diataxis.fr/}
  url           = {https://doi.org/10.1038/s41586-020-2649-2}
 }
 
- @misc{Caswell_Droettboom_Lee_Andrade_Hoffmann_Hunter_Klymak_Firing_Stansby_Varoquaux_etal_2021, 
+ @misc{matplotlib_2021, 
         title={matplotlib/matplotlib: REL: v3.5.1}, 
         url={https://doi.org/10.5281/zenodo.5773480}, 
         DOI={10.5281/zenodo.5773480}, 
