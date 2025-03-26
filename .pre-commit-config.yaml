@@ -47,5 +47,5 @@ repos:
     hooks:
     - id: codespell
       #files: ^.*\.(py|md|ipynb)$
-      args: ["--ignore-words", ".codespell-ignore"]
+      args: ["--ignore-words", ".codespellignore", "--skip=*.bib", "--skip=*.lock","--skip=run_itslive_nbs.py"]
      

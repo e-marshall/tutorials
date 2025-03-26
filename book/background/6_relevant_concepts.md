@@ -13,16 +13,18 @@ Dask
 
     ```{figure} imgs/pythia_dask_task_graph.png
     ---
-    Image of the task graph for applying [.sum()](https://docs.xarray.dev/en/latest/generated/xarray.DataArray.sum.html) to a `xr.DataArray`. Source: [Project Pythia Dask Cookbook section on Task Graphs](https://projectpythia.org/dask-cookbook/notebooks/01-dask-array.html#task-graph)
+    ---
+    Image of a task graph associated with applying [.sum()](https://docs.xarray.dev/en/latest/generated/xarray.DataArray.sum.html) to a `xr.DataArray`. Source: [Project Pythia Dask Cookbook section on Task Graphs](https://projectpythia.org/dask-cookbook/notebooks/01-dask-array.html#task-graph).
+    ```
 
     So what can happen lazily and what can't? Dask will wait to evaluate a set of operations until it is explicitly instructed to do so. This can be through calling a direct method (like [`.compute()`](https://docs.dask.org/en/stable/generated/dask.dataframe.DataFrame.compute.html) or [`.persist()`](https://docs.dask.org/en/latest/generated/dask.dataframe.DataFrame.persist.html)), or an operation that cannot be accomplished lazily (like plotting an array). For more detail, check out [Dask's Managing Computation documentation](https://distributed.dask.org/en/stable/manage-computation.html).
 
 Chunking
-    Dask operates by breaking up large tasks into smaller ones. In our context, this is accomplished mainly through [Dask Arrays](https://docs.dask.org/en/latest/array.html). If you're familiar with the Xarray data model, you'll know that the fundamental building block of a standard Xarray DataArray is a NumPy array; an `Xr.DataArray` is just a NumPy array with named dimensions and coordinates, and separate NumPy arrays describing those coordinates. 
+    Dask operates by breaking up large tasks into smaller ones. In our context, this is accomplished mainly through [Dask Arrays](https://docs.dask.org/en/latest/array.html). If you're familiar with the Xarray data model, you'll know that the fundamental building block of a standard Xarray DataArray is a NumPy array; a `Xr.DataArray` is just a NumPy array with named dimensions and coordinates, and separate NumPy arrays describing those coordinates. 
 
     When we introduce Dask to an Xarray workflow, we convert the underlying `.data` objects of an Xarray object from NumPy arrays to Dask Arrays. Luckily, Dask arrays aren't too unfamiliar; a Dask Array is composed of NumPy-like arrays but with an additional specification: `chunks`. Chunks tell Dask how to break up the array into smaller parts. For example, if you have a 3-dimensional Xarray DataArray, you will specify how the object should be chunked along each dimension. 
 
-    Choosing chunks can be complicated and significantly impact how fast your code runs. Typically, you want enough chunks, such that individual chunks are relatively small and many chunks can fit into memory. However, if you have too many chunks, Dask now needs to keep track of many individual tasks, meaning that more time will be spent managing the task graph relative to executing tasks. In addition, tasks should reflect the shape of your data and how you want to use it. If you're working with a space-time dataset but are most interested in spatial analysis, having smaller chunks along the `x` and `y` dimensions will make spatial operations easier to parallelize. 
+    Choosing chunks can be complicated and significantly impact how fast your code runs. Typically, you want enough chunks such that individual chunks are relatively small and many chunks can fit into memory. However, if you have too many chunks, Dask now needs to keep track of many individual tasks, meaning that more time will be spent managing the task graph relative to executing tasks. In addition, tasks should reflect the shape of your data and how you want to use it. If you're working with a space-time dataset but are most interested in spatial analysis, having smaller chunks along the `x` and `y` dimensions will make spatial operations easier to parallelize. 
 
     **Further reading**
     - [Dask Array - Best Practices](https://docs.dask.org/en/latest/array-best-practices.html),   
