@@ -5,7 +5,7 @@ While developing this book, we encountered different examples that didn't always
 ## 1. Troubleshooting visualizations with different geometry types[$\tiny \nearrow$](nbs/1_handle_mult_geom_types.ipynb)
 *From the ITS_LIVE [tutorial](../itslive/itslive_intro.md).*  
 
-In the first tutorial, while making an [interactive visualization of vector dataframes](../itslive_nbs/3_combining_raster_vector_data.ipynb), we encountered a warning. This notebook includes a step-by-step demonstration of troubleshooting this warning, identifying its source and resolving it. 
+In the first tutorial, while making an [interactive visualization of vector dataframes](../itslive/nbs//3_combining_raster_vector_data.ipynb), we encountered a warning. This notebook includes a step-by-step demonstration of troubleshooting this warning, identifying its source and resolving it. 
 
 ## 2. Reading multiple files with `xr.open_mfdataset()`[$\tiny \nearrow$](nbs/2_read_w_xropen_mfdataset.ipynb)
 *From the Sentinel-1 RTC [tutorial](../sentinel1/s1_intro.md).*  

@@ -1,0 +1,10 @@
+ "Xarray",
+"geospatial",
+"CEOS",
+"backscatter",
+"Dask",
+"Zarr",
+"geoscience",
+"STAC", "stackstac", "PySTAC", "Zenodo", "USGS","SERVIR","NSIDC","shapefile","pixi","itslive",
+"jovyan","kernelspec","regridding","Pangeo","Xvec"
+"basemaps","matplotlib","fontsize","skipna","linestyle","GDAL"

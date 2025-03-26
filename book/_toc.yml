@@ -9,6 +9,7 @@ parts:
     - file: intro/3_open_source_setting
   - caption: Part 2. Background
     chapters:
+    - file: background/background.md
     - file: background/1_context_motivation
     #- file: background/ard_data_tidying
     - file: background/2_data_cubes

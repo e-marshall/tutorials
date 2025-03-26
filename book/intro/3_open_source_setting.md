@@ -24,7 +24,7 @@ In addition to these software libraries, the Pangeo community emphasizes the dev
 
 This book intentionally focuses on publicly available data and open-source software tooling. As discussed in the next [chapter](../background/1_context_motivation.md), this book was developed in the context of the proliferation of publicly-available earth observation datasets. It was also written amidst the increasingly urgent crisis of anthropogenic climate change and the conesequent need for data-driven adaptation, mitigation, and management strategies that are rooted in robust and comprehensive understandings of Earth's climate and biophysical systems. 
 
-Research that follows principles of open, reproducible science is necessary in order to produce rigorous and robust scientific knowledge that can be applied to address the myriad challenges facing society in the 21st century. In data-intensive, computational scientific fields, open-source software and accessible data are essential elements of open scientific workflows. 
+Research that follows principles of open, reproducible science is necessary in order to produce rigorous and robust scientific knowledge that can be applied to address the myriad challenges facing society in the 21st century. In data-intensive, computational scientific fields, open-source software and accessible data are essential elements of open scientific workflows {cite}`gilGeosciencePaperFuture2016,wilkinsonFAIRGuidingPrinciples2016`. 
 (add one or two more sentences on increasing access to scientific research?)
 (add refs)
 =======
