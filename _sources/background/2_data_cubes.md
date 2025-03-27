@@ -34,7 +34,7 @@ To use this data for scientific analysis, we need to construct it into the form 
 ```{figure} imgs/cube.png
 ---
 ---
-Illustration of earth observation time series organized as a 3-d Xarray data cube. Source: Adapted from [Xarray Dev](https://xarray.dev/)
+Illustration of earth observation time series organized as a 3-d Xarray data cube. Source: Adapted from [Xarray Dev](https://xarray.dev/).
 ```
 
 In the context of the Xarray data model, univariate data cubes can be represented by an `xr.DataArray` or a `xr.Dataset` with one `data_variable`. Multivariate data cubes should be represented by `xr.Dataset` objects. The building blocks of `xr.DataArrays` and `xr.Datasets` are dimensions, coordinates, data variables, attributes. We recommend the Xarray [terminology](https://docs.xarray.dev/en/stable/user-guide/terminology.html) for a detailed overview of Xarray objects and common operations.
