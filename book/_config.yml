@@ -70,12 +70,12 @@ sphinx:
     - substitution
 
     myst_substitutions:
-      part1_title: "Background"
+      part1_title: "Part 2: Background"
       part2_title: "ITS_LIVE ice velocity data tutorial"
       #part2_title: "Using Xarray to examine cloud-based glacier surface velocity data"
       part3_title: "Sentinel-1 RTC imagery tutorial"
       #part3_title:  "Sentinel-1 RTC data workflows with xarray"
-      part4_title: "Summary + Conclusion"
+      part4_title: "Part 5: Conclusion"
 
       #tutorial 1 nb titles
       title_its_nb1: "# 3.1 Accessing cloud-hosted ITS_LIVE data"

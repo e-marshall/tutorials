@@ -49,7 +49,7 @@ However, the optimal structure for a given dataset depends on its intended use-c
 A dataset must have a dimensional coordinate variable for each dimension in `ds.dims`. Additional coordinate variables should be added when relevant metadata varies over dimension(s) of the dataset.
 
 #### Relevant examples
-##### Assigning metadata that varies along a given dimension as a non-dimensional coordinate of that dimension.**
+##### Assigning metadata that varies along a given dimension as a non-dimensional coordinate of that dimension.
 
 - Metadata that varies over `(time)` as well as `(time, space)` dimensions should be represented by coordinate arrays. 
 *[Sentinel-1 tutorial, metadata wrangling notebook](../sentinel1/nbs/2_wrangle_metadata.ipynb)*

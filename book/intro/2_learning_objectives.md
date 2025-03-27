@@ -10,13 +10,13 @@ By the end of this book, you will have familiarity with and have seen examples d
 - Aligning and comparing two objects with different spatial resolutions
 
 ## *Working with large datasets*
-- How to read very large local data into memory using Gdal VRT 
+- How to read very large local data into memory using GDAL VRT 
 - Parallelizing local data reads with Xarray `open_mfdataset()`
 - Using dask to parallelize workflows in order to work with larger-than-memory data
 
 ## *Reading and writing data*
 - Reading raster data from cloud object storage
-- Handling geospatial metadata and geospatial operations involving array data using Xarray and Rioxarray
+- Handling geospatial metadata and geospatial operations involving array data using Xarray and RioXarray
 - Understanding STAC metadata specification and how to use it to query and read data from cloud object storage
 - Reading and writing Zarr data cubes with Xarray
 

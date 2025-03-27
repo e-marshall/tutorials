@@ -42,12 +42,15 @@
 }
 
 
-@article{baumann_2017_datacube,
-  title={The datacube manifesto},
-  author={Baumann, Peter},
-  journal={Retrieved from EarthServer website: http://earthserver. eu/tech/datacube-manifesto},
-  year={2017}
+@misc{baumann_2017_datacube,
+  title= {The datacube manifesto},
+  author= {Baumann, Peter},
+  journal= {Retrieved from EarthServer website: http://earthserver. eu/tech/datacube-manifesto},
+  year= {2017},
+  howpublished = "\url{https://www.earthserver.eu/tech/datacube-manifesto/The-Datacube-Manifesto.pdf}",
 }
+
+
 @article{Boulton02012018,
   title = {The Challenges of a Big Data Earth},
   author = {Boulton, Geoffrey},
@@ -143,6 +146,12 @@ abstract = {From the Publisher:A groundbreaking addition to the existing literat
     year = {2021},
     pages = {e2020AV000354},
 }
+@misc{gentemann_2023_OpenScience,
+  author = {Gentemann, C.L.},
+  howpublished = "\url{https://www.nature.com/articles/d41586-023-00019-y}",
+  title = {Why NASA and federal agencies are declaring this the {{Year}} of {{Open}} {{Science}}},
+  year = {2023}
+}
 @article{gilGeosciencePaperFuture2016,
   title = {Toward the {{Geoscience Paper}} of the {{Future}}: {{Best}} Practices for Documenting and Sharing Research from Data to Software to Provenance},
   shorttitle = {Toward the {{Geoscience Paper}} of the {{Future}}},
@@ -215,6 +224,22 @@ abstract = {From the Publisher:A groundbreaking addition to the existing literat
     year = {2017},
     pages = {4--20},
 }
+
+@article{ince_2012_CaseOpenComputer,
+  title = {The Case for Open Computer Programs},
+  author = {Ince, Darrel C. and Hatton, Leslie and {Graham-Cumming}, John},
+  year = {2012},
+  month = feb,
+  journal = {Nature},
+  volume = {482},
+  number = {7386},
+  pages = {485--488},
+  issn = {1476-4687},
+  doi = {10.1038/nature10836},
+  abstract = {Scientific reproducibility now very often depends on the computational method being available to duplicate, so here it is argued that all source code should be freely available.}
+}
+
+
 @INPROCEEDINGS{killough_2019_AfricaRegionalDataCube,
   author={Killough, Brian},
   booktitle={IGARSS 2019 - 2019 IEEE International Geoscience and Remote Sensing Symposium}, 
@@ -281,6 +306,19 @@ abstract = {From the Publisher:A groundbreaking addition to the existing literat
   file = {/home/emmamarshall/Desktop/Zotero/storage/UXZSAALM/Lewis et al. - 2018 - CEOS Analysis Ready Data for Land (CARD4L) Overview.pdf}
 }
 
+@article{lowndesOurPathBetter2017,
+  title = {Our Path to Better Science in Less Time Using Open Data Science Tools},
+  author = {Lowndes, Julia S. Stewart and Best, Benjamin D. and Scarborough, Courtney and Afflerbach, Jamie C. and Frazier, Melanie R. and O'Hara, Casey C. and Jiang, Ning and Halpern, Benjamin S.},
+  year = {2017},
+  month = may,
+  journal = {Nature Ecology \& Evolution},
+  volume = {1},
+  number = {6},
+  pages = {0160},
+  issn = {2397-334X},
+  doi = {10.1038/s41559-017-0160},
+  abstract = {Reproducibility has long been a tenet of science but has been challenging to achieve---we learned this the hard way when our old approaches proved inadequate to efficiently reproduce our own work. Here we describe how several free software tools have fundamentally upgraded our approach to collaborative research, making our entire workflow more transparent and streamlined. By describing specific tools and how we incrementally began using them for the Ocean Health Index project, we hope to encourage others in the scientific community to do the same---so we can all produce better science in less time.}
+}
 
 @article{lund_2020_snowmelt,
   title = {Mapping Snowmelt Progression in the Upper Indus Basin with Synthetic Aperture Radar},
@@ -417,6 +455,31 @@ abstract = {From the Publisher:A groundbreaking addition to the existing literat
   abstract = {{\textexclamdown}p{\textquestiondown}Pangeo Forge is a new community-driven platform that accelerates science by providing high-level recipe frameworks alongside cloud compute infrastructure for extracting data from provider archives, transforming it into analysis-ready, cloud-optimized (ARCO) data stores, and providing a human- and machine-readable catalog for browsing and loading. In abstracting the scientific domain logic of data recipes from cloud infrastructure concerns, Pangeo Forge aims to open a door for a broader community of scientists to participate in ARCO data production. A wholly open-source platform composed of multiple modular components, Pangeo Forge presents a foundation for the practice of reproducible, cloud-native, big-data ocean, weather, and climate science without relying on proprietary or cloud-vendor-specific tooling.{\textexclamdown}/p{\textquestiondown}}
 }
 
+@article{tai_2018_EnhancingClimateChange,
+  title = {Enhancing Climate Change Research with Open Science},
+  author = {Tai, Travis C. and Robinson, James P. W.},
+  year = {2018},
+  journal = {Frontiers in Environmental Science},
+  volume = {6},
+  issn = {2296-665X},
+  doi = {10.3389/fenvs.2018.00115}
+}
+
+@article{tholeOpenClimateScience2024,
+  title = {Open Climate Science Is Brave Climate Science},
+  author = {Th{\"o}le, Lena M and Wegmann, Martin},
+  year = {2024},
+  month = dec,
+  journal = {Environmental Research Letters},
+  volume = {19},
+  number = {12},
+  pages = {122001},
+  issn = {1748-9326},
+  doi = {10.1088/1748-9326/ad893f},
+  urldate = {2025-03-27},
+  langid = {english},
+}
+
 
 @article{truckenbrodt_2019_Sentinel1ARD,
   title = {Towards {{Sentinel-1 SAR Analysis-Ready Data}}: {{A Best Practices Assessment}} on {{Preparing Backscatter Data}} for the {{Cube}}},
@@ -434,7 +497,7 @@ abstract = {From the Publisher:A groundbreaking addition to the existing literat
   abstract = {This study aims at assessing the feasibility of automatically producing analysis-ready radiometrically terrain-corrected (RTC) Synthetic Aperture Radar (SAR) gamma nought backscatter data for ingestion into a data cube for use in a large spatio-temporal data environment. As such, this study investigates the analysis readiness of different openly available digital elevation models (DEMs) and the capability of the software solutions SNAP and GAMMA in terms of overall usability as well as backscatter data quality. To achieve this, the study builds on the Python library pyroSAR for providing the workflow implementation test bed and provides a Jupyter notebook for transparency and future reproducibility of performed analyses. Two test sites were selected, over the Alps and Fiji, to be able to assess regional differences and support the establishment of the Swiss and Common Sensing Open Data cubes respectively.},
   copyright = {https://creativecommons.org/licenses/by/4.0/},
   langid = {english},
-  file = {/home/emmamarshall/Desktop/Zotero/storage/Q7XR23EU/Truckenbrodt et al. - 2019 - Towards Sentinel-1 SAR Analysis-Ready Data A Best Practices Assessment on Preparing Backscatter Dat.pdf}
+
 }
 
 

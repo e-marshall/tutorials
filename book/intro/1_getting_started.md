@@ -4,7 +4,7 @@
 
 Our goal is for this book to be helpful to users across a range of backgrounds and with different needs and interests. It is designed to be a comprehensive walk-through of scientific workflows using earth observation data in Python. At the same time, we recognize some users may be interested in following individual segments and a more modular structure; follow the book from start to finish or check out the individual sections that interest you. Check out the [tutorials overview](../background/3_tutorials_overview.md) page to see which topics are covered in different notebooks.
 
-For an introduction and background on data cubes and cloud-optimized geoscience, head to the [background](../background/background_root.md) section; otherwise, head straight to the tutorials.
+For an introduction and background on data cubes and cloud-optimized geoscience, head to the [background](../background/background.md) section; otherwise, head straight to the tutorials.
 
 :::{admonition} Running tutorial notebooks on your own
 Head to the [software](../background/5_software.md) page for detailed instructions on how to get started running the tutorial notebooks on your own.
@@ -23,7 +23,7 @@ The datasets used in these tutorials can be complicated to work with and require
 
 ## *Who is this book for?*
 
-This book is for anyone interested in working with earth observation data in Python! We try to provide relevant domain and background information where necessary, and we direct the reader to helpful resources that provide more robust discussions of important concepts when appropriate. 
+This book is for anyone interested in working with earth observation data in Python. We try to provide relevant domain and background information where necessary, and we direct the reader to helpful resources that provide more robust discussions of important concepts when appropriate. 
 
 We provide all the resources necessary to work through the Jupyter Notebooks in these tutorials on your own machine. Some experience working with Python will be helpful. However, the tutorials are designed to be beginner-friendly.
 
