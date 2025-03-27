@@ -124,7 +124,7 @@ sphinx:
       a_its_nb2: "A. Compare approaches for reading larger than memory data"
       a1_its_nb2: "1) `chunks = 'auto'`"
       a2_its_nb2: "2) `chunks = {}`"
-      a3_its_nb2: "3) An out-of-order time dimensions"
+      a3_its_nb2: "3) An out-of-order time dimension"
       a4_its_nb2: "4) Read the dataset without Dask"
       b_its_nb2: "B. Organize data once it's in memory"
       b1_its_nb2: "1) Arrange dataset in chronological order"
