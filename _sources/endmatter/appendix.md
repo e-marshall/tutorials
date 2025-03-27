@@ -5,14 +5,14 @@ While developing this book, we encountered different examples that didn't always
 ## 1. Troubleshooting visualizations with different geometry types[$\tiny \nearrow$](nbs/1_handle_mult_geom_types.ipynb)
 *From the ITS_LIVE [tutorial](../itslive/itslive_intro.md).*  
 
-In the first tutorial, while making an [interactive visualization of vector dataframes](../itslive_nbs/3_combining_raster_vector_data.ipynb), we encountered a warning. This notebook includes a step-by-step demonstration of troubleshooting this warning, identifying its source and resolving it. 
+In the first tutorial, while making an [interactive visualization of vector dataframes](../itslive/nbs//3_combining_raster_vector_data.ipynb), we encountered a warning. This notebook includes a step-by-step demonstration of troubleshooting this warning, identifying its source and resolving it. 
 
 ## 2. Reading multiple files with `xr.open_mfdataset()`[$\tiny \nearrow$](nbs/2_read_w_xropen_mfdataset.ipynb)
 *From the Sentinel-1 RTC [tutorial](../sentinel1/s1_intro.md).*  
 
 Xarray's `xr.open_mfdataset()` [function](https://docs.xarray.dev/en/stable/generated/xarray.open_mfdataset.html) allows the user to read in and combine multiple files at once to produce a single `xr.DataArray` object. This approach was explore when developing the [Read ASF-processed Sentinel-1 RTC data notebook](../sentinel1/nbs/1_read_asf_data.ipynb). However, `xr.open_mfdataset() didn't work well for this purpose because, while the stack of raster files used in this example covers a common area of interest, it includes several different spatial footprints. This creates problems when specifying a chunking strategy. 
 
-`xr.open_mfdataset()` takes a 'preprocess' argument that allows the user to write a function to specify how each raster file should be read so that the structure and metadata of the returned object matches the desired format. However, because it applies the same preprocessing steps to each file, the chunking strategyy is defined off of the first file in the stack. With files that cover different spatial footprints, different chunking strategies will be required. The processing works fine for lazy steps, but a memory 'blow-up' occurs at computation time. 
+`xr.open_mfdataset()` takes a 'preprocess' argument that allows the user to write a function to specify how each raster file should be read so that the structure and metadata of the returned object matches the desired format. However, because it applies the same preprocessing steps to each file, the chunking strategy is defined off of the first file in the stack. With files that cover different spatial footprints, different chunking strategies will be required. The processing works fine for lazy steps, but a memory 'blow-up' occurs at computation time. 
 
 For this reason, `xr.open_mfdataset()` was not an appropriate tool for this workflow. We kept this example in the book as an appendix item in case it is useful for users who would like to see an example of how to write a `preprocess` argument and how to call `xr.open_mfdataset()`. 
 

@@ -2,7 +2,7 @@
 
 ::::{tab-set}
 :::{tab-item} Overview
-This tutorial focuses on data from Sentinel-1, a synthetic aperture radar (SAR) dataset containing imagery collected at C-band. Specifically, we are looking at Sentinel-1 Radiometric Terrain Corrected (RTC) imagery (for more detail on this, see [tutorial data](tutorial_data.md)). We demonstrate how to access and work with two Sentinel-1 RTC datasets as well as how to set up and perform an initial comparison between the two and time series analysis of Sentinel-1 backscatter variability. These notebooks cover:  
+This tutorial focuses on data from Sentinel-1, a synthetic aperture radar (SAR) dataset containing imagery collected at C-band. Specifically, we are looking at Sentinel-1 Radiometric Terrain Corrected (RTC) imagery (for more detail on this, see [tutorial data](../background/4_tutorial_data.md)). We demonstrate how to access and work with two Sentinel-1 RTC datasets as well as how to set up and perform an initial comparison between the two and time series analysis of Sentinel-1 backscatter variability. These notebooks cover:  
 
 **[1) Reading locally stored data](nbs/1_read_asf_data.ipynb)**
     - Strategies for reading large volumes of data stored locally into memory using [GDAL VRT objects](https://gdal.org/en/stable/drivers/raster/vrt.html).
@@ -40,7 +40,7 @@ This tutorial works with two datasets processed from the same source satellite i
 :::
 :::{tab-item} Software
 
-For instructions on setting up a computing environment needed for this tutorial, see [Software](../intro/software.md).
+For instructions on setting up a computing environment needed for this tutorial, see [Software](../background/5_software.md).
 
 :::
 :::{tab-item} Data

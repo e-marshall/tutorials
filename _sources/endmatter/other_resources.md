@@ -17,7 +17,7 @@ Throughout this book, we reference a number of resources on different topics. Th
 - [Dask Cookbook - Project Pythia](https://projectpythia.org/dask-cookbook/README.html)
 ## Geospatial data science, data formats, and metadata
 - [Introduction to Earth and Environmental Data Science](https://earth-env-data-science.github.io/intro.html)
-- [Geocomputation wtih Python](https://py.geocompx.org/)
+- [Geocomputation with Python](https://py.geocompx.org/)
 - [Datacubes - openEO](https://openeo.org/documentation/1.0/datacubes.html#what-are-datacubes)
 - [Data Formats - NASA Earth Observation Data Basics](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/data-formats)
 - [Cloud Computing - NASA Earth Observation Data Basics](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/cloud-computing)

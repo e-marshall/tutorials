@@ -1,0 +1,720 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2.4 Data used in tutorials &#8212; Cloud-native geospatial datacube workflows with open-source tools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'background/4_tutorial_data';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.5 Software and computing environment" href="5_software.html" />
+    <link rel="prev" title="2.3 Tutorials overview" href="3_tutorials_overview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">🚧 March 2025 - This book is under construction! 🚧
+</div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../introduction.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Cloud-native geospatial datacube workflows with open-source tools</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 1. Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/1_getting_started.html">1.1 Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/2_learning_objectives.html">1.2 Learning objectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/3_open_source_setting.html">1.3 Open source setting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 2. Background</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_context_motivation.html">2.1 Context &amp; Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_data_cubes.html">2.2 Data cubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_tutorials_overview.html">2.3 Tutorials overview</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2.4 Data used in tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_software.html">2.5 Software and computing environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_relevant_concepts.html">2.6 Relevant concepts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 3. ITS_LIVE Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../itslive/itslive_intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../itslive/nbs/1_accessing_itslive_s3_data.html">3.1 Accessing cloud-hosted ITS_LIVE data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../itslive/nbs/2_larger_than_memory_data.html">3.2 Working with larger than memory data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../itslive/nbs/3_combining_raster_vector_data.html">3.3 Handling raster and vector data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../itslive/nbs/4_exploratory_data_analysis_single.html">3.4 Exploratory data analysis of a single glacier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../itslive/nbs/5_exploratory_data_analysis_group.html">3.5 Exploratory data analysis of multiple glaciers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 4. Sentinel-1 RTC Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sentinel1/s1_intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sentinel1/nbs/1_read_asf_data.html">4.1 Read Sentinel-1 data processed by ASF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sentinel1/nbs/2_wrangle_metadata.html">4.2 Wrangle metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sentinel1/nbs/3_asf_exploratory_analysis.html">4.3 Exploratory analysis of ASF S1 imagery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sentinel1/nbs/4_read_pc_data.html">4.4 Read Sentinel-1 RTC data from Microsoft Planetary Computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sentinel1/nbs/5_comparing_s1_rtc_datasets.html">4.5 Comparing Sentinel-1 RTC datasets</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part 5. Conclusion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/wrapping_up.html">5.1 Wrapping up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/summary.html">5.2 Tutorials summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/datacubes_revisited.html">5.3 Data Cubes Revisited</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional material</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/other_resources.html">Other resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/about_this_book.html">About this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endmatter/references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows/issues/new?title=Issue%20on%20page%20%2Fbackground/4_tutorial_data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/background/4_tutorial_data.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2.4 Data used in tutorials</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-mission-time-series-of-land-ice-velocity-and-elevation-its-live"><em>Inter-mission Time Series of Land Ice Velocity and Elevation (ITS_LIVE)</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentinel-1-radiometric-terrain-corrected-rtc-imagery"><em>Sentinel-1 Radiometric Terrain Corrected (RTC) imagery</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentinel-1-rtc-datasets">Sentinel-1 RTC datasets</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-data"><em>Vector data</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#randolph-glacier-inventory-version-7-rgi7-glacier-outlines">Randolph Glacier Inventory version 7 (RGI7) glacier outlines</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-used-in-tutorials">
+<h1>2.4 Data used in tutorials<a class="headerlink" href="#data-used-in-tutorials" title="Permalink to this heading">#</a></h1>
+<p>We use a many different datasets throughout these tutorials. While each tutorial is focused on a different raster time series (ITS_LIVE ice velocity data and Sentinel-1 imagery), we also use vector data to represent points of interest.</p>
+<p>Most of the examples in this book use data accessed programmatically from cloud-object storage. We make subset of the data available in this books Github repository to remove the need for computationally-intensive operations in the tutorials. In one example, working with Sentinel-1 data processed by Alaska Satellite Facility, we start with data downloaded locally. Users who would like to complete this processing step on their own may do so (and access the data <a class="reference external" href="https://zenodo.org/records/15036782">here</a>), but a smaller subset of this data is stored in the repository.</p>
+<p>Here is a broad overview the data included in this tutorial, including how it is collected, it’s potential scientific applications, and how and where it is stored and accessed in these tutorials.</p>
+<section id="inter-mission-time-series-of-land-ice-velocity-and-elevation-its-live">
+<h2><em>Inter-mission Time Series of Land Ice Velocity and Elevation (ITS_LIVE)</em><a class="headerlink" href="#inter-mission-time-series-of-land-ice-velocity-and-elevation-its-live" title="Permalink to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>Dataset name</p></th>
+<th class="text-left head"><p>Produced by</p></th>
+<th class="text-left head"><p>Storage format</p></th>
+<th class="text-left head"><p>Storage location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>ITS_LIVE</p></td>
+<td class="text-left"><p><a class="reference external" href="https://its-live.jpl.nasa.gov/">ITS_LIVE project, NASA JPL</a></p></td>
+<td class="text-left"><p>Zarr</p></td>
+<td class="text-left"><p>AWS S3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>ITS_LIVE is a dataset of ice velocity observations derived from applying a feature tracking algorithm to pairs of satellite imagery. Ice velocity refers to the down-slope movement of glaciers and ice sheets <span id="id1">[<a class="reference internal" href="../endmatter/references.html#id39" title="M. Fahnestock Gardner, A. and T. Scambos. Measures its_live landsat image-pair glacier and ice sheet surface velocities, version 1. 2022. URL: https://nsidc.org/data/NSIDC-0775/versions/1, doi:10.5067/IMR9D3PEI28U.">13</a>]</span>. Because glaciers and ice sheets are dynamic elements of our climate system, they lose or gain mass in response to changes in climate conditions such as warmer temperatures or increased snowfall, measuring variability in the speed of ice flow can help scientists better understand trends in glacier dynamics and interactions between glaciers and climate.</p>
+<p>Part of what is so exciting about ITS_LIVE is that it combines image pairs from a number of satellites, including imagery from optical (Landsat 4,5,7,8,9 &amp; Sentinel-2) and synthetic aperture radar (Sentinel-1) sensors. For this reason, ITS_LIVE time series data can be quite large. Another exciting aspect of the ITS_LIVE dataset is that the image pair time series data is made available as Zarr data cubes stored in cloud object storage on Amazon Web Services (AWS), meaning that users don’t need to download massive files to start working with the data!</p>
+<p>ITS_LIVE produces a number of data products in addition to the image pair time series that we use in this tutorial, and provides different options to access the data. Check them out <a class="reference external" href="https://its-live.jpl.nasa.gov/#access">here</a>.</p>
+<p><strong>Documentation &amp; References</strong>:<br />
+Be sure to also check out the ITS_LIVE image pair velocities <a class="reference external" href="http://its-live-data.jpl.nasa.gov.s3.amazonaws.com/documentation/ITS_LIVE-Landsat-Scene-Pair-Velocities-v01.pdf">documentation</a> and papers on the ITS_LIVE processing methodology:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.mdpi.com/2072-4292/13/4/749">Autonomous Repeat Image Feature Tracking (autoRIFT) and its application for tracking ice displacement</a>. <span id="id2">[<a class="reference internal" href="../endmatter/references.html#id20" title="Yang Lei, Alex Gardner, and Piyush Agram. Autonomous Repeat Image Feature Tracking (autoRIFT) and Its Application for Tracking Ice Displacement. Remote Sensing, 13(4):749, January 2021. doi:10.3390/rs13040749.">30</a>]</span></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.5194/essd-14-5111-2022">Processing methodology for the ITS_LIVE Sentinel-1 ice velocity products</a>. <span id="id3">[<a class="reference internal" href="../endmatter/references.html#id21" title="Yang Lei, Alex S. Gardner, and Piyush Agram. Processing methodology for the ITS_LIVE Sentinel-1 ice velocity products. Earth System Science Data, 14(11):5111–5137, November 2022. doi:10.5194/essd-14-5111-2022.">31</a>]</span></p></li>
+</ul>
+<p><strong>Further reading on ice velocities</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.jpl.nasa.gov/news/nasausgs-provide-global-view-of-speed-of-ice/">NASA/USGS Provide Global View of Speed of Ice</a></p></li>
+</ul>
+</section>
+<section id="sentinel-1-radiometric-terrain-corrected-rtc-imagery">
+<h2><em>Sentinel-1 Radiometric Terrain Corrected (RTC) imagery</em><a class="headerlink" href="#sentinel-1-radiometric-terrain-corrected-rtc-imagery" title="Permalink to this heading">#</a></h2>
+<p>Part 2 focuses on Sentinel-1 Radiometric Terrain Corrected imagery. Sentinel-1 is a dataset of synthetic aperture radar (SAR) imagery collected from sensors located on satellites operated by the Sentinel satellites operated by the European Space Agency (ESA). SAR data is exciting because doesn’t require solar illumination like passive optical systems and, at the wavelength where Sentinel-1 imagery is collected, it is minimally impacted by atmospheric water vapor, meaning that Sentinel-1 can acquire clear images of Earth’s surface even during cloudy and nighttime conditions. SAR imagery has a wide range of scientific applications including monitoring land surface deformation related to seismic activities, tracking flooding extents following extreme weather events, and mapping deforestation and characterizing biomass.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For an in-depth example of how SAR backscatter data can be used to map flooding extent, check out this <a class="reference external" href="https://projectpythia.org/eo-datascience-cookbook/notebooks/tutorials/floodmapping.html">notebook</a> in the <a class="reference external" href="https://projectpythia.org/eo-datascience-cookbook/README.html">Project Pythia Earth Observation Data Science Cookbook</a>.</p>
+</div>
+<p>Because SAR imagery is collected from a side-looking sensor, it can contain distortions related to the viewing geometry of the sensor and the surface topography of the area being imaged. This tutorial focuses on RTC imagery, which is SAR data that has undergone processing to remove the above-mentioned distortions.</p>
+<p>Multiple algorithms perform radiometric terrain correction, and it is important to understand the components of whichever dataset you use and their relative benefits and tradeoffs. This book will demonstrate working with two different (but similar) datasets of Sentinel-1 RTC imagery: one produced by Alaska Satellite Facility and one produced by Microsoft Planetary Computer, shown below. Processing of SAR imagery can be very computationally intensive, both of these options leverage cloud-hosted computational resources to make processed SAR imagery available to users, reducing the need for individual users to perform complicated, resource and time-intensive processing.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you are unfamiliar with the principles of synthetic aperture radar (SAR) imaging and processing, we <em>strongly</em> recommend pausing this tutorial and checking out some of the very thorough and detailed SAR resources that are publicly available such as the <a class="reference external" href="https://gis1.servirglobal.net/TrainingMaterials/SAR/SARHB_FullRes.pdf">SAR Handbook</a> by NASA SERVIR (specifically Ch.2), NASA EarthData Earth Observation Data Basics (<a class="reference external" href="https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/sar">SAR</a>, <a class="reference external" href="https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/sar/image-interpretation">SAR Image Interpretation</a>, <a class="reference external" href="https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/types-sar-products">Types of SAR Products</a>), ASF’s <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/introduction_to_sar/">Introduction to SAR</a> and <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/rtc_product_guide/">ASF Sentinel-1 RTC Product Guide</a>.</p>
+<p>We provide a very brief overview of RTC processing below but it is not intended to replace the aforementioned resources.</p>
+</div>
+<figure class="margin-caption align-default" id="sar-diagram">
+<a class="reference internal image-reference" href="../_images/SARticle_first-fig_redone-06.jpg"><img alt="../_images/SARticle_first-fig_redone-06.jpg" src="../_images/SARticle_first-fig_redone-06.jpg" style="height: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Schematic of observation geometry used to form a SAR image.<br />
+Credit: <a class="reference external" href="https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/sar">NASA EarthData / NASA SAR Handbook</a>.</span><a class="headerlink" href="#sar-diagram" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>SAR data is collected in slant range, which is the viewing geometry of the side-looking sensor and has two dimensions: range and azimuth. These are the along-track and across-track directions of the imaged swath. As data is transformed from radar coordinates (slant range) to geocoded coordinates, the spaces represented by individual pixels in the two coordinate systems do not always align, and distortions can arise due to certain viewing angle geometries and surface topography features. In addition, radiometric distortion can arise due to scattering responses from multiple scattering features within a single pixel. Radiometric terrain correction is a processing step that accounts for these distortions and the transformation from radar to geocoded coordinates that prepares SAR data for analysis.</p>
+<section id="sentinel-1-rtc-datasets">
+<h3>Sentinel-1 RTC datasets<a class="headerlink" href="#sentinel-1-rtc-datasets" title="Permalink to this heading">#</a></h3>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Alaska Satellite Facility</label><div class="sd-tab-content docutils">
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>Dataset name</p></th>
+<th class="text-left head"><p>Producer</p></th>
+<th class="text-left head"><p>Storage format</p></th>
+<th class="text-left head"><p>Storage location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>Sentinel-1 RTC</p></td>
+<td class="text-left"><p><a class="reference external" href="https://asf.alaska.edu/">Alaska Satellite Facility</a></p></td>
+<td class="text-left"><p>COG (locally as GeoTIFF)</p></td>
+<td class="text-left"><p>Local</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We use Sentinel-1 RTC imagery processed by Alaska Satellite Facility’s Hybrid Pluggable Processing Pipeline (<strong>HyP3</strong>) <span id="id4">[<a class="reference internal" href="../endmatter/references.html#id42" title="Kirk Hogenson, Heidi Kristenson, Joseph Kennedy, Andrew Johnston, James Rine, Thomas Logan, Jiang Zhu, Forrest Williams, Jake Herrmann, Jacquelyn Smale, and Franz Meyer. Hybrid Pluggable Processing Pipeline (HyP3): A cloud-native infrastructure for generic processing of SAR data. Zenodo, April 2024. doi:10.5281/zenodo.10903242.">23</a>]</span>. This is a processing platform that allows users to perform processing steps necessary for analysis-ready SAR data through ASF.</p>
+<p>From the <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/">ASF HyP3 Documentation</a>:
+HyP3 is a service for processing Synthetic Aperture Radar (SAR) imagery that addresses many common issues for users of SAR data:</p>
+<ul class="simple">
+<li><p>Most SAR datasets require at least some processing to remove distortions before they are analysis-ready</p></li>
+<li><p>SAR processing is computing-intensive</p></li>
+<li><p>Software for SAR processing is complicated to use and/or prohibitively expensive</p></li>
+<li><p>Producing analysis-ready SAR data has a steep learning curve that acts as a barrier to entry</p></li>
+</ul>
+<p>HyP3 solves these problems by providing a free service where people can request SAR processing on-demand. These processing requests are picked up by automated systems, which handle the complexity of SAR processing on behalf of the user. HyP3 doesn’t require users to have a lot of knowledge of SAR processing before getting started; users only need to submit the input data and set a few optional parameters if desired. With HyP3, analysis-ready products are just a few clicks away.</p>
+<p>The data in this tutorial was processed using HyP3 <span id="id5">[<a class="reference internal" href="../endmatter/references.html#id43" title="Andrew Johnston, Joseph H Kennedy, Heidi Kristenson, cirrusasf, Tom Logan, Kirk Hogenson, James Rine, Jacquelyn Smale, Jake Herrmann, ASF APD/Tools team bot, Rudi Gens, Eric Lundell, and ninneman. ASFHyP3/hyp3-gamma: HyP3 GAMMA v5.4.1. Zenodo, June 2022. doi:10.5281/zenodo.6629125.">26</a>]</span> and then published via Zenodo <a class="reference external" href="https://zenodo.org/records/7236413#.Y1rNi37MJ-0">here</a>. For more on how to use HyP3 for your own data processing needs, check out their <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/tutorials/">tutorials page</a>.</p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Microsoft Planetary Computer</label><div class="sd-tab-content docutils">
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>Dataset name</p></th>
+<th class="text-left head"><p>Producer</p></th>
+<th class="text-left head"><p>Storage format</p></th>
+<th class="text-left head"><p>Storage location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>Sentinel-1 RTC</p></td>
+<td class="text-left"><p><a class="reference external" href="https://planetarycomputer.microsoft.com/">Microsoft Planetary Computer</a></p></td>
+<td class="text-left"><p>Cloud-optimized GeoTIFF (COG)</p></td>
+<td class="text-left"><p>Microsoft Azure</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In contrast to ASF’s HyP3 SAR data processing service, Microsoft Planetary Computer hosts an already-processed global Sentinel-1 RTC dataset, which we will use in this tutorial. Read more about Planetary Computer’s Sentinel-1 RTC product <a class="reference external" href="https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc">here</a>.</p>
+</div>
+</div>
+<p>Further reading on SAR data and Sentinel-1:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://sentinel.esa.int/web/sentinel/user-guides/sentinel-1-sar/overview">ESA Sentinel-1 documentation</a></p></li>
+<li><p><a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/introduction_to_sar/">ASF Introduction to SAR</a></p></li>
+<li><p><a class="reference external" href="https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/sar#toc-resources">NASA Earth Observation Data Basics - SAR</a></p></li>
+<li><p><a class="reference external" href="https://radar.community.uaf.edu/">University of Alaska Fairbanks - Microwave Remote Sensing</a></p></li>
+<li><p>Mathematical tutorial on SAR <span id="id6">[<a class="reference internal" href="../endmatter/references.html#id8" title="Margaret Cheney. Cheney, m.: a mathematical tutorial on synthetic aperture radar. siam rev. 43(2), 301-312. SIAM Review, 43:, 03 2001. doi:10.1137/S0036144500368859.">8</a>]</span>, publicly available via NASA <a class="reference external" href="https://www.earthdata.nasa.gov/s3fs-public/2024-06/sar%20mathematical%20tutorial.pdf">EarthData</a></p></li>
+</ul>
+</section>
+</section>
+<section id="vector-data">
+<h2><em>Vector data</em><a class="headerlink" href="#vector-data" title="Permalink to this heading">#</a></h2>
+<section id="randolph-glacier-inventory-version-7-rgi7-glacier-outlines">
+<h3>Randolph Glacier Inventory version 7 (RGI7) glacier outlines<a class="headerlink" href="#randolph-glacier-inventory-version-7-rgi7-glacier-outlines" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>Dataset name</p></th>
+<th class="text-left head"><p>Producer</p></th>
+<th class="text-left head"><p>Storage format</p></th>
+<th class="text-left head"><p>Storage location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>Randolph Glacier Inventory</p></td>
+<td class="text-left"><p><a class="reference external" href="https://www.glims.org/RGI/">RGI Consortium</a></p></td>
+<td class="text-left"><p>Shapefile</p></td>
+<td class="text-left"><p>NSIDC</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The Randolph Glacier Inventory (RGI) is a community-driven public dataset that provides outlines and auxiliary information such as area, length and aspect of glaciers across the world <span id="id7">[<a class="reference internal" href="../endmatter/references.html#id40" title=". RGI Consortium. Randolph glacier inventory - a dataset of global glacier outlines, version 7. 2023. URL: https://nsidc.org/data/NSIDC-0770/versions/7, doi:10.5067/F6JMOVY5NAVZ.">42</a>]</span>. RGI is a subset of the Global Land Ice Measurements from Space (<a class="reference external" href="https://www.glims.org/">GLIMS</a>) initiative and RGI data is hosted by the National Snow and Ice Data Center (<a class="reference external" href="https://nsidc.org/data/nsidc-0770/versions/7">NSIDC</a>). Read more about the RGI project <a class="reference external" href="http://www.glims.org/rgi_user_guide/01_introduction.html">here</a>.</p>
+<div class="admonition-rgi-data-used-in-this-tutorial admonition">
+<p class="admonition-title">RGI data used in this tutorial</p>
+<p>The link above brings you to the NSIDC data access point for all RGI data. The examples in this tutorial focus areas of interest in High Mountain Asia. We have made available the subset of RGI data covering only these regions that is used in the tutorials in case users would like to use that instead. It is stored as a <a class="reference external" href="https://geoparquet.org/">GeoParquet</a> file in the repository associated with these tutorials.</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./background"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3_tutorials_overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2.3 Tutorials overview</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="5_software.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2.5 Software and computing environment</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-mission-time-series-of-land-ice-velocity-and-elevation-its-live"><em>Inter-mission Time Series of Land Ice Velocity and Elevation (ITS_LIVE)</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentinel-1-radiometric-terrain-corrected-rtc-imagery"><em>Sentinel-1 Radiometric Terrain Corrected (RTC) imagery</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentinel-1-rtc-datasets">Sentinel-1 RTC datasets</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-data"><em>Vector data</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#randolph-glacier-inventory-version-7-rgi7-glacier-outlines">Randolph Glacier Inventory version 7 (RGI7) glacier outlines</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Emma Marshall
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
