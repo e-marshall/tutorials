@@ -412,7 +412,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidying-principles-for-xarray">‘Tidying principles’ for Xarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidying-guidelines-for-xarray">Tidying guidelines for Xarray</a></li>
 </ul>
             </nav>
         </div>
@@ -436,81 +436,256 @@ document.write(`
 <strong><a class="reference external" href="https://docs.xarray.dev/en/latest/user-guide/terminology.html#term-Variable">Data variables</a></strong> - Scalar values that occupy the grid cells implied by coordinate arrays. The physical observable(s) that are the focus of the dataset.<br />
 <strong>Attributes</strong> - Metadata that can be assigned to a given <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> or <code class="docutils literal notranslate"><span class="pre">xr.DataArray</span></code> that is <em><strong>static</strong></em> along that object’s dimensions.</p>
 </div>
-<section id="tidying-principles-for-xarray">
-<h2>‘Tidying principles’ for Xarray<a class="headerlink" href="#tidying-principles-for-xarray" title="Permalink to this heading">#</a></h2>
-<p>At the beginning of the book, we also discussed ‘tidy data’ as its defined for tabular data. Now that we’ve worked through a number of examples preparing n-d array data for analysis, we can enumerate a few best practices that apply in most cases when tidying data with Xarray. The guiding question when thinking about <em>how</em> to tidy data is always:</p>
-<p><em><strong>What format will simplify subsequent analysis with this data?</strong></em></p>
-<p>We’ll consider what this means for different types of Xarray objects based on the examples encountered in the tutorials.</p>
+<hr class="docutils" />
+<section id="tidying-guidelines-for-xarray">
+<h2>Tidying guidelines for Xarray<a class="headerlink" href="#tidying-guidelines-for-xarray" title="Permalink to this heading">#</a></h2>
+<p>At the beginning of the book, we also discussed ‘tidy data’ as its defined for tabular data. Now that we’ve worked through a number of examples preparing n-dimensional array data for analysis, we can enumerate a few best practices that apply in most cases when tidying data with Xarray. The guiding question when thinking about <em>how</em> to tidy data is always:</p>
+<p><strong>How can this data be structured to simplify subsequent analysis?</strong></p>
+<p>For different types of Xarray objects, we can use the following guidelines:</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-0">
-Dimensions</label><div class="sd-tab-content docutils">
-<p>Almost all data cubes have the same core structure of <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">time)</span></code> or <code class="docutils literal notranslate"><span class="pre">(longitude,</span> <span class="pre">latitude,</span> <span class="pre">time)</span></code> dimensions.</p>
-<p>However, the optimal structure for a given dataset depends on its intended use-case, and there is considerable room to reshape data cubes to fit specific analytical needs. In these situations, a guiding question could be:</p>
-<p><em>What shape of a given dataset will help answer the question(s) I have about the data?</em></p>
+Variables</label><div class="sd-tab-content docutils">
+<h3 class="rubric" id="data-variables">Data variables</h3>
+<p>These are the measurements or estimates of your dataset. If there are multiple independent measurements in the dataset, they should be stored as <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Variable.html#xarray.Variable">xr.Variable</a> objects of a <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code>, if the dataset is univariate, use a <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html"><code class="docutils literal notranslate"><span class="pre">xr.DataArray</span></code></a></p>
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>Guiding Question</strong></p></td>
+<td class="text-left"><p>What physical observable(s) is my dataset measuring?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <h4 class="rubric" id="relevant-examples">Relevant examples</h4>
-<h5 class="rubric" id="expanding-dimensions-v-adding-variables">Expanding dimensions v. adding variables.</h5>
-<ul class="simple">
-<li><p>Data variables should be independent of one another.</p></li>
-<li><p>Formatting the Sentinel-1 backscatter cube to have <code class="docutils literal notranslate"><span class="pre">vv</span></code> and <code class="docutils literal notranslate"><span class="pre">vh</span></code> data variables versus <code class="docutils literal notranslate"><span class="pre">band</span></code> dimension with the following coordinate array: <code class="docutils literal notranslate"><span class="pre">('band',</span> <span class="pre">['vh','vv'])</span></code>.</p>
-<ul>
-<li><p>If you are only interested in a single polarization of the dataset or looking at backscatter from different polarizations independent of one another, treating backscatter from each polarization as a  <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">variable</span></code> is suitable and maybe even optimal; it can be simpler to perform operations on a single variable rather than an entire dimension.</p></li>
-<li><p>If you are interested in examining backscatter across different polarizations, the different polarizations are most appropriately represented as elements of a dimension.
-<em><a class="reference internal" href="../sentinel1/nbs/3_asf_exploratory_analysis.html"><span class="std std-doc">Sentinel-1 tutorial, notebook 3</span></a></em></p></li>
-</ul>
-</li>
-</ul>
-<h5 class="rubric" id="the-dimensions-of-a-dataset-depend-on-what-you-want-to-do-with-it">The dimensions of a dataset depend on what you want to do with it</h5>
-<ul class="simple">
-<li><p>Adding <code class="docutils literal notranslate"><span class="pre">source</span></code> dimension when comparing ASF and PC backscatter datasets.</p>
-<ul>
-<li><p>In this example, the goal of our analysis changes from observing backscatter to observing how measurements of backscatter from two processing pipelines differ from one another. This implies a different shape of the data that is relevant to this question; the appropriate dimensions change from <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">time,</span> <span class="pre">band)</span></code> to <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">time,</span> <span class="pre">band,</span> <span class="pre">source)</span></code>. Adding a source dimension let’s us index the combined dataset by ‘source’ and compare the two ‘source’ elements on a common grid and scale.
-<em><a class="reference internal" href="../sentinel1/nbs/5_comparing_s1_rtc_datasets.html"><span class="std std-doc">Sentinel-1 tutorial, notebook 4</span></a></em></p></li>
-</ul>
-</li>
-</ul>
+<p>In <a class="reference internal" href="../sentinel1/nbs/3_asf_exploratory_analysis.html"><span class="std std-doc">Sentinel-1, notebook 3 - Exploratory analysis of ASF data</span></a>, we saw examples of treating multiple backscatter polarizations as data variables versus a single variable along a <code class="docutils literal notranslate"><span class="pre">band</span></code> dimension.</p>
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>Takeaway</strong></p></td>
+<td class="text-left"><p>Data variables should be independent of one another.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-1">
-Coordinate variables</label><div class="sd-tab-content docutils">
-<p>A dataset must have a dimensional coordinate variable for each dimension in <code class="docutils literal notranslate"><span class="pre">ds.dims</span></code>. Additional coordinate variables should be added when relevant metadata varies over dimension(s) of the dataset.</p>
+Dimensions</label><div class="sd-tab-content docutils">
+<h3 class="rubric" id="dimensions">Dimensions</h3>
+<p>Many earth observation data cubes have the same core structure of <code class="docutils literal notranslate"><span class="pre">(x,y,time)</span></code> or <code class="docutils literal notranslate"><span class="pre">(longitude,</span> <span class="pre">latitude,</span> <span class="pre">time)</span></code> dimensions. However, the optimal structure for a given dataset depends on its intended use-case, and there is considerable room to reshape data cubes to fit specific analytical needs.<br />
+In these situations, a guiding question could be:</p>
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>Guiding Question</strong></p></td>
+<td class="text-left"><p>What ‘shape’ will help me answer the questions I have about this dataset?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <h4 class="rubric" id="id1">Relevant examples</h4>
-<h5 class="rubric" id="assigning-metadata-that-varies-along-a-given-dimension-as-a-non-dimensional-coordinate-of-that-dimension">Assigning metadata that varies along a given dimension as a non-dimensional coordinate of that dimension.</h5>
+<h5 class="rubric" id="expanding-dimensions-v-adding-variables">1. Expanding dimensions v. adding variables</h5>
 <ul class="simple">
-<li><p>Metadata that varies over <code class="docutils literal notranslate"><span class="pre">(time)</span></code> as well as <code class="docutils literal notranslate"><span class="pre">(time,</span> <span class="pre">space)</span></code> dimensions should be represented by coordinate arrays.
-<em><a class="reference internal" href="../sentinel1/nbs/2_wrangle_metadata.html"><span class="std std-doc">Sentinel-1 tutorial, metadata wrangling notebook</span></a></em></p></li>
+<li><p>Formatting the Sentinel-1 backscatter cube to have <code class="docutils literal notranslate"><span class="pre">vv</span></code> and <code class="docutils literal notranslate"><span class="pre">vh</span></code> data variables versus <code class="docutils literal notranslate"><span class="pre">band</span></code> dimension with the following coordinate array: <code class="docutils literal notranslate"><span class="pre">('band',</span> <span class="pre">['vh','vv'])</span></code> (<a class="reference internal" href="../sentinel1/nbs/3_asf_exploratory_analysis.html"><span class="std std-doc"><em>Sentinel-1 tutorial, notebook 3 - exploratory analysis of ASF data</em></span></a>).</p>
+<ul>
+<li><p>If you are only interested in a single polarization of the dataset or looking at backscatter from different polarizations independent of one another, treating backscatter from each polarization as a  <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">variable</span></code> is suitable and maybe even optimal; it can be simpler to perform operations on a single variable rather than an entire dimension.</p></li>
+<li><p>If you are interested in examining backscatter across different polarizations, the different polarizations are most appropriately represented as elements of a dimension.</p></li>
 </ul>
-<h5 class="rubric" id="non-dimensional-coordinate-variable-are-not-indexed-to-query-the-dataset-using-a-coordinate-it-can-be-more-efficient-to-express-the-query-in-terms-of-a-dimensional-coordinate">Non-dimensional coordinate variable are not indexed. To query the dataset using a coordinate, it can be more efficient to express the query in terms of a dimensional coordinate.</h5>
+</li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>Takeaway</strong></p></td>
+<td class="text-left"><p>Structure your dataset’s dimensions so that data variables are independent of one another.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you are working with a dataset where information about how the variables relate to one another is included in the variable name, this is a sign that there should be an additional dimension.</p>
+</div>
+<h5 class="rubric" id="compare-two-datasets-by-combining-them-into-a-single-cube-with-an-additional-dimension">2. Compare two datasets by combining them into a single cube with an additional dimension</h5>
 <ul class="simple">
-<li><p>It is faster to subset the dataset using <code class="docutils literal notranslate"><span class="pre">ds.sel()</span></code> than <code class="docutils literal notranslate"><span class="pre">ds.where()</span></code>.
-<em><a class="reference internal" href="../itslive/nbs/4_exploratory_data_analysis_single.html"><span class="std std-doc">ITS_LIVE tutorial, exploratory analysis of a a single glacier notebook</span></a></em></p></li>
+<li><p>To compare data from different satellites within the ITS_LIVE dataset, we create a new data cube with a <code class="docutils literal notranslate"><span class="pre">'sensor'</span></code> dimension (<a class="reference internal" href="../itslive/nbs/4_exploratory_data_analysis_single.html"><span class="std std-doc"><em>ITS_LIVE tutorial, notebook 4 - exploratory analysis of a single glacier</em></span></a>*).</p></li>
+<li><p>Adding <code class="docutils literal notranslate"><span class="pre">source</span></code> dimension when comparing ASF and PC backscatter datasets (<a class="reference internal" href="#../sentinel1/nbs/5_compare_backscatter_datasets.ipynb"><span class="xref myst"><em>Sentinel-1 tutorial, notebook 5 - comparing backscatter datasets</em></span></a>).</p>
+<ul>
+<li><p>In this example, the goal of our analysis changes from observing backscatter to observing how measurements of backscatter from two processing pipelines differ from one another. This implies a different shape of the data that is relevant to this question; the appropriate dimensions change from <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">time,</span> <span class="pre">band)</span></code> to <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">time,</span> <span class="pre">band,</span> <span class="pre">source)</span></code>.</p></li>
+<li><p>Adding a source dimension let’s us index the combined dataset by ‘source’ and compare the two ‘source’ elements on a common grid and scale.</p></li>
 </ul>
+</li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>Takeaway</strong></p></td>
+<td class="text-left"><p>The dimensions of a dataset depend on what you want to do with it.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-2">
-Attributes</label><div class="sd-tab-content docutils">
-<p><code class="docutils literal notranslate"><span class="pre">Attrs</span></code> can be assigned to the dataset as a whole or any of the <code class="docutils literal notranslate"><span class="pre">xr.DataArray</span></code> objects within it.</p>
+Coordinates</label><div class="sd-tab-content docutils">
+<h2 class="rubric" id="dimensional-non-dimensional-coordinate-variables">Dimensional &amp; non-dimensional coordinate variables</h2>
+<p>A dataset must have a <strong>dimensional coordinate</strong> variable for each dimension in <code class="docutils literal notranslate"><span class="pre">ds.dims</span></code>. Additional <strong>non-dimensional coordinate variables</strong> should be added when relevant metadata varies over dimension(s) of the dataset.</p>
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>Guiding Question</strong></p></td>
+<td class="text-left"><p>What are the dimensions of the dataset? What information (separate from the measurement variable) varies over those dimensions?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <h4 class="rubric" id="id2">Relevant examples</h4>
-<h5 class="rubric" id="attributes-must-be-formatted-according-to-accepted-metadata-conventions-like-cf-and-stac-in-order-to-take-advantage-of-tools-built-off-these-specifications">Attributes must be formatted according to accepted metadata conventions like CF and STAC in order to take advantage of tools built off these specifications.</h5>
+<h5 class="rubric" id="handling-time-varying-metadata">1. Handling time-varying metadata</h5>
 <ul class="simple">
-<li><p>Using <code class="docutils literal notranslate"><span class="pre">cf_xarray</span></code> with appropriately-formatted metadata enables more streamlined access to and interpretation of metadata
-<em><a class="reference internal" href="../itslive/nbs/1_accessing_itslive_s3_data.html"><span class="std std-doc">ITS_LIVE tutorial, data access notebook</span></a></em></p></li>
-<li><p>Having appropriate CF metadata enables reading and writing vector data cubes to disk
-<em><a class="reference internal" href="../itslive/nbs/5_exploratory_data_analysis_group.html"><span class="std std-doc">ITS_LIVE tutorial, exploratory analysis of a group of glaciers notebook</span></a></em></p></li>
+<li><p>Metadata that varies over <code class="docutils literal notranslate"><span class="pre">(time)</span></code> should be stored as coordinate variables along the <code class="docutils literal notranslate"><span class="pre">time</span></code> dimension.</p></li>
+<li><p>Metadata that varies over <code class="docutils literal notranslate"><span class="pre">time</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span></code>, and <code class="docutils literal notranslate"><span class="pre">y</span></code> should be coordinate variables that exist along those dimensions.</p>
+<ul>
+<li><p><em><a class="reference internal" href="../sentinel1/nbs/2_wrangle_metadata.html"><span class="std std-doc">Sentinel-1 tutorial, metadata wrangling notebook</span></a></em></p></li>
 </ul>
+</li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>Takeaway</strong></p></td>
+<td class="text-left"><p>Assign metadata that varies along a given dimension as a non-dimensional coordinate of that dimension.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 class="rubric" id="querying-a-dataset-using-coordinate-variables">2. Querying a dataset using coordinate variables</h5>
+<ul class="simple">
+<li><p>Non-dimensional coordinate variables are not indexed.</p>
+<ul>
+<li><p>It can be faster to subset the dataset using <code class="docutils literal notranslate"><span class="pre">ds.sel()</span></code> than <code class="docutils literal notranslate"><span class="pre">ds.where()</span></code> (<em><a class="reference internal" href="../itslive/nbs/4_exploratory_data_analysis_single.html"><span class="std std-doc">ITS_LIVE tutorial, exporatory analysis notebook</span></a></em>).</p></li>
+</ul>
+</li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>Takeaway</strong></p></td>
+<td class="text-left"><p>To query the dataset using a coordinate, it can be more efficient to express the query in terms of a dimensional coordinate.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-3">
-Collections</label><div class="sd-tab-content docutils">
-<p>Xarray DataTrees provide an API for working with a collection of Xarray objects.</p>
+Attributes</label><div class="sd-tab-content docutils">
+<h3 class="rubric" id="attributes">Attributes</h3>
+<p><code class="docutils literal notranslate"><span class="pre">Attrs</span></code> can be assigned to the dataset as a whole or any of the <code class="docutils literal notranslate"><span class="pre">xr.DataArray</span></code> objects within it.</p>
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>Guiding Question</strong></p></td>
+<td class="text-left"><p>Does a piece of attribute information apply to this <em>entire</em> object (e.g. a data variable, a coordinate variable, or a dataset)? If so, it should be stored as an attribute of that object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>and</p>
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>Guiding Question</strong></p></td>
+<td class="text-left"><p>What tools exist that can help perform the operations that I need to with this dataset? How must attribute data be stored to use them?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <h4 class="rubric" id="id3">Relevant examples</h4>
-<p>Independent objects should be represented as unique <code class="docutils literal notranslate"><span class="pre">xr.Datasets</span></code> (if multivariate) or <code class="docutils literal notranslate"><span class="pre">xr.DataArrays</span></code> (if univariate). If you are working with independent objects but would like to organize, keep track of, and work with them in relation to one another, use <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataTree.html"><code class="docutils literal notranslate"><span class="pre">xr.DataTree</span></code></a> to assign hierarchical relationships among objects.
-<em><a class="reference internal" href="../itslive/nbs/4_exploratory_data_analysis_single.html"><span class="std std-doc">ITS_LIVE tutorial, exploratory analysis of a single glacier notebook</span></a></em></p>
+<h5 class="rubric" id="attributes-must-be-formatted-according-to-accepted-metadata-conventions-like-cf-and-stac-in-order-to-take-advantage-of-tools-built-off-these-specifications">1. Attributes must be formatted according to accepted metadata conventions like CF and STAC in order to take advantage of tools built off these specifications</h5>
 <ul class="simple">
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">xr.DataTree</span></code> to separate the dataset by satellite sensor.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">cf_xarray</span></code> with appropriately-formatted metadata enables more streamlined access to and interpretation of metadata (<em><a class="reference internal" href="../itslive/nbs/1_accessing_itslive_s3_data.html"><span class="std std-doc">ITS_LIVE tutorial, data access notebook</span></a></em>)</p></li>
+<li><p>Having appropriate CF metadata enables reading and writing vector data cubes to disk
+(<em><a class="reference internal" href="../itslive/nbs/5_exploratory_data_analysis_group.html"><span class="std std-doc">ITS_LIVE tutorial, exploratory analysis of a group of glaciers notebook</span></a></em>)</p></li>
 </ul>
-<p>When working with spatial features described by vector geometries, you can use <a class="reference external" href="https://xvec.readthedocs.io/en/stable/">Xvec</a> to organize the data as a vector cube. This cube will have a <code class="docutils literal notranslate"><span class="pre">'geometry'</span></code> dimension that is an array of geometries, letting you work with multiple n-d features.
-<em><a class="reference internal" href="../itslive/nbs/5_exploratory_data_analysis_group.html"><span class="std std-doc">ITS_LIVE tutorial, exploratory analysis of a group of glaciers notebook</span></a>.</em></p>
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>Takeaway</strong></p></td>
+<td class="text-left"><p>Wherever possible, use metadata that conforms to existing conventions.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-4">
+Collections</label><div class="sd-tab-content docutils">
+<h3 class="rubric" id="collections">Collections</h3>
+<p>Independent objects should be represented as unique <code class="docutils literal notranslate"><span class="pre">xr.Datasets</span></code> (if multivariate) or <code class="docutils literal notranslate"><span class="pre">xr.DataArrays</span></code> (if univariate). If you are working with a collection of independent objects but would like to organize, keep track of, and work with them in relation to one another, use <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataTree.html"><code class="docutils literal notranslate"><span class="pre">xr.DataTree</span></code></a> to assign hierarchical relationships among objects.</p>
+<h4 class="rubric" id="id4">Relevant examples</h4>
+<h5 class="rubric" id="apply-a-function-to-every-object-in-a-collection-with-xr-datatree-map-over-datasets">1. Apply a function to every object in a collection with <code class="docutils literal notranslate"><span class="pre">xr.DataTree.map_over_datasets()</span></code></h5>
+<ul class="simple">
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">xr.DataTree</span></code> to apply a function to each dataset within a a collection in order to make a new datacube that includes all objects along an expanded dimension (<em><a class="reference internal" href="../itslive/nbs/4_exploratory_data_analysis_single.html"><span class="std std-doc">ITS_LIVE tutorial, notebook 4 - exploratory analysis of a single glacier notebook</span></a>).</em></p></li>
+</ul>
+<h5 class="rubric" id="if-youre-working-with-a-collection-of-objects-that-can-be-defined-by-vector-geometries-a-vector-data-cube-may-be-an-appropriate-way-to-represent-the-data">2. If you’re working with a collection of objects that can be defined by vector geometries, a vector data cube may be an appropriate way to represent the data</h5>
+<ul class="simple">
+<li><p>Use <a class="reference external" href="https://xvec.readthedocs.io/en/stable/">Xvec</a> to build a vector data cube that has a <code class="docutils literal notranslate"><span class="pre">'geometry'</span></code> dimension; each element of the geometry dimension is a cube that varies over the other dimensions of the cube (frequently <code class="docutils literal notranslate"><span class="pre">time</span></code>) (<em><a class="reference internal" href="../itslive/nbs/5_exploratory_data_analysis_group.html"><span class="std std-doc">ITS_LIVE tutorial, exploratory analysis of a group of glaciers notebook</span></a>.</em>)</p></li>
+</ul>
 </div>
 </div>
 </section>
@@ -580,7 +755,7 @@ Collections</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidying-principles-for-xarray">‘Tidying principles’ for Xarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tidying-guidelines-for-xarray">Tidying guidelines for Xarray</a></li>
 </ul>
   </nav></div>
 
