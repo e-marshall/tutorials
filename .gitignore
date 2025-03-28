@@ -11,8 +11,7 @@ utils/get_links.py
 
 #Data 
 sentinel1/data/raster_data/*
-itslive/data/raster_data/*
-#itslive/data/raster_data/single_glacier_itslive.zarr/*
+itslive/data/raster_data/single_glacier_itslive.zarr/*
 
 #Extra nbs
 sentinel1/subste_nbs
