@@ -4,12 +4,12 @@ In this book, we saw a range of real-world datasets and the steps required to pr
 
 Let's first return to the Xarray building blocks described in the background [section](../background/2_data_cubes.md); we can now provide more-detailed definitions of what they are and how they should be used:
 
-:::{admonition} Xarray components of data cubes
-**[Dimensions](https://docs.xarray.dev/en/latest/user-guide/terminology.html#term-Dimension)** - What is the shape of the data as you understand it? This should be the set of dimensions. Frequently, `(x, y, time)`.   
-**[Dimensional coordinate variables](https://docs.xarray.dev/en/latest/user-guide/terminology.html#term-Dimension-coordinate)** - 1-d arrays describing the range and resolution of the data along each dimension.  
+:::{admonition} Dissecting data cubes
+**[Dimensions](https://docs.xarray.dev/en/latest/user-guide/terminology.html#term-Dimension)** - What do the axes of the data represent? This should be the set of dimensions. Frequently, `(x, y, time)`. Dimensions are orthogonal to each other.  
+**[Dimensional coordinate variables](https://docs.xarray.dev/en/latest/user-guide/terminology.html#term-Dimension-coordinate)** - Typically 1-d arrays describing the range and resolution of the data along each dimension. Think of this as axes tick labels on a plot.
 **[Non-dimensional coordinate variables](https://docs.xarray.dev/en/latest/user-guide/terminology.html#term-Non-dimension-coordinate)** - Metadata about the physical observable that varies along one or more dimensions. These can be 1-d up to n-d where n is the length of `.dims`.  
-**[Data variables](https://docs.xarray.dev/en/latest/user-guide/terminology.html#term-Variable)** - Scalar values that occupy the grid cells implied by coordinate arrays. The physical observable(s) that are the focus of the dataset.  
-**Attributes** - Metadata that can be assigned to a given `xr.Dataset` or `xr.DataArray` that is ***static*** along that object's dimensions.   
+**[Data variables](https://docs.xarray.dev/en/latest/user-guide/terminology.html#term-Variable)** - Physical observable(s) whose values are known at every point on the grid formed by the dimensions. 
+**Attributes** - Metadata that can be assigned to a given `xr.Dataset` or `xr.DataArray` that is ***invariant*** along that object's dimensions.   
 :::
 
 {{break}}
@@ -19,17 +19,19 @@ At the beginning of the book, we also discussed 'tidy data' as its defined for t
 
 **How can this data be structured to simplify subsequent analysis?**
 
-For different types of Xarray objects, we can use the following guidelines:
+Keep in mind that one organization of the data need not make all analyses equally ergonomic. We must be open to transforming the data between equivalent representations, depending on the task at hand.
+
+Here are a few guidelines:
 ::::{tab-set} 
 :::{tab-item} Variables
 ### Data variables
-These are the measurements or estimates of your dataset. If there are multiple independent measurements in the dataset, they should be stored as [xr.Variable](https://docs.xarray.dev/en/stable/generated/xarray.Variable.html#xarray.Variable) objects of a `xr.Dataset`, if the dataset is univariate, use a [`xr.DataArray`](https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html)
+These are the measurements or estimates of your dataset. If there are multiple independent measurements in the dataset, they should be stored as data variables in a `xr.Dataset`, if the data are univariate, use a [`xr.DataArray`](https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html)
 |   |  | 
 | :-----------:|:---------- |
 | **Guiding Question** | What physical observable(s) is my dataset measuring?|
 
 #### Relevant examples
-In [Sentinel-1, notebook 3 - Exploratory analysis of ASF data](../sentinel1/nbs/3_asf_exploratory_analysis.ipynb), we saw examples of treating multiple backscatter polarizations as data variables versus a single variable along a `band` dimension.
+In [Sentinel-1, notebook 3 - Exploratory analysis of ASF data](../sentinel1/nbs/3_asf_exploratory_analysis.ipynb), we saw examples of treating multiple backscatter polarizations as data variables versus a single variable along a `band` dimension. We can convert between the two representations using `Dataset.to_array` and `DataArray.to_dataset`.
 
 |   |  | 
 | :-----------:|:---------- |
@@ -51,15 +53,15 @@ In these situations, a guiding question could be:
 
 ##### 1. Expanding dimensions v. adding variables 
 - Formatting the Sentinel-1 backscatter cube to have `vv` and `vh` data variables versus `band` dimension with the following coordinate array: `('band', ['vh','vv'])` ([*Sentinel-1 tutorial, notebook 3 - exploratory analysis of ASF data*](../sentinel1/nbs/3_asf_exploratory_analysis.ipynb)).
-    - If you are only interested in a single polarization of the dataset or looking at backscatter from different polarizations independent of one another, treating backscatter from each polarization as a  `data variable` is suitable and maybe even optimal; it can be simpler to perform operations on a single variable rather than an entire dimension.   
+    - If you are only interested in a single polarization of the dataset or looking at backscatter from different polarizations independent of one another, treating backscatter from each polarization as a  __data variable_ is suitable and maybe even optimal; it can be simpler to perform operations on a single variable rather than an entire dimension.   
     - If you are interested in examining backscatter across different polarizations, the different polarizations are most appropriately represented as elements of a dimension. 
 
 |   |  | 
 | :-----------:|:---------- |
-| **Takeaway** | Structure your dataset's dimensions so that data variables are independent of one another. |  
+| **Takeaway** | Structure your datacube's dimensions so that data variables are independent of one another. |  
 
 ```{tip}
-If you are working with a dataset where information about how the variables relate to one another is included in the variable name, this is a sign that there should be an additional dimension.
+If you are working with a dataset where information about how the variables relate to one another is included in the variable name (e.g. a year, or a band wavelength), this is a sign that there should be an additional dimension.
 ```
 
 ##### 2. Compare two datasets by combining them into a single cube with an additional dimension
@@ -70,7 +72,7 @@ If you are working with a dataset where information about how the variables rela
 
 |   |  | 
 | :-----------:|:---------- |
-| **Takeaway** | The dimensions of a dataset depend on what you want to do with it. |
+| **Takeaway** | Consider either concatenating two cubes along a new dimension, or splitting a dimension in to multiple cubes. One approach may be more ergonomic compared to the other depending on the problem at hand. |
 
 :::
 :::{tab-item} Coordinates
@@ -83,7 +85,7 @@ A dataset must have a **dimensional coordinate** variable for each dimension in 
 
 #### Relevant examples
 ##### 1. Handling time-varying metadata
-- Metadata that varies over `(time)` should be stored as coordinate variables along the `time` dimension.
+- Metadata that varies over `(time)` should be stored as coordinate variables along the `time` dimension (e.g. whether a scene was taken during an ascending or descending pass).
 - Metadata that varies over `time`, `x`, and `y` should be coordinate variables that exist along those dimensions.
     - *[Sentinel-1 tutorial, metadata wrangling notebook](../sentinel1/nbs/2_wrangle_metadata.ipynb)*
 
@@ -92,22 +94,14 @@ A dataset must have a **dimensional coordinate** variable for each dimension in 
 | **Takeaway** | Assign metadata that varies along a given dimension as a non-dimensional coordinate of that dimension.
 |
 
-##### 2. Querying a dataset using coordinate variables 
-- Non-dimensional coordinate variables are not indexed.
-    - It can be faster to subset the dataset using `ds.sel()` than `ds.where()` (*[ITS_LIVE tutorial, exporatory analysis notebook](../itslive/nbs/4_exploratory_data_analysis_single.ipynb)*).
-
-|   |  | 
-| :-----------:|:---------- |
-| **Takeaway** | To query the dataset using a coordinate, it can be more efficient to express the query in terms of a dimensional coordinate.
-|
 :::
 :::{tab-item} Attributes
 ### Attributes
-`Attrs` can be assigned to the dataset as a whole or any of the `xr.DataArray` objects within it. 
+`attrs` can be assigned to the dataset as a whole or any of the `xr.DataArray` objects within it. Many fields have their own conventions for attribute metadata, e.g. Climate & Forecast Conventions (CF).
 
 |   |  | 
 | :-----------:|:---------- |
-| **Guiding Question** | Does a piece of attribute information apply to this *entire* object (e.g. a data variable, a coordinate variable, or a dataset)? If so, it should be stored as an attribute of that object. |
+| **Guiding Question** | Does a piece of attribute information apply to this *entire* object (e.g. a data variable, a coordinate variable, or a dataset)? If so, it should be stored as an attribute of that object. Attributes must conform to an existing standard if possible.|
 
 and 
 
@@ -115,7 +109,7 @@ and
 | :-----------:|:---------- |
 | **Guiding Question** | What tools exist that can help perform the operations that I need to with this dataset? How must attribute data be stored to use them? |
 #### Relevant examples
-##### 1. Attributes must be formatted according to accepted metadata conventions like CF and STAC in order to take advantage of tools built off these specifications 
+##### 1. Attributes must conform to accepted metadata conventions like CF and STAC in order to take advantage of tools built off these specifications 
 
 - Using `cf_xarray` with appropriately-formatted metadata enables more streamlined access to and interpretation of metadata (*[ITS_LIVE tutorial, data access notebook](../itslive/nbs/1_accessing_itslive_s3_data.ipynb)*)
 - Having appropriate CF metadata enables reading and writing vector data cubes to disk
