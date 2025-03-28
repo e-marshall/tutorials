@@ -104,7 +104,9 @@ And I could move it to the appropriate location like this:
 1. Go do the [Data download notebook](nbs/download_zenodo_data_curl.ipynb).
 2. Execute the cell with package imports and the two cells in the 'Full timeseries' section.
 3. Wait for the data to download. 
-
+:::{warning}
+This will likely take about an hour or longer to download.
+:::
 Once the download completes, head to the first notebook to get started.
 
 
