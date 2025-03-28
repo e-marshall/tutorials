@@ -20,6 +20,6 @@ dependencies:
 - rioxarray >=0.18.2,<0.19
 - scipy >=1.15.2,<2
 - stackstac >=0.5.1,<0.6
-- xarray >=2025.1.2,<2026
+- xarray == 2024.10.0
 - zarr <3
 - jupyterlab-myst >=2.4.2,<3
