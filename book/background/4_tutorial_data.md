@@ -1,8 +1,8 @@
 # 2.4 Data used in tutorials
 
-We use a many different datasts throughout these tutorials. While each tutorial is focused on a different raster time series (ITS_LIVE ice velocity data and Sentinel-1 imagery), we also use vector data to represent points of interest. 
+We use a many different datasets throughout these tutorials. While each tutorial is focused on a different raster time series (ITS_LIVE ice velocity data and Sentinel-1 imagery), we also use vector data to represent points of interest. 
 
-Most of the examples in this book use data accessed programmatically from cloud-object storage. We make subset of the data available in this books Github repository to remove the need for computationally-intensive operations in the tutorials. In one example, working with Sentinel-1 data processed by Alaska Satelllite Facility, we start with data downloaded locally. Users who would like to complete this processing step on their own may do so (and access the data [here]()), but a smaller subset of this data is stored in the repository. 
+Most of the examples in this book use data accessed programmatically from cloud-object storage. We make subset of the data available in this books Github repository to remove the need for computationally-intensive operations in the tutorials. In one example, working with Sentinel-1 data processed by Alaska Satellite Facility, we start with data downloaded locally. Users who would like to complete this processing step on their own may do so (and access the data [here](https://zenodo.org/records/15036782)), but a smaller subset of this data is stored in the repository. 
 
 Here is a broad overview the data included in this tutorial, including how it is collected, it's potential scientific applications, and how and where it is stored and accessed in these tutorials. 
 
@@ -13,7 +13,7 @@ Here is a broad overview the data included in this tutorial, including how it is
 | ITS_LIVE | [ITS_LIVE project, NASA JPL](https://its-live.jpl.nasa.gov/) | Zarr | AWS S3|
 
 
-ITS_LIVE is a dataset of ice velocity observations derived from applying a feature tracking algorithm to pairs of satellite imagery. Ice velocity refers to the downslope movement of glaciers and ice sheets {cite}`Gardner_Scambos_2022`. Because glaciers and ice sheets are dynamic elements of our climate system, they lose or gain mass in response to changes in climate conditions such as warmer temperatures or increased snowfall, measuring variability in the speed of ice flow can help scientists better understand trends in glacier dynamics and interactions between glaciers and climate. 
+ITS_LIVE is a dataset of ice velocity observations derived from applying a feature tracking algorithm to pairs of satellite imagery. Ice velocity refers to the down-slope movement of glaciers and ice sheets {cite}`Gardner_Scambos_2022`. Because glaciers and ice sheets are dynamic elements of our climate system, they lose or gain mass in response to changes in climate conditions such as warmer temperatures or increased snowfall, measuring variability in the speed of ice flow can help scientists better understand trends in glacier dynamics and interactions between glaciers and climate. 
 
 Part of what is so exciting about ITS_LIVE is that it combines image pairs from a number of satellites, including imagery from optical (Landsat 4,5,7,8,9 & Sentinel-2) and synthetic aperture radar (Sentinel-1) sensors. For this reason, ITS_LIVE time series data can be quite large. Another exciting aspect of the ITS_LIVE dataset is that the image pair time series data is made available as Zarr data cubes stored in cloud object storage on Amazon Web Services (AWS), meaning that users don't need to download massive files to start working with the data! 
 
@@ -38,7 +38,7 @@ For an in-depth example of how SAR backscatter data can be used to map flooding 
 
 Because SAR imagery is collected from a side-looking sensor, it can contain distortions related to the viewing geometry of the sensor and the surface topography of the area being imaged. This tutorial focuses on RTC imagery, which is SAR data that has undergone processing to remove the above-mentioned distortions. 
 
-Multiple algorithms perform radiometric terrain correction, and it is important to understand the components of whichever dataset you use and their relative benefits and tradeoffs. This book will demonstrate working with two different (but similar) datasets of Sentinel-1 RTC imagery: one produced by Alaska Satellite Facility and one produced by Microsoft Planetary Coomputer, shown below. Processing of SAR imagery can be very computationally intensive, both of these options leverage cloud-hosted computational resources to make processed SAR imagery available to users, reducing the need for individual users to perform complicated, resource and time-intensive processing. 
+Multiple algorithms perform radiometric terrain correction, and it is important to understand the components of whichever dataset you use and their relative benefits and tradeoffs. This book will demonstrate working with two different (but similar) datasets of Sentinel-1 RTC imagery: one produced by Alaska Satellite Facility and one produced by Microsoft Planetary Computer, shown below. Processing of SAR imagery can be very computationally intensive, both of these options leverage cloud-hosted computational resources to make processed SAR imagery available to users, reducing the need for individual users to perform complicated, resource and time-intensive processing. 
 
 
 :::{important} 
@@ -53,7 +53,7 @@ height: 250 px
 figclass: margin-caption
 name: SAR diagram
 ---
-Schematic of observation geometry used to form a SAR imgae.  
+Schematic of observation geometry used to form a SAR image.  
 Credit: [NASA EarthData / NASA SAR Handbook](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/sar).
 ```
 
@@ -69,7 +69,7 @@ SAR data is collected in slant range, which is the viewing geometry of the side-
 | Sentinel-1 RTC | [Alaska Satellite Facility](https://asf.alaska.edu/) | COG (locally as GeoTIFF) | Local |
  
 
-We use Sentinel-1 RTC imagery processed by Alaska Satellite Facility's Hypbrid Pluggable Processing Pipeline (**HyP3**) {cite}`hogenson_2024_10903242`. This is a processing platform that allows users to perform processing steps necessary for analysis-ready SAR data through ASF. 
+We use Sentinel-1 RTC imagery processed by Alaska Satellite Facility's Hybrid Pluggable Processing Pipeline (**HyP3**) {cite}`hogenson_2024_10903242`. This is a processing platform that allows users to perform processing steps necessary for analysis-ready SAR data through ASF. 
 
 From the [ASF HyP3 Documentation](https://hyp3-docs.asf.alaska.edu/): 
 HyP3 is a service for processing Synthetic Aperture Radar (SAR) imagery that addresses many common issues for users of SAR data:  
@@ -110,7 +110,7 @@ Further reading on SAR data and Sentinel-1:
 | :-----------:|:---------- | :------------- | :--------------- |
 | Randolph Glacier Inventory | [RGI Consortium](https://www.glims.org/RGI/) | Shapefile | NSIDC |
 
-The Randolph Glacier Inventory (RGI) is a community-driven public dataset that provides outlines and auxiliary information such as area, length and asepct of glaciers across the world {cite}`RGI_Consortium_2023`. RGI is a subset of the Global Land Ice Measurements from Space ([GLIMS](https://www.glims.org/)) initiative and RGI data is hosted by the National Snow and Ice Data Center ([NSDIC](https://nsidc.org/data/nsidc-0770/versions/7)). Read more about the RGI project [here](http://www.glims.org/rgi_user_guide/01_introduction.html).
+The Randolph Glacier Inventory (RGI) is a community-driven public dataset that provides outlines and auxiliary information such as area, length and aspect of glaciers across the world {cite}`RGI_Consortium_2023`. RGI is a subset of the Global Land Ice Measurements from Space ([GLIMS](https://www.glims.org/)) initiative and RGI data is hosted by the National Snow and Ice Data Center ([NSIDC](https://nsidc.org/data/nsidc-0770/versions/7)). Read more about the RGI project [here](http://www.glims.org/rgi_user_guide/01_introduction.html).
 
 
 :::{admonition} RGI data used in this tutorial

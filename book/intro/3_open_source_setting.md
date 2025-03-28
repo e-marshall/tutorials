@@ -18,3 +18,7 @@ In addition to these software libraries, the Pangeo community emphasizes the dev
 :right-align:
 :scale: 50
 ```
+
+## Why open-source?
+
+Research that follows principles of open, reproducible science is necessary in order to produce rigorous and robust scientific knowledge that can be applied to address the myriad challenges facing society in the 21st century ({cite:t}`gentemann_2023_OpenScience,tai_2018_EnhancingClimateChange,tholeOpenClimateScience2024`). In data-intensive, computational fields, open-source software and accessible data are essential elements of scientific workflows ({cite:t}`gilGeosciencePaperFuture2016,ince_2012_CaseOpenComputer,lowndesOurPathBetter2017,wilkinsonFAIRGuidingPrinciples2016`). We highlight publicly available data and open-source tools in order to support the goals of increasing the accessibility of and democratizing participation in scientific research, and yielding greater and more impactful scientific knowledge from earth observation datasets. 
