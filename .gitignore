@@ -10,10 +10,8 @@ package.json
 utils/get_links.py
 
 #Data 
-**/data/raster_data/*
-
-#Extra nbs
-sentinel1/subste_nbs
+sentinel1/data/raster_data/*
+itslive/data/raster_data/single_glacier_itslive.zarr/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
