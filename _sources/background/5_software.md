@@ -13,7 +13,10 @@ There are two options for creating a software environment: [pixi](https://pixi.s
 2. Navigate into the repo environment:
 ```cd cloud-open-source-geospatial-datacube-workflows```
 
-3. Execute `pixi run` for each tutorial:
+3. There is a small data cube included in the repo that is used in the tutorials. We don't want git to track this so we tell it to ignore this file path.
+```git update-index --assume-unchanged book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/.```
+
+4. Execute `pixi run` for each tutorial:
 ```pixi run itslive```
 ```pixi run sentinel1```
 
@@ -28,9 +31,12 @@ Note that the first `pixi run` will download specific versions of all required P
 ```cd cloud-open-source-geospatial-datacube-workflows/book```
 
 3. Create and activate a conda environment from the `environment.yml` file located in the repo:  
-```conda env create -f .binder/environment.yml```
+```conda env create -f environment.yml```
 
-4. Start Jupyterlab and navigate to the directories containing the Jupyter notebooks (`itslive/nbs` and `s1/nbs`):  
+4. There is a small data cube included in the repo that is used in the tutorials. We don't want git to track this so we tell it to ignore this file path.
+```git update-index --assume-unchanged book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/.```
+
+5. Start Jupyterlab and navigate to the directories containing the Jupyter notebooks (`itslive/nbs` and `s1/nbs`):  
 ```jupyterlab```
 
 Both tutorials use functions that are stored in scripts associated with each dataset. You can find these scripts here: [`itslive_tools.py`](../itslive/nbs/itslive_tools.py) and [`s1_tools.py`](../sentinel1/nbs/s1_tools.py).

@@ -28,7 +28,7 @@ Note that the first `pixi run` will download specific versions of all required P
 ```cd cloud-open-source-geospatial-datacube-workflows/book```
 
 3. Create and activate a conda environment from the `environment.yml` file located in the repo:  
-```conda env create -f .binder/environment.yml```
+```conda env create -f environment.yml```
 
 4. Start Jupyterlab and navigate to the directories containing the Jupyter notebooks (`itslive/nbs` and `s1/nbs`):  
 ```jupyterlab```

@@ -442,6 +442,8 @@ document.write(`
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows.git</span></code></p></li>
 <li><p>Navigate into the repo environment:
 <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">cloud-open-source-geospatial-datacube-workflows</span></code></p></li>
+<li><p>There is a small data cube included in the repo that is used in the tutorials. We don’t want git to track this so we tell it to ignore this file path.
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">update-index</span> <span class="pre">--assume-unchanged</span> <span class="pre">book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/.</span></code></p></li>
 <li><p>Execute <code class="docutils literal notranslate"><span class="pre">pixi</span> <span class="pre">run</span></code> for each tutorial:
 <code class="docutils literal notranslate"><span class="pre">pixi</span> <span class="pre">run</span> <span class="pre">itslive</span></code>
 <code class="docutils literal notranslate"><span class="pre">pixi</span> <span class="pre">run</span> <span class="pre">sentinel1</span></code></p></li>
@@ -456,7 +458,9 @@ document.write(`
 <li><p>Navigate into the <code class="docutils literal notranslate"><span class="pre">book</span></code> sub-directory:<br />
 <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">cloud-open-source-geospatial-datacube-workflows/book</span></code></p></li>
 <li><p>Create and activate a conda environment from the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file located in the repo:<br />
-<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">.binder/environment.yml</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">environment.yml</span></code></p></li>
+<li><p>There is a small data cube included in the repo that is used in the tutorials. We don’t want git to track this so we tell it to ignore this file path.
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">update-index</span> <span class="pre">--assume-unchanged</span> <span class="pre">book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/.</span></code></p></li>
 <li><p>Start Jupyterlab and navigate to the directories containing the Jupyter notebooks (<code class="docutils literal notranslate"><span class="pre">itslive/nbs</span></code> and <code class="docutils literal notranslate"><span class="pre">s1/nbs</span></code>):<br />
 <code class="docutils literal notranslate"><span class="pre">jupyterlab</span></code></p></li>
 </ol>
