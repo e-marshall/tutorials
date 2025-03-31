@@ -13,9 +13,6 @@ utils/get_links.py
 sentinel1/data/raster_data/*
 itslive/data/raster_data/single_glacier_itslive.zarr/*
 
-#Extra nbs
-sentinel1/subste_n
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
