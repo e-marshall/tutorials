@@ -28,7 +28,7 @@ Note that the first `pixi run` will download specific versions of all required P
 ```cd cloud-open-source-geospatial-datacube-workflows/book```
 
 3. Create and activate a conda environment from the `environment.yml` file located in the repo:  
-```conda env create -f .binder/environment.yml```
+```conda env create -f environment.yml```
 
 4. Start Jupyterlab and navigate to the directories containing the Jupyter notebooks (`itslive/nbs` and `s1/nbs`):  
 ```jupyterlab```
@@ -38,7 +38,7 @@ Both tutorials use functions that are stored in scripts associated with each dat
 
 ## *Running tutorial materials on a hosted JupyterHub*
 
-Many NASA datasets including ITS_LIVE are hosted in the AWS us-west-2 data center. While these tutorial notebooks are designed to be run on any computer, if you intend to modify the notebooks and access data directly it is desireable to run computations in the same data center. A convenient way access a computer in AWS us-west-2 is to use a hosted JupyterHub platform such as one of the following:
+Many NASA datasets including ITS_LIVE are hosted in the AWS us-west-2 data center. While these tutorial notebooks are designed to be run on any computer, if you intend to modify the notebooks and access data directly it is desirable to run computations in the same data center. A convenient way access a computer in AWS us-west-2 is to use a hosted JupyterHub platform such as one of the following:
 
 - https://docs.openveda.cloud/user-guide/scientific-computing/
 - https://opensarlab-docs.asf.alaska.edu
