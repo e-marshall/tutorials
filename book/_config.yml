@@ -16,6 +16,9 @@ execute:
   execute_notebooks:  cache #'auto'
   allow_errors: true
   timeout: 1500
+  exclude_patterns:
+  # Can't control execution order in jb build, so be sure to download from zenodo first
+    - 'download_zenodo*'
 
 
 # Define the name of the latex output file for PDF builds

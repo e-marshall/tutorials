@@ -14,12 +14,15 @@ sentinel1 = "jupyter lab --LabApp.default_url='/lab/tree/book/sentinel1/nbs/1_re
 
 [dependencies]
 aiohttp = ">=3.11.13,<4"
-distributed = ">=2025.2.0,<2026"
-cf_xarray = ">=0.10.0,<0.11"
+# https://github.com/dask/dask/issues/11853
+distributed = "<2024.12.0"
+cf_xarray = ">=0.10.4,<0.11"
 contextily = ">=1.6.2,<2"
+flox = ">=0.10.1,<0.11"
 geopandas = ">=1.0.1,<2"
 geoviews-core = ">=1.14.0,<2"
 hvplot = ">=0.11.2,<0.12"
+ipykernel = ">=6.29.5,<7"
 jupyterlab = ">=4.3.5,<5"
 jupyterlab-myst = ">=2.4.2,<3"
 matplotlib-base = ">=3.10.0,<4"
@@ -34,22 +37,25 @@ rich = ">=13.9.4,<14"
 rioxarray = ">=0.18.2,<0.19"
 scipy = ">=1.15.2,<2"
 stackstac = ">=0.5.1,<0.6"
-xarray = ">=2025.1.2,<2026"
+xarray = ">=2025.3.0,<2026"
 xvec = ">=0.3.1,<0.4"
 zarr = "<3"
-nb-clean = ">=4.0.1,<5"
-papermill = ">=2.5.0,<3"
-ipykernel = ">=6.29.5,<7"
 
 [feature.book.dependencies]
-jupyter-book = ">=1,<2"
 codespell = ">=2.4.1,<3"
+jupyter-book = ">=1,<2"
+nb-clean = ">=4.0.1,<5"
+papermill = ">=2.5.0,<3"
+pre-commit = ">=4.2.0,<5"
 
 [feature.book.tasks]
 build = "jupyter-book build book"
 check-links = "jupyter-book build book --builder linkcheck"
+precommit = "pre-commit run --all"
 # Unfortunately not an easy way to check .ipynb files currently
 # https://github.com/codespell-project/codespell/issues/2138
-spellcheck = "codespell --skip='pixi.lock,paper.bib,_build,*.ipynb'"
-spellcheck-nb = "jupyter nbconvert book/endmatter/*.ipynb book/s1_nbs/*.ipynb book/itslive_nbs/*.ipynb  --NbConvertApp.use_output_suffix=False --NbConvertApp.export_format=notebook --FilesWriter.build_directory=/tmp/book --ClearOutputPreprocessor.enabled=True ; codespell /tmp/book"
+spellcheck = "codespell --skip='.tif.xml,pixi.lock,paper.bib,_build,*.ipynb'"
+spellcheck-nb = "jupyter nbconvert book/**/nbs/*.ipynb --NbConvertApp.use_output_suffix=False --NbConvertApp.export_format=notebook --FilesWriter.build_directory=/tmp/book --ClearOutputPreprocessor.enabled=True ; codespell /tmp/book"
+# NOTE: these are platform specific, just doing linux-64 for BinderHub
 export-conda-env = "pixi project export conda-environment -p linux-64 .binder/environment.yml"
+export-conda-explicit = "pixi project export conda-explicit-spec -p linux-64 .binder"
