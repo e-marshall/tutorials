@@ -15,6 +15,12 @@ Here is a broad overview the data included in this tutorial, including how it is
 
 ITS_LIVE is a dataset of ice velocity observations derived from applying a feature tracking algorithm to pairs of satellite imagery. Ice velocity refers to the down-slope movement of glaciers and ice sheets {cite}`Gardner_Scambos_2022`. Because glaciers and ice sheets are dynamic elements of our climate system, they lose or gain mass in response to changes in climate conditions such as warmer temperatures or increased snowfall, measuring variability in the speed of ice flow can help scientists better understand trends in glacier dynamics and interactions between glaciers and climate. 
 
+```{figure} imgs/lopez06-3341335.png
+---
+---
+Example of a ice velocity time series along centerline profile of Malaspina Glacier featuring velocity observations from a range of satellite sensors. Source: Reproduced with permission from {cite:t}`lopez_2023_itslive`.
+```
+
 Part of what is so exciting about ITS_LIVE is that it combines image pairs from a number of satellites, including imagery from optical (Landsat 4,5,7,8,9 & Sentinel-2) and synthetic aperture radar (Sentinel-1) sensors. For this reason, ITS_LIVE time series data can be quite large. Another exciting aspect of the ITS_LIVE dataset is that the image pair time series data is made available as Zarr data cubes stored in cloud object storage on Amazon Web Services (AWS), meaning that users don't need to download massive files to start working with the data! 
 
 ITS_LIVE produces a number of data products in addition to the image pair time series that we use in this tutorial, and provides different options to access the data. Check them out [here](https://its-live.jpl.nasa.gov/#access). 
@@ -47,7 +53,7 @@ If you are unfamiliar with the principles of synthetic aperture radar (SAR) imag
 We provide a very brief overview of RTC processing below but it is not intended to replace the aforementioned resources.
 :::
 
-```{figure} ../images/SARticle_first-fig_redone-06.jpg
+```{figure} imgs/SARticle_first-fig_redone-06.jpg
 ---
 height: 250 px
 figclass: margin-caption

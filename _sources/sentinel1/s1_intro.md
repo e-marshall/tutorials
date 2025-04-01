@@ -24,7 +24,7 @@ This tutorial focuses on data from Sentinel-1, a synthetic aperture radar (SAR) 
 :::
 :::{tab-item} Relevant Concepts
 
- 1. [Sentinel-1 RTC imagery](../background/tutorial_data.md#sentinel-1-radiometric-terrain-corrected-rtc-imagery)
+ 1. [Sentinel-1 RTC imagery](../background/4_tutorial_data.md#sentinel-1-radiometric-terrain-corrected-rtc-imagery)
  2. {term}`Spatio-temporal Asset Catalog (STAC)`
 :::
 :::{tab-item} Learning goals
@@ -48,12 +48,12 @@ For instructions on setting up a computing environment needed for this tutorial,
 This tutorial focuses on Sentinel-1 RTC imagery. Sentinel-1 is a Synthetic Aperture Radar (SAR) satellite sensor that collects imagery at C-band. We'll be using data that has undergone radiometric terrain correction (RTC) processing. 
 
 :::{attention}
-If you're not familiar with SAR data, head to the [tutorial data page](../background/tutorial_data.md) and check out the resources listed there. 
+If you're not familiar with SAR data, head to the [tutorial data page](../background/4_tutorial_data.md) and check out the resources listed there. 
 :::
 ::::
 
 :::{attention} 
-If you haven't cloned the GitHub repository for this book yet and you want to follow the code in this tutorial, you'll need to do so now. This tutorial uses data downloaded from Zenodo (details below) as well as data contained within the GitHub repository. Instructions for  cloning the repo can be found on the [Software and computing environment](../intro/software.md) page.
+If you haven't cloned the GitHub repository for this book yet and you want to follow the code in this tutorial, you'll need to do so now. This tutorial uses data downloaded from Zenodo (details below) as well as data contained within the GitHub repository. Instructions for  cloning the repo can be found on the [Software and computing environment](../background/5_software.md) page.
 :::
 
 ## Different ways to use this tutorial

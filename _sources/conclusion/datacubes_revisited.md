@@ -66,7 +66,7 @@ If you are working with a dataset where information about how the variables rela
 
 ##### 2. Compare two datasets by combining them into a single cube with an additional dimension
 - To compare data from different satellites within the ITS_LIVE dataset, we create a new data cube with a `'sensor'` dimension ([*ITS_LIVE tutorial, notebook 4 - exploratory analysis of a single glacier*](../itslive/nbs/4_exploratory_data_analysis_single.ipynb)*).
-- Adding `source` dimension when comparing ASF and PC backscatter datasets ([*Sentinel-1 tutorial, notebook 5 - comparing backscatter datasets*](../sentinel1/nbs/5_compare_backscatter_datasets.ipynb)).  
+- Adding `source` dimension when comparing ASF and PC backscatter datasets ([*Sentinel-1 tutorial, notebook 5 - comparing backscatter datasets*](../sentinel1/nbs/5_comparing_s1_rtc_datasets.ipynb)).  
     - In this example, the goal of our analysis changes from observing backscatter to observing how measurements of backscatter from two processing pipelines differ from one another. This implies a different shape of the data that is relevant to this question; the appropriate dimensions change from `(x, y, time, band)` to `(x, y, time, band, source)`. 
     - Adding a source dimension let's us index the combined dataset by 'source' and compare the two 'source' elements on a common grid and scale.   
 

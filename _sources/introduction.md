@@ -8,3 +8,9 @@ We focus on data derived from different types of satellite imagery that are publ
 The goal of this book is to reduce barriers to entry to working with earth observation data for scientific analysis. It features two stand-alone tutorials, each detailing steps involved in a typical workflow, from data access and organization to exploratory data analysis and visualization. 
 
 Underpinning these examples is a focus on understanding the different components of n-dimensional, gridded datasets, how they relate to the tools we use to work with them (in this case, the Python package Xarray), and how a strong understanding of a scientific dataset within the context of your chosen data model can enable more efficient and intuitive analysis.
+
+{{break}}
+
+```{figure} background/imgs/cube.png
+:width: 75%
+```
