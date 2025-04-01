@@ -13,9 +13,13 @@ only_build_toc_files: false
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks:  cache #'auto'
+  execute_notebooks:  'auto'
+
   allow_errors: true
   timeout: 1500
+  exclude_patterns:
+  # Can't control execution order in jb build, so be sure to download from zenodo first
+    - 'download_zenodo*'
 
 
 # Define the name of the latex output file for PDF builds
@@ -29,11 +33,10 @@ bibtex_bibfiles:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows
-  #url: https://e-marshall.github.io/cloud-open-source-geospatial-datacube-workflows/introduction.html  # Online location of your book
-  branch: main  # Which branch of the repository should be used when creating links (optional)
+  branch: main  
 
 launch_buttons:
-  binderhub_url: "https://mybinder.org"
+  #binderhub_url: "https://mybinder.org"
   notebook_interface: "jupyterlab"
 
 # Add GitHub buttons to your book
@@ -53,6 +56,8 @@ parse:
     - substitution
 sphinx:
   config:
+    # application/vnd.holoviews_load.v0+json, application/vnd.holoviews_exec.v0+json
+    suppress_warnings: ["mystnb.unknown_mime_type"]
     bibtex_reference_style: label
     myst_heading_anchors: 3
     myst_enable_extensions:
@@ -68,12 +73,12 @@ sphinx:
     - substitution
 
     myst_substitutions:
-      part1_title: "Background"
+      part1_title: "Part 2: Background"
       part2_title: "ITS_LIVE ice velocity data tutorial"
       #part2_title: "Using Xarray to examine cloud-based glacier surface velocity data"
       part3_title: "Sentinel-1 RTC imagery tutorial"
       #part3_title:  "Sentinel-1 RTC data workflows with xarray"
-      part4_title: "Summary + Conclusion"
+      part4_title: "Part 5: Conclusion"
 
       #tutorial 1 nb titles
       title_its_nb1: "# 3.1 Accessing cloud-hosted ITS_LIVE data"
@@ -122,7 +127,7 @@ sphinx:
       a_its_nb2: "A. Compare approaches for reading larger than memory data"
       a1_its_nb2: "1) `chunks = 'auto'`"
       a2_its_nb2: "2) `chunks = {}`"
-      a3_its_nb2: "3) An out-of-order time dimensions"
+      a3_its_nb2: "3) An out-of-order time dimension"
       a4_its_nb2: "4) Read the dataset without Dask"
       b_its_nb2: "B. Organize data once it's in memory"
       b1_its_nb2: "1) Arrange dataset in chronological order"

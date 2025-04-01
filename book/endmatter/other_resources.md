@@ -17,7 +17,7 @@ Throughout this book, we reference a number of resources on different topics. Th
 - [Dask Cookbook - Project Pythia](https://projectpythia.org/dask-cookbook/README.html)
 ## Geospatial data science, data formats, and metadata
 - [Introduction to Earth and Environmental Data Science](https://earth-env-data-science.github.io/intro.html)
-- [Geocomputation wtih Python](https://py.geocompx.org/)
+- [Geocomputation with Python](https://py.geocompx.org/)
 - [Datacubes - openEO](https://openeo.org/documentation/1.0/datacubes.html#what-are-datacubes)
 - [Data Formats - NASA Earth Observation Data Basics](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/data-formats)
 - [Cloud Computing - NASA Earth Observation Data Basics](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/cloud-computing)
@@ -25,7 +25,7 @@ Throughout this book, we reference a number of resources on different topics. Th
 - [Climate Forecase Conventions](https://cfconventions.org/)
 - [GDAL Virtual Raster Format](https://gdal.org/en/stable/drivers/raster/vrt.html)
 - [STAC Specification](https://stacspec.org/en)
-- 
+
 ## Geospatial data and coordinate reference systems
 - [Coordinate Reference Systems - Geocomputaion with Python](https://py.geocompx.org/01-spatial-data#geographic-coordinate-systems)
 - [Reprojecting Geographic Data - Geocomputation with Python](https://py.geocompx.org/06-reproj)

@@ -2,11 +2,16 @@
 _build 
 _static 
 
-#Data 
-**/data/raster_data/*
+#scratch
+all_links.txt
+node_modules/
+package-lock.json
+package.json
+utils/get_links.py
 
-#Extra nbs
-sentinel1/subste_nbs
+#Data 
+sentinel1/data/raster_data/*
+itslive/data/raster_data/single_glacier_itslive.zarr/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

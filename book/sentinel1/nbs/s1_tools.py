@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import markdown
 import os
 import pandas as pd
@@ -116,7 +115,7 @@ def parse_fname_metadata(input_fname: str) -> dict:
 
     # Iterate through parts and schema
     for part, (name, (length_options, pattern_options)) in zip(parts, schema.items()):
-        # In the schema we defined, items have an int for length or a tuple (when there is more than one possible lenght)
+        # In the schema we defined, items have an int for length or a tuple (when there is more than one possible length)
         # Make the int lengths into tuples
         if isinstance(length_options, int):
             length_options = (length_options,)
@@ -216,7 +215,7 @@ def make_coord_data(readme_fpaths_ls):
 
     # Make a list of all granules in time series
     granule_ls = [extract_granule_id(readme_fpaths_ls[element]) for element in range(len(readme_fpaths_ls))]
-    # Define a schema for aquisition date
+    # Define a schema for acquisition date
     schema = {
         "mission_identifier": (3, r"S1[A-B]"),  # schema for sensor
         "mode_beam_identifier": (2, r"[A-Z]{2}"),  # schema for beam mode
@@ -270,7 +269,6 @@ def extract_granule_id(filepath):
 # metadata wrangling processor
 def metadata_processor(vv_path: str, vh_path: str, ls_path: str, timeseries_type: str = "full"):
     cwd = pathlib.Path.cwd()
-    tutorial2_dir = pathlib.Path(cwd).parent
 
     # Read VRTs
     ds_vv = xr.open_dataset(vv_path, chunks="auto").squeeze()
