@@ -2,7 +2,7 @@
 
 This section discusses different topics that are relevant to the material demonstrated in the tutorials.
 
-**[2.1 Context and motivation](1_context_and_motivation.md)**  
+**[2.1 Context and motivation](1_context_motivation.md)**  
     Background on how the increasing availability of earth observation data and computational tools impacts how scientists conduct research.
 
 **[2.2 Data cubes](2_data_cubes.md)**  

@@ -12,4 +12,5 @@ Underpinning these examples is a focus on understanding the different components
 {{break}}
 
 ```{figure} background/imgs/cube.png
+:width: 75%
 ```

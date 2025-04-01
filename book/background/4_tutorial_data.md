@@ -47,7 +47,7 @@ If you are unfamiliar with the principles of synthetic aperture radar (SAR) imag
 We provide a very brief overview of RTC processing below but it is not intended to replace the aforementioned resources.
 :::
 
-```{figure} ../images/SARticle_first-fig_redone-06.jpg
+```{figure} imgs/SARticle_first-fig_redone-06.jpg
 ---
 height: 250 px
 figclass: margin-caption
