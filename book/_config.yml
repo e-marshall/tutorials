@@ -14,6 +14,7 @@ only_build_toc_files: false
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks:  'auto'
+
   allow_errors: true
   timeout: 1500
   exclude_patterns:
