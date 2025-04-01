@@ -33,7 +33,7 @@ This tutorial contains jupyter notebooks demonstrating various steps of a typica
 :::
 :::{tab-item} Relevant Concepts
 
-This tutorial will spend a lot of time discussing the following concepts, if they're unfamiliar to you, we recommend first heading to [Relevant Concepts](../background/relevant_concepts.md).
+This tutorial will spend a lot of time discussing the following concepts, if they're unfamiliar to you, we recommend first heading to [Relevant Concepts](../background/6_relevant_concepts.md).
 
  1. {term}`Larger than memory data`
 
@@ -49,19 +49,19 @@ This tutorial demonstrates how to use xarray for scientific investigation of rem
 - Read Zarr data from AWS S3 cloud object stores,  
 - Understand different approaches for working with larger-than-memory data,  
 - Use GeoPandas to manipulate and visualize vector data,  
-- Clip raster data by vector data objects using GeoPandas and Rioxarray,  
+- Clip raster data by vector data objects using GeoPandas and RioXarray,  
 - Parse geographic metadata with cf_xarray,  
 - Build and use vector data cubes with Xvec,   
 - Write multi-dimensional data to disk as Zarr data cubes and understand how different metadata storage can affect these operations. 
 :::
 :::{tab-item} Software
 
-For instructions on setting up a computing environment needed for this tutorial, see [Software](../intro/software.md).
+For instructions on setting up a computing environment needed for this tutorial, see [Software](../background/5_software.md).
 :::
 :::{tab-item} Data
 
-For more background on the data used in this tutorial, head to [Tutorial Data](../background/tutorial_data.md).
+For more background on the data used in this tutorial, head to [Tutorial Data](../background/4_tutorial_data.md).
 
 ::::
 
-To get started with this tutorial, make sure you've followed the instructions on the [Software](../intro/software.md) page for downloading the necessary material and setting up a virtual environment, then head to the first notebook.
+To get started with this tutorial, make sure you've followed the instructions on the [Software](../background/5_software.md) page for downloading the necessary material and setting up a virtual environment, then head to the first notebook.

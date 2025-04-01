@@ -1,5 +1,5 @@
 # About this book
-# ====================
+----
 ## Contributing
 
 If you'd like to contribute to this book, please start a discussion or raise an issue in the GitHub [repository](https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows).
