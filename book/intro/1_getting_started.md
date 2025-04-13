@@ -39,20 +39,20 @@ The tutorials in this book include discussions of different types of geospatial 
 
 ## *Overview of book*
 
-### {{part1_title}}
+### Part 2: Background
 Background on data cubes and an introduction to array-based geoscience data and how it is represented in Xarray and Python. This section provides an overview and explanations of topics that will be referenced in the applied tutorials.
 
 ### Tutorials
 
 Each tutorial focuses on a different type of remote sensing dataset and demonstrates how to assess and work through the nuances, details, and challenges that can arise from each. A common characteristic of each dataset emphasized throughout the notebooks is working with larger-than-memory datasets on the computational resources of a standard laptop. 
 
-#### Part 3: {{part2_title}} [$\tiny \nearrow$](../itslive/itslive_intro.md)
+#### Part 3:  ITS_LIVE ice velocity data tutorial [$\tiny \nearrow$](../itslive/itslive_intro.md)
 This tutorial focuses on [ITS_LIVE](https://its-live.jpl.nasa.gov/), a NASA MEASURES project and publicly accessible dataset stored in an AWS S3 repo as Zarr data cubes. 
 
-#### Part 4: {{part3_title}} [$\tiny \nearrow$](../sentinel1/s1_intro.md)
+#### Part 4: Sentinel-1 RTC imagery tutorial [$\tiny \nearrow$](../sentinel1/s1_intro.md)
 This tutorial focuses on another satellite dataset: [Sentinel-1](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-1) Radiometric Terrain Corrected imagery. Sentinel-1 is a satellite-based imaging radar. More specifically, it is a synthetic aperture radar (SAR). SAR sensors look to the side rather than straight-down like conventional optical and infrared satellite sensors. This side-looking geometry causes geometric distortions that must be addressed prior to analysis. SAR data undergoes different types of processing for different scientific applications. Part 4 demonstrates how to access this data from two publicly available online repositories: Alaska Satellite Facility and Microsoft Planetary Computer. These notebooks demonstrate the different ways to read this data and prepare it for analysis, as well as an initial comparison of the two datasets. 
 
-### {{part4_title}} [$\tiny \nearrow$](../conclusion/wrapping_up.md)
+### Part 5: Conclusion [$\tiny \nearrow$](../conclusion/wrapping_up.md)
 
 A summary of the lessons learned throughout the tutorials and synthesis of these ideas into suggestions and best practices for developing scientific workflows analyzing n-dimensional earth observation data. 
 
