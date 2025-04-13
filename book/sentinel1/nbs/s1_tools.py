@@ -267,7 +267,7 @@ def extract_granule_id(filepath):
 
 
 # metadata wrangling processor
-def metadata_processor(vv_path: str, vh_path: str, ls_path: str, timeseries_type: str = "full"):
+def metadata_processor(vv_path: str, vh_path: str, ls_path: str, rtc_path:str, timeseries_type: str = "full"):
     cwd = pathlib.Path.cwd()
 
     # Read VRTs
@@ -280,7 +280,8 @@ def metadata_processor(vv_path: str, vh_path: str, ls_path: str, timeseries_type
     ds_ls = ds_ls.rename({"band_data": "ls"})
     # make file paths lists for each variable
 
-    s1_asf_data = pathlib.Path(f"../data/raster_data/{timeseries_type}_timeseries/asf_rtcs")
+    #s1_asf_data = pathlib.Path(f"../data/raster_data/{timeseries_type}_timeseries/asf_rtcs")
+    s1_asf_data = pathlib.Path(rtc_path)
     # Make file path lists for vv, vh, ls
     variables_ls = ["vv", "vh", "ls_map", "readme"]
     filepaths_dict = create_filenames_dict(s1_asf_data, variables_ls)
