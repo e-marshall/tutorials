@@ -1,6 +1,6 @@
 # 2.5 Software and computing environment
 
-On this page you'll find information about the computing environment that will be used in both of the tutorials in this book. We provide instructions for Running locally (on laptop), or on a hosted JupyterHub in AWS us-west-2.
+On this page you'll find information about the computing environment that will be used for both of the tutorials in this book. We provide instructions for running locally (on a laptop), or on a hosted JupyterHub in AWS us-west-2.
 
 ## *Running tutorial materials locally*
 
