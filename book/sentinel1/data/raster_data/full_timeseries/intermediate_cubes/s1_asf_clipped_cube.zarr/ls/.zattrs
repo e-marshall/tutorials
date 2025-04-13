@@ -1,0 +1,10 @@
+{
+    "_ARRAY_DIMENSIONS": [
+        "acq_date",
+        "y",
+        "x"
+    ],
+    "add_offset": 0.0,
+    "grid_mapping": "spatial_ref",
+    "scale_factor": 1.0
+}

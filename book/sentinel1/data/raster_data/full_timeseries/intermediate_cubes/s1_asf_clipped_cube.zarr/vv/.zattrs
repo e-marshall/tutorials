@@ -1,0 +1,8 @@
+{
+    "_ARRAY_DIMENSIONS": [
+        "acq_date",
+        "y",
+        "x"
+    ],
+    "coordinates": "abs_orbit_num data_take_ID ls orbital_dir product_id"
+}

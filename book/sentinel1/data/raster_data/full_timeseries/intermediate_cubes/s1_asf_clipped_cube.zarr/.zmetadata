@@ -1,0 +1,339 @@
+{
+    "metadata": {
+        ".zattrs": {
+            "area_or_clipped": "e",
+            "beam_mode": "IW",
+            "deadreckoning_or_demmatch": "d",
+            "notfiltered_or_filtered": "n",
+            "orbit_type": "P",
+            "output_type": "g",
+            "output_unit": "p",
+            "polarization_type": "D",
+            "primary_polarization": "V",
+            "processing_software": "G",
+            "sensor": "S1A",
+            "terrain_correction_pixel_spacing": "RTC30",
+            "unmasked_or_watermasked": "u"
+        },
+        ".zgroup": {
+            "zarr_format": 2
+        },
+        "abs_orbit_num/.zarray": {
+            "chunks": [
+                63
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U6",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                63
+            ],
+            "zarr_format": 2
+        },
+        "abs_orbit_num/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ],
+            "description": "Absolute orbit number"
+        },
+        "acq_date/.zarray": {
+            "chunks": [
+                63
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<i8",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                63
+            ],
+            "zarr_format": 2
+        },
+        "acq_date/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ],
+            "calendar": "proleptic_gregorian",
+            "units": "seconds since 2021-05-05 00:03:07"
+        },
+        "data_take_ID/.zarray": {
+            "chunks": [
+                63
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U6",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                63
+            ],
+            "zarr_format": 2
+        },
+        "data_take_ID/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ],
+            "description": "ESA Mission data take ID"
+        },
+        "ls/.zarray": {
+            "chunks": [
+                16,
+                198,
+                145
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "|u1",
+            "fill_value": 0,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                63,
+                396,
+                290
+            ],
+            "zarr_format": 2
+        },
+        "ls/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date",
+                "y",
+                "x"
+            ],
+            "add_offset": 0.0,
+            "grid_mapping": "spatial_ref",
+            "scale_factor": 1.0
+        },
+        "orbital_dir/.zarray": {
+            "chunks": [
+                63
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U4",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                63
+            ],
+            "zarr_format": 2
+        },
+        "orbital_dir/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "product_id/.zarray": {
+            "chunks": [
+                63
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<U4",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                63
+            ],
+            "zarr_format": 2
+        },
+        "product_id/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date"
+            ]
+        },
+        "spatial_ref/.zarray": {
+            "chunks": [],
+            "compressor": null,
+            "dtype": "<i8",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [],
+            "zarr_format": 2
+        },
+        "spatial_ref/.zattrs": {
+            "GeoTransform": "619410.0 30.0 0.0 3101670.0 0.0 -30.0",
+            "_ARRAY_DIMENSIONS": [],
+            "crs_wkt": "PROJCS[\"WGS 84 / UTM zone 45N\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",87],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"32645\"]]",
+            "false_easting": 500000.0,
+            "false_northing": 0.0,
+            "geographic_crs_name": "WGS 84",
+            "grid_mapping_name": "transverse_mercator",
+            "horizontal_datum_name": "World Geodetic System 1984",
+            "inverse_flattening": 298.257223563,
+            "latitude_of_projection_origin": 0.0,
+            "longitude_of_central_meridian": 87.0,
+            "longitude_of_prime_meridian": 0.0,
+            "prime_meridian_name": "Greenwich",
+            "projected_crs_name": "WGS 84 / UTM zone 45N",
+            "reference_ellipsoid_name": "WGS 84",
+            "scale_factor_at_central_meridian": 0.9996,
+            "semi_major_axis": 6378137.0,
+            "semi_minor_axis": 6356752.314245179,
+            "spatial_ref": "PROJCS[\"WGS 84 / UTM zone 45N\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",87],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"32645\"]]"
+        },
+        "vh/.zarray": {
+            "chunks": [
+                16,
+                99,
+                145
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                63,
+                396,
+                290
+            ],
+            "zarr_format": 2
+        },
+        "vh/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date",
+                "y",
+                "x"
+            ],
+            "coordinates": "abs_orbit_num data_take_ID ls orbital_dir product_id"
+        },
+        "vv/.zarray": {
+            "chunks": [
+                16,
+                99,
+                145
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                63,
+                396,
+                290
+            ],
+            "zarr_format": 2
+        },
+        "vv/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "acq_date",
+                "y",
+                "x"
+            ],
+            "coordinates": "abs_orbit_num data_take_ID ls orbital_dir product_id"
+        },
+        "x/.zarray": {
+            "chunks": [
+                290
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                290
+            ],
+            "zarr_format": 2
+        },
+        "x/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "x"
+            ],
+            "axis": "X",
+            "long_name": "x coordinate of projection",
+            "standard_name": "projection_x_coordinate",
+            "units": "metre"
+        },
+        "y/.zarray": {
+            "chunks": [
+                396
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                396
+            ],
+            "zarr_format": 2
+        },
+        "y/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "y"
+            ],
+            "axis": "Y",
+            "long_name": "y coordinate of projection",
+            "standard_name": "projection_y_coordinate",
+            "units": "metre"
+        }
+    },
+    "zarr_consolidated_format": 1
+}
