@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Cloud-native geospatial datacube workflows with open-source tools
+title: Cloud-native geospatial data cube workflows with open-source tools
 author: Emma Marshall
 copyright: "2025" #, Emma Marshall
 #logo: logo.png
@@ -33,7 +33,7 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows
+  url: https://github.com/e-marshall/cloud-open-source-geospatial-data-cube-workflows
   branch: main  
 
 launch_buttons:

@@ -8,10 +8,10 @@ There are two options for creating a software environment: [pixi](https://pixi.s
 
 ### To use pixi
 1. Clone the book's GitHub repository:   
-    ```git clone https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows.git```
+    ```git clone https://github.com/e-marshall/cloud-open-source-geospatial-data-cube-workflows.git```
 
 2. Navigate into the repo environment:  
-```cd cloud-open-source-geospatial-datacube-workflows```
+```cd cloud-open-source-geospatial-data-cube-workflows```
 
 3. There is a small data cube included in the repo that is used in the tutorials. We don't want git to track this so we tell it to ignore this file path.  
 ```git update-index --assume-unchanged book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/.```
@@ -25,10 +25,10 @@ Note that the first `pixi run` will download specific versions of all required P
 ### To use conda/mamba
 
 1. Clone this book's GitHub repository:  
-```git clone https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows.git```
+```git clone https://github.com/e-marshall/cloud-open-source-geospatial-data-cube-workflows.git```
 
 2. Navigate into the `book` sub-directory:    
-```cd cloud-open-source-geospatial-datacube-workflows/book```
+```cd cloud-open-source-geospatial-data-cube-workflows/book```
 
 3. Create and activate a conda environment from the `environment.yml` file located in the repo:  
 ```conda env create -f environment.yml```  

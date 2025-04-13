@@ -7,7 +7,7 @@ from shapely.geometry import Point, Polygon
 
 def read_in_s3(http_url: str, chunks: Union[None, str, dict] = "auto") -> xr.Dataset:
     """
-    Reads a zarr datacube given an S3 URL using
+    Reads a zarr data cube given an S3 URL using
     xarray and returns it as a xr.Dataset.
 
     Parameters
