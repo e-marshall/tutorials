@@ -15,10 +15,12 @@ Throughout this book, we reference a number of resources on different topics. Th
 ## Dask resources
 - [Choosing good chunk sizes in Dask](https://blog.dask.org/2021/11/02/choosing-dask-chunk-sizes)
 - [Dask Cookbook - Project Pythia](https://projectpythia.org/dask-cookbook/README.html)
+
 ## Geospatial data science, data formats, and metadata
 - [Introduction to Earth and Environmental Data Science](https://earth-env-data-science.github.io/intro.html)
 - [Geocomputation with Python](https://py.geocompx.org/)
 - [Datacubes - openEO](https://openeo.org/documentation/1.0/datacubes.html#what-are-datacubes)
+- [Cubes & Clouds - Cloud Native Open Data Sciences for Earth Observation, EO College](https://github.com/EO-College/cubes-and-clouds)
 - [Data Formats - NASA Earth Observation Data Basics](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/data-formats)
 - [Cloud Computing - NASA Earth Observation Data Basics](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/cloud-computing)
 - [Vector Data Cubes - Edzer Pebesma](https://r-spatial.org/r/2022/09/12/vdc.html)
@@ -30,7 +32,7 @@ Throughout this book, we reference a number of resources on different topics. Th
 - [Coordinate Reference Systems - Geocomputaion with Python](https://py.geocompx.org/01-spatial-data#geographic-coordinate-systems)
 - [Reprojecting Geographic Data - Geocomputation with Python](https://py.geocompx.org/06-reproj)
 - [PyPROJ](https://pyproj4.github.io/pyproj/stable/)
-- [cfxarray](https://cf-xarray.readthedocs.io/en/latest/)
+- [cf_xarray](https://cf-xarray.readthedocs.io/en/latest/)
 
 ## Remote sensing data types and formats 
 - [Types of SAR Products - NASA Earth Observation Data Basics](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/types-sar-products)
