@@ -58,7 +58,7 @@ In these situations, a guiding question could be:
 
 |   |  | 
 | :-----------:|:---------- |
-| **Takeaway** | Structure your datacube's dimensions so that data variables are independent of one another. |  
+| **Takeaway** | Structure your data cube's dimensions so that data variables are independent of one another. |  
 
 ```{tip}
 If you are working with a dataset where information about how the variables relate to one another is included in the variable name (e.g. a year, or a band wavelength), this is a sign that there should be an additional dimension.
@@ -127,7 +127,7 @@ Independent objects should be represented as unique `xr.Datasets` (if multivaria
 
 #### Relevant examples
 ##### 1. Apply a function to every object in a collection with `xr.DataTree.map_over_datasets()`
-- Using `xr.DataTree` to apply a function to each dataset within a a collection in order to make a new datacube that includes all objects along an expanded dimension (*[ITS_LIVE tutorial, notebook 4 - exploratory analysis of a single glacier notebook](../itslive/nbs/4_exploratory_data_analysis_single.ipynb)).*
+- Using `xr.DataTree` to apply a function to each dataset within a a collection in order to make a new data cube that includes all objects along an expanded dimension (*[ITS_LIVE tutorial, notebook 4 - exploratory analysis of a single glacier notebook](../itslive/nbs/4_exploratory_data_analysis_single.ipynb)).*
 
 ##### 2. If you're working with a collection of objects that can be defined by vector geometries, a vector data cube may be an appropriate way to represent the data 
 - Use [Xvec](https://xvec.readthedocs.io/en/stable/) to build a vector data cube that has a `'geometry'` dimension; each element of the geometry dimension is a cube that varies over the other dimensions of the cube (frequently `time`) (*[ITS_LIVE tutorial, exploratory analysis of a group of glaciers notebook](../itslive/nbs/5_exploratory_data_analysis_group.ipynb).*)

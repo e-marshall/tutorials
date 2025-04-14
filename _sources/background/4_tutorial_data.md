@@ -1,6 +1,6 @@
 # 2.4 Data used in tutorials
 
-We use a many different datasets throughout these tutorials. While each tutorial is focused on a different raster time series (ITS_LIVE ice velocity data and Sentinel-1 imagery), we also use vector data to represent points of interest. 
+We use many different datasets throughout these tutorials. While each tutorial is focused on a different raster time series (ITS_LIVE ice velocity data and Sentinel-1 imagery), we also use vector data to represent points of interest. 
 
 Most of the examples in this book use data accessed programmatically from cloud-object storage. We make subset of the data available in this books Github repository to remove the need for computationally-intensive operations in the tutorials. In one example, working with Sentinel-1 data processed by Alaska Satellite Facility, we start with data downloaded locally. Users who would like to complete this processing step on their own may do so (and access the data [here](https://zenodo.org/records/15036782)), but a smaller subset of this data is stored in the repository. 
 
@@ -22,6 +22,13 @@ Example of a ice velocity time series along centerline profile of Malaspina Glac
 ```
 
 Part of what is so exciting about ITS_LIVE is that it combines image pairs from a number of satellites, including imagery from optical (Landsat 4,5,7,8,9 & Sentinel-2) and synthetic aperture radar (Sentinel-1) sensors. For this reason, ITS_LIVE time series data can be quite large. Another exciting aspect of the ITS_LIVE dataset is that the image pair time series data is made available as Zarr data cubes stored in cloud object storage on Amazon Web Services (AWS), meaning that users don't need to download massive files to start working with the data! 
+
+
+:::{admonition} A note about working with image pair time series
+ITS_LIVE is an ice velocity time series where observations are derived from image pairs, meaning that an observation captures all movement that occurs between the two image acquisitions. In this tutorial, we focus on demonstrating the basics of dataset manipulation, examination and preliminary visualization; we index observations off of their mid-date and do not take the time between the images into account. For detailed time series analysis of ice velocity, this point should be considered when making decisions about which observations to include in analysis for different scientific objectives and how to perform aggregation and resampling operations. 
+
+For a comprehensive approach to produce regularized ice velocity estimates from an ITS_LIVE time series, we direct the interested reader to {cite:t}`charrier_2025_TICOI`
+:::
 
 ITS_LIVE produces a number of data products in addition to the image pair time series that we use in this tutorial, and provides different options to access the data. Check them out [here](https://its-live.jpl.nasa.gov/#access). 
 
