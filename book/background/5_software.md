@@ -13,8 +13,9 @@ There are two options for creating a software environment: [pixi](https://pixi.s
 2. Navigate into the repo environment:  
 ```cd cloud-open-source-geospatial-data-cube-workflows```
 
-3. There is a small data cube included in the repo that is used in the tutorials. We don't want git to track this so we tell it to ignore this file path.  
-```git update-index --assume-unchanged book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/.```
+3. There are two small data cubes included in the repo that are used in the tutorials. We don't want git to track these so we tell git to ignore these file paths:
+
+```git update-index --assume-unchanged book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/. book/sentinel/data/raster_data/full_timeseries/intermediate_cubes/s1_asf_clipped_cube.zarr/.```
 
 4. Execute `pixi run` for each tutorial:  
 ```pixi run itslive```  
@@ -34,8 +35,9 @@ Note that the first `pixi run` will download specific versions of all required P
 ```conda env create -f environment.yml```  
 ```conda activate book```
 
-4. There is a small data cube included in the repo that is used in the tutorials. We don't want git to track this so we tell it to ignore this file path.  
-```git update-index --assume-unchanged book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/.```
+4. There are two small data cubes included in the repo that are used in the tutorials. We don't want git to track these so we tell git to ignore these file paths:
+
+```git update-index --assume-unchanged book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/. book/sentinel/data/raster_data/full_timeseries/intermediate_cubes/s1_asf_clipped_cube.zarr/.```
 
 5. Start Jupyterlab and navigate to the directories containing the Jupyter notebooks (`itslive/nbs` and `s1/nbs`):    
 ```jupyterlab```
