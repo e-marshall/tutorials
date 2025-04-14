@@ -27,7 +27,7 @@ Part of what is so exciting about ITS_LIVE is that it combines image pairs from 
 :::{admonition} A note about working with image pair time series
 ITS_LIVE is an ice velocity time series where observations are derived from image pairs, meaning that an observation captures all movement that occurs between the two image acquisitions. In this tutorial, we focus on demonstrating the basics of dataset manipulation, examination and preliminary visualization; we index observations off of their mid-date and do not take the time between the images into account. For detailed time series analysis of ice velocity, this point should be considered when making decisions about which observations to include in analysis for different scientific objectives and how to perform aggregation and resampling operations. 
 
-For a comprehensive approach to produce regularized ice velocity estimates from an ITS_LIVE time series, we direct the interested reader to {cite:t}`charrier_2025_TICOI`
+For a comprehensive approach to produce regularized ice velocity estimates from an ITS_LIVE time series, we direct the interested reader to {cite:t}`charrier_2025_TICOI`.
 :::
 
 ITS_LIVE produces a number of data products in addition to the image pair time series that we use in this tutorial, and provides different options to access the data. Check them out [here](https://its-live.jpl.nasa.gov/#access). 
