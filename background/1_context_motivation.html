@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>2.1 Context &amp; Motivation &#8212; Cloud-native geospatial data cube workflows with open-source tools</title>
   
@@ -29,36 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'background/1_context_motivation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -427,10 +425,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="context-motivation">
-<h1>2.1 Context &amp; Motivation<a class="headerlink" href="#context-motivation" title="Permalink to this heading">#</a></h1>
+<h1>2.1 Context &amp; Motivation<a class="headerlink" href="#context-motivation" title="Link to this heading">#</a></h1>
 <p>This book demonstrates scientific workflows using publicly available, cloud-optimized geospatial datasets and open-source scientific software tools in order to address the need for educational resources related to new technologies and reduce barriers to entry to working with earth observation data. The tutorials in this book focus on the complexities inherent to working with n-dimensional, gridded datasets and use the core stack of software packages built on and around the Xarray data model.</p>
 <section id="moving-away-from-the-download-model-of-scientific-data-analysis">
-<h2><em>Moving away from the ‘download model’ of scientific data analysis</em><a class="headerlink" href="#moving-away-from-the-download-model-of-scientific-data-analysis" title="Permalink to this heading">#</a></h2>
+<h2><em>Moving away from the ‘download model’ of scientific data analysis</em><a class="headerlink" href="#moving-away-from-the-download-model-of-scientific-data-analysis" title="Link to this heading">#</a></h2>
 <p>Technological developments in recent decades have engendered fundamental shifts in the nature of scientific data and how it is used for analysis (<span id="id1">Abernathey <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id2" title="Ryan P. Abernathey, Tom Augspurger, Anderson Banihirwe, Charles C. Blackmon-Luca, Timothy J. Crone, Chelle L. Gentemann, Joseph J. Hamman, Naomi Henderson, Chiara Lepore, Theo A. McCaie, Niall H. Robinson, and Richard P. Signell. Cloud-native repositories for big scientific data. Computing in Science &amp; Engineering, 23(2):26-35, 2021. doi:10.1109/MCSE.2021.3059437.">1</a>], Gentemann <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id13" title="C. L. Gentemann, C. Holdgraf, R. Abernathey, D. Crichton, J. Colliander, E. J. Kearns, Y. Panda, and R. P. Signell. Science Storms the Cloud. AGU Advances, 2(2):e2020AV000354, June 2021. URL: https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2020AV000354 (visited on 2023-08-31), doi:10.1029/2020AV000354.">16</a>], Stern <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id34" title="Charles Stern, Ryan Abernathey, Joseph Hamman, Rachel Wegener, Chiara Lepore, Sean Harkins, and Alexander Merose. Pangeo forge: Crowdsourcing analysis-ready, cloud optimized data production. Frontiers in Climate, 2022. doi:10.3389/fclim.2021.782909.">49</a>]</span>).</p>
 <blockquote class="epigraph">
 <div><p>“Traditionally, scientific data have been distributed via a “download model,” wherein scientists download individual data files to local computers for analysis. After downloading many files, scientists typically have to do extensive processing and organizing to make them useful for the data analysis; this creates a barrier to reproducibility, since a scientist’s analysis code must account for this unique “local” organization. Furthermore, the sheer size of the datasets (many terabytes to petabytes) can make downloading effectively impossible. Analysis of such data volumes also can benefit from parallel / distributed computing, which is not always readily available on local computers. Finally, this model reinforces inequality between privileged institutions that have the resources to host local copies of the data and those that don’t. This restricts who can participate in science.”
@@ -438,17 +436,17 @@ document.write(`
 </div></blockquote>
 </section>
 <section id="increasingly-large-cloud-optimized-data-means-new-tools-and-approaches-for-data-management">
-<h2><em>Increasingly large, cloud-optimized data means new tools and approaches for data management</em><a class="headerlink" href="#increasingly-large-cloud-optimized-data-means-new-tools-and-approaches-for-data-management" title="Permalink to this heading">#</a></h2>
+<h2><em>Increasingly large, cloud-optimized data means new tools and approaches for data management</em><a class="headerlink" href="#increasingly-large-cloud-optimized-data-means-new-tools-and-approaches-for-data-management" title="Link to this heading">#</a></h2>
 <p>The increase in publicly available earth observation data has transformed scientific workflows across a range of fields, prompting analysts to gain new skills in order to work with larger volumes of data in new formats and locations, and to use distributed cloud-computational resources in their analysis (<span id="id3">Abernathey <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id2" title="Ryan P. Abernathey, Tom Augspurger, Anderson Banihirwe, Charles C. Blackmon-Luca, Timothy J. Crone, Chelle L. Gentemann, Joseph J. Hamman, Naomi Henderson, Chiara Lepore, Theo A. McCaie, Niall H. Robinson, and Richard P. Signell. Cloud-native repositories for big scientific data. Computing in Science &amp; Engineering, 23(2):26-35, 2021. doi:10.1109/MCSE.2021.3059437.">1</a>], Boulton [<a class="reference internal" href="../endmatter/references.html#id6" title="Geoffrey Boulton. The challenges of a big data earth. Big Earth Data, 2(1):1–7, 2018. arXiv:https://doi.org/10.1080/20964471.2017.1397411, doi:10.1080/20964471.2017.1397411.">5</a>], Gentemann <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id13" title="C. L. Gentemann, C. Holdgraf, R. Abernathey, D. Crichton, J. Colliander, E. J. Kearns, Y. Panda, and R. P. Signell. Science Storms the Cloud. AGU Advances, 2(2):e2020AV000354, June 2021. URL: https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2020AV000354 (visited on 2023-08-31), doi:10.1029/2020AV000354.">16</a>], Martin Sudmanns and Blaschke [<a class="reference internal" href="../endmatter/references.html#id33" title="Stefan Lang Martin Sudmanns, Dirk Tiede and Thomas Blaschke. Big Earth data: disruptive changes in Earth observation data management and analysis? International Journal of Digital Earth, 13(7):832–850, 2020. arXiv:https://doi.org/10.1080/17538947.2019.1585976, doi:10.1080/17538947.2019.1585976.">38</a>], Mathieu <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id28" title="Pierre-Philippe Mathieu, Maurice Borgeaud, Yves-Louis Desnos, Michael Rast, Carsten Brockmann, Linda See, Ravi Kapur, Miguel Mahecha, Ursula Benz, and Steffen Fritz. The ESA's Earth Observation Open Science Program [Space Agencies]. IEEE Geoscience and Remote Sensing Magazine, 5(2):86–96, June 2017. URL: http://ieeexplore.ieee.org/document/7946222/ (visited on 2024-01-19), doi:10.1109/MGRS.2017.2688704.">39</a>], Ramachandran <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id32" title="Rahul Ramachandran, Kaylin Bugbee, and Kevin Murphy. From Open Data to Open Science. Earth and Space Science, May 2021. URL: https://onlinelibrary.wiley.com/doi/10.1029/2020EA001562 (visited on 2023-03-22), doi:10.1029/2020EA001562.">43</a>], Wagemann <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id38" title="Julia Wagemann, Stephan Siemen, Bernhard Seeger, and Jörg Bendix. A user perspective on future cloud-based services for Big Earth data. International Journal of Digital Earth, 14(12):1758–1774, December 2021. URL: https://www.tandfonline.com/doi/full/10.1080/17538947.2021.1982031 (visited on 2024-01-19), doi:10.1080/17538947.2021.1982031.">54</a>]</span>).</p>
 <figure class="align-default" id="id5">
 <img alt="../_images/fy24-projection-chart.png" src="../_images/fy24-projection-chart.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Volume of NASA Earth Science Data archives, including growth of existing-mission archives and new missions, projected through 2029. Source: <a class="reference external" href="https://www.earthdata.nasa.gov/about/open-science">NASA EarthData - Open Science</a>.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Volume of NASA Earth Science Data archives, including growth of existing-mission archives and new missions, projected through 2029. Source: <a class="reference external" href="https://www.earthdata.nasa.gov/about/open-science">NASA EarthData - Open Science</a>.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="asking-questions-of-complex-datasets">
-<h2><em>Asking questions of complex datasets</em><a class="headerlink" href="#asking-questions-of-complex-datasets" title="Permalink to this heading">#</a></h2>
+<h2><em>Asking questions of complex datasets</em><a class="headerlink" href="#asking-questions-of-complex-datasets" title="Link to this heading">#</a></h2>
 <p>Scientific workflows involve asking complex questions of diverse types of data. Earth observation and related datasets often contain two types of information: measurements of a physical observable (e.g. temperature) and metadata that provides auxiliary information that required in order to interpret the physical observable (time and location of measurement, information about the sensor, etc.). With the increasingly complex and large volume of earth observation data that is currently available, storing, managing and organizing this information can very quickly become a complex and challenging task, especially for students and early-career analysts (<span id="id4">Martin Sudmanns and Blaschke [<a class="reference internal" href="../endmatter/references.html#id33" title="Stefan Lang Martin Sudmanns, Dirk Tiede and Thomas Blaschke. Big Earth data: disruptive changes in Earth observation data management and analysis? International Journal of Digital Earth, 13(7):832–850, 2020. arXiv:https://doi.org/10.1080/17538947.2019.1585976, doi:10.1080/17538947.2019.1585976.">38</a>], Mathieu <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id28" title="Pierre-Philippe Mathieu, Maurice Borgeaud, Yves-Louis Desnos, Michael Rast, Carsten Brockmann, Linda See, Ravi Kapur, Miguel Mahecha, Ursula Benz, and Steffen Fritz. The ESA's Earth Observation Open Science Program [Space Agencies]. IEEE Geoscience and Remote Sensing Magazine, 5(2):86–96, June 2017. URL: http://ieeexplore.ieee.org/document/7946222/ (visited on 2024-01-19), doi:10.1109/MGRS.2017.2688704.">39</a>], Palumbo <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id30" title="Ilaria Palumbo, Robert A. Rose, Rachel M. K. Headley, Janet Nackoney, Anthony Vodacek, and Martin Wegmann. Building capacity in remote sensing for conservation: present and future challenges. Remote Sensing in Ecology and Conservation, 3(1):21–29, March 2017. URL: https://zslpublications.onlinelibrary.wiley.com/doi/10.1002/rse2.31 (visited on 2024-01-19), doi:10.1002/rse2.31.">42</a>], Stern <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id34" title="Charles Stern, Ryan Abernathey, Joseph Hamman, Rachel Wegener, Chiara Lepore, Sean Harkins, and Alexander Merose. Pangeo forge: Crowdsourcing analysis-ready, cloud optimized data production. Frontiers in Climate, 2022. doi:10.3389/fclim.2021.782909.">49</a>], Wagemann <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id38" title="Julia Wagemann, Stephan Siemen, Bernhard Seeger, and Jörg Bendix. A user perspective on future cloud-based services for Big Earth data. International Journal of Digital Earth, 14(12):1758–1774, December 2021. URL: https://www.tandfonline.com/doi/full/10.1080/17538947.2021.1982031 (visited on 2024-01-19), doi:10.1080/17538947.2021.1982031.">54</a>]</span>).</p>
 <p>This book provides detailed examples of scientific workflow steps that ingest complex, multi-dimensional datasets, introduce users to the landscape of popular, actively-maintained open-source software packages for working with geospatial data in Python, and include strategies for working with larger-than memory data stored in publicly available, cloud-hosted repositories. These demonstrations are accompanied by detailed discussion of concepts involved in analyzing earth observation data such as dataset inspection, manipulation, and exploratory analysis and visualization. Overall, we emphasize the importance of understanding the structure of multi-dimensional earth observation datasets within the context of a given data model and demonstrate how such an understanding can enable more efficient and intuitive scientific workflows.</p>
 </section>
