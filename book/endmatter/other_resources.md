@@ -32,7 +32,7 @@ Throughout this book, we reference a number of resources on different topics. Th
 - [Coordinate Reference Systems - Geocomputaion with Python](https://py.geocompx.org/01-spatial-data#geographic-coordinate-systems)
 - [Reprojecting Geographic Data - Geocomputation with Python](https://py.geocompx.org/06-reproj)
 - [PyPROJ](https://pyproj4.github.io/pyproj/stable/)
-- [cfxarray](https://cf-xarray.readthedocs.io/en/latest/)
+- [cf_xarray](https://cf-xarray.readthedocs.io/en/latest/)
 
 ## Remote sensing data types and formats 
 - [Types of SAR Products - NASA Earth Observation Data Basics](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/types-sar-products)
