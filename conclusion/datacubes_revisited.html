@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>5.3 Data Cubes Revisited &#8212; Cloud-native geospatial data cube workflows with open-source tools</title>
   
@@ -28,35 +29,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'conclusion/datacubes_revisited';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -423,7 +425,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-cubes-revisited">
-<h1>5.3 Data Cubes Revisited<a class="headerlink" href="#data-cubes-revisited" title="Link to this heading">#</a></h1>
+<h1>5.3 Data Cubes Revisited<a class="headerlink" href="#data-cubes-revisited" title="Permalink to this heading">#</a></h1>
 <p>In this book, we saw a range of real-world datasets and the steps required to prepare them for analysis. Several guiding principles for assembling and using analysis-ready data cubes in Xarray can be drawn from these examples.</p>
 <p>Let’s first return to the Xarray building blocks described in the background <a class="reference internal" href="../background/2_data_cubes.html"><span class="std std-doc">section</span></a>; we can now provide more-detailed definitions of what they are and how they should be used:</p>
 <div class="admonition-dissecting-data-cubes admonition">
@@ -436,7 +438,7 @@ document.write(`
 </div>
 <hr class="docutils" />
 <section id="tidying-guidelines-for-xarray">
-<h2>Tidying guidelines for Xarray<a class="headerlink" href="#tidying-guidelines-for-xarray" title="Link to this heading">#</a></h2>
+<h2>Tidying guidelines for Xarray<a class="headerlink" href="#tidying-guidelines-for-xarray" title="Permalink to this heading">#</a></h2>
 <p>At the beginning of the book, we also discussed ‘tidy data’ as its defined for tabular data. Now that we’ve worked through a number of examples preparing n-dimensional array data for analysis, we can enumerate a few best practices that apply in most cases when tidying data with Xarray. The guiding question when thinking about <em>how</em> to tidy data is always:</p>
 <p><strong>How can this data be structured to simplify subsequent analysis?</strong></p>
 <p>Keep in mind that one organization of the data need not make all analyses equally ergonomic. We must be open to transforming the data between equivalent representations, depending on the task at hand.</p>
@@ -447,10 +449,10 @@ document.write(`
 Variables</label><div class="sd-tab-content docutils">
 <h3 class="rubric" id="data-variables">Data variables</h3>
 <p>These are the measurements or estimates of your dataset. If there are multiple independent measurements in the dataset, they should be stored as data variables in a <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code>, if the data are univariate, use a <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html"><code class="docutils literal notranslate"><span class="pre">xr.DataArray</span></code></a></p>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p></p></th>
-<th class="head text-left"><p></p></th>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
 </tr>
 </thead>
 <tbody>
@@ -462,10 +464,10 @@ Variables</label><div class="sd-tab-content docutils">
 </div>
 <h4 class="rubric" id="relevant-examples">Relevant examples</h4>
 <p>In <a class="reference internal" href="../sentinel1/nbs/3_asf_exploratory_analysis.html"><span class="std std-doc">Sentinel-1, notebook 3 - Exploratory analysis of ASF data</span></a>, we saw examples of treating multiple backscatter polarizations as data variables versus a single variable along a <code class="docutils literal notranslate"><span class="pre">band</span></code> dimension. We can convert between the two representations using <code class="docutils literal notranslate"><span class="pre">Dataset.to_array</span></code> and <code class="docutils literal notranslate"><span class="pre">DataArray.to_dataset</span></code>.</p>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p></p></th>
-<th class="head text-left"><p></p></th>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
 </tr>
 </thead>
 <tbody>
@@ -482,10 +484,10 @@ Dimensions</label><div class="sd-tab-content docutils">
 <h3 class="rubric" id="dimensions">Dimensions</h3>
 <p>Many earth observation data cubes have the same core structure of <code class="docutils literal notranslate"><span class="pre">(x,y,time)</span></code> or <code class="docutils literal notranslate"><span class="pre">(longitude,</span> <span class="pre">latitude,</span> <span class="pre">time)</span></code> dimensions. However, the optimal structure for a given dataset depends on its intended use-case, and there is considerable room to reshape data cubes to fit specific analytical needs.<br />
 In these situations, a guiding question could be:</p>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p></p></th>
-<th class="head text-left"><p></p></th>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
 </tr>
 </thead>
 <tbody>
@@ -505,10 +507,10 @@ In these situations, a guiding question could be:</p>
 </ul>
 </li>
 </ul>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p></p></th>
-<th class="head text-left"><p></p></th>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
 </tr>
 </thead>
 <tbody>
@@ -532,10 +534,10 @@ In these situations, a guiding question could be:</p>
 </ul>
 </li>
 </ul>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p></p></th>
-<th class="head text-left"><p></p></th>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
 </tr>
 </thead>
 <tbody>
@@ -551,10 +553,10 @@ In these situations, a guiding question could be:</p>
 Coordinates</label><div class="sd-tab-content docutils">
 <h2 class="rubric" id="dimensional-non-dimensional-coordinate-variables">Dimensional &amp; non-dimensional coordinate variables</h2>
 <p>A dataset must have a <strong>dimensional coordinate</strong> variable for each dimension in <code class="docutils literal notranslate"><span class="pre">ds.dims</span></code>. Additional <strong>non-dimensional coordinate variables</strong> should be added when relevant metadata varies over dimension(s) of the dataset.</p>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p></p></th>
-<th class="head text-left"><p></p></th>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
 </tr>
 </thead>
 <tbody>
@@ -574,10 +576,10 @@ Coordinates</label><div class="sd-tab-content docutils">
 </ul>
 </li>
 </ul>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p></p></th>
-<th class="head text-left"><p></p></th>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
 </tr>
 </thead>
 <tbody>
@@ -596,10 +598,10 @@ Coordinates</label><div class="sd-tab-content docutils">
 Attributes</label><div class="sd-tab-content docutils">
 <h3 class="rubric" id="attributes">Attributes</h3>
 <p><code class="docutils literal notranslate"><span class="pre">attrs</span></code> can be assigned to the dataset as a whole or any of the <code class="docutils literal notranslate"><span class="pre">xr.DataArray</span></code> objects within it. Many fields have their own conventions for attribute metadata, e.g. Climate &amp; Forecast Conventions (CF).</p>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p></p></th>
-<th class="head text-left"><p></p></th>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
 </tr>
 </thead>
 <tbody>
@@ -610,10 +612,10 @@ Attributes</label><div class="sd-tab-content docutils">
 </table>
 </div>
 <p>and</p>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p></p></th>
-<th class="head text-left"><p></p></th>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
 </tr>
 </thead>
 <tbody>
@@ -630,10 +632,10 @@ Attributes</label><div class="sd-tab-content docutils">
 <li><p>Having appropriate CF metadata enables reading and writing vector data cubes to disk
 (<em><a class="reference internal" href="../itslive/nbs/5_exploratory_data_analysis_group.html"><span class="std std-doc">ITS_LIVE tutorial, exploratory analysis of a group of glaciers notebook</span></a></em>)</p></li>
 </ul>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head text-center"><p></p></th>
-<th class="head text-left"><p></p></th>
+<tr class="row-odd"><th class="text-center head"><p></p></th>
+<th class="text-left head"><p></p></th>
 </tr>
 </thead>
 <tbody>
