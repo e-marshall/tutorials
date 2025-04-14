@@ -2,7 +2,7 @@
 
 This book contains two distinct tutorials, each of which focuses on a different cloud-optimized geospatial dataset and different cloud-computing resources. Read more about the datasets used [here](4_tutorial_data.md).
 
-## *Part 1: {{part2_title}}*
+## *Part 1: ITS_LIVE ice velocity data tutorial*
 
 This tutorial focuses on a dataset of ice velocity observations derived from satellite image pairs, using a number of different satellite sensors. This dataset is accessed as Zarr data cubes from AWS S3 cloud object storage. The notebooks in this tutorial focus on:  
 
@@ -12,7 +12,7 @@ This tutorial focuses on a dataset of ice velocity observations derived from sat
 4) Inspecting metadata and using metadata to subset and visualize the dataset,
 5) Exploratory data analysis and visualization at the scale of a single glacier
 
-## *Part 2: {{part3_title}}*
+## *Part 2: Sentinel-1 RTC imagery tutorial*
 
 This tutorial focuses on data from Sentinel-1, a synthetic aperture radar (SAR) dataset containing imagery collected at C-band. Specifically, we are looking at Sentinel-1 Radiometric Terrain Corrected (RTC) imagery (for more detail on this, see [tutorial data](4_tutorial_data.md)). We demonstrate how to access and work with two Sentinel-1 RTC datasets as well as how to set up and perform an initial comparison between the two and time series analysis of Sentinel-1 backscatter variability. These notebooks cover:  
 

@@ -71,11 +71,11 @@ This option includes 5 Sentinel-1 scenes and the downloaded data will take up ~ 
 ##### Manual data download
 
 1. Go to the Zenodo record and click the `'Download'` button for `asf_rtcs_subset.zip`. 
-2. Once the download completes, extract the data from the zip file and move it to the following location: `cloud_os_geospatial_datacube_workflows/book/sentinel1/data/raster_data/subset_timeseries`.
+2. Once the download completes, extract the data from the zip file and move it to the following location: `cloud_os_geospatial_data-cube_workflows/book/sentinel1/data/raster_data/subset_timeseries`.
 For example, if I downloaded the zip file to my `'Downloads'` and extracted it there, its path would look something like this: 
     `/home/my_user/Downloads/asf_rtcs_subset`
 And I could move it to the appropriate location like this:
-    `mv /home/my_user/Downloads/asf_rtcs_subset/.  /home/my_user/Desktop/work/cloud_os_geospatial_datacube_workflows/book/sentinel1/data/raster_data/subset_timeseries/`
+    `mv /home/my_user/Downloads/asf_rtcs_subset/.  /home/my_user/Desktop/work/cloud_os_geospatial_data-cube_workflows/book/sentinel1/data/raster_data/subset_timeseries/`
 
 ##### Programmatic data download
 
@@ -93,11 +93,11 @@ This option includes 103 Sentinel-1 scenes that are approximately 47 GB. If you'
 ##### Manual data download
 
 1. Go to the Zenodo record and click the `'Download'` button for `asf_rtcs.zip`. 
-2. Once the download completes, extract the data from the zip file and move it to the following location: `cloud_os_geospatial_datacube_workflows/book/sentinel1/data/raster_data/full_timeseries`.
+2. Once the download completes, extract the data from the zip file and move it to the following location: `cloud_os_geospatial_data-cube_workflows/book/sentinel1/data/raster_data/full_timeseries`.
 For example, if I downloaded the zip file to my `'Downloads'` and extracted it there, its path would look something like this: 
     `/home/my_user/Downloads/asf_rtcs`
 And I could move it to the appropriate location like this:
-    `mv /home/my_user/Downloads/asf_rtcs/.  /home/my_user/Desktop/work/cloud_os_geospatial_datacube_workflows/book/sentinel1/data/raster_data/full_timeseries/`
+    `mv /home/my_user/Downloads/asf_rtcs/.  /home/my_user/Desktop/work/cloud_os_geospatial_data-cube_workflows/book/sentinel1/data/raster_data/full_timeseries/`
 
 ##### Programmatic data download
 

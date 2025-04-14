@@ -1,0 +1,7 @@
+{
+    "_ARRAY_DIMENSIONS": [
+        "acq_date"
+    ],
+    "calendar": "proleptic_gregorian",
+    "units": "seconds since 2021-05-05 00:03:07"
+}

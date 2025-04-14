@@ -1,7 +1,7 @@
-# Cloud-native geospatial datacube workflows with open-source tools
+# Cloud-native geospatial data cube workflows with open-source tools
 
 
-Welcome to `Cloud-native geospatial datacube workflows with open-source tools`! This book demonstrates steps of typical scientific workflows involving earth observation data with a focus on cloud-optimized data formats, larger-than memory data, and manipulating multi-dimensional datasets to prepare them for analysis.
+Welcome to `Cloud-native geospatial data cube workflows with open-source tools`! This book demonstrates steps of typical scientific workflows involving earth observation data with a focus on cloud-optimized data formats, larger-than memory data, and manipulating multi-dimensional datasets to prepare them for analysis.
 
 We focus on data derived from different types of satellite imagery that are publicly available in cloud-hosted repositories such as [AWS S3](https://aws.amazon.com/s3/). The tutorials are composed of Jupyter Notebooks that demonstrate how to work with these datasets in Python using software packages from the popular [Pangeo](https://www.pangeo.io/) ecosystem that are built on and around the [Xarray](https://xarray.dev/) data model. 
 

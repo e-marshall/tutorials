@@ -1,0 +1,15 @@
+{
+    "area_or_clipped": "e",
+    "beam_mode": "IW",
+    "deadreckoning_or_demmatch": "d",
+    "notfiltered_or_filtered": "n",
+    "orbit_type": "P",
+    "output_type": "g",
+    "output_unit": "p",
+    "polarization_type": "D",
+    "primary_polarization": "V",
+    "processing_software": "G",
+    "sensor": "S1A",
+    "terrain_correction_pixel_spacing": "RTC30",
+    "unmasked_or_watermasked": "u"
+}

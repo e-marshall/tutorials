@@ -5,8 +5,9 @@ The term **data cube** is used frequently throughout this book. This page contai
 
 [^mynote2]: Geffner et al. frame this distinction as *measure attributes* ("attributes whose values are of interest") and *functional attributes* that contextualize the measure attribute values {cite:t}`geffner_2000_dynamic`.
 
+The key object of analysis in this book is a data cube. Many scientific workflows examine how a given variable (such as temperature, wind speed, relative humidity, etc.) varies over time and/or space. Data cubes are a way of organizing geospatial data that allow us to ask these questions. Most of the examples are [raster data cubes](https://openeo.org/documentation/1.0/datacubes.html). Raster data cubes are n-dimensional objects that store continuous measurements or estimates of physical quantities that exist along a given dimension(s).   
 
-The key object of analysis in this book is a [raster data cube](https://openeo.org/documentation/1.0/datacubes.html). Raster data cubes are n-dimensional objects that store continuous measurements or estimates of physical quantities that exist along given dimension(s). Many scientific workflows involve examining how a variable (such as temperature, windspeed, relative humidity, etc.) varies over time and/or space. Data cubes are a way of organizing geospatial data that let us ask these questions.
+Many examples in the book also include vector data. In contrast to raster data, where continuous measurements are stored on a grid, vector data represent geographic features such as roads, rivers, and political borders using points, lines, and polygons. Vector data are often stored as table-like data frames, where geometry and attribute information for individual features are stored in each row of the table. A relatively new development in the Xarray and Python ecosystem is support for vector data cubes. Vector data cubes are similar to raster data cubes, except that one of the cube's dimensions is an array of geometry objects. This allows you to store multi-dimensional data associated with each geometry. 
 
 A very common data cube structure is a 3-dimensional object with (`x`,`y`,`time`) dimensions ({cite:t}`Baumann_2019_datacube,giuliani_2019_EarthObservationOpen,mahecha_2020_EarthSystemData,montero_2024_EarthSystemData`). While this is a relatively intuitive concept,in practice, the amount and types of information contained within a single dataset and the operations involved in managing them, can become complicated and unwieldy. As analysts, we access data (usually from providers such as Distributed Active Archive Center or [DAACs](https://nssdc.gsfc.nasa.gov/earth/daacs.html)), and then we are responsible for organizing the data in a way that let's us ask questions of it. While some of these decisions are straightforward (eg. *It makes sense to stack observations from different points in time along a time dimension*), some can be more open-ended (*Where and how should important metadata be stored so that it will propagate across appropriate operations and be accessible when it is needed?*). 
 
@@ -70,6 +71,8 @@ In the second [tutorial](../sentinel1/s1_intro.md), we work with two Sentinel-1 
 
 ### See also 
 - [OpenEO - Data Cubes](https://openeo.org/documentation/1.0/datacubes.html)
+- [r-spatial - Vector Data Cubes](https://r-spatial.org/r/2022/09/12/vdc.html)
+- [Xvec - Vector data cubes for Xarray](https://xvec.readthedocs.io/en/stable/)
 - [Open Data Cube initiative](https://www.opendatacube.org/about-draft)
 - [The Datacube Manifesto](http://www.earthserver.eu/tech/datacube-manifesto/The-Datacube-Manifesto.pdf)
 - [ARCO: The smartest way to access big geospatial data - Lobelia Earth](https://blog.lobelia.earth/arco-the-smartest-way-to-access-big-geospatial-data-eaf689eff3c9)

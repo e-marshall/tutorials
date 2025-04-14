@@ -1,6 +1,6 @@
 # 2.5 Software and computing environment
 
-On this page you'll find information about the computing environment that will be used in both of the tutorials in this book. We provide instructions for Running locally (on laptop), or on a hosted JupyterHub in AWS us-west-2.
+On this page you'll find information about the computing environment that will be used for both of the tutorials in this book. We provide instructions for running locally (on a laptop), or on a hosted JupyterHub in AWS us-west-2.
 
 ## *Running tutorial materials locally*
 
@@ -8,13 +8,14 @@ There are two options for creating a software environment: [pixi](https://pixi.s
 
 ### To use pixi
 1. Clone the book's GitHub repository:   
-    ```git clone https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows.git```
+    ```git clone https://github.com/e-marshall/cloud-open-source-geospatial-data-cube-workflows.git```
 
 2. Navigate into the repo environment:  
-```cd cloud-open-source-geospatial-datacube-workflows```
+```cd cloud-open-source-geospatial-data-cube-workflows```
 
-3. There is a small data cube included in the repo that is used in the tutorials. We don't want git to track this so we tell it to ignore this file path.  
-```git update-index --assume-unchanged book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/.```
+3. There are two small data cubes included in the repo that are used in the tutorials. We don't want git to track these so we tell git to ignore these file paths:
+
+```git update-index --assume-unchanged book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/. book/sentinel/data/raster_data/full_timeseries/intermediate_cubes/s1_asf_clipped_cube.zarr/.```
 
 4. Execute `pixi run` for each tutorial:  
 ```pixi run itslive```  
@@ -25,17 +26,18 @@ Note that the first `pixi run` will download specific versions of all required P
 ### To use conda/mamba
 
 1. Clone this book's GitHub repository:  
-```git clone https://github.com/e-marshall/cloud-open-source-geospatial-datacube-workflows.git```
+```git clone https://github.com/e-marshall/cloud-open-source-geospatial-data-cube-workflows.git```
 
 2. Navigate into the `book` sub-directory:    
-```cd cloud-open-source-geospatial-datacube-workflows/book```
+```cd cloud-open-source-geospatial-data-cube-workflows/book```
 
 3. Create and activate a conda environment from the `environment.yml` file located in the repo:  
 ```conda env create -f environment.yml```  
 ```conda activate book```
 
-4. There is a small data cube included in the repo that is used in the tutorials. We don't want git to track this so we tell it to ignore this file path.  
-```git update-index --assume-unchanged book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/.```
+4. There are two small data cubes included in the repo that are used in the tutorials. We don't want git to track these so we tell git to ignore these file paths:
+
+```git update-index --assume-unchanged book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/. book/sentinel/data/raster_data/full_timeseries/intermediate_cubes/s1_asf_clipped_cube.zarr/.```
 
 5. Start Jupyterlab and navigate to the directories containing the Jupyter notebooks (`itslive/nbs` and `s1/nbs`):    
 ```jupyterlab```
