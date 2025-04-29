@@ -18,11 +18,10 @@ Fundamentally, many of these complexities can be reduced to one distinction: is 
 
 ### *An example dataset as a Xarray cube*
 
-Imagine we have a time series of [NDVI](https://www.usgs.gov/landsat-missions/landsat-normalized-difference-vegetation-index) imagery generated from a stack of Landsat scenes. Before a user accesses a satellite imagery dataset, it has likely already undergone many levels of processing, transformation and re-organization. For more background on these steps, see Montero et al. {cite:t}`montero_2024_EarthSystemData`, *Section 3: 'The Earth System Data Cube Life cycle'*. 
-
-In this example, we're accessing the dataset at a common dissemination point, an 'image collection'[^mynote1]. It looks something like this:
-```{figure} imgs/image_stack.png
+Imagine we have a time series of [NDVI](https://www.usgs.gov/landsat-missions/landsat-normalized-difference-vegetation-index) imagery generated from a stack of Landsat scenes. Before a user accesses a satellite imagery dataset, it has likely already undergone many levels of processing, transformation and re-organization. For more background on these steps, see Montero et al. {cite:t}`montero_2024_EarthSystemData`, *Section 3: 'The Earth System Data Cube Life cycle'*. In this example, we're accessing the dataset at a common dissemination point, an 'image collection'[^mynote1], a schematic of which is shown in {numref}`2d-stack`.
+```{figure} imgs/2d_collection.png
 ---
+name: 2d-stack
 ---
 Illustration of earth observation time series as a stack of 2-d images and associated metadata. 
 
@@ -34,11 +33,11 @@ Without coordinate information and metadata, the image data are abstract arrays,
 To use this data for scientific analysis, we need to construct it into the form of a cube. This requires a comprehensive understanding of the different pieces of information contained in the dataset and how they relate to one another in order to map the components of the dataset onto a cube structure. 
 ```{figure} imgs/cube.png
 ---
+name: 3d-cube
 ---
 Illustration of earth observation time series organized as a 3-d Xarray data cube. Source: Adapted from [Xarray Dev](https://xarray.dev/).
 ```
-
-In the context of the Xarray data model, univariate data cubes can be represented by an `xr.DataArray` or a `xr.Dataset` with one `data_variable`. Multivariate data cubes should be represented by `xr.Dataset` objects. The building blocks of `xr.DataArrays` and `xr.Datasets` are dimensions, coordinates, data variables, attributes. We recommend the Xarray [terminology](https://docs.xarray.dev/en/stable/user-guide/terminology.html) for a detailed overview of Xarray objects and common operations.
+In the context of the Xarray data model, univariate data cubes can be represented by an `xr.DataArray` or a `xr.Dataset` with one `data_variable`. {numref}`3d-cube` illustrates how to represent multivariate data cubes using `xr.Dataset` objects. The building blocks of `xr.DataArrays` and `xr.Datasets` are dimensions, coordinates, data variables, attributes. We recommend the Xarray [terminology](https://docs.xarray.dev/en/stable/user-guide/terminology.html) for a detailed overview of Xarray objects and common operations.
 
 We've just discussed what a data cube is in the context of a standard earth observation dataset and how to use the Xarray data model to efficiently represent this kind of data. Another way of describing those steps is preparing the dataset so that it is fit for analysis.
 

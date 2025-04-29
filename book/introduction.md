@@ -13,4 +13,6 @@ Underpinning these examples is a focus on understanding the different components
 
 ```{figure} background/imgs/cube.png
 :width: 75%
+
+Illustration of a Xarray 3-d data cube.
 ```
