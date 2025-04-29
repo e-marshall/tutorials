@@ -13,10 +13,11 @@ Technological developments in recent decades have engendered fundamental shifts 
 
 ## *Increasingly large, cloud-optimized data means new tools and approaches for data management*
 
-The increase in publicly available earth observation data has transformed scientific workflows across a range of fields, prompting analysts to gain new skills in order to work with larger volumes of data in new formats and locations, and to use distributed cloud-computational resources in their analysis ({cite:t}`abernathey_2021_cloud,Boulton02012018,gentemann_2021_science,mathieu_2017_esas,ramachandran_2021_open,Sudmanns_2020_big,wagemann_2021_user`). 
+The increasing volume of publicly available earth observation data has transformed scientific workflows across a range of fields, prompting analysts to gain new skills in order to work with larger volumes of data in new formats and locations, and to use distributed cloud-computational resources in their analysis ({cite:t}`abernathey_2021_cloud,Boulton02012018,gentemann_2021_science,mathieu_2017_esas,ramachandran_2021_open,Sudmanns_2020_big,wagemann_2021_user,wagemann_2022_FiveGuidingPrinciples`). {numref}`eo_data_trend` shows the recent trend and projected continued increases in the volume of NASA Earth Science data archives. New satellites like [NISAR](https://nisar.jpl.nasa.gov/) will add to the growth of the data archives.
 
 ```{figure} imgs/fy24-projection-chart.png
 ---
+name: eo_data_trend
 ---
 Volume of NASA Earth Science Data archives, including growth of existing-mission archives and new missions, projected through 2029. Source: [NASA EarthData - Open Science](https://www.earthdata.nasa.gov/about/open-science).
 ```
