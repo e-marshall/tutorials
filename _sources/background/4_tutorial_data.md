@@ -17,11 +17,12 @@ ITS_LIVE is a dataset of ice velocity observations derived from applying a featu
 
 ```{figure} imgs/lopez06-3341335.png
 ---
+name: ITS_LIVE-time-series
 ---
-Example of a ice velocity time series along centerline profile of Malaspina Glacier featuring velocity observations from a range of satellite sensors. Source: Reproduced with permission from {cite:t}`lopez_2023_itslive`.
+Example of a ice velocity time series along a profile of Malaspina Glacier featuring velocity observations from a range of satellite sensors. Source: Reproduced with permission from {cite:t}`lopez_2023_itslive`.
 ```
 
-Part of what is so exciting about ITS_LIVE is that it combines image pairs from a number of satellites, including imagery from optical (Landsat 4,5,7,8,9 & Sentinel-2) and synthetic aperture radar (Sentinel-1) sensors. For this reason, ITS_LIVE time series data can be quite large. Another exciting aspect of the ITS_LIVE dataset is that the image pair time series data is made available as Zarr data cubes stored in cloud object storage on Amazon Web Services (AWS), meaning that users don't need to download massive files to start working with the data! 
+{numref}`ITS_LIVE-time-series` shows an ITS_LIVE time series at various locations on the Malaspina glacier and the satellite sensors that contribute observations throughout the time series. Part of what is so exciting about ITS_LIVE is that it combines image pairs from a number of satellites, including imagery from optical (Landsat 4,5,7,8,9 & Sentinel-2) and synthetic aperture radar (Sentinel-1) sensors. For this reason, ITS_LIVE time series data can be quite large. Another exciting aspect of the ITS_LIVE dataset is that the image pair time series data is made available as Zarr data cubes stored in cloud object storage on Amazon Web Services (AWS), meaning that users don't need to download massive files to start working with the data! 
 
 
 :::{admonition} A note about working with image pair time series
@@ -64,13 +65,13 @@ We provide a very brief overview of RTC processing below but it is not intended 
 ---
 height: 250 px
 figclass: margin-caption
-name: SAR diagram
+name: SAR-diagram
 ---
 Schematic of observation geometry used to form a SAR image.  
-Credit: [NASA EarthData / NASA SAR Handbook](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/sar).
+Source: [NASA EarthData / NASA SAR Handbook](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/sar).
 ```
 
-SAR data is collected in slant range, which is the viewing geometry of the side-looking sensor and has two dimensions: range and azimuth. These are the along-track and across-track directions of the imaged swath. As data is transformed from radar coordinates (slant range) to geocoded coordinates, the spaces represented by individual pixels in the two coordinate systems do not always align, and distortions can arise due to certain viewing angle geometries and surface topography features. In addition, radiometric distortion can arise due to scattering responses from multiple scattering features within a single pixel. Radiometric terrain correction is a processing step that accounts for these distortions and the transformation from radar to geocoded coordinates that prepares SAR data for analysis.
+SAR data is collected in slant range, which is the viewing geometry of the side-looking sensor and has two dimensions: range and azimuth. These are the along-track and across-track directions of the imaged swath. {numref}`SAR-diagram` illustrates the viewing geometry of a SAR image. As data is transformed from radar coordinates (slant range) to geocoded coordinates, the spaces represented by individual pixels in the two coordinate systems do not always align, and distortions can arise due to certain viewing angle geometries and surface topography features. In addition, radiometric distortion can arise due to scattering responses from multiple scattering features within a single pixel. Radiometric terrain correction is a processing step that accounts for these distortions and the transformation from radar to geocoded coordinates that prepares SAR data for analysis.
 
 ### Sentinel-1 RTC datasets
 ::::{tab-set}

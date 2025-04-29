@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>5.1 Wrapping up &#8212; Cloud-native geospatial data cube workflows with open-source tools</title>
   
@@ -29,36 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'conclusion/wrapping_up';</script>
@@ -429,11 +427,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="wrapping-up">
-<h1>5.1 Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this heading">#</a></h1>
-<p>It is a popular refrain, and a sentiment many analysts can likely relate to, “that 80% of data analysis is spent on the cleaning and preparing of data” <span id="id1">[<a class="reference internal" href="../endmatter/references.html#id10" title="Tamraparni Dasu and Theodore Johnson. Exploratory Data Mining and Data Cleaning. John Wiley &amp; Sons, Inc., USA, 1 edition, 2003. ISBN 0471268518. doi:10.1002/0471448354.">12</a>, <a class="reference internal" href="../endmatter/references.html#id13" title="C. L. Gentemann, C. Holdgraf, R. Abernathey, D. Crichton, J. Colliander, E. J. Kearns, Y. Panda, and R. P. Signell. Science Storms the Cloud. AGU Advances, 2(2):e2020AV000354, June 2021. URL: https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2020AV000354 (visited on 2023-08-31), doi:10.1029/2020AV000354.">16</a>, <a class="reference internal" href="../endmatter/references.html#id39" title="Hadley Wickham. Tidy data. The Journal of Statistical Software, 2014. URL: http://www.jstatsoft.org/v59/i10/.">55</a>]</span>. This book focuses on the data cleaning and preparation steps of an analytical workflow that ingests satellite remote sensing time series datasets. We draw on the wealth of knowledge and research that attends to this topic in order to produce tutorials that demonstrate and explain these concepts in the context of cloud-optimized, publicly available array data and the software ecosystem built around the Xarray data model in Python.</p>
+<h1>5.1 Wrapping up<a class="headerlink" href="#wrapping-up" title="Link to this heading">#</a></h1>
+<p>It is a popular refrain, and a sentiment many analysts can likely relate to, “that 80% of data analysis is spent on the cleaning and preparing of data” <span id="id1">[<a class="reference internal" href="../endmatter/references.html#id10" title="Tamraparni Dasu and Theodore Johnson. Exploratory Data Mining and Data Cleaning. John Wiley &amp; Sons, Inc., USA, 1 edition, 2003. ISBN 0471268518. doi:10.1002/0471448354.">12</a>, <a class="reference internal" href="../endmatter/references.html#id13" title="C. L. Gentemann, C. Holdgraf, R. Abernathey, D. Crichton, J. Colliander, E. J. Kearns, Y. Panda, and R. P. Signell. Science Storms the Cloud. AGU Advances, 2(2):e2020AV000354, June 2021. URL: https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2020AV000354 (visited on 2023-08-31), doi:10.1029/2020AV000354.">16</a>, <a class="reference internal" href="../endmatter/references.html#id40" title="Hadley Wickham. Tidy data. The Journal of Statistical Software, 2014. URL: http://www.jstatsoft.org/v59/i10/.">56</a>]</span>. This book focuses on the data cleaning and preparation steps of an analytical workflow that ingests satellite remote sensing time series datasets. We draw on the wealth of knowledge and research that attends to this topic in order to produce tutorials that demonstrate and explain these concepts in the context of cloud-optimized, publicly available array data and the software ecosystem built around the Xarray data model in Python.</p>
 <p>In this chapter, you will find summaries of the concepts covered throughout the Jupyter Notebooks included in this book and a return to the introduction’s <a class="reference internal" href="../background/2_data_cubes.html"><span class="std std-doc">discussion of data cubes</span></a> that synthesizes lessons learned in the tutorials.</p>
 <section id="open-source-tools-and-packages">
-<h2>Open source tools and packages<a class="headerlink" href="#open-source-tools-and-packages" title="Permalink to this heading">#</a></h2>
+<h2>Open source tools and packages<a class="headerlink" href="#open-source-tools-and-packages" title="Link to this heading">#</a></h2>
 <p>We mainly use Xarray and tools within the Xarray ecosystem. There are many exciting open-source projects and tools related to Xarray data cubes that were not highlighted in this book. A few are:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/bcdev/xrlint">XRLint</a></p></li>
@@ -444,11 +442,11 @@ document.write(`
 </ul>
 </section>
 <section id="tutorials-summary-tiny-nearrow">
-<h2>5.2 Tutorials Summary<a class="reference internal" href="summary.html"><span class="std std-doc"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a><a class="headerlink" href="#tutorials-summary-tiny-nearrow" title="Permalink to this heading">#</a></h2>
+<h2>5.2 Tutorials Summary<a class="reference internal" href="summary.html"><span class="std std-doc"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a><a class="headerlink" href="#tutorials-summary-tiny-nearrow" title="Link to this heading">#</a></h2>
 <p>This book features two tutorials, each focuses on a different earth observation dataset and containing five notebooks that cover different steps of a typical workflow such as data access, manipulation and organization and visualization and exploratory analysis. In this section, you will find a few of the common topics throughout these notebooks and links to where they are addressed in each tutorial.</p>
 </section>
 <section id="data-cubes-revisited-tiny-nearrow">
-<h2>5.3 Data cubes revisited <a class="reference internal" href="datacubes_revisited.html"><span class="std std-doc"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a><a class="headerlink" href="#data-cubes-revisited-tiny-nearrow" title="Permalink to this heading">#</a></h2>
+<h2>5.3 Data cubes revisited <a class="reference internal" href="datacubes_revisited.html"><span class="std std-doc"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a><a class="headerlink" href="#data-cubes-revisited-tiny-nearrow" title="Link to this heading">#</a></h2>
 <p>Synthesizing lessons from tutorial examples to enumerate guidance and best-practices for working Xarray geospatial data cubes.</p>
 </section>
 </section>

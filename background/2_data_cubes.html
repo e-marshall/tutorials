@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>2.2 Data cubes &#8212; Cloud-native geospatial data cube workflows with open-source tools</title>
   
@@ -29,36 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'background/2_data_cubes';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -435,47 +433,46 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-cubes">
-<h1>2.2 Data cubes<a class="headerlink" href="#data-cubes" title="Permalink to this heading">#</a></h1>
+<h1>2.2 Data cubes<a class="headerlink" href="#data-cubes" title="Link to this heading">#</a></h1>
 <p>The term <strong>data cube</strong> is used frequently throughout this book. This page contains an introduction of <em><strong>what</strong></em> a data cube is and <em><strong>why</strong></em> it is useful as well as how it connects to concepts such as ‘analysis-ready data’ and ‘data tidying.’</p>
 <section id="anatomy-of-a-data-cube">
-<h2><em>Anatomy of a data cube</em><a class="headerlink" href="#anatomy-of-a-data-cube" title="Permalink to this heading">#</a></h2>
+<h2><em>Anatomy of a data cube</em><a class="headerlink" href="#anatomy-of-a-data-cube" title="Link to this heading">#</a></h2>
 <p>The key object of analysis in this book is a data cube. Many scientific workflows examine how a given variable (such as temperature, wind speed, relative humidity, etc.) varies over time and/or space. Data cubes are a way of organizing geospatial data that allow us to ask these questions. Most of the examples are <a class="reference external" href="https://openeo.org/documentation/1.0/datacubes.html">raster data cubes</a>. Raster data cubes are n-dimensional objects that store continuous measurements or estimates of physical quantities that exist along a given dimension(s).</p>
 <p>Many examples in the book also include vector data. In contrast to raster data, where continuous measurements are stored on a grid, vector data represent geographic features such as roads, rivers, and political borders using points, lines, and polygons. Vector data are often stored as table-like data frames, where geometry and attribute information for individual features are stored in each row of the table. A relatively new development in the Xarray and Python ecosystem is support for vector data cubes. <a class="reference external" href="https://r-spatial.org/r/2022/09/12/vdc.html">Vector data cubes</a> are similar to raster data cubes, except that one of the cube’s dimensions is an array of geometry objects. This allows you to store multi-dimensional data associated with each geometry.</p>
 <p>A very common data cube structure is a 3-dimensional object with (<code class="docutils literal notranslate"><span class="pre">x</span></code>,<code class="docutils literal notranslate"><span class="pre">y</span></code>,<code class="docutils literal notranslate"><span class="pre">time</span></code>) dimensions (<span id="id1">Baumann <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id4" title="Peter Baumann, Dimitar Misev, Vlad Merticariu, and Bang Pham Huu. Datacubes: Towards space/time analysis-ready data. In Jürgen Döllner, Markus Jobst, and Peter Schmitz, editors, Service-Oriented Mapping: Changing Paradigm in Map Production and Geoinformation Management, pages 269–299. Springer International Publishing, Cham, 2019. doi:10.1007/978-3-319-72434-8_14.">4</a>], Giuliani <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id16" title="Gregory Giuliani, Gilberto Camara, Brian Killough, and Stuart Minchin. Earth Observation Open Science: Enhancing Reproducible Science Using Data Cubes. Data, 4(4):147, November 2019. doi:10.3390/data4040147.">20</a>], Mahecha <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id27" title="Miguel D. Mahecha, Fabian Gans, Gunnar Brandt, Rune Christiansen, Sarah E. Cornell, Normann Fomferra, Guido Kraemer, Jonas Peters, Paul Bodesheim, Gustau Camps-Valls, Jonathan F. Donges, Wouter Dorigo, Lina M. Estupinan-Suarez, Victor H. Gutierrez-Velez, Martin Gutwin, Martin Jung, Maria C. Londoño, Diego G. Miralles, Phillip Papastefanou, and Markus Reichstein. Earth system data cubes unravel global multivariate dynamics. Earth System Dynamics, 11(1):201–234, February 2020. doi:10.5194/esd-11-201-2020.">37</a>], Montero <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id29" title="David Montero, Guido Kraemer, Anca Anghelea, César Aybar, Gunnar Brandt, Gustau Camps-Valls, Felix Cremer, Ida Flik, Fabian Gans, Sarah Habershon, Chaonan Ji, Teja Kattenborn, Laura Martínez-Ferrer, Francesco Martinuzzi, Martin Reinhardt, Maximilian Söchting, Khalil Teber, and Miguel D. Mahecha. Earth System Data Cubes: Avenues for advancing Earth system research. Environmental Data Science, 3:e27, 2024. doi:10.1017/eds.2024.22.">41</a>]</span>). While this is a relatively intuitive concept,in practice, the amount and types of information contained within a single dataset and the operations involved in managing them, can become complicated and unwieldy. As analysts, we access data (usually from providers such as Distributed Active Archive Center or <a class="reference external" href="https://nssdc.gsfc.nasa.gov/earth/daacs.html">DAACs</a>), and then we are responsible for organizing the data in a way that let’s us ask questions of it. While some of these decisions are straightforward (eg. <em>It makes sense to stack observations from different points in time along a time dimension</em>), some can be more open-ended (<em>Where and how should important metadata be stored so that it will propagate across appropriate operations and be accessible when it is needed?</em>).</p>
 <section id="two-types-of-information">
-<h3><em>Two types of information</em><a class="headerlink" href="#two-types-of-information" title="Permalink to this heading">#</a></h3>
-<p>Fundamentally, many of these complexities can be reduced to one distinction: is a particular piece of information a physical observable (the main focus, or target, of the dataset), or is it metadata that provides necessary information in order to properly interpret and handle the physical observable <a class="footnote-reference brackets" href="#mynote2" id="id2">1</a>? Answering this question will help you understand how to situate a piece of information within the broader data object.</p>
+<h3><em>Two types of information</em><a class="headerlink" href="#two-types-of-information" title="Link to this heading">#</a></h3>
+<p>Fundamentally, many of these complexities can be reduced to one distinction: is a particular piece of information a physical observable (the main focus, or target, of the dataset), or is it metadata that provides necessary information in order to properly interpret and handle the physical observable <a class="footnote-reference brackets" href="#mynote2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>? Answering this question will help you understand how to situate a piece of information within the broader data object.</p>
 </section>
 <section id="an-example-dataset-as-a-xarray-cube">
-<h3><em>An example dataset as a Xarray cube</em><a class="headerlink" href="#an-example-dataset-as-a-xarray-cube" title="Permalink to this heading">#</a></h3>
-<p>Imagine we have a time series of <a class="reference external" href="https://www.usgs.gov/landsat-missions/landsat-normalized-difference-vegetation-index">NDVI</a> imagery generated from a stack of Landsat scenes. Before a user accesses a satellite imagery dataset, it has likely already undergone many levels of processing, transformation and re-organization. For more background on these steps, see Montero et al. <span id="id3">Montero <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id29" title="David Montero, Guido Kraemer, Anca Anghelea, César Aybar, Gunnar Brandt, Gustau Camps-Valls, Felix Cremer, Ida Flik, Fabian Gans, Sarah Habershon, Chaonan Ji, Teja Kattenborn, Laura Martínez-Ferrer, Francesco Martinuzzi, Martin Reinhardt, Maximilian Söchting, Khalil Teber, and Miguel D. Mahecha. Earth System Data Cubes: Avenues for advancing Earth system research. Environmental Data Science, 3:e27, 2024. doi:10.1017/eds.2024.22.">41</a>]</span>, <em>Section 3: ‘The Earth System Data Cube Life cycle’</em>.</p>
-<p>In this example, we’re accessing the dataset at a common dissemination point, an ‘image collection’<a class="footnote-reference brackets" href="#mynote1" id="id4">2</a>. It looks something like this:</p>
-<figure class="align-default" id="id16">
-<img alt="../_images/image_stack.png" src="../_images/image_stack.png" />
+<h3><em>An example dataset as a Xarray cube</em><a class="headerlink" href="#an-example-dataset-as-a-xarray-cube" title="Link to this heading">#</a></h3>
+<p>Imagine we have a time series of <a class="reference external" href="https://www.usgs.gov/landsat-missions/landsat-normalized-difference-vegetation-index">NDVI</a> imagery generated from a stack of Landsat scenes. Before a user accesses a satellite imagery dataset, it has likely already undergone many levels of processing, transformation and re-organization. For more background on these steps, see Montero et al. <span id="id3">Montero <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id29" title="David Montero, Guido Kraemer, Anca Anghelea, César Aybar, Gunnar Brandt, Gustau Camps-Valls, Felix Cremer, Ida Flik, Fabian Gans, Sarah Habershon, Chaonan Ji, Teja Kattenborn, Laura Martínez-Ferrer, Francesco Martinuzzi, Martin Reinhardt, Maximilian Söchting, Khalil Teber, and Miguel D. Mahecha. Earth System Data Cubes: Avenues for advancing Earth system research. Environmental Data Science, 3:e27, 2024. doi:10.1017/eds.2024.22.">41</a>]</span>, <em>Section 3: ‘The Earth System Data Cube Life cycle’</em>. In this example, we’re accessing the dataset at a common dissemination point, an ‘image collection’<a class="footnote-reference brackets" href="#mynote1" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, a schematic of which is shown in <a class="reference internal" href="#d-stack"><span class="std std-numref">Fig. 3</span></a>.</p>
+<figure class="align-default" id="d-stack">
+<img alt="../_images/2d_collection.png" src="../_images/2d_collection.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Illustration of earth observation time series as a stack of 2-d images and associated metadata.</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Illustration of earth observation time series as a stack of 2-d images and associated metadata.</span><a class="headerlink" href="#d-stack" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Without coordinate information and metadata, the image data are abstract arrays, meaning that we don’t know anything about the spatial or temporal location of the conditions they describe.</p>
 <p>To use this data for scientific analysis, we need to construct it into the form of a cube. This requires a comprehensive understanding of the different pieces of information contained in the dataset and how they relate to one another in order to map the components of the dataset onto a cube structure.</p>
-<figure class="align-default" id="id17">
+<figure class="align-default" id="d-cube">
 <img alt="../_images/cube.png" src="../_images/cube.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Illustration of earth observation time series organized as a 3-d Xarray data cube. Source: Adapted from <a class="reference external" href="https://xarray.dev/">Xarray Dev</a>.</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Illustration of earth observation time series organized as a 3-d Xarray data cube. Source: Adapted from <a class="reference external" href="https://xarray.dev/">Xarray Dev</a>.</span><a class="headerlink" href="#d-cube" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>In the context of the Xarray data model, univariate data cubes can be represented by an <code class="docutils literal notranslate"><span class="pre">xr.DataArray</span></code> or a <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> with one <code class="docutils literal notranslate"><span class="pre">data_variable</span></code>. Multivariate data cubes should be represented by <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> objects. The building blocks of <code class="docutils literal notranslate"><span class="pre">xr.DataArrays</span></code> and <code class="docutils literal notranslate"><span class="pre">xr.Datasets</span></code> are dimensions, coordinates, data variables, attributes. We recommend the Xarray <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/terminology.html">terminology</a> for a detailed overview of Xarray objects and common operations.</p>
+<p>In the context of the Xarray data model, univariate data cubes can be represented by an <code class="docutils literal notranslate"><span class="pre">xr.DataArray</span></code> or a <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> with one <code class="docutils literal notranslate"><span class="pre">data_variable</span></code>. <a class="reference internal" href="#d-cube"><span class="std std-numref">Fig. 4</span></a> illustrates how to represent multivariate data cubes using <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> objects. The building blocks of <code class="docutils literal notranslate"><span class="pre">xr.DataArrays</span></code> and <code class="docutils literal notranslate"><span class="pre">xr.Datasets</span></code> are dimensions, coordinates, data variables, attributes. We recommend the Xarray <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/terminology.html">terminology</a> for a detailed overview of Xarray objects and common operations.</p>
 <p>We’ve just discussed what a data cube is in the context of a standard earth observation dataset and how to use the Xarray data model to efficiently represent this kind of data. Another way of describing those steps is preparing the dataset so that it is fit for analysis.</p>
 </section>
 </section>
 <section id="data-tidying-and-preparing-data-for-analysis">
-<h2><em>‘Data Tidying’ and preparing data for analysis</em><a class="headerlink" href="#data-tidying-and-preparing-data-for-analysis" title="Permalink to this heading">#</a></h2>
-<p>The topic of <em>how</em> to prepare data for analysis has received significant attention as an area of research in itself for at least two decades (<span id="id5">Dasu and Johnson [<a class="reference internal" href="../endmatter/references.html#id10" title="Tamraparni Dasu and Theodore Johnson. Exploratory Data Mining and Data Cleaning. John Wiley &amp; Sons, Inc., USA, 1 edition, 2003. ISBN 0471268518. doi:10.1002/0471448354.">12</a>]</span>). Dasu &amp; Johnson motivate their discussion with the admonishment that a failure to adequately clean one’s data will almost certainly lead to flawed results, and many emphasize the considerable amount of time, effort and experience that this process can require (<span id="id6">Dasu and Johnson [<a class="reference internal" href="../endmatter/references.html#id10" title="Tamraparni Dasu and Theodore Johnson. Exploratory Data Mining and Data Cleaning. John Wiley &amp; Sons, Inc., USA, 1 edition, 2003. ISBN 0471268518. doi:10.1002/0471448354.">12</a>], Wickham [<a class="reference internal" href="../endmatter/references.html#id39" title="Hadley Wickham. Tidy data. The Journal of Statistical Software, 2014. URL: http://www.jstatsoft.org/v59/i10/.">55</a>]</span>).</p>
-<p>In the tabular data domain, ‘<a class="reference external" href="https://tidyr.tidyverse.org/articles/tidy-data.html">tidy data</a>’ has emerged as a robust framework for structuring data in order to simplify subsequent analysis. In this setting, a a tidy dataset is one where “each variable is a column, each observation is a row, and each type of observational unit is a table” (<span id="id7">Wickham [<a class="reference internal" href="../endmatter/references.html#id39" title="Hadley Wickham. Tidy data. The Journal of Statistical Software, 2014. URL: http://www.jstatsoft.org/v59/i10/.">55</a>]</span>). One way of describing such an object is that the dataset’s physical layout matches its semantic meaning (<span id="id8">Wickham [<a class="reference internal" href="../endmatter/references.html#id39" title="Hadley Wickham. Tidy data. The Journal of Statistical Software, 2014. URL: http://www.jstatsoft.org/v59/i10/.">55</a>]</span>). Wickham (2014) notes “tidy datasets are all alike but every messy dataset is messy in its own way” <span id="id9">[<a class="reference internal" href="../endmatter/references.html#id39" title="Hadley Wickham. Tidy data. The Journal of Statistical Software, 2014. URL: http://www.jstatsoft.org/v59/i10/.">55</a>]</span>, underscoring the wide, and thus potentially complicated and confusing, range of steps needed to arrive at a ‘tidy’ dataset.</p>
+<h2><em>‘Data Tidying’ and preparing data for analysis</em><a class="headerlink" href="#data-tidying-and-preparing-data-for-analysis" title="Link to this heading">#</a></h2>
+<p>The topic of <em>how</em> to prepare data for analysis has received significant attention as an area of research in itself for at least two decades (<span id="id5">Dasu and Johnson [<a class="reference internal" href="../endmatter/references.html#id10" title="Tamraparni Dasu and Theodore Johnson. Exploratory Data Mining and Data Cleaning. John Wiley &amp; Sons, Inc., USA, 1 edition, 2003. ISBN 0471268518. doi:10.1002/0471448354.">12</a>]</span>). Dasu &amp; Johnson motivate their discussion with the admonishment that a failure to adequately clean one’s data will almost certainly lead to flawed results, and many emphasize the considerable amount of time, effort and experience that this process can require (<span id="id6">Dasu and Johnson [<a class="reference internal" href="../endmatter/references.html#id10" title="Tamraparni Dasu and Theodore Johnson. Exploratory Data Mining and Data Cleaning. John Wiley &amp; Sons, Inc., USA, 1 edition, 2003. ISBN 0471268518. doi:10.1002/0471448354.">12</a>], Wickham [<a class="reference internal" href="../endmatter/references.html#id40" title="Hadley Wickham. Tidy data. The Journal of Statistical Software, 2014. URL: http://www.jstatsoft.org/v59/i10/.">56</a>]</span>).</p>
+<p>In the tabular data domain, ‘<a class="reference external" href="https://tidyr.tidyverse.org/articles/tidy-data.html">tidy data</a>’ has emerged as a robust framework for structuring data in order to simplify subsequent analysis. In this setting, a a tidy dataset is one where “each variable is a column, each observation is a row, and each type of observational unit is a table” (<span id="id7">Wickham [<a class="reference internal" href="../endmatter/references.html#id40" title="Hadley Wickham. Tidy data. The Journal of Statistical Software, 2014. URL: http://www.jstatsoft.org/v59/i10/.">56</a>]</span>). One way of describing such an object is that the dataset’s physical layout matches its semantic meaning (<span id="id8">Wickham [<a class="reference internal" href="../endmatter/references.html#id40" title="Hadley Wickham. Tidy data. The Journal of Statistical Software, 2014. URL: http://www.jstatsoft.org/v59/i10/.">56</a>]</span>). Wickham (2014) notes “tidy datasets are all alike but every messy dataset is messy in its own way” <span id="id9">[<a class="reference internal" href="../endmatter/references.html#id40" title="Hadley Wickham. Tidy data. The Journal of Statistical Software, 2014. URL: http://www.jstatsoft.org/v59/i10/.">56</a>]</span>, underscoring the wide, and thus potentially complicated and confusing, range of steps needed to arrive at a ‘tidy’ dataset.</p>
 <p>In the world of multi-dimensional gridded datasets, the ‘data cube’ structure achieves the closest symmetry between physical layout and semantic meaning (<span id="id10">Gray <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id17" title="J. Gray, A. Bosworth, A. Lyaman, and H. Pirahesh. Data cube: a relational aggregation operator generalizing GROUP-BY, CROSS-TAB, and SUB-TOTALS. In Proceedings of the Twelfth International Conference on Data Engineering, 152–159. New Orleans, LA, USA, 1996. IEEE Comput. Soc. Press. doi:10.1109/ICDE.1996.492099.">22</a>]</span>), and has been identified as a core element of analysis-ready earth observation data (<span id="id11">Baumann [<a class="reference internal" href="../endmatter/references.html#id5" title="Peter Baumann. The datacube manifesto. https://www.earthserver.eu/tech/datacube-manifesto/The-Datacube-Manifesto.pdf, 2017.">3</a>], Baumann <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id4" title="Peter Baumann, Dimitar Misev, Vlad Merticariu, and Bang Pham Huu. Datacubes: Towards space/time analysis-ready data. In Jürgen Döllner, Markus Jobst, and Peter Schmitz, editors, Service-Oriented Mapping: Changing Paradigm in Map Production and Geoinformation Management, pages 269–299. Springer International Publishing, Cham, 2019. doi:10.1007/978-3-319-72434-8_14.">4</a>], Giuliani <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id16" title="Gregory Giuliani, Gilberto Camara, Brian Killough, and Stuart Minchin. Earth Observation Open Science: Enhancing Reproducible Science Using Data Cubes. Data, 4(4):147, November 2019. doi:10.3390/data4040147.">20</a>]</span>).</p>
 </section>
 <section id="analysis-ready-data">
-<h2><em>‘Analysis-ready data’</em><a class="headerlink" href="#analysis-ready-data" title="Permalink to this heading">#</a></h2>
+<h2><em>‘Analysis-ready data’</em><a class="headerlink" href="#analysis-ready-data" title="Link to this heading">#</a></h2>
 <p>The process described above is an example of preparing data for analysis. Thanks to development and collaboration across the earth observation community, analysis-ready for earth observation has a specific, technical definition:</p>
 <blockquote class="epigraph">
 <div><p>CEOS Analysis Ready Data (CEOS-ARD) are satellite data that have been processed to a minimum set of requirements and organized into a form that allows immediate analysis with a minimum of additional user effort and interoperability both through time and with other datasets.<br />
@@ -485,12 +482,12 @@ document.write(`
 <p>However, many legacy datasets still require significant effort in order to be considered ‘analysis-ready’. Furthermore, for analysts, ‘analysis-ready’ can be a subjective and evolving label. Semantically, from a user-perspective, analysis-ready data can be thought of as data whose structure is conducive to the analysis the user would like to perform.</p>
 </section>
 <section id="analysis-ready-data-cubes-this-book">
-<h2><em>Analysis-ready data cubes &amp; this book</em><a class="headerlink" href="#analysis-ready-data-cubes-this-book" title="Permalink to this heading">#</a></h2>
+<h2><em>Analysis-ready data cubes &amp; this book</em><a class="headerlink" href="#analysis-ready-data-cubes-this-book" title="Link to this heading">#</a></h2>
 <p>This book’s tutorials use datasets that have been developed and released during this transition to open and cloud-based science and emphasis on analysis-ready data, and illustrate many of the concepts described so far in this section.</p>
 <p>The <a class="reference internal" href="../itslive/itslive_intro.html"><span class="std std-doc">ITS_LIVE tutorial</span></a> features a dataset of multi-sensor observations that is already organized as a <code class="docutils literal notranslate"><span class="pre">(x,y,time)</span></code> cube on a common grid. In this case, much of the ‘tidying’ has been done for us, but as the notebooks show, a fair amount of manipulation and re-organization still is needed as we explore the dataset.</p>
 <p>In the second <a class="reference internal" href="../sentinel1/s1_intro.html"><span class="std std-doc">tutorial</span></a>, we work with two Sentinel-1 RTC datasets. Both have already undergone preprocessing using cloud-based compute resources to transform raw radar returns in slant range to a normalized backscatter coefficient. One dataset, Microsoft Planetary Computer Sentinel-1 RTC, is accessed as a <code class="docutils literal notranslate"><span class="pre">(x,y,time)</span></code> cube and one, processed using ASF’s HyP3 pipeline is accessed as a directory of files associated with individual scenes (single observations) and must be assembled into a <code class="docutils literal notranslate"><span class="pre">(x,y,time)</span></code> cube. In this example, we highlight the importance of a detailed understanding of the data in order to direct appropriate and robust analysis, and demonstrate the programmatic steps involved in ‘tidying’ a set of discrete observations into a <code class="docutils literal notranslate"><span class="pre">(x,y,time)</span></code> cube.</p>
 <section id="see-also">
-<h3>See also<a class="headerlink" href="#see-also" title="Permalink to this heading">#</a></h3>
+<h3>See also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://openeo.org/documentation/1.0/datacubes.html">OpenEO - Data Cubes</a></p></li>
 <li><p><a class="reference external" href="https://r-spatial.org/r/2022/09/12/vdc.html">r-spatial - Vector Data Cubes</a></p></li>
@@ -500,14 +497,16 @@ document.write(`
 <li><p><a class="reference external" href="https://blog.lobelia.earth/arco-the-smartest-way-to-access-big-geospatial-data-eaf689eff3c9">ARCO: The smartest way to access big geospatial data - Lobelia Earth</a></p></li>
 </ul>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="mynote2"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
-<dd><p>Geffner et al. frame this distinction as <em>measure attributes</em> (“attributes whose values are of interest”) and <em>functional attributes</em> that contextualize the measure attribute values <span id="id14">Geffner <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id12" title="Steven Geffner, Divakant Agrawal, and Amr El Abbadi. The dynamic data cube. In Carlo Zaniolo, Peter C. Lockemann, Marc H. Scholl, and Torsten Grust, editors, Advances in Database Technology — EDBT 2000, 237–253. Berlin, Heidelberg, 2000. Springer Berlin Heidelberg. doi:doi.org/10.1007/3-540-46439-5_17.">15</a>]</span>.</p>
-</dd>
-<dt class="label" id="mynote1"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
-<dd><p>“An image collection is a set of n images, where images contain m variables or spectral bands. Band data from one image share a common spatial footprint, acquisition date/time, and spatial reference system but may have different pixel sizes. Technically, the data of bands may come from one or more files, depending on the organization of a particular data product.” <span id="id15">Appel and Pebesma [<a class="reference internal" href="../endmatter/references.html#id3" title="Marius Appel and Edzer Pebesma. On-Demand Processing of Data Cubes from Satellite Image Collections with the gdalcubes Library. Data, 4(3):92, June 2019. doi:10.3390/data4030092.">2</a>]</span></p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="mynote2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Geffner et al. frame this distinction as <em>measure attributes</em> (“attributes whose values are of interest”) and <em>functional attributes</em> that contextualize the measure attribute values <span id="id14">Geffner <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id12" title="Steven Geffner, Divakant Agrawal, and Amr El Abbadi. The dynamic data cube. In Carlo Zaniolo, Peter C. Lockemann, Marc H. Scholl, and Torsten Grust, editors, Advances in Database Technology — EDBT 2000, 237–253. Berlin, Heidelberg, 2000. Springer Berlin Heidelberg. doi:doi.org/10.1007/3-540-46439-5_17.">15</a>]</span>.</p>
+</aside>
+<aside class="footnote brackets" id="mynote1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
+<p>“An image collection is a set of n images, where images contain m variables or spectral bands. Band data from one image share a common spatial footprint, acquisition date/time, and spatial reference system but may have different pixel sizes. Technically, the data of bands may come from one or more files, depending on the organization of a particular data product.” <span id="id15">Appel and Pebesma [<a class="reference internal" href="../endmatter/references.html#id3" title="Marius Appel and Edzer Pebesma. On-Demand Processing of Data Cubes from Satellite Image Collections with the gdalcubes Library. Data, 4(3):92, June 2019. doi:10.3390/data4030092.">2</a>]</span></p>
+</aside>
+</aside>
 </section>
 </section>
 </section>
