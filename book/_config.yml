@@ -60,6 +60,7 @@ sphinx:
     # application/vnd.holoviews_load.v0+json, application/vnd.holoviews_exec.v0+json
     suppress_warnings: ["mystnb.unknown_mime_type"]
     bibtex_reference_style: label
+    #citation_style: apa.csl
     myst_heading_anchors: 3
     myst_enable_extensions:
     - amsmath

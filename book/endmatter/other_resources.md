@@ -5,7 +5,7 @@ Throughout this book, we reference a number of resources on different topics. Th
 
 ## Xarray-specific resources
 - [Xarray User Guide](https://docs.xarray.dev/en/stable/user-guide/index.html)
-- [How do I...](https://docs.xarray.dev/en/stable/howdoi.html)
+- [How do I...](https://docs.xarray.dev/en/stable/get-help/howdoi.html)
 - [Xarray High-level computational patterns](https://tutorial.xarray.dev/intermediate/01-high-level-computation-patterns.html)
 - [Parallel computing with dask](https://tutorial.xarray.dev/intermediate/xarray_and_dask.html)
 - [Terminology](https://docs.xarray.dev/en/stable/user-guide/terminology.html)
