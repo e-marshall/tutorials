@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>1.3 Open source setting &#8212; Cloud-native geospatial data cube workflows with open-source tools</title>
   
@@ -28,35 +29,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro/3_open_source_setting';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -424,20 +426,17 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="open-source-setting">
-<h1>1.3 Open source setting<a class="headerlink" href="#open-source-setting" title="Link to this heading">#</a></h1>
+<h1>1.3 Open source setting<a class="headerlink" href="#open-source-setting" title="Permalink to this heading">#</a></h1>
 <section id="xarray-zarr-and-the-pangeo-software-stack">
-<h2><em>Xarray, Zarr, and the Pangeo software stack</em><a class="headerlink" href="#xarray-zarr-and-the-pangeo-software-stack" title="Link to this heading">#</a></h2>
+<h2><em>Xarray, Zarr, and the Pangeo software stack</em><a class="headerlink" href="#xarray-zarr-and-the-pangeo-software-stack" title="Permalink to this heading">#</a></h2>
 <p><strong><a class="reference external" href="https://www.pangeo.io/">Pangeo</a></strong> is a community scientists, developers, and practitioners dedicated to promoting open, reproducible, and scalable science. Members of the Pangeo community develop and contribute to open-source software libraries within the geosciences and across scientific domains, including <a class="reference external" href="https://xarray.dev/">Xarray</a>, <a class="reference external" href="https://www.dask.org/">Dask</a>, <a class="reference external" href="https://zarr.readthedocs.io/en/stable/">Zarr</a>, and <a class="reference external" href="https://jupyter.org/">Jupyter</a>.</p>
 <p>In addition to these software libraries, the Pangeo community emphasizes the development of educational resources (see <a class="reference external" href="https://foundations.projectpythia.org/landing-page.html">Project Pythia</a>), regular community <a class="reference external" href="https://www.pangeo.io/meetings">meetings</a> and <a class="reference external" href="https://www.pangeo.io/showcase">showcase talks</a>, and working groups on specialized topics.</p>
-<a class="reference internal image-reference" href="../_images/pangeo_logo.png"><img alt="../_images/pangeo_logo.png" src="../_images/pangeo_logo.png" style="width: 240.5px; height: 60.0px;" />
-</a>
-<a class="reference internal image-reference" href="../_images/Xarray_Logo_RGB_Final.png"><img alt="../_images/Xarray_Logo_RGB_Final.png" src="../_images/Xarray_Logo_RGB_Final.png" style="width: 250.0px; height: 125.0px;" />
-</a>
-<a class="reference internal image-reference" href="../_images/zarr_logo.png"><img alt="../_images/zarr_logo.png" src="../_images/zarr_logo.png" style="width: 195.5px; height: 195.5px;" />
-</a>
+<a class="reference internal image-reference" href="../_images/pangeo_logo.png"><img alt="../_images/pangeo_logo.png" src="../_images/pangeo_logo.png" style="width: 240.5px; height: 60.0px;" /></a>
+<a class="reference internal image-reference" href="../_images/Xarray_Logo_RGB_Final.png"><img alt="../_images/Xarray_Logo_RGB_Final.png" src="../_images/Xarray_Logo_RGB_Final.png" style="width: 250.0px; height: 125.0px;" /></a>
+<a class="reference internal image-reference" href="../_images/zarr_logo.png"><img alt="../_images/zarr_logo.png" src="../_images/zarr_logo.png" style="width: 195.5px; height: 195.5px;" /></a>
 </section>
 <section id="why-open-source">
-<h2>Why open-source?<a class="headerlink" href="#why-open-source" title="Link to this heading">#</a></h2>
+<h2>Why open-source?<a class="headerlink" href="#why-open-source" title="Permalink to this heading">#</a></h2>
 <p>Research that follows principles of open, reproducible science is necessary in order to produce rigorous and robust scientific knowledge that can be applied to address the myriad challenges facing society in the 21st century (<span id="id1">Gentemann [<a class="reference internal" href="../endmatter/references.html#id14" title="C.L. Gentemann. Why nasa and federal agencies are declaring this the Year of Open Science. https://www.nature.com/articles/d41586-023-00019-y, 2023.">17</a>], Tai and Robinson [<a class="reference internal" href="../endmatter/references.html#id35" title="Travis C. Tai and James P. W. Robinson. Enhancing climate change research with open science. Frontiers in Environmental Science, 2018. doi:10.3389/fenvs.2018.00115.">50</a>], Thöle and Wegmann [<a class="reference internal" href="../endmatter/references.html#id36" title="Lena M Thöle and Martin Wegmann. Open climate science is brave climate science. Environmental Research Letters, 19(12):122001, December 2024. doi:10.1088/1748-9326/ad893f.">52</a>]</span>). In data-intensive, computational fields, open-source software and accessible data are essential elements of scientific workflows (<span id="id2">Gil <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id15" title="Yolanda Gil, Cédric H. David, Ibrahim Demir, Bakinam T. Essawy, Robinson W. Fulweiler, Jonathan L. Goodall, Leif Karlstrom, Huikyo Lee, Heath J. Mills, Ji-Hyun Oh, Suzanne A. Pierce, Allen Pope, Mimi W. Tzeng, Sandra R. Villamizar, and Xuan Yu. Toward the Geoscience Paper of the Future: Best practices for documenting and sharing research from data to software to provenance. Earth and Space Science, 3(10):388–415, October 2016. doi:10.1002/2015EA000136.">18</a>], Ince <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id19" title="Darrel C. Ince, Leslie Hatton, and John Graham-Cumming. The case for open computer programs. Nature, 482(7386):485–488, February 2012. doi:10.1038/nature10836.">26</a>], Lowndes <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id25" title="Julia S. Stewart Lowndes, Benjamin D. Best, Courtney Scarborough, Jamie C. Afflerbach, Melanie R. Frazier, Casey C. O'Hara, Ning Jiang, and Benjamin S. Halpern. Our path to better science in less time using open data science tools. Nature Ecology &amp; Evolution, 1(6):0160, May 2017. doi:10.1038/s41559-017-0160.">35</a>], Wilkinson <em>et al.</em> [<a class="reference internal" href="../endmatter/references.html#id41" title="Mark D. Wilkinson, Michel Dumontier, IJsbrand Jan Aalbersberg, Gabrielle Appleton, Myles Axton, Arie Baak, Niklas Blomberg, Jan-Willem Boiten, Luiz Bonino da Silva Santos, Philip E. Bourne, Jildau Bouwman, Anthony J. Brookes, Tim Clark, Mercè Crosas, Ingrid Dillo, Olivier Dumon, Scott Edmunds, Chris T. Evelo, Richard Finkers, Alejandra Gonzalez-Beltran, Alasdair J.G. Gray, Paul Groth, Carole Goble, Jeffrey S. Grethe, Jaap Heringa, Peter A.C 't Hoen, Rob Hooft, Tobias Kuhn, Ruben Kok, Joost Kok, Scott J. Lusher, Maryann E. Martone, Albert Mons, Abel L. Packer, Bengt Persson, Philippe Rocca-Serra, Marco Roos, Rene van Schaik, Susanna-Assunta Sansone, Erik Schultes, Thierry Sengstag, Ted Slater, George Strawn, Morris A. Swertz, Mark Thompson, Johan van der Lei, Erik van Mulligen, Jan Velterop, Andra Waagmeester, Peter Wittenburg, Katherine Wolstencroft, Jun Zhao, and Barend Mons. The FAIR Guiding Principles for scientific data management and stewardship. Scientific Data, 3(1):160018, March 2016. doi:10.1038/sdata.2016.18.">57</a>]</span>). We highlight publicly available data and open-source tools in order to support the goals of increasing the accessibility of and democratizing participation in scientific research, and yielding greater and more impactful scientific knowledge from earth observation datasets.</p>
 </section>
 </section>
