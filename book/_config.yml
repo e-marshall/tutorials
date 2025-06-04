@@ -48,9 +48,7 @@ html:
   use_repository_button: true
   use_multitoc_numbering: false
 
-  announcement: >
-    🚧 March 2025 - This book is under construction! 🚧
-
+  
 
 parse:
   myst_enable_extensions:
