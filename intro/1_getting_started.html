@@ -117,10 +117,6 @@
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
-<aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content">🚧 March 2025 - This book is under construction! 🚧
-</div>
-</aside>
 
   
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
@@ -418,12 +414,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-used-in-this-book"><em>Data used in this book</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-book-for"><em>Who is this book for?</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-book"><em>Overview of book</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-introduction">Part 1: Introduction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-background">Part 2: Background</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials">Tutorials</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-its-live-ice-velocity-data-tutorial-tiny-nearrow">Part 3:  ITS_LIVE ice velocity data tutorial <span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-sentinel-1-rtc-imagery-tutorial-tiny-nearrow">Part 4: Sentinel-1 RTC imagery tutorial <span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-its-live-ice-velocity-data-tutorial-tiny-nearrow">Part 3:  ITS_LIVE ice velocity data tutorial <span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-sentinel-1-rtc-imagery-tutorial-tiny-nearrow">Part 4: Sentinel-1 RTC imagery tutorial <span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-5-conclusion-tiny-nearrow">Part 5: Conclusion <span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a></li>
 </ul>
 </li>
@@ -477,21 +471,23 @@ See the tutorial <a class="reference internal" href="../sentinel1/s1_intro.html"
 </section>
 <section id="overview-of-book">
 <h2><em>Overview of book</em><a class="headerlink" href="#overview-of-book" title="Permalink to this heading">#</a></h2>
+<section id="part-1-introduction">
+<h3>Part 1: Introduction<a class="headerlink" href="#part-1-introduction" title="Permalink to this heading">#</a></h3>
+<p>An introduction to the book, including learning objectives, an overview of the topics covered in the rest of the book, and background on its development.</p>
+</section>
 <section id="part-2-background">
 <h3>Part 2: Background<a class="headerlink" href="#part-2-background" title="Permalink to this heading">#</a></h3>
 <p>Background on data cubes and an introduction to array-based geoscience data and how it is represented in Xarray and Python. This section provides an overview and explanations of topics that will be referenced in the applied tutorials.</p>
-</section>
-<section id="tutorials">
-<h3>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this heading">#</a></h3>
+<p><strong>Tutorials</strong></p>
 <p>Each tutorial focuses on a different type of remote sensing dataset and demonstrates how to assess and work through the nuances, details, and challenges that can arise from each. A common characteristic of each dataset emphasized throughout the notebooks is working with larger-than-memory datasets on the computational resources of a standard laptop.</p>
+</section>
 <section id="part-3-its-live-ice-velocity-data-tutorial-tiny-nearrow">
-<h4>Part 3:  ITS_LIVE ice velocity data tutorial <a class="reference internal" href="../itslive/itslive_intro.html"><span class="std std-doc"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a><a class="headerlink" href="#part-3-its-live-ice-velocity-data-tutorial-tiny-nearrow" title="Permalink to this heading">#</a></h4>
+<h3>Part 3:  ITS_LIVE ice velocity data tutorial <a class="reference internal" href="../itslive/itslive_intro.html"><span class="std std-doc"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a><a class="headerlink" href="#part-3-its-live-ice-velocity-data-tutorial-tiny-nearrow" title="Permalink to this heading">#</a></h3>
 <p>This tutorial focuses on <a class="reference external" href="https://its-live.jpl.nasa.gov/">ITS_LIVE</a>, a NASA MEASURES project and publicly accessible dataset stored in an AWS S3 repo as Zarr data cubes.</p>
 </section>
 <section id="part-4-sentinel-1-rtc-imagery-tutorial-tiny-nearrow">
-<h4>Part 4: Sentinel-1 RTC imagery tutorial <a class="reference internal" href="../sentinel1/s1_intro.html"><span class="std std-doc"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a><a class="headerlink" href="#part-4-sentinel-1-rtc-imagery-tutorial-tiny-nearrow" title="Permalink to this heading">#</a></h4>
+<h3>Part 4: Sentinel-1 RTC imagery tutorial <a class="reference internal" href="../sentinel1/s1_intro.html"><span class="std std-doc"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a><a class="headerlink" href="#part-4-sentinel-1-rtc-imagery-tutorial-tiny-nearrow" title="Permalink to this heading">#</a></h3>
 <p>This tutorial focuses on another satellite dataset: <a class="reference external" href="https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-1">Sentinel-1</a> Radiometric Terrain Corrected imagery. Sentinel-1 is a satellite-based imaging radar. More specifically, it is a synthetic aperture radar (SAR). SAR sensors look to the side rather than straight-down like conventional optical and infrared satellite sensors. This side-looking geometry causes geometric distortions that must be addressed prior to analysis. SAR data undergoes different types of processing for different scientific applications. Part 4 demonstrates how to access this data from two publicly available online repositories: Alaska Satellite Facility and Microsoft Planetary Computer. These notebooks demonstrate the different ways to read this data and prepare it for analysis, as well as an initial comparison of the two datasets.</p>
-</section>
 </section>
 <section id="part-5-conclusion-tiny-nearrow">
 <h3>Part 5: Conclusion <a class="reference internal" href="../conclusion/wrapping_up.html"><span class="std std-doc"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a><a class="headerlink" href="#part-5-conclusion-tiny-nearrow" title="Permalink to this heading">#</a></h3>
@@ -572,12 +568,10 @@ See the tutorial <a class="reference internal" href="../sentinel1/s1_intro.html"
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-used-in-this-book"><em>Data used in this book</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-book-for"><em>Who is this book for?</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-book"><em>Overview of book</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-introduction">Part 1: Introduction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-background">Part 2: Background</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials">Tutorials</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-its-live-ice-velocity-data-tutorial-tiny-nearrow">Part 3:  ITS_LIVE ice velocity data tutorial <span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-sentinel-1-rtc-imagery-tutorial-tiny-nearrow">Part 4: Sentinel-1 RTC imagery tutorial <span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-its-live-ice-velocity-data-tutorial-tiny-nearrow">Part 3:  ITS_LIVE ice velocity data tutorial <span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-sentinel-1-rtc-imagery-tutorial-tiny-nearrow">Part 4: Sentinel-1 RTC imagery tutorial <span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-5-conclusion-tiny-nearrow">Part 5: Conclusion <span class="xref myst"><span class="math notranslate nohighlight">\(\tiny \nearrow\)</span></span></a></li>
 </ul>
 </li>

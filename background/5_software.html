@@ -115,10 +115,6 @@
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
-<aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content">🚧 March 2025 - This book is under construction! 🚧
-</div>
-</aside>
 
   
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
@@ -431,10 +427,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="software-and-computing-environment">
 <h1>2.5 Software and computing environment<a class="headerlink" href="#software-and-computing-environment" title="Permalink to this heading">#</a></h1>
-<p>On this page you’ll find information about the computing environment that will be used for both of the tutorials in this book. We provide instructions for running locally (on a laptop), or on a hosted JupyterHub in AWS us-west-2.</p>
+<p>On this page, you’ll find information about the computing environment that will be used for both of the tutorials in this book. We provide instructions for running locally (on a laptop) or on a hosted JupyterHub in AWS us-west-2.</p>
 <section id="running-tutorial-materials-locally">
 <h2><em>Running tutorial materials locally</em><a class="headerlink" href="#running-tutorial-materials-locally" title="Permalink to this heading">#</a></h2>
-<p>There are two options for creating a software environment: <a class="reference external" href="https://pixi.sh/latest/">pixi</a> or <a class="reference external" href="https://mamba.readthedocs.io/en/latest/">mamba</a> / <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html">conda</a>. We recommend using pixi to create a consistent environment on different operating systems. If you have pixi installed, follow the steps below, otherwise, follow the steps for conda/mamba below.</p>
+<p>There are two options for creating a software environment: <a class="reference external" href="https://pixi.sh/latest/">pixi</a> or <a class="reference external" href="https://mamba.readthedocs.io/en/latest/">mamba</a> / <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html">conda</a>. We recommend using pixi to create a consistent environment on different operating systems. If you have pixi installed, follow the steps below; otherwise, follow the steps for conda/mamba below.</p>
 <section id="to-use-pixi">
 <h3>To use pixi<a class="headerlink" href="#to-use-pixi" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
@@ -442,7 +438,7 @@ document.write(`
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/e-marshall/cloud-open-source-geospatial-data-cube-workflows.git</span></code></p></li>
 <li><p>Navigate into the repo environment:<br />
 <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">cloud-open-source-geospatial-data-cube-workflows</span></code></p></li>
-<li><p>There are two small data cubes included in the repo that are used in the tutorials. We don’t want git to track these so we tell git to ignore these file paths:</p></li>
+<li><p>There are two small data cubes included in the repo that are used in the tutorials. We don’t want git to track these, so we tell git to ignore these file paths:</p></li>
 </ol>
 <p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">update-index</span> <span class="pre">--assume-unchanged</span> <span class="pre">book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/.</span> <span class="pre">book/sentinel1/data/raster_data/full_timeseries/intermediate_cubes/s1_asf_clipped_cube.zarr/.</span></code></p>
 <ol class="arabic simple" start="4">
@@ -462,7 +458,7 @@ document.write(`
 <li><p>Create and activate a conda environment from the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file located in the repo:<br />
 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">environment.yml</span></code><br />
 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">book</span></code></p></li>
-<li><p>There are two small data cubes included in the repo that are used in the tutorials. We don’t want git to track these so we tell git to ignore these file paths:</p></li>
+<li><p>There are two small data cubes included in the repo that are used in the tutorials. We don’t want git to track these, so we tell git to ignore these file paths:</p></li>
 </ol>
 <p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">update-index</span> <span class="pre">--assume-unchanged</span> <span class="pre">book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/.</span> <span class="pre">book/sentinel1/data/raster_data/full_timeseries/intermediate_cubes/s1_asf_clipped_cube.zarr/.</span></code></p>
 <ol class="arabic simple" start="5">
@@ -474,13 +470,13 @@ document.write(`
 </section>
 <section id="running-tutorial-materials-on-a-hosted-jupyterhub">
 <h2><em>Running tutorial materials on a hosted JupyterHub</em><a class="headerlink" href="#running-tutorial-materials-on-a-hosted-jupyterhub" title="Permalink to this heading">#</a></h2>
-<p>Many NASA datasets including ITS_LIVE are hosted in the AWS us-west-2 data center. While these tutorial notebooks are designed to be run on any computer, if you intend to modify the notebooks and access data directly it is desirable to run computations in the same data center. A convenient way access a computer in AWS us-west-2 is to use a hosted JupyterHub platform such as one of the following:</p>
+<p>Many NASA datasets, including ITS_LIVE, are hosted in the AWS us-west-2 data center. While these tutorial notebooks are designed to be run on any computer, if you intend to modify the notebooks and access data directly, it is desirable to run computations in the same data center. A convenient way to access a computer in AWS us-west-2 is to use a hosted JupyterHub platform such as one of the following:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.openveda.cloud/user-guide/scientific-computing/">https://docs.openveda.cloud/user-guide/scientific-computing/</a></p></li>
 <li><p><a class="reference external" href="https://opensarlab-docs.asf.alaska.edu">https://opensarlab-docs.asf.alaska.edu</a></p></li>
 <li><p><a class="reference external" href="https://book.cryointhecloud.com/content/Getting_Started.html">https://book.cryointhecloud.com/content/Getting_Started.html</a></p></li>
 </ul>
-<p>On these systems you can install software environment in the same way described above, but you must make the default JupyterLab interface aware of your environment. In Jupyter terminology you must specify a ‘kernel’. Unfortunately there is not an automatic and uniform way of doing this, but a few manual steps can be followed:</p>
+<p>On these systems, you can install software environment in the same way described above, but you must make the default JupyterLab interface aware of your environment. In Jupyter terminology, you must specify a ‘kernel’. Unfortunately, there is not an automatic and uniform way of doing this, but a few manual steps can be followed:</p>
 <ol class="arabic simple">
 <li><p>Create a kernel specification subfolder under your home directory:</p></li>
 </ol>

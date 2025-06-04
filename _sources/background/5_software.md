@@ -1,10 +1,10 @@
 # 2.5 Software and computing environment
 
-On this page you'll find information about the computing environment that will be used for both of the tutorials in this book. We provide instructions for running locally (on a laptop), or on a hosted JupyterHub in AWS us-west-2.
+On this page, you'll find information about the computing environment that will be used for both of the tutorials in this book. We provide instructions for running locally (on a laptop) or on a hosted JupyterHub in AWS us-west-2.
 
 ## *Running tutorial materials locally*
 
-There are two options for creating a software environment: [pixi](https://pixi.sh/latest/) or [mamba](https://mamba.readthedocs.io/en/latest/) / [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html). We recommend using pixi to create a consistent environment on different operating systems. If you have pixi installed, follow the steps below, otherwise, follow the steps for conda/mamba below.
+There are two options for creating a software environment: [pixi](https://pixi.sh/latest/) or [mamba](https://mamba.readthedocs.io/en/latest/) / [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html). We recommend using pixi to create a consistent environment on different operating systems. If you have pixi installed, follow the steps below; otherwise, follow the steps for conda/mamba below.
 
 ### To use pixi
 1. Clone the book's GitHub repository:   
@@ -13,7 +13,7 @@ There are two options for creating a software environment: [pixi](https://pixi.s
 2. Navigate into the repo environment:  
 ```cd cloud-open-source-geospatial-data-cube-workflows```
 
-3. There are two small data cubes included in the repo that are used in the tutorials. We don't want git to track these so we tell git to ignore these file paths:
+3. There are two small data cubes included in the repo that are used in the tutorials. We don't want git to track these, so we tell git to ignore these file paths:
 
 ```git update-index --assume-unchanged book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/. book/sentinel1/data/raster_data/full_timeseries/intermediate_cubes/s1_asf_clipped_cube.zarr/.```
 
@@ -35,7 +35,7 @@ Note that the first `pixi run` will download specific versions of all required P
 ```conda env create -f environment.yml```  
 ```conda activate book```
 
-4. There are two small data cubes included in the repo that are used in the tutorials. We don't want git to track these so we tell git to ignore these file paths:
+4. There are two small data cubes included in the repo that are used in the tutorials. We don't want git to track these, so we tell git to ignore these file paths:
 
 ```git update-index --assume-unchanged book/itslive/data/raster_data/regional_glacier_velocity_vector_cube.zarr/. book/sentinel1/data/raster_data/full_timeseries/intermediate_cubes/s1_asf_clipped_cube.zarr/.```
 
@@ -47,13 +47,13 @@ Both tutorials use functions that are stored in scripts associated with each dat
 
 ## *Running tutorial materials on a hosted JupyterHub*
 
-Many NASA datasets including ITS_LIVE are hosted in the AWS us-west-2 data center. While these tutorial notebooks are designed to be run on any computer, if you intend to modify the notebooks and access data directly it is desirable to run computations in the same data center. A convenient way access a computer in AWS us-west-2 is to use a hosted JupyterHub platform such as one of the following:
+Many NASA datasets, including ITS_LIVE, are hosted in the AWS us-west-2 data center. While these tutorial notebooks are designed to be run on any computer, if you intend to modify the notebooks and access data directly, it is desirable to run computations in the same data center. A convenient way to access a computer in AWS us-west-2 is to use a hosted JupyterHub platform such as one of the following:
 
 - https://docs.openveda.cloud/user-guide/scientific-computing/
 - https://opensarlab-docs.asf.alaska.edu
 - https://book.cryointhecloud.com/content/Getting_Started.html
 
-On these systems you can install software environment in the same way described above, but you must make the default JupyterLab interface aware of your environment. In Jupyter terminology you must specify a 'kernel'. Unfortunately there is not an automatic and uniform way of doing this, but a few manual steps can be followed:
+On these systems, you can install software environment in the same way described above, but you must make the default JupyterLab interface aware of your environment. In Jupyter terminology, you must specify a 'kernel'. Unfortunately, there is not an automatic and uniform way of doing this, but a few manual steps can be followed:
 
 1. Create a kernel specification subfolder under your home directory:
 ```

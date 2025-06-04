@@ -2,7 +2,7 @@
 
 ::::{tab-set}
 :::{tab-item} Overview
-This tutorial contains jupyter notebooks demonstrating various steps of a typical scientific workflow including accessing, processing and visualizing remote sensing data. The structure is as follows:
+This tutorial contains jupyter notebooks demonstrating various steps of a typical scientific workflow, including accessing, processing, and visualizing remote sensing data. The structure is as follows:
 
 **[1) Data access](nbs/1_accessing_itslive_s3_data.ipynb)**
 - Access ITS_LIVE data stored as Zarr data cubes in an AWS S3 bucket.  
@@ -12,23 +12,23 @@ This tutorial contains jupyter notebooks demonstrating various steps of a typica
 
 **[3) Working with raster and vector data](nbs/3_combining_raster_vector_data.ipynb)**  
 - Parse geographic metadata with [cf_xarray](https://cf-xarray.readthedocs.io/en/latest/).  
-- Handle projections and coordinate reference system information with [GeoPandas](https://geopandas.org/en/stable/), [Rioxarray](https://corteva.github.io/rioxarray/stable/index.html) and [PyProj](https://pyproj4.github.io/pyproj/stable/).  
+- Handle projections and coordinate reference system information with [GeoPandas](https://geopandas.org/en/stable/), [Rioxarray](https://corteva.github.io/rioxarray/stable/index.html), and [PyProj](https://pyproj4.github.io/pyproj/stable/).  
 - Spatial subset of vector data with [GeoPandas](https://geopandas.org/en/stable/).    
 - Spatial subset of raster data using vector data with [Rioxarray](https://corteva.github.io/rioxarray/stable/index.html).  
 
 **[4) Initial inspection and analysis of velocity data for a single glacier](nbs/4_exploratory_data_analysis_single.ipynb)**
-- Handle projections and coordinate reference system information with [GeoPandas](https://geopandas.org/en/stable/), [Rioxarray](https://corteva.github.io/rioxarray/stable/index.html) and [PyProj](https://pyproj4.github.io/pyproj/stable/).  
+- Handle projections and coordinate reference system information with [GeoPandas](https://geopandas.org/en/stable/), [Rioxarray](https://corteva.github.io/rioxarray/stable/index.html), and [PyProj](https://pyproj4.github.io/pyproj/stable/).  
 - Visualize raster and vector with background maps data using [Xarray](https://docs.xarray.dev/en/stable/), [GeoPandas](https://geopandas.org/en/stable/), and [Contextily](https://contextily.readthedocs.io/en/latest/).  
 - Calculate and examine data coverage along a given dimension using Xarray label-based indexing and selection.  
-- Use available metadata to interpret and organize dataset,  
-     - Use [`xr.DataTree`](https://xarray-datatree.readthedocs.io/en/latest/data-structures.html) or [`groupby()`](https://docs.xarray.dev/en/stable/user-guide/groupby.html) to separate dataset using metadata,  
+- Use available metadata to interpret and organize datasets,  
+     - Use [`xr.DataTree`](https://xarray-datatree.readthedocs.io/en/latest/data-structures.html) or [`groupby()`](https://docs.xarray.dev/en/stable/user-guide/groupby.html) to separate datasets using metadata,  
 - Use Xarray and [`scipy.stats`](https://docs.scipy.org/doc/scipy/reference/stats.html) to calculate and visualize summary statistics along a given dimension.  
-- Perform dimensional computations, reductions and visualizations using Xarray [`resample()`](https://docs.xarray.dev/en/stable/generated/xarray.Dataset.resample.html), [`groupby()`](https://docs.xarray.dev/en/stable/user-guide/groupby.html) and [`FacetGrid`](https://docs.xarray.dev/en/latest/generated/xarray.plot.FacetGrid.html).  
+- Perform dimensional computations, reductions and visualizations using Xarray [`resample()`](https://docs.xarray.dev/en/stable/generated/xarray.Dataset.resample.html), [`groupby()`](https://docs.xarray.dev/en/stable/user-guide/groupby.html), and [`FacetGrid`](https://docs.xarray.dev/en/latest/generated/xarray.plot.FacetGrid.html).  
 
 **[5) Exploratory analysis and visualization of multiple glaciers](nbs/5_exploratory_data_analysis_group.ipynb)**
 - Combine raster and vector data into a multi-dimensional vector data cube using [Xvec](https://xvec.readthedocs.io/).  
 - Read and write vector data cubes to disk using Xvec methods that rely on [cf_xarray](https://cf-xarray.readthedocs.io/en/latest/) to encode and decode metadata.  
-- Interactive  visualization of vector data cube using Xvec and GeoPandas.  
+- Interactive visualization of vector data cube using Xvec and GeoPandas.  
 - Use Xarray plotting tools to visualize data from a vector data cube.  
 :::
 :::{tab-item} Relevant Concepts
