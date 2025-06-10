@@ -36,6 +36,8 @@ affiliations:
     
 date: "14 March 2025"
 bibliography: "paper.bib"
+nocite: |
+  @*
 ---
 
 # Summary
