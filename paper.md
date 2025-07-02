@@ -1,5 +1,5 @@
 ---
-title: "Educational resources to accelerate analysis of remote sensing data using cloud resources with Xarray"
+title: "Cloud-native geospatial data cube workflows with open-source tools"
 tags:
   - Python
   - Remote Sensing
@@ -25,13 +25,13 @@ authors:
     orcid: "0000-0003-3945-5072"
     affiliation: "1"
 affiliations:
-  - name: Department of Geography, University of Utah, Salt Lake City, UT, U.S.A.
+  - name: University of Utah
     index: 1
   - name: Earthmover PBC
     index: 2
-  - name: eScience Institute & Department of Earth and Space Sciences, University of Washington, Seattle, WA, U.S.A.
+  - name: University of Washington, @uwescience
     index: 3
-  - name: Earth Systems Research Center, University of New Hampshire, Durham, NH, U.S.A.
+  - name: University of New Hampshire
     index: 4
     
 date: "14 March 2025"
