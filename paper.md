@@ -29,7 +29,7 @@ affiliations:
     index: 1
   - name: Earthmover PBC
     index: 2
-  - name: University of Washington, @uwescience
+  - name: University of Washington, \@uwescience
     index: 3
   - name: University of New Hampshire
     index: 4
